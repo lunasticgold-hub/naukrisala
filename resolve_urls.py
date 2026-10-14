@@ -12,12 +12,13 @@ from concurrent.futures import ThreadPoolExecutor
 PATH = os.path.join(os.path.dirname(os.path.abspath(__file__)), "jobs.json")
 UA = {"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0 Safari/537.36"}
 LAND_RE = re.compile(r'href="(https://www\.adzuna\.in/land/ad/[^"]+)"')
+EASY_RE = re.compile(r'href="(https://www\.adzuna\.in/details/\d+/apply\?aztt=[^"]+)"')
 
 def direct_for(url):
     try:
         req = urllib.request.Request(url, headers=UA)
         html = urllib.request.urlopen(req, timeout=20).read().decode("utf-8", "ignore")
-        m = LAND_RE.search(html)
+        m = LAND_RE.search(html) or EASY_RE.search(html)
         if m:
             return m.group(1).replace("&amp;", "&")
     except Exception:  # noqa: BLE001

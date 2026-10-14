@@ -218,7 +218,7 @@ function render() {
     : '<p class="empty">No openings match that filter. Try another course or search term.</p>';
 }
 
-fetch('jobs.json').then(r => r.json()).then(d => {
+fetch('jobs.json?v=20261015c').then(r => r.json()).then(d => {
   JOBS = d.jobs;
   updated.textContent = 'Updated ' + d.fetched_at;
   const labels = [['all', 'All tracks']];
