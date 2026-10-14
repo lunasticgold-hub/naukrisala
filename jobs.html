@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jobs — NaukriSala</title>
+<meta name="description" content="Real job openings across India, matched to every NaukriSala course track. Browse, filter, and apply on the employer's site.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@1,8..60,400;1,8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230B0B10'/><text x='50' y='70' font-size='54' text-anchor='middle' fill='%23FFB020' font-family='sans-serif' font-weight='800'>N</text></svg>">
+<style>
+.jobs-hero{padding:150px 0 34px}
+.jobs-hero h1{font-family:var(--font-d);font-weight:800;font-size:clamp(38px,5.4vw,64px);line-height:1.02;letter-spacing:-.02em;margin:18px 0 14px}
+.jobs-hero h1 em{font-family:'Source Serif 4',serif;font-style:italic;font-weight:600;background:linear-gradient(100deg,#ff8a00,#ffd166);-webkit-background-clip:text;background-clip:text;color:transparent}
+.controls{position:sticky;top:72px;z-index:50;background:rgba(10,10,16,.86);backdrop-filter:blur(14px);border-top:1px solid var(--line-soft);border-bottom:1px solid var(--line-soft);padding:14px 0}
+.controls-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.search{flex:1;min-width:220px;display:flex;align-items:center;gap:10px;background:var(--card);border:1px solid var(--line);border-radius:14px;padding:12px 16px}
+.search input{flex:1;background:none;border:none;outline:none;color:var(--ink);font:500 15px var(--font-b)}
+.search input::placeholder{color:var(--muted)}
+.chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.chip{font:600 12px 'JetBrains Mono',monospace;letter-spacing:.04em;color:var(--ink2);border:1px solid var(--line);background:rgba(255,255,255,.02);border-radius:999px;padding:8px 14px;cursor:pointer;transition:.2s}
+.chip:hover{border-color:rgba(255,176,32,.5);color:var(--ink)}
+.chip.active{background:var(--amber-grad);border-color:transparent;color:#1a1005}
+.meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:26px 0 18px;flex-wrap:wrap}
+.meta .count{font:500 13px 'JetBrains Mono',monospace;color:var(--muted);letter-spacing:.03em}
+.job-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;padding-bottom:20px}
+.job-card{background:var(--card);border:1px solid var(--line-soft);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:10px;transition:transform .25s,border-color .25s,box-shadow .25s}
+.job-card:hover{transform:translateY(-4px);border-color:rgba(255,176,32,.35);box-shadow:0 18px 44px -18px rgba(255,140,0,.25)}
+.job-tag{align-self:flex-start;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(255,176,32,.35);border-radius:999px;padding:5px 11px}
+.job-card h3{font:700 18px/1.3 var(--font-d);letter-spacing:-.01em}
+.job-co{font:500 13.5px var(--font-b);color:var(--ink2)}
+.job-snip{font:400 13.5px/1.6 var(--font-b);color:var(--muted);flex:1}
+.job-foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding-top:14px;border-top:1px solid var(--line-soft)}
+.job-date{font:500 12px 'JetBrains Mono',monospace;color:var(--muted)}
+.job-apply{font:700 13.5px var(--font-b);color:var(--amber);text-decoration:none}
+.job-apply:hover{text-decoration:underline}
+.empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)}
+.src-note{margin:34px 0 70px;padding:20px 22px;border:1px dashed var(--line);border-radius:16px}
+@media(max-width:1020px){.job-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:680px){.job-grid{grid-template-columns:1fr}.jobs-hero{padding:120px 0 26px}.controls{top:64px}}
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+<div class="glow glow-a" aria-hidden="true"></div>
+<div class="glow glow-b" aria-hidden="true"></div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">N</span>
+      <span class="brand-word">NAUKRI<em>SALA</em></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#courses">Courses</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#fees">Fees</a>
+      <a href="jobs.html" style="color:var(--amber)">Jobs</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="index.html#demo">Book free demo <span class="arr">→</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="jobs-hero">
+    <div class="wrap">
+      <p class="eyebrow"><span class="dot"></span>Live job board · India</p>
+      <h1>Jobs matched to<br><em>your course.</em></h1>
+      <p class="lede">Real openings across India, grouped by every NaukriSala track. Find your role, then apply directly on the employer's site.</p>
+    </div>
+  </section>
+
+  <div class="controls">
+    <div class="wrap">
+      <div class="controls-row">
+        <label class="search"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Search role, company, or city…" autocomplete="off"></label>
+      </div>
+      <div class="chips" id="chips"></div>
+    </div>
+  </div>
+
+  <section>
+    <div class="wrap">
+      <div class="meta">
+        <p class="count" id="count">Loading jobs…</p>
+        <p class="fine" id="updated"></p>
+      </div>
+      <div class="job-grid" id="grid"></div>
+      <div class="src-note">
+        <p class="fine">Listings aggregated from live India job postings via Adzuna. Applying happens on the employer's own site — NaukriSala never submits applications on your behalf. New batches of openings are added periodically.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="brand"><span class="brand-mark">N</span><span class="brand-word">NAUKRI<em>SALA</em></span></p>
+      <p class="fine">Placement-first training academy · India<br>Founding batch — November 2026</p>
+    </div>
+    <nav class="footer-links">
+      <a href="index.html#courses">Courses</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#fees">Fees</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#demo">Free demo</a>
+    </nav>
+  </div>
+  <div class="wrap"><p class="fine foot-base">© 2026 NaukriSala · Get placed first. Pay from your salary. · जहाँ नौकरी पक्की</p></div>
+</footer>
+
+<script>
+const grid = document.getElementById('grid'),
+      chips = document.getElementById('chips'),
+      q = document.getElementById('q'),
+      count = document.getElementById('count'),
+      updated = document.getElementById('updated');
+let JOBS = [], active = 'all';
+
+const rel = iso => {
+  const d = Math.max(0, Math.round((Date.now() - new Date(iso)) / 864e5));
+  return d === 0 ? 'today' : d === 1 ? 'yesterday' : d + ' days ago';
+};
+const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+function render() {
+  const term = q.value.trim().toLowerCase();
+  const list = JOBS.filter(j =>
+    (active === 'all' || j.course === active) &&
+    (!term || (j.title + ' ' + j.company + ' ' + j.location).toLowerCase().includes(term))
+  );
+  count.textContent = list.length + (list.length === 1 ? ' opening' : ' openings');
+  grid.innerHTML = list.length ? list.map(j => `
+    <article class="job-card">
+      <span class="job-tag">${esc(j.course_label)}</span>
+      <h3>${esc(j.title)}</h3>
+      <p class="job-co">${esc(j.company)} · ${esc(j.location)}</p>
+      <p class="job-snip">${esc(j.snippet)}</p>
+      <div class="job-foot">
+        <span class="job-date">${rel(j.created)}${j.contract ? ' · ' + esc(j.contract) : ''}</span>
+        <a class="job-apply" href="${esc(j.url)}" target="_blank" rel="noopener nofollow">Apply →</a>
+      </div>
+    </article>`).join('')
+    : '<p class="empty">No openings match that filter. Try another course or search term.</p>';
+}
+
+fetch('jobs.json').then(r => r.json()).then(d => {
+  JOBS = d.jobs;
+  updated.textContent = 'Updated ' + d.fetched_at + ' · via Adzuna';
+  const labels = [['all', 'All tracks']];
+  d.jobs.forEach(j => { if (!labels.find(l => l[0] === j.course)) labels.push([j.course, j.course_label]); });
+  chips.innerHTML = labels.map(([s, l]) =>
+    `<button class="chip${s === 'all' ? ' active' : ''}" data-s="${s}">${esc(l)}</button>`).join('');
+  chips.addEventListener('click', e => {
+    const b = e.target.closest('.chip'); if (!b) return;
+    active = b.dataset.s;
+    chips.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c === b));
+    render();
+  });
+  q.addEventListener('input', render);
+  render();
+}).catch(() => { count.textContent = 'Could not load jobs right now.'; });
+
+document.getElementById('navToggle').addEventListener('click', () =>
+  document.getElementById('navLinks').classList.toggle('open'));
+</script>
+</body>
+</html>
