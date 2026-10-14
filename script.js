@@ -2,33 +2,46 @@
 const WHATSAPP_NUMBER = "919999999999"; // TODO: Abhigyan — put NaukriSala's WhatsApp number here
 
 const COURSES = [
-  { name: "AML & KYC Analyst", tag: "Financial crime compliance · any graduate", dur: "45 days", pay: "₹9–28 LPA", flagship: true,  status: "live", statusLabel: "Batch 1 · Live 10 Nov" },
-  { name: "ServiceNow Developer", tag: "Best for freshers & IT support", dur: "3 months", pay: "₹7–18 LPA", flagship: false, status: "soon", statusLabel: "Upcoming" },
-  { name: "Data Science & AI Engineering", tag: "Python, ML, GenAI, LLMs, MLOps", dur: "4 months", pay: "₹12–45 LPA", flagship: false, status: "soon", statusLabel: "Upcoming" },
-  { name: "STOM — Service Transition & Ops", tag: "Best for non-coders & career switchers", dur: "2 months", pay: "₹8–36 LPA", flagship: false, status: "soon", statusLabel: "Upcoming" },
-  { name: "Power BI Developer", tag: "BI & analytics · dashboards + DAX", dur: "2 months", pay: "₹6–18 LPA", flagship: false, status: "soon", statusLabel: "Upcoming" },
-  { name: "Data Analyst", tag: "Best for freshers & aspiring analysts", dur: "—", pay: "—", flagship: false, status: "soon", statusLabel: "Upcoming" },
-  { name: "Workday Consultant", tag: "Best for HR & operations professionals", dur: "—", pay: "—", flagship: false, status: "soon", statusLabel: "Upcoming" },
-  { name: "Full Stack Python", tag: "Best for coding aspirants", dur: "—", pay: "—", flagship: false, status: "soon", statusLabel: "Upcoming" },
-  { name: "Full Stack Java Developer", tag: "Best for coding aspirants", dur: "—", pay: "—", flagship: false, status: "soon", statusLabel: "Upcoming" },
-  { name: "Software Testing (QA)", tag: "Best for detail-oriented freshers", dur: "—", pay: "—", flagship: false, status: "soon", statusLabel: "Upcoming" },
-  { name: "Investment Banking Operations", tag: "Any graduate, no coding needed", dur: "45 days", pay: "₹3.5–7 LPA", flagship: false, status: "soon", statusLabel: "Upcoming" },
-  { name: "SAP FICO (S/4HANA Finance)", tag: "Best for B.Com, MBA & finance pros", dur: "—", pay: "—", flagship: false, status: "soon", statusLabel: "Upcoming" },
-  { name: "Web Development", tag: "Best for creative coders", dur: "—", pay: "—", flagship: false, status: "soon", statusLabel: "Upcoming" },
-  { name: ".NET Developer", tag: "Enterprise stack", dur: "—", pay: "—", flagship: false, status: "soon", statusLabel: "Upcoming" },
-  { name: "Database & Business Intelligence", tag: "SQL + BI tools", dur: "—", pay: "—", flagship: false, status: "soon", statusLabel: "Upcoming" },
+  { name: "AML & KYC Analyst", tag: "Financial crime compliance · any graduate", dur: "45 days", pay: "₹9–28 LPA", flagship: true,  status: "Batch 1 · Live 10 Nov" },
+  { name: "ServiceNow Developer", tag: "Best for freshers & IT support", dur: "3 months", pay: "₹7–18 LPA", flagship: false, status: "Upcoming" },
+  { name: "Data Science & AI Engineering", tag: "Python, ML, GenAI, LLMs, MLOps", dur: "4 months", pay: "₹12–45 LPA", flagship: false, status: "Upcoming" },
+  { name: "STOM — Service Transition & Ops", tag: "Best for non-coders & career switchers", dur: "2 months", pay: "₹8–36 LPA", flagship: false, status: "Upcoming" },
+  { name: "Power BI Developer", tag: "BI & analytics · dashboards + DAX", dur: "2 months", pay: "₹6–18 LPA", flagship: false, status: "Upcoming" },
+  { name: "Data Analyst", tag: "Best for freshers & aspiring analysts", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
+  { name: "Workday Consultant", tag: "Best for HR & operations professionals", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
+  { name: "Full Stack Python", tag: "Best for coding aspirants", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
+  { name: "Full Stack Java Developer", tag: "Best for coding aspirants", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
+  { name: "Software Testing (QA)", tag: "Best for detail-oriented freshers", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
+  { name: "Investment Banking Operations", tag: "Any graduate, no coding needed", dur: "45 days", pay: "₹3.5–7 LPA", flagship: false, status: "Upcoming" },
+  { name: "SAP FICO (S/4HANA Finance)", tag: "Best for B.Com, MBA & finance pros", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
+  { name: "Web Development", tag: "Best for creative coders", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
+  { name: ".NET Developer", tag: "Enterprise stack", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
+  { name: "Database & Business Intelligence", tag: "SQL + BI tools", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
 ];
 
 function renderCourses() {
   const grid = document.getElementById("courseGrid");
   grid.innerHTML = COURSES.map(c => `
-    <div class="course">
+    <div class="course${c.flagship ? " flagship" : ""} reveal">
       ${c.flagship ? '<span class="course-flag">Flagship</span>' : ''}
+      <p class="course-tag">${c.status}</p>
       <h3>${c.name}</h3>
       <p class="tag">${c.tag}</p>
-      <div class="meta"><span>${c.dur}</span><span>${c.pay}</span></div>
-      <p class="status ${c.status}">${c.statusLabel}</p>
+      <p class="pay">${c.pay}<small>placement range</small></p>
+      <div class="foot">
+        <span class="dur">${c.dur}</span>
+        <a class="go" href="#demo">Details →</a>
+      </div>
+      <span class="course-bar"></span>
     </div>`).join("");
+  // cursor spotlight
+  grid.querySelectorAll(".course").forEach(card => {
+    card.addEventListener("pointermove", e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty("--mx", (e.clientX - r.left) + "px");
+      card.style.setProperty("--my", (e.clientY - r.top) + "px");
+    });
+  });
 }
 
 // FAQ accordion
@@ -50,6 +63,14 @@ function initNav() {
   links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => links.classList.remove("open")));
 }
 
+// Scroll reveal
+function initReveal() {
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(en => { if (en.isIntersecting) { en.target.classList.add("in"); io.unobserve(en.target); } });
+  }, { threshold: 0.12 });
+  document.querySelectorAll(".reveal").forEach(el => io.observe(el));
+}
+
 // Demo form -> WhatsApp deep link
 function initDemoForm() {
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi NaukriSala! I want to book a free demo class.")}`;
@@ -68,5 +89,6 @@ document.addEventListener("DOMContentLoaded", () => {
   renderCourses();
   initFaq();
   initNav();
+  initReveal();
   initDemoForm();
 });
