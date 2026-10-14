@@ -150,6 +150,7 @@
 </footer>
 
 <script>
+const GATE_ENABLED = false; // flip to true at launch to require the paid-student access code
 const CODE_HASH = '92831ee3e800b54327a4ac73cb28191e27d0468d1dd9c2300a602d709768e45c';
 const lock = document.getElementById('lock'),
       board = document.getElementById('board'),
@@ -181,7 +182,12 @@ function openBoard() {
 document.getElementById('unlockBtn').addEventListener('click', tryUnlock);
 codeInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
 
-if (localStorage.getItem('ns_gate') === CODE_HASH) openBoard();
+if (!GATE_ENABLED) {
+  lock.style.display = 'none';
+  openBoard();
+} else if (localStorage.getItem('ns_gate') === CODE_HASH) {
+  openBoard();
+}
 
 function loadJobs() {
 const grid = document.getElementById('grid'),
