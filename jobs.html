@@ -38,6 +38,20 @@
 .job-apply:hover{text-decoration:underline}
 .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)}
 .src-note{margin:34px 0 70px;padding:20px 22px;border:1px dashed var(--line);border-radius:16px}
+.lock{min-height:70vh;display:flex;align-items:center;justify-content:center;padding:140px 0 60px}
+.lock-card{max-width:460px;width:100%;background:var(--card);border:1px solid var(--line);border-radius:24px;padding:44px 38px;text-align:center}
+.lock-card .kicker{font:600 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--amber);text-transform:uppercase}
+.lock-card h2{font:800 30px/1.15 var(--font-d);letter-spacing:-.02em;margin:14px 0 10px}
+.lock-card h2 em{font-family:'Source Serif 4',serif;font-style:italic;font-weight:600;background:linear-gradient(100deg,#ff8a00,#ffd166);-webkit-background-clip:text;background-clip:text;color:transparent}
+.lock-card p{font:400 14.5px/1.65 var(--font-b);color:var(--muted);margin-bottom:22px}
+.code-row{display:flex;gap:10px}
+.code-row input{flex:1;background:rgba(0,0,0,.35);border:1px solid var(--line);border-radius:12px;padding:13px 15px;color:var(--ink);font:600 15px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;outline:none;text-align:center}
+.code-row input:focus{border-color:var(--amber)}
+.code-err{font:500 13px var(--font-b);color:#ff7a7a;min-height:20px;margin-top:12px}
+.shake{animation:shake .35s}
+@keyframes shake{25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-4px)}}
+#board{display:none}
+#board.open{display:block}
 @media(max-width:1020px){.job-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:680px){.job-grid{grid-template-columns:1fr}.jobs-hero{padding:120px 0 26px}.controls{top:64px}}
 </style>
@@ -69,6 +83,22 @@
 </header>
 
 <main>
+  <section class="lock" id="lock">
+    <div class="wrap" style="display:flex;justify-content:center">
+      <div class="lock-card" id="lockCard">
+        <p class="kicker">Enrolled students only</p>
+        <h2>This board is for<br><em>paid students.</em></h2>
+        <p>The live job board unlocks after enrollment. Your access code was shared with you when you joined — enter it below.</p>
+        <div class="code-row">
+          <input id="codeInput" type="text" placeholder="NS-XXXX-XXXX" autocomplete="off" spellcheck="false">
+          <button class="btn btn-primary" id="unlockBtn">Unlock</button>
+        </div>
+        <p class="code-err" id="codeErr"></p>
+      </div>
+    </div>
+  </section>
+
+  <div id="board">
   <section class="jobs-hero">
     <div class="wrap">
       <p class="eyebrow"><span class="dot"></span>Live job board · India</p>
@@ -94,10 +124,11 @@
       </div>
       <div class="job-grid" id="grid"></div>
       <div class="src-note">
-        <p class="fine">Listings aggregated from live India job postings via Adzuna. Applying happens on the employer's own site — NaukriSala never submits applications on your behalf. New batches of openings are added periodically.</p>
+        <p class="fine">Listings aggregated from live India job postings. Applying happens on the employer's own site — NaukriSala never submits applications on your behalf. New batches of openings are added periodically.</p>
       </div>
     </div>
   </section>
+  </div>
 </main>
 
 <footer class="footer">
@@ -119,6 +150,40 @@
 </footer>
 
 <script>
+const CODE_HASH = '92831ee3e800b54327a4ac73cb28191e27d0468d1dd9c2300a602d709768e45c';
+const lock = document.getElementById('lock'),
+      board = document.getElementById('board'),
+      codeInput = document.getElementById('codeInput'),
+      codeErr = document.getElementById('codeErr'),
+      lockCard = document.getElementById('lockCard');
+
+const sha256 = async s =>
+  [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)))]
+    .map(b => b.toString(16).padStart(2, '0')).join('');
+
+async function tryUnlock() {
+  const v = codeInput.value.trim().toUpperCase();
+  if (!v) return;
+  if (await sha256(v) === CODE_HASH) {
+    localStorage.setItem('ns_gate', CODE_HASH);
+    openBoard();
+  } else {
+    codeErr.textContent = 'That code didn\u2019t work — check it and try again.';
+    lockCard.classList.remove('shake'); void lockCard.offsetWidth;
+    lockCard.classList.add('shake');
+  }
+}
+function openBoard() {
+  lock.style.display = 'none';
+  board.classList.add('open');
+  loadJobs();
+}
+document.getElementById('unlockBtn').addEventListener('click', tryUnlock);
+codeInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
+
+if (localStorage.getItem('ns_gate') === CODE_HASH) openBoard();
+
+function loadJobs() {
 const grid = document.getElementById('grid'),
       chips = document.getElementById('chips'),
       q = document.getElementById('q'),
@@ -147,7 +212,7 @@ function render() {
       <p class="job-snip">${esc(j.snippet)}</p>
       <div class="job-foot">
         <span class="job-date">${rel(j.created)}${j.contract ? ' · ' + esc(j.contract) : ''}</span>
-        <a class="job-apply" href="${esc(j.url)}" target="_blank" rel="noopener nofollow">Apply →</a>
+        <a class="job-apply" href="${esc(j.direct_url || j.url)}" target="_blank" rel="noopener nofollow">Apply →</a>
       </div>
     </article>`).join('')
     : '<p class="empty">No openings match that filter. Try another course or search term.</p>';
@@ -155,7 +220,7 @@ function render() {
 
 fetch('jobs.json').then(r => r.json()).then(d => {
   JOBS = d.jobs;
-  updated.textContent = 'Updated ' + d.fetched_at + ' · via Adzuna';
+  updated.textContent = 'Updated ' + d.fetched_at;
   const labels = [['all', 'All tracks']];
   d.jobs.forEach(j => { if (!labels.find(l => l[0] === j.course)) labels.push([j.course, j.course_label]); });
   chips.innerHTML = labels.map(([s, l]) =>
@@ -169,6 +234,7 @@ fetch('jobs.json').then(r => r.json()).then(d => {
   q.addEventListener('input', render);
   render();
 }).catch(() => { count.textContent = 'Could not load jobs right now.'; });
+}
 
 document.getElementById('navToggle').addEventListener('click', () =>
   document.getElementById('navLinks').classList.toggle('open'));
