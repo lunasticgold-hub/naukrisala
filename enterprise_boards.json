@@ -1,1 +1,378 @@
-[{"company":"Altisource","india_jobs":72,"notes":"Mortgage/fintech services; 72 of 85 jobs India-located (Bengaluru). API: GET https://api.smartrecruiters.com/v1/companies/altisource/postings?limit=100. Apply URL in posting.ref.","params":{"slug":"altisource"},"platform":"smartrecruiters","total_jobs":85},{"company":"EJOBS","india_jobs":42,"notes":"Staffing consultancy; all 42 India. Small but 100% India hit rate.","params":{"slug":"EJOBS"},"platform":"smartrecruiters","total_jobs":42},{"company":"J.P. Morgan","india_jobs":38,"notes":"india_jobs measured in first 200 postings (Hyderabad/Bengaluru roles seen); true India count higher — needs full pagination. API: GET https://{host}/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber={site},limit=200,offset=N. Apply: https://{host}/hcmUI/CandidateExperience/en/sites/{site}/job/{Id}. Filter client-side on PrimaryLocation / PrimaryLocationCountry=='IN'.","params":{"host":"jpmc.fa.oraclecloud.com","site":"CX_1001"},"platform":"oracle","total_jobs":7313},{"company":"Emerson","india_jobs":29,"notes":"india_jobs measured in first 200; needs full pagination for true count. Same Oracle API pattern as J.P. Morgan.","params":{"host":"hdjq.fa.us2.oraclecloud.com","site":"CX_1"},"platform":"oracle","total_jobs":1138},{"company":"Intel","india_jobs":20,"notes":"searchText='India' filters correctly. API: POST https://{host}/wday/cxs/{tenant}/{site}/jobs body {appliedFacets:{},limit:20,offset:0,searchText:'India'}. Locations in jobPostings[].locationsText.","params":{"host":"intel.wd1.myworkdayjobs.com","site":"External","tenant":"intel"},"platform":"workday","total_jobs":69},{"company":"Visa","india_jobs":20,"notes":"searchText='India' filters correctly. Same Workday CXS pattern.","params":{"host":"visa.wd5.myworkdayjobs.com","site":"Visa","tenant":"visa"},"platform":"workday","total_jobs":102},{"company":"BrowserStack","india_jobs":20,"notes":"searchText='India' filters correctly. Same Workday CXS pattern.","params":{"host":"browserstack.wd3.myworkdayjobs.com","site":"External","tenant":"browserstack"},"platform":"workday","total_jobs":30},{"company":"Mastercard","india_jobs":19,"notes":"19 India in first 20 returned; searchText='India' filters correctly.","params":{"host":"mastercard.wd1.myworkdayjobs.com","site":"CorporateCareers","tenant":"mastercard"},"platform":"workday","total_jobs":260},{"company":"Amadeus","india_jobs":16,"notes":"All 16 India. Same Workday CXS pattern.","params":{"host":"amadeus.wd502.myworkdayjobs.com","site":"jobs","tenant":"amadeus"},"platform":"workday","total_jobs":16},{"company":"PayPal","india_jobs":16,"notes":"16 India in returned 20. Same Workday CXS pattern.","params":{"host":"paypal.wd1.myworkdayjobs.com","site":"jobs","tenant":"paypal"},"platform":"workday","total_jobs":20},{"company":"Expedia Group","india_jobs":15,"notes":"15 India in returned 18. Same Workday CXS pattern.","params":{"host":"expedia.wd108.myworkdayjobs.com","site":"search","tenant":"expedia"},"platform":"workday","total_jobs":18},{"company":"Cisco","india_jobs":13,"notes":"13 India in first 20 returned. Same Workday CXS pattern.","params":{"host":"cisco.wd5.myworkdayjobs.com","site":"Cisco_Careers","tenant":"cisco"},"platform":"workday","total_jobs":324},{"company":"Bayer","india_jobs":12,"notes":"~12 India across full board (paginated all 625; API returns 10/page despite num=100). API: GET https://{slug}.eightfold.ai/api/apply/v2/jobs?start=N&num=100. Total in 'count', jobs in 'positions[]', locations in job.locations[], apply in job.canonicalPositionUrl. Slow API (~20s/response) — use generous timeouts.","params":{"slug":"bayer"},"platform":"eightfold","total_jobs":625},{"company":"Wells Fargo","india_jobs":12,"notes":"12 India in first 20 returned. Same Workday CXS pattern.","params":{"host":"wf.wd1.myworkdayjobs.com","site":"WellsFargoJobs","tenant":"wf"},"platform":"workday","total_jobs":98},{"company":"Adobe","india_jobs":8,"notes":"8 India in first 20 returned. Same Workday CXS pattern.","params":{"host":"adobe.wd5.myworkdayjobs.com","site":"external_experienced","tenant":"adobe"},"platform":"workday","total_jobs":66},{"company":"HSBC","india_jobs":8,"notes":"Only 8 India across all 1,491 (paginated full board). Thin India presence but valid endpoint. Same Eightfold API pattern; slow responses.","params":{"slug":"hsbc"},"platform":"eightfold","total_jobs":1491},{"company":"Salesforce","india_jobs":6,"notes":"6 India in first 20 returned. Same Workday CXS pattern.","params":{"host":"salesforce.wd12.myworkdayjobs.com","site":"External_Career_Site","tenant":"salesforce"},"platform":"workday","total_jobs":232},{"company":"Avery Dennison","india_jobs":5,"notes":"Only 5 India in first 100 (Bangalore). Thin. Same SmartRecruiters API pattern.","params":{"slug":"averydennison"},"platform":"smartrecruiters","total_jobs":482},{"company":"NVIDIA","india_jobs":2,"notes":"Only 2 India in first 20 returned. Thin India presence. Same Workday CXS pattern.","params":{"host":"nvidia.wd5.myworkdayjobs.com","site":"NVIDIAExternalCareerSite","tenant":"nvidia"},"platform":"workday","total_jobs":283},{"company":"Accenture","india_jobs":0,"notes":"CAUTION: this tenant ignores searchText='India' (returned 2,000 global jobs, 0 India in first 20). Needs location-facet filtering or client-side pagination to extract India jobs. Endpoint is live; India extraction needs work.","params":{"host":"accenture.wd103.myworkdayjobs.com","site":"AccentureCareers","tenant":"accenture"},"platform":"workday","total_jobs":2000}]
+[
+ {
+  "company": "EXL",
+  "platform": "oracle",
+  "params": {
+   "host": "fa-ewjt-saasfaprod1.fa.ocs.oraclecloud.com",
+   "site": "CX_2"
+  },
+  "total_jobs": 2805,
+  "india_jobs": 2377,
+  "notes": "Oracle Recruiting Cloud; ~2377 India (Chennai/Noida). Paginate via hasMore."
+ },
+ {
+  "company": "Genpact",
+  "platform": "workday",
+  "params": {
+   "host": "genpact.wd108.myworkdayjobs.com",
+   "tenant": "genpact",
+   "site": "External_Careers",
+   "pace": 20
+  },
+  "total_jobs": 2000,
+  "india_jobs": 1784,
+  "notes": "Workday CXS; ~1784 India. Pace >=20s."
+ },
+ {
+  "company": "Capgemini",
+  "platform": "capgemini",
+  "params": {
+   "base": "https://cg-jobstream-api.azurewebsites.net/api",
+   "path": "/job-search",
+   "country_code": "in-en"
+  },
+  "total_jobs": 719,
+  "india_jobs": 719,
+  "notes": "Capgemini's own job-search JSON API (Azure); country_code=in-en = India feed. Apply URL extracted from description HTML (careers.capgemini.com/job/...)."
+ },
+ {
+  "company": "KPMG India",
+  "platform": "oracle",
+  "params": {
+   "host": "ejgk.fa.em2.oraclecloud.com",
+   "site": "CX_3"
+  },
+  "total_jobs": 630,
+  "india_jobs": 630,
+  "notes": "Oracle Recruiting Cloud; 630 India jobs (Gurgaon/Bangalore)."
+ },
+ {
+  "company": "Apex Group",
+  "platform": "workday",
+  "params": {
+   "host": "theapexgroup.wd3.myworkdayjobs.com",
+   "tenant": "theapexgroup",
+   "site": "apexgroupcareers",
+   "pace": 20
+  },
+  "total_jobs": 1062,
+  "india_jobs": 427,
+  "notes": "Workday CXS; 427 India. Pace >=20s."
+ },
+ {
+  "company": "State Street",
+  "platform": "workday",
+  "params": {
+   "host": "statestreet.wd1.myworkdayjobs.com",
+   "tenant": "statestreet",
+   "site": "Global",
+   "pace": 20
+  },
+  "total_jobs": 344,
+  "india_jobs": 344,
+  "notes": "Workday CXS; searchText='India' returns 344 India jobs. Pace >=20s (rate-limited)."
+ },
+ {
+  "company": "Deutsche Bank",
+  "platform": "workday",
+  "params": {
+   "host": "db.wd3.myworkdayjobs.com",
+   "tenant": "db",
+   "site": "DBWebsite",
+   "pace": 20
+  },
+  "total_jobs": 337,
+  "india_jobs": 337,
+  "notes": "Workday CXS; 337 India jobs (Mumbai/Pune). Pace >=20s."
+ },
+ {
+  "company": "MUFG",
+  "platform": "workday",
+  "params": {
+   "host": "mufgub.wd3.myworkdayjobs.com",
+   "tenant": "mufgub",
+   "site": "MUFG-Careers",
+   "pace": 20
+  },
+  "total_jobs": 218,
+  "india_jobs": 218,
+  "notes": "Workday CXS; 218 India jobs incl. 'Analyst - India KYC' (Bengaluru). Pace >=20s."
+ },
+ {
+  "company": "BNY",
+  "platform": "oracle",
+  "params": {
+   "host": "eofe.fa.us2.oraclecloud.com",
+   "site": "CX_1"
+  },
+  "total_jobs": 1356,
+  "india_jobs": 145,
+  "notes": "Oracle Recruiting Cloud; 145 India."
+ },
+ {
+  "company": "Guidehouse",
+  "platform": "workday",
+  "params": {
+   "host": "guidehouse.wd1.myworkdayjobs.com",
+   "tenant": "guidehouse",
+   "site": "External",
+   "pace": 20
+  },
+  "total_jobs": 809,
+  "india_jobs": 116,
+  "notes": "Workday CXS; 116 India. Pace >=20s."
+ },
+ {
+  "company": "Altisource",
+  "india_jobs": 72,
+  "notes": "Mortgage/fintech services; 72 of 85 jobs India-located (Bengaluru). API: GET https://api.smartrecruiters.com/v1/companies/altisource/postings?limit=100. Apply URL in posting.ref.",
+  "params": {
+   "slug": "altisource"
+  },
+  "platform": "smartrecruiters",
+  "total_jobs": 85
+ },
+ {
+  "company": "EJOBS",
+  "india_jobs": 42,
+  "notes": "Staffing consultancy; all 42 India. Small but 100% India hit rate.",
+  "params": {
+   "slug": "EJOBS"
+  },
+  "platform": "smartrecruiters",
+  "total_jobs": 42
+ },
+ {
+  "company": "J.P. Morgan",
+  "india_jobs": 38,
+  "notes": "india_jobs measured in first 200 postings (Hyderabad/Bengaluru roles seen); true India count higher — needs full pagination. API: GET https://{host}/hcmRestApi/resources/latest/recruitingCEJobRequisitions?onlyData=true&expand=requisitionList.secondaryLocations&finder=findReqs;siteNumber={site},limit=200,offset=N. Apply: https://{host}/hcmUI/CandidateExperience/en/sites/{site}/job/{Id}. Filter client-side on PrimaryLocation / PrimaryLocationCountry=='IN'.",
+  "params": {
+   "host": "jpmc.fa.oraclecloud.com",
+   "site": "CX_1001"
+  },
+  "platform": "oracle",
+  "total_jobs": 7313
+ },
+ {
+  "company": "Emerson",
+  "india_jobs": 29,
+  "notes": "india_jobs measured in first 200; needs full pagination for true count. Same Oracle API pattern as J.P. Morgan.",
+  "params": {
+   "host": "hdjq.fa.us2.oraclecloud.com",
+   "site": "CX_1"
+  },
+  "platform": "oracle",
+  "total_jobs": 1138
+ },
+ {
+  "company": "Intel",
+  "india_jobs": 20,
+  "notes": "searchText='India' filters correctly. API: POST https://{host}/wday/cxs/{tenant}/{site}/jobs body {appliedFacets:{},limit:20,offset:0,searchText:'India'}. Locations in jobPostings[].locationsText.",
+  "params": {
+   "host": "intel.wd1.myworkdayjobs.com",
+   "site": "External",
+   "tenant": "intel"
+  },
+  "platform": "workday",
+  "total_jobs": 69
+ },
+ {
+  "company": "Visa",
+  "india_jobs": 20,
+  "notes": "searchText='India' filters correctly. Same Workday CXS pattern.",
+  "params": {
+   "host": "visa.wd5.myworkdayjobs.com",
+   "site": "Visa",
+   "tenant": "visa"
+  },
+  "platform": "workday",
+  "total_jobs": 102
+ },
+ {
+  "company": "BrowserStack",
+  "india_jobs": 20,
+  "notes": "searchText='India' filters correctly. Same Workday CXS pattern.",
+  "params": {
+   "host": "browserstack.wd3.myworkdayjobs.com",
+   "site": "External",
+   "tenant": "browserstack"
+  },
+  "platform": "workday",
+  "total_jobs": 30
+ },
+ {
+  "company": "Mastercard",
+  "india_jobs": 19,
+  "notes": "19 India in first 20 returned; searchText='India' filters correctly.",
+  "params": {
+   "host": "mastercard.wd1.myworkdayjobs.com",
+   "site": "CorporateCareers",
+   "tenant": "mastercard"
+  },
+  "platform": "workday",
+  "total_jobs": 260
+ },
+ {
+  "company": "Amadeus",
+  "india_jobs": 16,
+  "notes": "All 16 India. Same Workday CXS pattern.",
+  "params": {
+   "host": "amadeus.wd502.myworkdayjobs.com",
+   "site": "jobs",
+   "tenant": "amadeus"
+  },
+  "platform": "workday",
+  "total_jobs": 16
+ },
+ {
+  "company": "PayPal",
+  "india_jobs": 16,
+  "notes": "16 India in returned 20. Same Workday CXS pattern.",
+  "params": {
+   "host": "paypal.wd1.myworkdayjobs.com",
+   "site": "jobs",
+   "tenant": "paypal"
+  },
+  "platform": "workday",
+  "total_jobs": 20
+ },
+ {
+  "company": "Expedia Group",
+  "india_jobs": 15,
+  "notes": "15 India in returned 18. Same Workday CXS pattern.",
+  "params": {
+   "host": "expedia.wd108.myworkdayjobs.com",
+   "site": "search",
+   "tenant": "expedia"
+  },
+  "platform": "workday",
+  "total_jobs": 18
+ },
+ {
+  "company": "Cisco",
+  "india_jobs": 13,
+  "notes": "13 India in first 20 returned. Same Workday CXS pattern.",
+  "params": {
+   "host": "cisco.wd5.myworkdayjobs.com",
+   "site": "Cisco_Careers",
+   "tenant": "cisco"
+  },
+  "platform": "workday",
+  "total_jobs": 324
+ },
+ {
+  "company": "Signzy",
+  "platform": "keka",
+  "params": {
+   "host": "signzy.keka.com",
+   "portal": "default",
+   "identifier": "54e30b3d-e138-4862-8055-8b2ce8c31009"
+  },
+  "total_jobs": 19,
+  "india_jobs": 13,
+  "notes": "Indian KYC/identity-verification vendor. Keka public embed API; all India. Sample: Senior Compliance Analyst."
+ },
+ {
+  "company": "Bayer",
+  "india_jobs": 12,
+  "notes": "~12 India across full board (paginated all 625; API returns 10/page despite num=100). API: GET https://{slug}.eightfold.ai/api/apply/v2/jobs?start=N&num=100. Total in 'count', jobs in 'positions[]', locations in job.locations[], apply in job.canonicalPositionUrl. Slow API (~20s/response) — use generous timeouts.",
+  "params": {
+   "slug": "bayer"
+  },
+  "platform": "eightfold",
+  "total_jobs": 625
+ },
+ {
+  "company": "Wells Fargo",
+  "india_jobs": 12,
+  "notes": "12 India in first 20 returned. Same Workday CXS pattern.",
+  "params": {
+   "host": "wf.wd1.myworkdayjobs.com",
+   "site": "WellsFargoJobs",
+   "tenant": "wf"
+  },
+  "platform": "workday",
+  "total_jobs": 98
+ },
+ {
+  "company": "Adobe",
+  "india_jobs": 8,
+  "notes": "8 India in first 20 returned. Same Workday CXS pattern.",
+  "params": {
+   "host": "adobe.wd5.myworkdayjobs.com",
+   "site": "external_experienced",
+   "tenant": "adobe"
+  },
+  "platform": "workday",
+  "total_jobs": 66
+ },
+ {
+  "company": "HSBC",
+  "india_jobs": 8,
+  "notes": "Only 8 India across all 1,491 (paginated full board). Thin India presence but valid endpoint. Same Eightfold API pattern; slow responses.",
+  "params": {
+   "slug": "hsbc"
+  },
+  "platform": "eightfold",
+  "total_jobs": 1491
+ },
+ {
+  "company": "Salesforce",
+  "india_jobs": 6,
+  "notes": "6 India in first 20 returned. Same Workday CXS pattern.",
+  "params": {
+   "host": "salesforce.wd12.myworkdayjobs.com",
+   "site": "External_Career_Site",
+   "tenant": "salesforce"
+  },
+  "platform": "workday",
+  "total_jobs": 232
+ },
+ {
+  "company": "Avery Dennison",
+  "india_jobs": 5,
+  "notes": "Only 5 India in first 100 (Bangalore). Thin. Same SmartRecruiters API pattern.",
+  "params": {
+   "slug": "averydennison"
+  },
+  "platform": "smartrecruiters",
+  "total_jobs": 482
+ },
+ {
+  "company": "NVIDIA",
+  "india_jobs": 2,
+  "notes": "Only 2 India in first 20 returned. Thin India presence. Same Workday CXS pattern.",
+  "params": {
+   "host": "nvidia.wd5.myworkdayjobs.com",
+   "site": "NVIDIAExternalCareerSite",
+   "tenant": "nvidia"
+  },
+  "platform": "workday",
+  "total_jobs": 283
+ },
+ {
+  "company": "FTI Consulting",
+  "platform": "workday",
+  "params": {
+   "host": "fticonsulting.wd108.myworkdayjobs.com",
+   "tenant": "fticonsulting",
+   "site": "FTIConsultingCareers",
+   "pace": 20
+  },
+  "total_jobs": 250,
+  "india_jobs": 2,
+  "notes": "Workday CXS; only 2 India. Thin but valid. Pace >=20s."
+ },
+ {
+  "company": "Accenture",
+  "india_jobs": 0,
+  "notes": "CAUTION: this tenant ignores searchText='India' (returned 2,000 global jobs, 0 India in first 20). Needs location-facet filtering or client-side pagination to extract India jobs. Endpoint is live; India extraction needs work.",
+  "params": {
+   "host": "accenture.wd103.myworkdayjobs.com",
+   "site": "AccentureCareers",
+   "tenant": "accenture"
+  },
+  "platform": "workday",
+  "total_jobs": 2000
+ }
+]

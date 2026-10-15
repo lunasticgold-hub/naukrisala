@@ -70,13 +70,12 @@ def sr_jobs(slug):
 
 def oracle_jobs(host, site):
     num = re.sub(r"\D", "", site) or site
-    out, offset, total = [], 0, None
-    for _ in range(40):  # up to 8,000 reqs
+    out, offset = [], 0
+    for _ in range(60):  # up to 12,000 reqs; hasMore ends it sooner
         q = (f"?onlyData=true&expand=requisitionList.secondaryLocations"
              f"&finder=findReqs;siteNumber={num},limit=200,offset={offset}")
         d = get_json(f"https://{host}/hcmRestApi/resources/latest/"
                      f"recruitingCEJobRequisitions{q}")
-        total = d.get("TotalJobsCount", 0)
         reqs = []
         for item in d.get("items", []):
             reqs.extend(item.get("requisitionList", []))
@@ -94,21 +93,35 @@ def oracle_jobs(host, site):
                                 f"sites/{site}/job/{r.get('Id')}"),
                         "posted": (r.get("PostedDate") or "")[:10]})
         offset += 200
-        if offset >= total:
-            break
+        # NB: Oracle's hasMore flag is unreliable (False with data remaining);
+        # paginate until a page comes back empty instead.
         time.sleep(0.4)
     return out
 
 
 # ---------- Workday CXS ----------
 
-def workday_jobs(host, tenant, site):
+def workday_jobs(host, tenant, site, pace=0.5, max_pages=110):
     out, offset, total = [], 0, None
-    for _ in range(16):  # up to 320 postings
-        d = post_json(f"https://{host}/wday/cxs/{tenant}/{site}/jobs",
-                      {"appliedFacets": {}, "limit": 20, "offset": offset,
-                       "searchText": "India"})
-        total = d.get("total", 0)
+    for _ in range(max_pages):  # up to max_pages*20 postings (full board)
+        try:
+            d = post_json(f"https://{host}/wday/cxs/{tenant}/{site}/jobs",
+                          {"appliedFacets": {}, "limit": 20, "offset": offset,
+                           "searchText": "India"})
+        except Exception as e:  # noqa: BLE001
+            print(f"[workday] {host} offset {offset}: {e} — backing off 60s",
+                  file=sys.stderr)
+            time.sleep(60)
+            try:
+                d = post_json(f"https://{host}/wday/cxs/{tenant}/{site}/jobs",
+                              {"appliedFacets": {}, "limit": 20,
+                               "offset": offset, "searchText": "India"})
+            except Exception as e2:  # noqa: BLE001
+                print(f"[workday] {host}: giving up: {e2}", file=sys.stderr)
+                break
+        if total is None:
+            # NB: some tenants return total=0 for offset>0 — trust page 1 only
+            total = d.get("total", 0)
         posts = d.get("jobPostings", [])
         if not posts:
             break
@@ -128,9 +141,9 @@ def workday_jobs(host, tenant, site):
                         "posted": posted if re.match(r"\d{4}-\d\d-\d\d",
                                                      posted) else ""})
         offset += 20
-        if offset >= total:
+        if total and offset >= total:
             break
-        time.sleep(0.4)
+        time.sleep(pace)
     return out
 
 
@@ -175,14 +188,103 @@ def eightfold_jobs(slug):
     return out
 
 
+# ---------- Phenom / PCSX search (keyless; pace >= 8s) ----------
+
+def phenom_jobs(host, domain):
+    out, start, total = [], 0, None
+    base = f"https://{host}/api/pcsx/search?domain={domain}"
+    while True:
+        d = get_json(f"{base}&location=india&start={start}&num=25",
+                     timeout=60)
+        data = d.get("data") or {}
+        positions = data.get("positions", [])
+        total = data.get("count", 0)
+        for p in positions:
+            locs = p.get("locations") or p.get("standardizedLocations") or []
+            loc_s = "; ".join(locs)
+            if not INDIA_RE.search(loc_s):
+                continue
+            pu = p.get("positionUrl") or ""
+            url = ("https://" + host + pu) if pu.startswith("/") else pu
+            ts = p.get("postedTs")
+            posted = (time.strftime("%Y-%m-%d", time.localtime(ts))
+                      if isinstance(ts, (int, float)) and ts > 0 else "")
+            out.append({"title": p.get("name"), "location": loc_s[:200],
+                        "url": url, "posted": posted})
+        start += 25
+        if not positions or (total and start >= total) or start >= 500:
+            break
+        time.sleep(8)  # Phenom rate-limits aggressively
+    return out
+
+
+# ---------- Keka (Indian HRMS; undocumented public embed API) ----------
+
+def keka_jobs(host, portal, identifier):
+    d = get_json(f"https://{host}/careers/api/embedjobs/{portal}/active/"
+                 f"{identifier}", timeout=60)
+    jobs = d if isinstance(d, list) else d.get("data", [])
+    out = []
+    for j in jobs:
+        locs = j.get("jobLocations") or []
+        loc_s = "; ".join((x.get("name") or x.get("city") or "")
+                          for x in locs if isinstance(x, dict))
+        in_india = any((x.get("countryCode") or "") == "IN"
+                       for x in locs if isinstance(x, dict))
+        if not (in_india or INDIA_RE.search(loc_s)):
+            continue
+        posted = j.get("publishedOn") or ""
+        out.append({"title": j.get("title"), "location": loc_s[:200],
+                    "url": (f"https://{host}/careers/jobdetails/"
+                            f"{j.get('id')}"),
+                    "posted": posted[:10] if re.match(r"\d{4}-\d\d",
+                                                      str(posted)) else ""})
+    return out
+
+
+# ---------- Capgemini (own job-search JSON API on Azure) ----------
+
+def capgemini_jobs(base, path, country_code):
+    out, page = [], 1
+    while True:
+        d = get_json(f"{base}{path}?country_code={country_code}"
+                     f"&page={page}&size=100", timeout=60)
+        total = d.get("total", 0)
+        data = d.get("data", [])
+        for j in data:
+            loc = j.get("location") or ""
+            if not INDIA_RE.search(loc):
+                continue
+            url = j.get("apply_job_url") or ""
+            posted = j.get("indexed_at") or ""
+            out.append({"title": j.get("title"), "location": loc[:200],
+                        "url": url,
+                        "posted": (posted[:10]
+                                    if re.match(r"\d{4}-\d\d-\d\d",
+                                                str(posted)) else "")})
+        if len(data) < 100 or page * 100 >= total or page >= 20:
+            break
+        page += 1
+        time.sleep(0.5)
+    return out
+
+
 PLATFORM_FETCH = {
     "smartrecruiters": lambda b: sr_jobs(b["params"]["slug"]),
     "oracle": lambda b: oracle_jobs(b["params"]["host"],
                                     b["params"]["site"]),
     "workday": lambda b: workday_jobs(b["params"]["host"],
                                       b["params"]["tenant"],
-                                      b["params"]["site"]),
+                                      b["params"]["site"], pace=5),
     "eightfold": lambda b: eightfold_jobs(b["params"]["slug"]),
+    "phenom": lambda b: phenom_jobs(b["params"]["host"],
+                                    b["params"]["domain"]),
+    "keka": lambda b: keka_jobs(b["params"]["host"],
+                                b["params"]["portal"],
+                                b["params"]["identifier"]),
+    "capgemini": lambda b: capgemini_jobs(b["params"]["base"],
+                                          b["params"]["path"],
+                                          b["params"]["country_code"]),
 }
 
 
@@ -201,7 +303,8 @@ def main():
         if skipping:
             if b["company"] == resume_after:
                 skipping = False
-            continue
+            else:
+                continue
         if b.get("india_jobs", 1) == 0:
             print(f"[skip] {b['company']}: no India jobs measured",
                   file=sys.stderr)

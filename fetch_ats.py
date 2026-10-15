@@ -20,7 +20,8 @@ INDIA_RE = re.compile(
     r"mysore|mysuru|vijayawada|visakhapatnam|vizag|kanpur|patna|bhopal|"
     r"ludhiana|agra|nashik|faridabad|meerut|rajkot|varanasi|srinagar|"
     r"aurangabad|dhanbad|amritsar|allahabad|prayagraj|ranchi|howrah|"
-    r"jabalpur|gwalior|thiruchirappalli|salem|tiruppur|vellore",
+    r"jabalpur|gwalior|thiruchirappalli|salem|tiruppur|vellore|"
+    r"mangaluru|mangalore|gandhinagar|gift city|giftcity",
     re.I,
 )
 
@@ -100,8 +101,12 @@ def board_jobs(board):
                 f"?includeCompensation=true")
         out = []
         for j in d.get("jobs", []):
+            loc = (j.get("locationName") or j.get("location") or "")
+            secs = j.get("secondaryLocations") or []
+            if isinstance(secs, list):
+                loc += " " + " ".join(str(s) for s in secs)
             out.append({"title": j.get("title"),
-                        "location": j.get("locationName") or "",
+                        "location": loc,
                         "url": j.get("jobUrl"),
                         "desc": re.sub(r"<[^>]+>", " ",
                                        j.get("descriptionHtml") or "")[:2000]})

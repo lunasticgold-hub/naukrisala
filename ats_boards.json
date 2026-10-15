@@ -1,492 +1,520 @@
 [
-  {
-    "company": "Paytm",
-    "ats": "lever",
-    "slug": "paytm",
-    "total_jobs": 182,
-    "india_jobs": 154
-  },
-  {
-    "company": "Okta",
-    "ats": "greenhouse",
-    "slug": "okta",
-    "total_jobs": 375,
-    "india_jobs": 111
-  },
-  {
-    "company": "Databricks",
-    "ats": "greenhouse",
-    "slug": "databricks",
-    "total_jobs": 894,
-    "india_jobs": 95
-  },
-  {
-    "company": "GoHighLevel",
-    "ats": "lever",
-    "slug": "gohighlevel",
-    "total_jobs": 93,
-    "india_jobs": 69
-  },
-  {
-    "company": "Meesho",
-    "ats": "lever",
-    "slug": "meesho",
-    "total_jobs": 58,
-    "india_jobs": 58
-  },
-  {
-    "company": "HighRadius",
-    "ats": "greenhouse",
-    "slug": "highradius",
-    "total_jobs": 75,
-    "india_jobs": 49
-  },
-  {
-    "company": "Stripe",
-    "ats": "greenhouse",
-    "slug": "stripe",
-    "total_jobs": 727,
-    "india_jobs": 46
-  },
-  {
-    "company": "InMobi",
-    "ats": "greenhouse",
-    "slug": "inmobi",
-    "total_jobs": 77,
-    "india_jobs": 46
-  },
-  {
-    "company": "Zenoti",
-    "ats": "greenhouse",
-    "slug": "zenoti",
-    "total_jobs": 56,
-    "india_jobs": 34
-  },
-  {
-    "company": "GitLab",
-    "ats": "greenhouse",
-    "slug": "gitlab",
-    "total_jobs": 216,
-    "india_jobs": 29
-  },
-  {
-    "company": "Razorpay",
-    "ats": "greenhouse",
-    "slug": "razorpaysoftwareprivatelimited",
-    "total_jobs": 28,
-    "india_jobs": 24
-  },
-  {
-    "company": "Fivetran",
-    "ats": "greenhouse",
-    "slug": "fivetran",
-    "total_jobs": 186,
-    "india_jobs": 23
-  },
-  {
-    "company": "Zeta",
-    "ats": "lever",
-    "slug": "zeta",
-    "total_jobs": 26,
-    "india_jobs": 23
-  },
-  {
-    "company": "Twilio",
-    "ats": "greenhouse",
-    "slug": "twilio",
-    "total_jobs": 141,
-    "india_jobs": 18
-  },
-  {
-    "company": "Mindtickle",
-    "ats": "lever",
-    "slug": "mindtickle",
-    "total_jobs": 20,
-    "india_jobs": 18
-  },
-  {
-    "company": "Elastic",
-    "ats": "greenhouse",
-    "slug": "elastic",
-    "total_jobs": 375,
-    "india_jobs": 17
-  },
-  {
-    "company": "Druva",
-    "ats": "greenhouse",
-    "slug": "druva",
-    "total_jobs": 34,
-    "india_jobs": 13
-  },
-  {
-    "company": "Datadog",
-    "ats": "greenhouse",
-    "slug": "datadog",
-    "total_jobs": 437,
-    "india_jobs": 11
-  },
-  {
-    "company": "Groww",
-    "ats": "greenhouse",
-    "slug": "groww",
-    "total_jobs": 11,
-    "india_jobs": 11
-  },
-  {
-    "company": "Coinbase",
-    "ats": "greenhouse",
-    "slug": "coinbase",
-    "total_jobs": 224,
-    "india_jobs": 9
-  },
-  {
-    "company": "OpenAI",
-    "ats": "ashby",
-    "slug": "openai",
-    "total_jobs": 801,
-    "india_jobs": 8
-  },
-  {
-    "company": "New Relic",
-    "ats": "greenhouse",
-    "slug": "newrelic",
-    "total_jobs": 54,
-    "india_jobs": 8
-  },
-  {
-    "company": "Snowflake",
-    "ats": "ashby",
-    "slug": "snowflake",
-    "total_jobs": 356,
-    "india_jobs": 7
-  },
-  {
-    "company": "CRED",
-    "ats": "lever",
-    "slug": "cred",
-    "total_jobs": 7,
-    "india_jobs": 7
-  },
-  {
-    "company": "Adyen",
-    "ats": "greenhouse",
-    "slug": "adyen",
-    "total_jobs": 238,
-    "india_jobs": 5
-  },
-  {
-    "company": "Cursor",
-    "ats": "ashby",
-    "slug": "cursor",
-    "total_jobs": 133,
-    "india_jobs": 5
-  },
-  {
-    "company": "Sumo Logic",
-    "ats": "greenhouse",
-    "slug": "sumologic",
-    "total_jobs": 9,
-    "india_jobs": 5
-  },
-  {
-    "company": "Anthropic",
-    "ats": "greenhouse",
-    "slug": "anthropic",
-    "total_jobs": 650,
-    "india_jobs": 3
-  },
-  {
-    "company": "Grafana Labs",
-    "ats": "greenhouse",
-    "slug": "grafanalabs",
-    "total_jobs": 112,
-    "india_jobs": 3
-  },
-  {
-    "company": "Binance",
-    "ats": "greenhouse",
-    "slug": "binance",
-    "total_jobs": 172,
-    "india_jobs": 2
-  },
-  {
-    "company": "Notion",
-    "ats": "ashby",
-    "slug": "notion",
-    "total_jobs": 130,
-    "india_jobs": 2
-  },
-  {
-    "company": "Vercel",
-    "ats": "greenhouse",
-    "slug": "vercel",
-    "total_jobs": 90,
-    "india_jobs": 2
-  },
-  {
-    "company": "Cloudflare",
-    "ats": "greenhouse",
-    "slug": "cloudflare",
-    "total_jobs": 446,
-    "india_jobs": 1
-  },
-  {
-    "company": "Scale AI",
-    "ats": "greenhouse",
-    "slug": "scaleai",
-    "total_jobs": 182,
-    "india_jobs": 1
-  },
-  {
-    "company": "Figma",
-    "ats": "greenhouse",
-    "slug": "figma",
-    "total_jobs": 142,
-    "india_jobs": 1
-  },
-  {
-    "company": "Palantir",
-    "ats": "lever",
-    "slug": "palantir",
-    "total_jobs": 314,
-    "india_jobs": 0
-  },
-  {
-    "company": "Brex",
-    "ats": "greenhouse",
-    "slug": "brex",
-    "total_jobs": 261,
-    "india_jobs": 0
-  },
-  {
-    "company": "Zoox",
-    "ats": "lever",
-    "slug": "zoox",
-    "total_jobs": 240,
-    "india_jobs": 0
-  },
-  {
-    "company": "Block",
-    "ats": "greenhouse",
-    "slug": "block",
-    "total_jobs": 231,
-    "india_jobs": 0
-  },
-  {
-    "company": "Affirm",
-    "ats": "greenhouse",
-    "slug": "affirm",
-    "total_jobs": 206,
-    "india_jobs": 0
-  },
-  {
-    "company": "Lyft",
-    "ats": "greenhouse",
-    "slug": "lyft",
-    "total_jobs": 177,
-    "india_jobs": 0
-  },
-  {
-    "company": "Ramp",
-    "ats": "ashby",
-    "slug": "ramp",
-    "total_jobs": 161,
-    "india_jobs": 0
-  },
-  {
-    "company": "Pinterest",
-    "ats": "greenhouse",
-    "slug": "pinterest",
-    "total_jobs": 157,
-    "india_jobs": 0
-  },
-  {
-    "company": "XP Inc",
-    "ats": "greenhouse",
-    "slug": "xpinc",
-    "total_jobs": 151,
-    "india_jobs": 0
-  },
-  {
-    "company": "Robinhood",
-    "ats": "greenhouse",
-    "slug": "robinhood",
-    "total_jobs": 151,
-    "india_jobs": 0
-  },
-  {
-    "company": "Reddit",
-    "ats": "greenhouse",
-    "slug": "reddit",
-    "total_jobs": 146,
-    "india_jobs": 0
-  },
-  {
-    "company": "Perplexity",
-    "ats": "ashby",
-    "slug": "perplexity",
-    "total_jobs": 130,
-    "india_jobs": 0
-  },
-  {
-    "company": "Plaid",
-    "ats": "ashby",
-    "slug": "plaid",
-    "total_jobs": 125,
-    "india_jobs": 0
-  },
-  {
-    "company": "Instacart",
-    "ats": "greenhouse",
-    "slug": "instacart",
-    "total_jobs": 124,
-    "india_jobs": 0
-  },
-  {
-    "company": "Cohere",
-    "ats": "ashby",
-    "slug": "cohere",
-    "total_jobs": 116,
-    "india_jobs": 0
-  },
-  {
-    "company": "Intercom",
-    "ats": "greenhouse",
-    "slug": "intercom",
-    "total_jobs": 110,
-    "india_jobs": 0
-  },
-  {
-    "company": "LangChain",
-    "ats": "ashby",
-    "slug": "langchain",
-    "total_jobs": 98,
-    "india_jobs": 0
-  },
-  {
-    "company": "Replit",
-    "ats": "ashby",
-    "slug": "replit",
-    "total_jobs": 68,
-    "india_jobs": 0
-  },
-  {
-    "company": "PagerDuty",
-    "ats": "greenhouse",
-    "slug": "pagerduty",
-    "total_jobs": 56,
-    "india_jobs": 0
-  },
-  {
-    "company": "Supabase",
-    "ats": "ashby",
-    "slug": "supabase",
-    "total_jobs": 53,
-    "india_jobs": 0
-  },
-  {
-    "company": "Discord",
-    "ats": "greenhouse",
-    "slug": "discord",
-    "total_jobs": 49,
-    "india_jobs": 0
-  },
-  {
-    "company": "Dash0",
-    "ats": "ashby",
-    "slug": "dash0",
-    "total_jobs": 46,
-    "india_jobs": 0
-  },
-  {
-    "company": "Modal",
-    "ats": "ashby",
-    "slug": "modal",
-    "total_jobs": 42,
-    "india_jobs": 0
-  },
-  {
-    "company": "Render",
-    "ats": "ashby",
-    "slug": "render",
-    "total_jobs": 39,
-    "india_jobs": 0
-  },
-  {
-    "company": "Dropbox",
-    "ats": "greenhouse",
-    "slug": "dropbox",
-    "total_jobs": 32,
-    "india_jobs": 0
-  },
-  {
-    "company": "Linear",
-    "ats": "ashby",
-    "slug": "Linear",
-    "total_jobs": 30,
-    "india_jobs": 0
-  },
-  {
-    "company": "Webflow",
-    "ats": "greenhouse",
-    "slug": "webflow",
-    "total_jobs": 22,
-    "india_jobs": 0
-  },
-  {
-    "company": "RevenueCat",
-    "ats": "ashby",
-    "slug": "revenuecat",
-    "total_jobs": 16,
-    "india_jobs": 0
-  },
-  {
-    "company": "Airbyte",
-    "ats": "ashby",
-    "slug": "airbyte",
-    "total_jobs": 12,
-    "india_jobs": 0
-  },
-  {
-    "company": "Neon",
-    "ats": "lever",
-    "slug": "neon",
-    "total_jobs": 10,
-    "india_jobs": 0
-  },
-  {
-    "company": "Railway",
-    "ats": "ashby",
-    "slug": "railway",
-    "total_jobs": 8,
-    "india_jobs": 0
-  },
-  {
-    "company": "Airtable",
-    "ats": "greenhouse",
-    "slug": "airtable",
-    "total_jobs": 5,
-    "india_jobs": 0
-  },
-  {
-    "company": "Pinecone",
-    "ats": "ashby",
-    "slug": "pinecone",
-    "total_jobs": 5,
-    "india_jobs": 0
-  },
-  {
-    "company": "Netlify",
-    "ats": "greenhouse",
-    "slug": "netlify",
-    "total_jobs": 5,
-    "india_jobs": 0
-  },
-  {
-    "company": "Navi",
-    "ats": "ashby",
-    "slug": "navi",
-    "total_jobs": 4,
-    "india_jobs": 0
-  }
+ {
+  "company": "Paytm",
+  "ats": "lever",
+  "slug": "paytm",
+  "total_jobs": 182,
+  "india_jobs": 154
+ },
+ {
+  "company": "Okta",
+  "ats": "greenhouse",
+  "slug": "okta",
+  "total_jobs": 375,
+  "india_jobs": 111
+ },
+ {
+  "company": "Databricks",
+  "ats": "greenhouse",
+  "slug": "databricks",
+  "total_jobs": 894,
+  "india_jobs": 95
+ },
+ {
+  "company": "GoHighLevel",
+  "ats": "lever",
+  "slug": "gohighlevel",
+  "total_jobs": 93,
+  "india_jobs": 69
+ },
+ {
+  "company": "Meesho",
+  "ats": "lever",
+  "slug": "meesho",
+  "total_jobs": 58,
+  "india_jobs": 58
+ },
+ {
+  "company": "HighRadius",
+  "ats": "greenhouse",
+  "slug": "highradius",
+  "total_jobs": 75,
+  "india_jobs": 49
+ },
+ {
+  "company": "Stripe",
+  "ats": "greenhouse",
+  "slug": "stripe",
+  "total_jobs": 727,
+  "india_jobs": 46
+ },
+ {
+  "company": "InMobi",
+  "ats": "greenhouse",
+  "slug": "inmobi",
+  "total_jobs": 77,
+  "india_jobs": 46
+ },
+ {
+  "company": "Zenoti",
+  "ats": "greenhouse",
+  "slug": "zenoti",
+  "total_jobs": 56,
+  "india_jobs": 34
+ },
+ {
+  "company": "GitLab",
+  "ats": "greenhouse",
+  "slug": "gitlab",
+  "total_jobs": 216,
+  "india_jobs": 29
+ },
+ {
+  "company": "Razorpay",
+  "ats": "greenhouse",
+  "slug": "razorpaysoftwareprivatelimited",
+  "total_jobs": 28,
+  "india_jobs": 24
+ },
+ {
+  "company": "Fivetran",
+  "ats": "greenhouse",
+  "slug": "fivetran",
+  "total_jobs": 186,
+  "india_jobs": 23
+ },
+ {
+  "company": "Zeta",
+  "ats": "lever",
+  "slug": "zeta",
+  "total_jobs": 26,
+  "india_jobs": 23
+ },
+ {
+  "company": "Twilio",
+  "ats": "greenhouse",
+  "slug": "twilio",
+  "total_jobs": 141,
+  "india_jobs": 18
+ },
+ {
+  "company": "Mindtickle",
+  "ats": "lever",
+  "slug": "mindtickle",
+  "total_jobs": 20,
+  "india_jobs": 18
+ },
+ {
+  "company": "Elastic",
+  "ats": "greenhouse",
+  "slug": "elastic",
+  "total_jobs": 375,
+  "india_jobs": 17
+ },
+ {
+  "company": "Druva",
+  "ats": "greenhouse",
+  "slug": "druva",
+  "total_jobs": 34,
+  "india_jobs": 13
+ },
+ {
+  "company": "Datadog",
+  "ats": "greenhouse",
+  "slug": "datadog",
+  "total_jobs": 437,
+  "india_jobs": 11
+ },
+ {
+  "company": "Groww",
+  "ats": "greenhouse",
+  "slug": "groww",
+  "total_jobs": 11,
+  "india_jobs": 11
+ },
+ {
+  "company": "Coinbase",
+  "ats": "greenhouse",
+  "slug": "coinbase",
+  "total_jobs": 224,
+  "india_jobs": 9
+ },
+ {
+  "company": "OpenAI",
+  "ats": "ashby",
+  "slug": "openai",
+  "total_jobs": 801,
+  "india_jobs": 8
+ },
+ {
+  "company": "New Relic",
+  "ats": "greenhouse",
+  "slug": "newrelic",
+  "total_jobs": 54,
+  "india_jobs": 8
+ },
+ {
+  "company": "Snowflake",
+  "ats": "ashby",
+  "slug": "snowflake",
+  "total_jobs": 356,
+  "india_jobs": 7
+ },
+ {
+  "company": "CRED",
+  "ats": "lever",
+  "slug": "cred",
+  "total_jobs": 7,
+  "india_jobs": 7
+ },
+ {
+  "company": "Adyen",
+  "ats": "greenhouse",
+  "slug": "adyen",
+  "total_jobs": 238,
+  "india_jobs": 5
+ },
+ {
+  "company": "Cursor",
+  "ats": "ashby",
+  "slug": "cursor",
+  "total_jobs": 133,
+  "india_jobs": 5
+ },
+ {
+  "company": "Sumo Logic",
+  "ats": "greenhouse",
+  "slug": "sumologic",
+  "total_jobs": 9,
+  "india_jobs": 5
+ },
+ {
+  "company": "Anthropic",
+  "ats": "greenhouse",
+  "slug": "anthropic",
+  "total_jobs": 650,
+  "india_jobs": 3
+ },
+ {
+  "company": "Grafana Labs",
+  "ats": "greenhouse",
+  "slug": "grafanalabs",
+  "total_jobs": 112,
+  "india_jobs": 3
+ },
+ {
+  "company": "Binance",
+  "ats": "greenhouse",
+  "slug": "binance",
+  "total_jobs": 172,
+  "india_jobs": 2
+ },
+ {
+  "company": "Notion",
+  "ats": "ashby",
+  "slug": "notion",
+  "total_jobs": 130,
+  "india_jobs": 2
+ },
+ {
+  "company": "Vercel",
+  "ats": "greenhouse",
+  "slug": "vercel",
+  "total_jobs": 90,
+  "india_jobs": 2
+ },
+ {
+  "company": "Cloudflare",
+  "ats": "greenhouse",
+  "slug": "cloudflare",
+  "total_jobs": 446,
+  "india_jobs": 1
+ },
+ {
+  "company": "Scale AI",
+  "ats": "greenhouse",
+  "slug": "scaleai",
+  "total_jobs": 182,
+  "india_jobs": 1
+ },
+ {
+  "company": "Figma",
+  "ats": "greenhouse",
+  "slug": "figma",
+  "total_jobs": 142,
+  "india_jobs": 1
+ },
+ {
+  "company": "Palantir",
+  "ats": "lever",
+  "slug": "palantir",
+  "total_jobs": 314,
+  "india_jobs": 0
+ },
+ {
+  "company": "Brex",
+  "ats": "greenhouse",
+  "slug": "brex",
+  "total_jobs": 261,
+  "india_jobs": 0
+ },
+ {
+  "company": "Zoox",
+  "ats": "lever",
+  "slug": "zoox",
+  "total_jobs": 240,
+  "india_jobs": 0
+ },
+ {
+  "company": "Block",
+  "ats": "greenhouse",
+  "slug": "block",
+  "total_jobs": 231,
+  "india_jobs": 0
+ },
+ {
+  "company": "Affirm",
+  "ats": "greenhouse",
+  "slug": "affirm",
+  "total_jobs": 206,
+  "india_jobs": 0
+ },
+ {
+  "company": "Lyft",
+  "ats": "greenhouse",
+  "slug": "lyft",
+  "total_jobs": 177,
+  "india_jobs": 0
+ },
+ {
+  "company": "Ramp",
+  "ats": "ashby",
+  "slug": "ramp",
+  "total_jobs": 161,
+  "india_jobs": 0
+ },
+ {
+  "company": "Pinterest",
+  "ats": "greenhouse",
+  "slug": "pinterest",
+  "total_jobs": 157,
+  "india_jobs": 0
+ },
+ {
+  "company": "XP Inc",
+  "ats": "greenhouse",
+  "slug": "xpinc",
+  "total_jobs": 151,
+  "india_jobs": 0
+ },
+ {
+  "company": "Robinhood",
+  "ats": "greenhouse",
+  "slug": "robinhood",
+  "total_jobs": 151,
+  "india_jobs": 0
+ },
+ {
+  "company": "Reddit",
+  "ats": "greenhouse",
+  "slug": "reddit",
+  "total_jobs": 146,
+  "india_jobs": 0
+ },
+ {
+  "company": "Perplexity",
+  "ats": "ashby",
+  "slug": "perplexity",
+  "total_jobs": 130,
+  "india_jobs": 0
+ },
+ {
+  "company": "Plaid",
+  "ats": "ashby",
+  "slug": "plaid",
+  "total_jobs": 125,
+  "india_jobs": 0
+ },
+ {
+  "company": "Instacart",
+  "ats": "greenhouse",
+  "slug": "instacart",
+  "total_jobs": 124,
+  "india_jobs": 0
+ },
+ {
+  "company": "Cohere",
+  "ats": "ashby",
+  "slug": "cohere",
+  "total_jobs": 116,
+  "india_jobs": 0
+ },
+ {
+  "company": "Intercom",
+  "ats": "greenhouse",
+  "slug": "intercom",
+  "total_jobs": 110,
+  "india_jobs": 0
+ },
+ {
+  "company": "LangChain",
+  "ats": "ashby",
+  "slug": "langchain",
+  "total_jobs": 98,
+  "india_jobs": 0
+ },
+ {
+  "company": "Replit",
+  "ats": "ashby",
+  "slug": "replit",
+  "total_jobs": 68,
+  "india_jobs": 0
+ },
+ {
+  "company": "PagerDuty",
+  "ats": "greenhouse",
+  "slug": "pagerduty",
+  "total_jobs": 56,
+  "india_jobs": 0
+ },
+ {
+  "company": "Supabase",
+  "ats": "ashby",
+  "slug": "supabase",
+  "total_jobs": 53,
+  "india_jobs": 0
+ },
+ {
+  "company": "Discord",
+  "ats": "greenhouse",
+  "slug": "discord",
+  "total_jobs": 49,
+  "india_jobs": 0
+ },
+ {
+  "company": "Dash0",
+  "ats": "ashby",
+  "slug": "dash0",
+  "total_jobs": 46,
+  "india_jobs": 0
+ },
+ {
+  "company": "Modal",
+  "ats": "ashby",
+  "slug": "modal",
+  "total_jobs": 42,
+  "india_jobs": 0
+ },
+ {
+  "company": "Render",
+  "ats": "ashby",
+  "slug": "render",
+  "total_jobs": 39,
+  "india_jobs": 0
+ },
+ {
+  "company": "Dropbox",
+  "ats": "greenhouse",
+  "slug": "dropbox",
+  "total_jobs": 32,
+  "india_jobs": 0
+ },
+ {
+  "company": "Linear",
+  "ats": "ashby",
+  "slug": "Linear",
+  "total_jobs": 30,
+  "india_jobs": 0
+ },
+ {
+  "company": "Webflow",
+  "ats": "greenhouse",
+  "slug": "webflow",
+  "total_jobs": 22,
+  "india_jobs": 0
+ },
+ {
+  "company": "RevenueCat",
+  "ats": "ashby",
+  "slug": "revenuecat",
+  "total_jobs": 16,
+  "india_jobs": 0
+ },
+ {
+  "company": "Airbyte",
+  "ats": "ashby",
+  "slug": "airbyte",
+  "total_jobs": 12,
+  "india_jobs": 0
+ },
+ {
+  "company": "Neon",
+  "ats": "lever",
+  "slug": "neon",
+  "total_jobs": 10,
+  "india_jobs": 0
+ },
+ {
+  "company": "Railway",
+  "ats": "ashby",
+  "slug": "railway",
+  "total_jobs": 8,
+  "india_jobs": 0
+ },
+ {
+  "company": "Airtable",
+  "ats": "greenhouse",
+  "slug": "airtable",
+  "total_jobs": 5,
+  "india_jobs": 0
+ },
+ {
+  "company": "Pinecone",
+  "ats": "ashby",
+  "slug": "pinecone",
+  "total_jobs": 5,
+  "india_jobs": 0
+ },
+ {
+  "company": "Netlify",
+  "ats": "greenhouse",
+  "slug": "netlify",
+  "total_jobs": 5,
+  "india_jobs": 0
+ },
+ {
+  "company": "Navi",
+  "ats": "ashby",
+  "slug": "navi",
+  "total_jobs": 4,
+  "india_jobs": 0
+ },
+ {
+  "company": "Bureau",
+  "ats": "ashby",
+  "slug": "bureau",
+  "total_jobs": 19,
+  "india_jobs": 19
+ },
+ {
+  "company": "Glomo",
+  "ats": "ashby",
+  "slug": "glomo",
+  "total_jobs": 11,
+  "india_jobs": 11
+ },
+ {
+  "company": "Vinyl Equity",
+  "ats": "ashby",
+  "slug": "vinylequity",
+  "total_jobs": 10,
+  "india_jobs": 7
+ },
+ {
+  "company": "Chainalysis",
+  "ats": "ashby",
+  "slug": "chainalysis-careers",
+  "total_jobs": 51,
+  "india_jobs": 2
+ }
 ]
