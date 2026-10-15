@@ -1,5 +1,5 @@
 // === CONFIG: replace with the real WhatsApp number (country code + number, no +/spaces) ===
-const WHATSAPP_NUMBER = "919999999999"; // TODO: Abhigyan — put NaukriSala's WhatsApp number here
+const WHATSAPP_NUMBER = "918450049035"; // NaukriSala demo bookings (confirmed by Abhigyan 2026-10-14)
 
 const COURSES = [
   { name: "AML & KYC Analyst", tag: "Financial crime compliance · any graduate", dur: "45 days", pay: "₹9–28 LPA", flagship: true,  status: "Batch 1 · Live 10 Nov" },
