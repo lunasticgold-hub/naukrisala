@@ -19,6 +19,7 @@
   --font-m:'JetBrains Mono',ui-monospace,monospace;
 }
 *{box-sizing:border-box;margin:0;padding:0}
+img,svg,video,iframe{max-width:100%;height:auto}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--ink);font-family:var(--font-b);line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 ::selection{background:var(--amber);color:#000}
@@ -113,17 +114,17 @@ h2{font-size:clamp(2rem,4.2vw,3.4rem);margin-bottom:14px}
 .section{padding:100px 0;position:relative;z-index:1}
 
 /* steps */
-.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:var(--r);overflow:hidden}
-.step{background:var(--bg);padding:34px 30px;position:relative;transition:background .25s}
+.steps{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:2px;background:var(--line-soft);border:1px solid var(--line-soft);border-radius:var(--r);overflow:hidden}
+.step{background:var(--bg);padding:34px 30px;position:relative;transition:background .25s;min-width:0}
 .step:hover{background:#101018}
 .step-n{font-family:var(--font-m);font-size:.72rem;letter-spacing:.16em;color:var(--amber)}
-.step h3{font-family:var(--font-d);font-size:20px;font-weight:700;letter-spacing:-.01em;margin:14px 0 10px}
-.step p{font-size:14.5px;color:var(--ink2)}
+.step h3{font-family:var(--font-d);font-size:20px;font-weight:700;letter-spacing:-.01em;margin:14px 0 10px;overflow-wrap:break-word}
+.step p{font-size:14.5px;color:var(--ink2);overflow-wrap:break-word}
 .step p strong{color:var(--ink)}
 
 /* courses */
-.course-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-.course{position:relative;background:var(--card);border:1px solid var(--line-soft);border-radius:var(--r);padding:30px 28px;display:flex;flex-direction:column;gap:12px;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:hidden;transition:transform .2s ease,border-color .2s ease}
+.course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:18px}
+.course{position:relative;background:var(--card);border:1px solid var(--line-soft);border-radius:var(--r);padding:30px 28px;display:flex;flex-direction:column;gap:12px;min-width:0;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);overflow:hidden;transition:transform .2s ease,border-color .2s ease}
 .course::before{content:"";position:absolute;inset:0;border-radius:inherit;opacity:0;transition:opacity .25s;pointer-events:none;
   background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,176,32,.13),transparent 65%)}
 .course:hover{transform:translateY(-5px);border-color:rgba(255,176,32,.3)}
@@ -131,8 +132,8 @@ h2{font-size:clamp(2rem,4.2vw,3.4rem);margin-bottom:14px}
 .course-flag{position:absolute;top:18px;right:20px;font-family:var(--font-m);font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;color:#1c1000;background:var(--amber-grad);padding:5px 12px;border-radius:999px;font-weight:600}
 .course-tag{display:flex;align-items:center;gap:8px;font-family:var(--font-m);font-size:.66rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
 .course-tag::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--amber);box-shadow:0 0 10px var(--amber)}
-.course h3{font-family:var(--font-d);font-size:23px;font-weight:700;letter-spacing:-.015em;line-height:1.15}
-.course .tag{font-size:14px;color:var(--ink2)}
+.course h3{font-family:var(--font-d);font-size:23px;font-weight:700;letter-spacing:-.015em;line-height:1.15;overflow-wrap:break-word}
+.course .tag{font-size:14px;color:var(--ink2);overflow-wrap:break-word}
 .course .pay{font-family:var(--font-d);font-size:26px;font-weight:800;color:var(--amber);letter-spacing:-.02em;margin-top:auto;padding-top:8px}
 .course .pay small{font-family:var(--font-m);font-size:.62rem;letter-spacing:.12em;color:var(--muted);display:block;margin-top:2px;font-weight:400}
 .course .foot{display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line-soft);padding-top:16px;margin-top:4px}
@@ -143,8 +144,8 @@ h2{font-size:clamp(2rem,4.2vw,3.4rem);margin-bottom:14px}
 .course:hover .course-bar{transform:scaleX(1)}
 
 /* fees */
-.fee-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:22px}
-.fee-card{background:var(--card);border:1px solid var(--line-soft);border-radius:var(--r);padding:36px 32px;backdrop-filter:blur(14px)}
+.fee-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:18px;margin-bottom:22px}
+.fee-card{background:var(--card);border:1px solid var(--line-soft);border-radius:var(--r);padding:36px 32px;min-width:0;backdrop-filter:blur(14px)}
 .fee-card .mono{margin-bottom:16px;display:block}
 .fee-amount{font-family:var(--font-d);font-size:52px;font-weight:800;letter-spacing:-.03em;margin-bottom:14px}
 .fee-desc{font-size:14.5px;color:var(--ink2)}
@@ -191,16 +192,13 @@ h2{font-size:clamp(2rem,4.2vw,3.4rem);margin-bottom:14px}
 @media(max-width:1020px){
   .hero-grid{grid-template-columns:1fr}
   .hero-visual{height:380px;max-width:560px}
-  .steps{grid-template-columns:repeat(2,1fr)}
-  .course-grid{grid-template-columns:repeat(2,1fr)}
   .faq-grid{grid-template-columns:1fr;gap:40px}
-}
-@media(max-width:680px){
   .nav-links{position:fixed;top:72px;left:0;right:0;background:#0d0d14;flex-direction:column;padding:22px 28px;gap:18px;border-bottom:1px solid var(--line);display:none;z-index:99}
   .nav-links.open{display:flex}
   .nav-toggle{display:block}
+}
+@media(max-width:680px){
   .nav .btn-sm{display:none}
-  .steps,.course-grid,.fee-grid{grid-template-columns:1fr}
   .hero{padding:60px 0 50px;min-height:auto}
   .section{padding:66px 0}
   .stats{flex-wrap:wrap;gap:20px}
