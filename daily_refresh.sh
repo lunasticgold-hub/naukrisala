@@ -13,6 +13,13 @@ python3 fetch_enterprise.py 2>&1 | tail -5 || echo "[warn] fetch_enterprise fail
 python3 fetch_jsearch.py 2>&1 | tail -2 || echo "[info] jsearch skipped (quota or error)"
 python3 fetch_serpapi.py 2>&1 | tail -2 || echo "[info] serpapi skipped (quota or error)"
 
+# Adzuna: 8 calls/day, well under the 250/day free-tier cap
+python3 fetch_adzuna_aml.py 2>&1 | tail -2 || echo "[info] adzuna skipped (no key or error)"
+# Jooble: ~76 calls/run with 0.5s delays; skips cleanly without JOOBLE_KEY
+python3 fetch_jooble.py 2>&1 | tail -2 || echo "[info] jooble skipped (no key or error)"
+# WhatJobs: keyless publisher feed
+python3 fetch_whatjobs.py 2>&1 | tail -2 || echo "[info] whatjobs skipped (error)"
+
 # normalize new jobs (pull-date stamp, contract/city cleanup) and sort newest-first
 python3 normalize_jobs.py 2>&1 | tail -2 || echo "[warn] normalize failed"
 

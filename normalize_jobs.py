@@ -58,6 +58,49 @@ def city_of(loc):
     return ""
 
 
+TRACK_PARAMS = re.compile(
+    r"^(utm_[^=]*|utm|source|medium|campaign|term|content|ref|fbclid|gclid|mc_cid|mc_eid|igshid)$",
+    re.I)
+
+
+def canon_url(u):
+    u = (u or "").strip()
+    if not u:
+        return ""
+    u = u.split("#", 1)[0]
+    if "?" in u:
+        base, qs = u.split("?", 1)
+        kept = sorted(
+            p for p in qs.split("&")
+            if p and not TRACK_PARAMS.match(p.split("=", 1)[0])
+        )
+        u = base + ("?" + "&".join(kept) if kept else "")
+    return u.lower().rstrip("/")
+
+
+def dedup_key(j):
+    cu = canon_url(j.get("direct_url") or j.get("url"))
+    if cu:
+        return ("u", cu)
+    t = re.sub(r"\s+", " ", (j.get("title") or "").lower().strip())
+    c = re.sub(r"\s+", " ", (j.get("company") or "").lower().strip())
+    l = (j.get("city") or "").lower() or re.sub(
+        r"\s+", " ", (j.get("location") or "").lower().strip())
+    return ("t", t, c, l)
+
+
+def dedup(jobs):
+    seen, out, dropped = set(), [], 0
+    for j in jobs:  # jobs pre-sorted newest-first: first occurrence wins
+        k = dedup_key(j)
+        if k in seen:
+            dropped += 1
+            continue
+        seen.add(k)
+        out.append(j)
+    return out, dropped
+
+
 def clean_snippet(s):
     s = htmlmod.unescape(s or "")
     s = re.sub(r"<[^>]+>", " ", s)
@@ -117,11 +160,12 @@ def main():
         j["snippet"] = clean_snippet(j.get("snippet"))
         j["salary_text"] = salary_text(j)
     jobs.sort(key=lambda j: (j["fetched"], j.get("created") or ""), reverse=True)
+    jobs, dropped = dedup(jobs)
     d["jobs"] = jobs
     d["total"] = len(jobs)
     d["fetched_at"] = today
     json.dump(d, open(JP, "w"), ensure_ascii=False)
-    print(f"normalized {len(jobs)} jobs (sorted newest-first)")
+    print(f"normalized {len(jobs)} jobs (sorted newest-first, {dropped} duplicates removed)")
 
 
 if __name__ == "__main__":
