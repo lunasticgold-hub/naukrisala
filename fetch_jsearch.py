@@ -155,6 +155,11 @@ def main():
                     "resolved": True,
                     "source": "jsearch",
                     "publisher": r.get("job_publisher"),
+                    "salary_min": r.get("job_min_salary"),
+                    "salary_max": r.get("job_max_salary"),
+                    "salary_currency": r.get("job_salary_currency"),
+                    "salary_period": r.get("job_salary_period"),
+                    "employer_website": r.get("employer_website"),
                 })
                 track_added += 1
             time.sleep(1)

@@ -133,6 +133,9 @@ def main():
                         continue
                     seen.add(key)
                     ext = r.get("extensions") or []
+                    sal = next((e for e in ext if re.search(
+                        r"[₹$€£]|\bLPA\b|\blakh\b|\ba (month|year|hour|week)\b|\bper (month|year|hour)\b",
+                        e, re.I)), "")
                     jobs.append({
                         "id": "sp_" + str(r.get("job_id", ""))[:40],
                         "course": slug,
@@ -149,6 +152,7 @@ def main():
                         "source": "serpapi",
                         "publisher": r.get("via"),
                         "posted": ", ".join(ext),
+                        "salary_text": sal.strip(),
                     })
                     track_added += 1
                 time.sleep(0.7)

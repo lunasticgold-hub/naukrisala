@@ -7,6 +7,7 @@
 - city: canonical city extracted from location ('' when not listed).
 - jobs sorted newest-first by (fetched, created) so fresh pulls sit on top.
 """
+import html as htmlmod
 import json
 import os
 import re
@@ -57,6 +58,54 @@ def city_of(loc):
     return ""
 
 
+def clean_snippet(s):
+    s = htmlmod.unescape(s or "")
+    s = re.sub(r"<[^>]+>", " ", s)
+    s = re.sub(r"\s+", " ", s).strip()
+    return s[:280]
+
+
+CUR_SYM = {"INR": "₹", "USD": "$", "EUR": "€", "GBP": "£", "AED": "AED "}
+PER_SFX = {"YEAR": "/yr", "MONTH": "/mo", "HOUR": "/hr", "WEEK": "/wk", "DAY": "/day"}
+
+
+def salary_text(j):
+    raw = (j.get("salary_text") or "").strip()
+    if raw:
+        return re.sub(r"\s+", " ", htmlmod.unescape(raw))[:80]
+    mn, mx = j.get("salary_min"), j.get("salary_max")
+    if mn is None and mx is None:
+        return ""
+    cur = (j.get("salary_currency") or "INR").upper()
+    per = (j.get("salary_period") or "").upper()
+    sfx = PER_SFX.get(per, "")
+
+    def fmt(v):
+        try:
+            v = float(v)
+        except (TypeError, ValueError):
+            return ""
+        if cur == "INR" and v >= 100000 and per in ("YEAR", ""):
+            return f"₹{v / 100000:g} L"
+        return f"{CUR_SYM.get(cur, cur + ' ')}{v:,.0f}"
+
+    if mn and mx:
+        try:
+            if float(mn) == float(mx):
+                return (fmt(mx) + sfx).strip()
+        except (TypeError, ValueError):
+            pass
+        if cur == "INR" and per in ("YEAR", ""):
+            try:
+                a, b = float(mn) / 100000, float(mx) / 100000
+                if a >= 1:
+                    return f"₹{a:g}–{b:g} LPA"
+            except (TypeError, ValueError):
+                pass
+        return f"{fmt(mn)}–{fmt(mx)}{sfx}".strip()
+    return (fmt(mn or mx) + sfx).strip()
+
+
 def main():
     d = json.load(open(JP))
     jobs = d["jobs"]
@@ -65,6 +114,8 @@ def main():
         j["fetched"] = j.get("fetched") or today
         j["contract"] = norm_contract(j.get("contract"))
         j["city"] = city_of(j.get("location"))
+        j["snippet"] = clean_snippet(j.get("snippet"))
+        j["salary_text"] = salary_text(j)
     jobs.sort(key=lambda j: (j["fetched"], j.get("created") or ""), reverse=True)
     d["jobs"] = jobs
     d["total"] = len(jobs)

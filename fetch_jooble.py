@@ -109,6 +109,7 @@ def main():
                         "resolved": True,
                         "source": "jooble",
                         "publisher": r.get("source"),
+                        "salary_text": (r.get("salary") or "").strip(),
                     })
                     track_added += 1
                 time.sleep(0.5)

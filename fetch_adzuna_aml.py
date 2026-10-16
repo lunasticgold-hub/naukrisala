@@ -86,6 +86,9 @@ def main():
                 "category": (r.get("category") or {}).get("label"),
                 "snippet": clean(r.get("description")),
                 "url": r.get("redirect_url"),
+                "salary_min": r.get("salary_min"),
+                "salary_max": r.get("salary_max"),
+                "salary_currency": "INR",
             })
             n += 1
         added += n
