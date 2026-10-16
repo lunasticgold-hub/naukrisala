@@ -9,6 +9,7 @@ cd "$(dirname "$0")"
 echo "=== refresh start: $(date -u +%FT%TZ) ==="
 
 python3 fetch_ats.py 2>&1 | tail -3 || echo "[warn] fetch_ats failed"
+python3 fetch_ats2.py 2>&1 | tail -3 || echo "[warn] fetch_ats2 failed"
 python3 fetch_enterprise.py 2>&1 | tail -5 || echo "[warn] fetch_enterprise failed"
 python3 fetch_jsearch.py 2>&1 | tail -2 || echo "[info] jsearch skipped (quota or error)"
 python3 fetch_serpapi.py 2>&1 | tail -2 || echo "[info] serpapi skipped (quota or error)"
@@ -32,7 +33,7 @@ if git diff --quiet jobs.json jobs.html; then
   exit 0
 fi
 
-git add jobs.json jobs.html ats_boards.json enterprise_boards.json \
+git add jobs.json jobs.html ats_boards.json ats_boards2.json enterprise_boards.json \
         jsearch_usage.json serpapi_usage.json 2>/dev/null
 N=$(python3 -c "import json; print(json.load(open('jobs.json'))['total'])")
 AML=$(python3 -c "
