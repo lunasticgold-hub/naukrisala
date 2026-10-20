@@ -46,12 +46,20 @@
 .kw-miss input{accent-color:var(--amber);width:15px;height:15px;cursor:pointer}
 .kw-miss.on{background:var(--amber-grad);color:#1a1005;border-color:transparent}
 .hint{font-size:13px;color:var(--muted);margin-top:10px}
+.ats-check{border:1px solid var(--line-soft);border-radius:16px;padding:18px 20px;margin-bottom:20px;background:rgba(255,255,255,.02)}
+.ats-check h4{font-family:var(--font-m);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
+.ats-check ul{list-style:none;display:grid;gap:9px}
+.ats-check li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5;color:var(--ink2)}
+.ats-check li .mark{flex:none;font-weight:700;width:18px;text-align:center}
+.ats-check li.ok .mark{color:#7ce3a8}
+.ats-check li.warn .mark{color:#ff9d5c}
+.ats-check li strong{color:var(--ink)}
 .hint strong{color:var(--ink2)}
-.sheet{background:#f8f5ee;color:#191920;border-radius:14px;padding:40px 42px;font-family:var(--font-b);box-shadow:0 30px 80px rgba(0,0,0,.45);overflow-wrap:break-word}
-.sheet h3{font-family:var(--font-d);font-weight:800;font-size:29px;letter-spacing:-.02em;line-height:1.1;color:#141419}
+.sheet{background:#f8f5ee;color:#191920;border-radius:14px;padding:40px 42px;font-family:Arial,Helvetica,sans-serif;box-shadow:0 30px 80px rgba(0,0,0,.45);overflow-wrap:break-word}
+.sheet h3{font-family:Arial,Helvetica,sans-serif;font-weight:800;font-size:29px;letter-spacing:-.02em;line-height:1.1;color:#141419}
 .sheet .headline{font:600 15.5px var(--font-b);color:#b96a00;margin:5px 0 3px}
 .sheet .contact{font-size:13.5px;color:#55534c}
-.sheet .sec{font-family:var(--font-m);font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:#9a6a00;border-bottom:1.5px solid #ddd2ba;padding-bottom:5px;margin:24px 0 11px}
+.sheet .sec{font-family:Arial,Helvetica,sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.06em;color:#9a6a00;border-bottom:1.5px solid #ddd2ba;padding-bottom:5px;margin:24px 0 11px}
 .sheet p,.sheet li{font-size:14.5px;line-height:1.62;color:#23232a}
 .sheet ul{padding-left:19px}
 .sheet .role-line{font-weight:700;font-size:15.5px;color:#141419;margin-top:13px}
@@ -174,11 +182,13 @@
     <!-- STEP 4 : RESUME -->
     <section class="panel aa-sec" id="resumeSec">
       <div class="panel-head"><span class="step-n">Step 04</span><h2>Your tailored resume</h2></div>
-      <p class="sub no-print">Built only from your profile and the keywords you confirmed. Experience bullets are reordered so the ones matching this job come first — the wording is never changed.</p>
+      <p class="sub no-print">Built only from your profile and the keywords you confirmed, in a single-column ATS-safe format. Experience bullets are reordered so the ones matching this job come first — the wording is never changed. Download the .docx for job portals; its file name carries your name and the job title.</p>
       <div class="btn-row no-print">
-        <button class="btn btn-primary btn-sm" id="printBtn">Print / Save PDF</button>
+        <button class="btn btn-primary btn-sm" id="docxBtn">Download .docx (ATS-friendly)</button>
+        <button class="btn btn-ghost btn-sm" id="printBtn">Print / Save PDF</button>
         <button class="btn btn-ghost btn-sm" id="copyResumeBtn">Copy resume as text</button>
       </div>
+      <div id="checkBody"></div>
       <div id="resumeBody"><p class="empty-note">Pick a job above to build your resume.</p></div>
     </section>
 
@@ -459,12 +469,11 @@ function sortedBullets(e) {
 function buildSummary(p) {
   const skills = orderedSkills(p);
   const top = skills.slice(0, 5);
-  const role = p.role || job.title;
   const companies = p.exp.filter(e => e.company).map(e => e.company);
   const s1 = companies.length
-    ? `${role} professional with hands-on experience at ${companies.join(', ')}${top.length ? ', working across ' + top.slice(0, 3).join(', ') : ''}.`
-    : `${role} candidate with strong foundational skills${top.length ? ' in ' + top.slice(0, 3).join(', ') : ''}.`;
-  const s2 = skills.length ? `Core strengths include ${skills.slice(0, 7).join(', ')}.` : '';
+    ? `${job.title} professional with hands-on experience at ${companies.join(', ')}.`
+    : `${job.title} candidate with strong foundational training and a focused, relevant skill set.`;
+  const s2 = top.length ? `Brings hands-on strengths in ${top.join(', ')}, aligned to the core requirements of this role.` : '';
   const s3 = `Applying for the ${job.title} position at ${job.company}${job.city ? ' in ' + job.city : ''}.`;
   return [s1, s2, s3].filter(Boolean).join(' ');
 }
@@ -473,18 +482,18 @@ function resumeText(p) {
   L.push((p.name || 'Your Name').toUpperCase());
   L.push(job.title);
   L.push([p.email, p.phone, p.city].filter(Boolean).join(' • '));
-  L.push('', 'SUMMARY', buildSummary(p));
+  L.push('', 'Professional Summary', buildSummary(p));
   const skills = orderedSkills(p);
-  if (skills.length) L.push('', 'SKILLS', skills.join(', '));
+  if (skills.length) L.push('', 'Skills', skills.join(', '));
   const exps = p.exp.filter(e => e.company || e.role || e.bullets.length);
   if (exps.length) {
-    L.push('', 'EXPERIENCE');
+    L.push('', 'Professional Experience');
     for (const e of exps) {
       L.push('', [e.role, e.company].filter(Boolean).join(' — '));
-      for (const b of sortedBullets(e)) L.push('- ' + b);
+      for (const b of sortedBullets(e)) L.push('• ' + b);
     }
   }
-  if (p.education) L.push('', 'EDUCATION', p.education);
+  if (p.education) L.push('', 'Education', p.education);
   return L.join('\n');
 }
 function renderResume() {
@@ -497,14 +506,15 @@ function renderResume() {
     <h3>${esc(p.name || 'Your Name')}</h3>
     <p class="headline">${esc(job.title)}</p>
     ${contact ? `<p class="contact">${esc(contact)}</p>` : ''}
-    <p class="sec">Summary</p>
+    <p class="sec">Professional Summary</p>
     <p>${esc(buildSummary(p))}</p>
-    ${skills.length ? `<p class="sec">Skills</p><p>${skills.map(esc).join(' · ')}</p>` : ''}
-    ${exps.length ? `<p class="sec">Experience</p>` + exps.map(e => `
+    ${skills.length ? `<p class="sec">Skills</p><p>${skills.map(esc).join(', ')}</p>` : ''}
+    ${exps.length ? `<p class="sec">Professional Experience</p>` + exps.map(e => `
       <p class="role-line">${esc(e.role)}${e.role && e.company ? ' <span>— ' + esc(e.company) + '</span>' : e.company ? ' <span>' + esc(e.company) + '</span>' : ''}</p>
       <ul>${sortedBullets(e).map(b => `<li>${esc(b)}</li>`).join('')}</ul>`).join('') : ''}
     ${p.education ? `<p class="sec">Education</p><p>${esc(p.education)}</p>` : ''}
   </div>`;
+  renderChecklist();
 }
 
 /* ---------- screening answers ---------- */
@@ -547,6 +557,131 @@ function renderApply() {
     : '<p class="empty-note">This listing has no direct apply link.</p>';
 }
 
+/* ---------- filename ---------- */
+function sanitizePart(s) {
+  return String(s || '').replace(/[^A-Za-z0-9]+/g, '_').replace(/^_+|_+$/g, '');
+}
+function resumeFilename(p, ext) {
+  const name = sanitizePart(p && p.name) || 'Resume';
+  const title = sanitizePart(job && job.title) || 'Job';
+  return name + '_' + title + '_Resume' + (ext === undefined ? '.docx' : ext);
+}
+
+/* ---------- ATS checklist ---------- */
+function renderChecklist() {
+  const el = $('checkBody');
+  if (!el) return;
+  if (!analysis) { el.innerHTML = ''; return; }
+  const p = analysis.p, jd = analysis.jd;
+  const included = analysis.matched.length + analysis.missing.filter(k => ticked.has(k.lower)).length;
+  const pct = jd.length ? Math.round(included / jd.length * 100) : 100;
+  const missingContact = ['name', 'email', 'phone'].filter(f => !p[f]);
+  const bullets = p.exp.reduce((n, e) => n + e.bullets.length, 0);
+  const row = (ok, html) => `<li class="${ok ? 'ok' : 'warn'}"><span class="mark">${ok ? '✓' : '⚠'}</span><span>${html}</span></li>`;
+  el.innerHTML = `<div class="ats-check no-print"><h4>ATS checklist — is this resume ready to send?</h4><ul>
+    ${row(true, 'Single-column, ATS-safe format — no tables, columns or graphics')}
+    ${row(!jd.length || pct >= 60, `Keywords matched: <strong>${included} of ${jd.length}</strong> job keywords included${jd.length && pct < 60 ? ' — tick more of your true skills above to cross 60%' : ''}`)}
+    ${row(!missingContact.length, missingContact.length ? 'Contact details incomplete — missing: <strong>' + missingContact.join(', ') + '</strong> (add them in Step 01)' : 'Contact details present — name, email and phone')}
+    ${row(bullets > 0, bullets ? `Experience bullets present (${bullets})` : 'No experience bullets yet — add what you did, one point per line, in Step 01')}
+    ${row(!!p.name, `File name ready: <strong>${esc(resumeFilename(p))}</strong>${p.name ? '' : ' — add your name in Step 01 to personalise it'}`)}
+  </ul></div>`;
+}
+
+/* ---------- docx export (hand-rolled OOXML + ZIP, no libraries) ---------- */
+const CRC_TABLE = (() => {
+  const t = new Int32Array(256);
+  for (let n = 0; n < 256; n++) {
+    let c = n;
+    for (let k = 0; k < 8; k++) c = (c & 1) ? (0xEDB88320 ^ (c >>> 1)) : (c >>> 1);
+    t[n] = c;
+  }
+  return t;
+})();
+function crc32(bytes) {
+  let c = 0xFFFFFFFF;
+  for (let i = 0; i < bytes.length; i++) c = CRC_TABLE[(c ^ bytes[i]) & 0xFF] ^ (c >>> 8);
+  return (c ^ 0xFFFFFFFF) >>> 0;
+}
+function zipStore(files) {
+  const enc = new TextEncoder();
+  const parts = [], central = [];
+  let offset = 0;
+  const cat = (...arrs) => { const out = new Uint8Array(arrs.reduce((n, a) => n + a.length, 0)); let o = 0; for (const a of arrs) { out.set(a, o); o += a.length; } return out; };
+  const u16 = n => new Uint8Array([n & 255, (n >>> 8) & 255]);
+  const u32 = n => new Uint8Array([n & 255, (n >>> 8) & 255, (n >>> 16) & 255, (n >>> 24) & 255]);
+  const now = new Date();
+  const dtime = ((now.getHours() << 11) | (now.getMinutes() << 5) | (now.getSeconds() >> 1)) & 0xFFFF;
+  const ddate = (((now.getFullYear() - 1980) << 9) | ((now.getMonth() + 1) << 5) | now.getDate()) & 0xFFFF;
+  for (const f of files) {
+    const name = enc.encode(f.name), data = f.data, crc = crc32(data);
+    const local = cat(u32(0x04034b50), u16(20), u16(0), u16(0), u16(dtime), u16(ddate), u32(crc), u32(data.length), u32(data.length), u16(name.length), u16(0), name);
+    parts.push(local, data);
+    central.push(cat(u32(0x02014b50), u16(20), u16(20), u16(0), u16(0), u16(dtime), u16(ddate), u32(crc), u32(data.length), u32(data.length), u16(name.length), u16(0), u16(0), u16(0), u16(0), u32(0), u32(offset), name));
+    offset += local.length + data.length;
+  }
+  const cd = cat(...central);
+  const end = cat(u32(0x06054b50), u16(0), u16(0), u16(files.length), u16(files.length), u32(cd.length), u32(offset), u16(0));
+  return cat(...parts, cd, end);
+}
+function docxParagraph(text, o) {
+  o = o || {};
+  const sz = o.sz || 22;
+  const rPr = `<w:rPr><w:rFonts w:ascii="Calibri" w:hAnsi="Calibri"/>${o.b ? '<w:b/>' : ''}<w:sz w:val="${sz}"/><w:szCs w:val="${sz}"/></w:rPr>`;
+  const pPr = `<w:pPr><w:spacing w:before="${o.before || 0}" w:after="${o.after == null ? 80 : o.after}"/>${o.ind ? '<w:ind w:left="360" w:hanging="180"/>' : ''}</w:pPr>`;
+  return `<w:p>${pPr}<w:r>${rPr}<w:t xml:space="preserve">${esc(text)}</w:t></w:r></w:p>`;
+}
+function buildDocxBytes(p) {
+  const skills = orderedSkills(p);
+  const exps = p.exp.filter(e => e.company || e.role || e.bullets.length);
+  const contact = [p.email, p.phone, p.city].filter(Boolean).join(' • ');
+  const P = [];
+  P.push(docxParagraph(p.name || 'Your Name', { b: true, sz: 32, after: 20 }));
+  P.push(docxParagraph(job.title, { b: true, sz: 24, after: 20 }));
+  if (contact) P.push(docxParagraph(contact, { sz: 21, after: 160 }));
+  P.push(docxParagraph('Professional Summary', { b: true, sz: 24, before: 200, after: 60 }));
+  P.push(docxParagraph(buildSummary(p), {}));
+  if (skills.length) {
+    P.push(docxParagraph('Skills', { b: true, sz: 24, before: 200, after: 60 }));
+    P.push(docxParagraph(skills.join(', '), {}));
+  }
+  if (exps.length) {
+    P.push(docxParagraph('Professional Experience', { b: true, sz: 24, before: 200, after: 60 }));
+    for (const e of exps) {
+      P.push(docxParagraph([e.role, e.company].filter(Boolean).join(' — '), { b: true, before: 120, after: 40 }));
+      for (const b of sortedBullets(e)) P.push(docxParagraph('• ' + b, { ind: true, after: 40 }));
+    }
+  }
+  if (p.education) {
+    P.push(docxParagraph('Education', { b: true, sz: 24, before: 200, after: 60 }));
+    P.push(docxParagraph(p.education, {}));
+  }
+  const documentXml = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main"><w:body>${P.join('')}<w:sectPr><w:pgSz w:w="12240" w:h="15840"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134" w:header="720" w:footer="720"/></w:sectPr></w:body></w:document>`;
+  const contentTypes = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types"><Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/><Default Extension="xml" ContentType="application/xml"/><Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/></Types>`;
+  const rels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"><Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/></Relationships>`;
+  const docRels = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships"></Relationships>`;
+  const enc = new TextEncoder();
+  return zipStore([
+    { name: '[Content_Types].xml', data: enc.encode(contentTypes) },
+    { name: '_rels/.rels', data: enc.encode(rels) },
+    { name: 'word/document.xml', data: enc.encode(documentXml) },
+    { name: 'word/_rels/document.xml.rels', data: enc.encode(docRels) }
+  ]);
+}
+function downloadDocx() {
+  if (!analysis) return;
+  const bytes = buildDocxBytes(analysis.p);
+  const blob = new Blob([bytes], { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = resumeFilename(analysis.p);
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 5000);
+}
+
 /* ---------- copy / print ---------- */
 function copyText(text, btn) {
   const done = () => { if (btn) { const o = btn.textContent; btn.textContent = 'Copied ✓'; setTimeout(() => btn.textContent = o, 1600); } };
@@ -560,7 +695,17 @@ function fallbackCopy(text, done) {
   try { document.execCommand('copy'); done(); } catch (e) { /* clipboard unavailable */ }
   ta.remove();
 }
-$('printBtn').addEventListener('click', () => window.print());
+$('printBtn').addEventListener('click', () => {
+  if (analysis) {
+    const prev = document.title;
+    document.title = resumeFilename(analysis.p, '');
+    const restore = () => { document.title = prev; window.removeEventListener('afterprint', restore); };
+    window.addEventListener('afterprint', restore);
+    setTimeout(restore, 60000);
+  }
+  window.print();
+});
+$('docxBtn').addEventListener('click', downloadDocx);
 $('copyResumeBtn').addEventListener('click', e => { if (analysis) copyText(resumeText(analysis.p), e.currentTarget); });
 </script>
 </body>
