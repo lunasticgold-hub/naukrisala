@@ -7,15 +7,11 @@
 <meta name="description" content="NaukriSala is a placement-first training academy. Start with ₹20,000. The ₹2,00,000 placement fee applies only after you sign an offer letter — paid from your salary.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@1,8..60,400;1,8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261016b">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230B0B10'/><text x='50' y='70' font-size='54' text-anchor='middle' fill='%23FFB020' font-family='sans-serif' font-weight='800'>N</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261020">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='10' fill='%2316130E'/><text x='50' y='72' font-size='58' text-anchor='middle' fill='%23FAF6EF' font-family='Georgia,serif' font-weight='700'>N</text></svg>">
 </head>
 <body>
-
-<div class="grain" aria-hidden="true"></div>
-<div class="glow glow-a" aria-hidden="true"></div>
-<div class="glow glow-b" aria-hidden="true"></div>
 
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
@@ -36,6 +32,14 @@
     </div>
   </div>
 </header>
+
+<div class="issue-line" aria-hidden="true">
+  <div class="wrap issue-inner">
+    <span id="dlDate">Tuesday, 20 October 2026</span>
+    <span class="issue-mid">The Placement Gazette</span>
+    <span>Vol. I · Founding edition</span>
+  </div>
+</div>
 
 <main id="top">
 
@@ -97,7 +101,7 @@
   <!-- HOW IT WORKS -->
   <section class="section" id="how">
     <div class="wrap">
-      <p class="eyebrow"><span class="dot"></span>How it works</p>
+      <p class="eyebrow"><span class="dot"></span>01 · How it works</p>
       <h2>Six steps. <em>Zero salary risk.</em></h2>
       <p class="lede-sm">The big fee waits until a salary lands. The risk stays on our side of the table.</p>
       <div class="steps">
@@ -114,7 +118,7 @@
   <!-- COURSES -->
   <section class="section" id="courses">
     <div class="wrap">
-      <p class="eyebrow"><span class="dot"></span>Courses</p>
+      <p class="eyebrow"><span class="dot"></span>02 · Courses</p>
       <h2>Train for the job. <em>Then get the job.</em></h2>
       <p class="lede-sm">Flagship <strong>AML &amp; KYC Analyst</strong> goes live <strong>10 Nov 2026</strong>. Other tracks open as founding batches fill.</p>
       <div class="course-grid" id="courseGrid"></div>
@@ -124,7 +128,7 @@
   <!-- FEES -->
   <section class="section" id="fees">
     <div class="wrap">
-      <p class="eyebrow"><span class="dot"></span>Fees</p>
+      <p class="eyebrow"><span class="dot"></span>03 · Fees</p>
       <h2>₹20,000 to start. <em>₹2,00,000 after you're placed.</em></h2>
       <p class="lede-sm">Plain words, no fine-print traps.</p>
       <div class="fee-grid">
@@ -152,7 +156,7 @@
   <section class="section" id="faq">
     <div class="wrap faq-grid">
       <div>
-        <p class="eyebrow"><span class="dot"></span>FAQ</p>
+        <p class="eyebrow"><span class="dot"></span>04 · FAQ</p>
         <h2>Questions, <em>answered straight.</em></h2>
         <p class="lede-sm">Still unsure? Book a free demo and ask us anything, face to face.</p>
         <a class="btn btn-ghost" href="#demo">Book free demo</a>
@@ -189,7 +193,7 @@
   <!-- DEMO -->
   <section class="section demo-sec" id="demo">
     <div class="wrap narrow">
-      <p class="eyebrow"><span class="dot"></span>Free demo · no card, no commitment</p>
+      <p class="eyebrow"><span class="dot"></span>05 · Free demo · no card, no commitment</p>
       <h2>Start with a <em>free demo class.</em></h2>
       <p class="lede-sm">Demo classes begin <strong>3 Nov 2026</strong>. Drop your details — we'll confirm your slot on WhatsApp.</p>
       <form class="demo-form" id="demoForm">
@@ -246,5 +250,8 @@
 </a>
 
 <script src="script.js"></script>
+<script>
+(function(){var el=document.getElementById('dlDate');if(el){el.textContent=new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});}})();
+</script>
 </body>
 </html>

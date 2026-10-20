@@ -7,52 +7,53 @@
 <meta name="description" content="Tailor your resume to a live job opening: keyword match against the job description, a reordered resume, and drafted screening answers. You review, then apply on the employer's site.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,400..900;1,62..125,400..900&family=Inter:wght@400;500;600&family=Source+Serif+4:ital,opsz,wght@1,8..60,400;1,8..60,600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261016b">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230B0B10'/><text x='50' y='70' font-size='54' text-anchor='middle' fill='%23FFB020' font-family='sans-serif' font-weight='800'>N</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400..900;1,9..144,400..900&family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261020">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='10' fill='%2316130E'/><text x='50' y='72' font-size='58' text-anchor='middle' fill='%23FAF6EF' font-family='Georgia,serif' font-weight='700'>N</text></svg>">
 <style>
-.aa-hero{padding:64px 0 30px}
+.aa-hero{padding:56px 0 30px}
 .aa-hero h1{font-size:clamp(2.4rem,5vw,4rem);margin-bottom:18px}
-.panel{background:var(--card);border:1px solid var(--line-soft);border-radius:24px;padding:32px;margin-bottom:22px;min-width:0}
-.panel-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;flex-wrap:wrap}
-.step-n{font-family:var(--font-m);font-size:.72rem;letter-spacing:.16em;color:var(--amber)}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:4px;padding:32px;margin-bottom:22px;min-width:0}
+.panel-head{display:flex;align-items:baseline;gap:14px;margin-bottom:8px;flex-wrap:wrap;border-bottom:1px solid var(--line-soft);padding-bottom:14px}
+.step-n{font-family:var(--font-m);font-size:.72rem;letter-spacing:.16em;color:var(--accent-ink)}
 .panel h2{font-size:clamp(1.35rem,2.6vw,1.8rem);margin:0}
 .panel .sub{color:var(--ink2);font-size:14.5px;margin-bottom:22px;max-width:640px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .form-grid .full{grid-column:1/-1}
-.field textarea{width:100%;font-family:var(--font-b);font-size:15.5px;padding:14px 16px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.03);color:var(--ink);resize:vertical;min-height:52px;line-height:1.55}
-.field textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(255,176,32,.15)}
-.exp-block{border:1px solid var(--line-soft);border-radius:16px;padding:20px;margin-bottom:16px;background:rgba(255,255,255,.015)}
+.field textarea{width:100%;font-family:var(--font-b);font-size:15.5px;padding:14px 16px;border:1px solid var(--line);border-radius:3px;background:var(--paper);color:var(--ink);resize:vertical;min-height:52px;line-height:1.55}
+.field textarea:focus{outline:none;border-color:var(--accent);box-shadow:0 0 0 3px rgba(217,119,6,.18)}
+.exp-block{border:1px solid var(--line-soft);border-radius:4px;padding:20px;margin-bottom:16px;background:rgba(22,19,14,.02)}
 .exp-block .mono{display:block;margin-bottom:14px}
-.saved-note{font:500 13.5px var(--font-b);color:#7ce3a8;min-height:20px;margin-top:12px}
+.saved-note{font:500 13.5px var(--font-b);color:var(--good);min-height:20px;margin-top:12px}
 .jobpick{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.jobpick select{width:100%;font-family:var(--font-b);font-size:14.5px;padding:10px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.03);color:var(--ink)}
-.jobpick select option{background:#14141c;padding:6px 8px}
-.job-card-view{border:1px solid rgba(255,176,32,.3);border-radius:16px;padding:22px;background:rgba(255,176,32,.04);min-width:0}
-.job-card-view .job-tag{display:inline-block;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--amber);border:1px solid rgba(255,176,32,.35);border-radius:999px;padding:5px 11px;margin-bottom:10px}
+.jobpick select{width:100%;font-family:var(--font-b);font-size:14.5px;padding:10px;border:1px solid var(--line);border-radius:3px;background:var(--paper);color:var(--ink)}
+.jobpick select option{background:var(--paper);color:var(--ink);padding:6px 8px}
+.job-card-view{border:1px solid var(--accent);border-radius:4px;padding:22px;background:rgba(217,119,6,.05);min-width:0}
+.job-card-view .job-tag{display:inline-block;font:600 11px var(--font-m);letter-spacing:.06em;text-transform:uppercase;color:var(--accent-ink);border:none;border-bottom:1px solid var(--line-soft);border-radius:0;padding:0 0 6px;margin-bottom:10px}
 .job-card-view h3{font:700 20px/1.3 var(--font-d);letter-spacing:-.01em;overflow-wrap:break-word}
 .job-card-view .co{font:500 14px var(--font-b);color:var(--ink2);margin:4px 0 10px}
 .job-card-view .snip{font:400 14px/1.65 var(--font-b);color:var(--muted);overflow-wrap:break-word}
-.job-card-view .sal{font:700 14px var(--font-b);color:var(--amber);margin-bottom:8px}
+.job-card-view .sal{font:700 14px var(--font-b);color:var(--accent-ink);margin-bottom:8px}
+#jobView a{color:var(--accent-ink)!important}
 .score-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-bottom:20px}
-.score-num{font-family:var(--font-d);font-size:56px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--amber)}
-.score-bar{flex:1;min-width:180px;height:10px;border-radius:99px;background:rgba(255,255,255,.07);overflow:hidden}
-.score-bar i{display:block;height:100%;background:var(--amber-grad);border-radius:99px;transition:width .4s ease}
+.score-num{font-family:var(--font-d);font-size:56px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--ink)}
+.score-bar{flex:1;min-width:180px;height:10px;border-radius:99px;background:rgba(22,19,14,.1);overflow:hidden}
+.score-bar i{display:block;height:100%;background:var(--amber);border-radius:99px;transition:width .4s ease}
 .kw-group{margin-bottom:20px}
 .kw-group h4{font-family:var(--font-m);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 .kw-chips{display:flex;gap:8px;flex-wrap:wrap}
-.kw{font:600 12.5px var(--font-b);border-radius:999px;padding:7px 13px;border:1px solid rgba(124,227,168,.4);color:#7ce3a8;background:rgba(124,227,168,.06)}
-.kw-miss{display:inline-flex;align-items:center;gap:8px;font:600 12.5px var(--font-b);border-radius:999px;padding:7px 13px;border:1px solid rgba(255,176,32,.4);color:var(--ink);background:rgba(255,176,32,.05);cursor:pointer}
-.kw-miss input{accent-color:var(--amber);width:15px;height:15px;cursor:pointer}
-.kw-miss.on{background:var(--amber-grad);color:#1a1005;border-color:transparent}
+.kw{font:600 12.5px var(--font-b);border-radius:2px;padding:7px 13px;border:1px solid rgba(30,123,52,.45);color:var(--good);background:rgba(30,123,52,.06)}
+.kw-miss{display:inline-flex;align-items:center;gap:8px;font:600 12.5px var(--font-b);border-radius:2px;padding:7px 13px;border:1px solid rgba(217,119,6,.5);color:var(--ink);background:rgba(217,119,6,.05);cursor:pointer}
+.kw-miss input{accent-color:var(--accent);width:15px;height:15px;cursor:pointer}
+.kw-miss.on{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .hint{font-size:13px;color:var(--muted);margin-top:10px}
-.ats-check{border:1px solid var(--line-soft);border-radius:16px;padding:18px 20px;margin-bottom:20px;background:rgba(255,255,255,.02)}
+.ats-check{border:1px solid var(--line-soft);border-radius:4px;padding:18px 20px;margin-bottom:20px;background:rgba(22,19,14,.02)}
 .ats-check h4{font-family:var(--font-m);font-size:.68rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 .ats-check ul{list-style:none;display:grid;gap:9px}
 .ats-check li{display:flex;gap:10px;align-items:flex-start;font-size:14px;line-height:1.5;color:var(--ink2)}
 .ats-check li .mark{flex:none;font-weight:700;width:18px;text-align:center}
-.ats-check li.ok .mark{color:#7ce3a8}
-.ats-check li.warn .mark{color:#ff9d5c}
+.ats-check li.ok .mark{color:var(--good)}
+.ats-check li.warn .mark{color:var(--accent-ink)}
 .ats-check li strong{color:var(--ink)}
 .hint strong{color:var(--ink2)}
 .sheet{background:#f8f5ee;color:#191920;border-radius:14px;padding:40px 42px;font-family:Arial,Helvetica,sans-serif;box-shadow:0 30px 80px rgba(0,0,0,.45);overflow-wrap:break-word}
@@ -67,14 +68,14 @@
 .ans-box{margin-bottom:18px}
 .ans-box label{display:block;font-family:var(--font-m);font-size:.66rem;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
 .ans-row{display:flex;gap:10px;align-items:flex-start}
-.ans-row textarea{flex:1;font-family:var(--font-b);font-size:14.5px;padding:13px 15px;border:1px solid var(--line);border-radius:14px;background:rgba(255,255,255,.03);color:var(--ink);resize:vertical;min-height:74px;line-height:1.55;min-width:0}
-.ans-row textarea:focus{outline:none;border-color:var(--amber)}
-.copy-btn{flex:none;font:600 12.5px var(--font-b);border:1px solid var(--line);background:rgba(255,255,255,.03);color:var(--ink2);border-radius:11px;padding:10px 14px;cursor:pointer;transition:.2s}
-.copy-btn:hover{border-color:rgba(255,176,32,.5);color:var(--ink)}
-.draft-label{display:inline-block;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:#ff9d5c;border:1px solid rgba(255,157,92,.4);border-radius:999px;padding:5px 11px;margin-bottom:16px}
+.ans-row textarea{flex:1;font-family:var(--font-b);font-size:14.5px;padding:13px 15px;border:1px solid var(--line);border-radius:3px;background:var(--paper);color:var(--ink);resize:vertical;min-height:74px;line-height:1.55;min-width:0}
+.ans-row textarea:focus{outline:none;border-color:var(--accent)}
+.copy-btn{flex:none;font:600 12.5px var(--font-b);border:1px solid var(--line);background:transparent;color:var(--ink2);border-radius:3px;padding:10px 14px;cursor:pointer;transition:.2s}
+.copy-btn:hover{border-color:var(--ink);color:var(--ink)}
+.draft-label{display:inline-block;font:600 11px var(--font-m);letter-spacing:.08em;text-transform:uppercase;color:var(--accent-ink);border:1.5px solid var(--accent);border-radius:2px;padding:5px 11px;margin-bottom:16px;transform:rotate(-1.2deg)}
 .btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
 .apply-note{font-size:13.5px;color:var(--muted);margin-top:12px;text-align:center}
-.empty-note{color:var(--muted);font-size:14.5px;border:1px dashed var(--line);border-radius:14px;padding:20px;text-align:center}
+.empty-note{color:var(--muted);font-size:14.5px;border:1px dashed var(--line);border-radius:3px;padding:20px;text-align:center}
 @media(max-width:820px){.jobpick{grid-template-columns:1fr}}
 @media(max-width:680px){
   .form-grid{grid-template-columns:1fr}
@@ -96,10 +97,6 @@
 </head>
 <body>
 
-<div class="grain" aria-hidden="true"></div>
-<div class="glow glow-a" aria-hidden="true"></div>
-<div class="glow glow-b" aria-hidden="true"></div>
-
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
     <a class="brand" href="index.html">
@@ -111,7 +108,7 @@
       <a href="index.html#how">How it works</a>
       <a href="index.html#fees">Fees</a>
       <a href="jobs.html">Jobs</a>
-      <a href="apply.html" style="color:var(--amber)">Apply Assistant</a>
+      <a href="apply.html" style="color:var(--accent-ink)">Apply Assistant</a>
       <a href="index.html#faq">FAQ</a>
     </nav>
     <div class="nav-cta">
@@ -120,6 +117,14 @@
     </div>
   </div>
 </header>
+
+<div class="issue-line" aria-hidden="true">
+  <div class="wrap issue-inner">
+    <span id="dlDate">Tuesday, 20 October 2026</span>
+    <span class="issue-mid">The Placement Gazette</span>
+    <span>Apply Assistant</span>
+  </div>
+</div>
 
 <main>
   <section class="aa-hero">
@@ -707,6 +712,9 @@ $('printBtn').addEventListener('click', () => {
 });
 $('docxBtn').addEventListener('click', downloadDocx);
 $('copyResumeBtn').addEventListener('click', e => { if (analysis) copyText(resumeText(analysis.p), e.currentTarget); });
+</script>
+<script>
+(function(){var el=document.getElementById('dlDate');if(el){el.textContent=new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});}})();
 </script>
 </body>
 </html>
