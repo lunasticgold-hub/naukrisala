@@ -45,6 +45,8 @@
 .job-date{font:500 12px 'JetBrains Mono',monospace;color:var(--muted)}
 .job-sal{font:700 13.5px var(--font-b);color:var(--amber);overflow-wrap:break-word}
 .job-apply{font:700 13.5px var(--font-b);color:var(--amber);text-decoration:none}
+.job-tailor{display:block;text-align:center;font:600 13px var(--font-b);color:var(--amber);border:1px solid rgba(255,176,32,.35);background:rgba(255,176,32,.06);border-radius:12px;padding:10px 12px;text-decoration:none;transition:.2s}
+.job-tailor:hover{background:rgba(255,176,32,.14);border-color:rgba(255,176,32,.6)}
 .job-site{font:600 12.5px var(--font-b);color:var(--ink2);text-decoration:none;margin-right:12px;white-space:nowrap}
 .job-site:hover{color:var(--amber);text-decoration:underline}
 .foot-links{display:flex;align-items:center}
@@ -255,6 +257,7 @@ function render() {
       <p class="job-co">${esc(j.company)} · ${esc(j.location)}</p>
       ${j.salary_text ? `<p class="job-sal">${esc(j.salary_text)}</p>` : ''}
       <p class="job-snip">${esc(j.snippet)}</p>
+      <a class="job-tailor" href="apply.html?job=${encodeURIComponent(j.id)}">✦ Tailor resume for this job</a>
       <div class="job-foot">
         <span class="job-date">${rel(j.created) || rel(j.fetched + 'T00:00:00Z')}${j.contract ? ' · ' + esc(j.contract) : ''}${j.stale ? ' · <span class="stale">old listing</span>' : ''}</span>
         <span class="foot-links">${siteUrl(j.employer_website) ? `<a class="job-site" href="${esc(j.employer_website)}" target="_blank" rel="noopener nofollow">Company site ↗</a>` : ''}<a class="job-apply" href="${esc(j.direct_url || j.url)}" target="_blank" rel="noopener nofollow">Apply →</a></span>
