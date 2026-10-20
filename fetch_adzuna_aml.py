@@ -76,6 +76,7 @@ def main():
             seen.add(key)
             jobs.append({
                 "id": str(r.get("id")),
+                "source": "adzuna",
                 "course": "aml-kyc",
                 "course_label": "AML & KYC Analyst",
                 "title": r.get("title"),
