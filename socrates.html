@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Socrates · AI Interview Coach — NaukriSala AI Tools</title>
+<meta name="description" content="A 20-question timed interview practice round for your NaukriSala track — scenario-based questions, instant scorecard with explanations. Free, in your browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261021">
+<link rel="stylesheet" href="tools.css?v=20261021">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='10' fill='%230B1529'/><text x='50' y='70' font-size='56' text-anchor='middle' fill='%23F59E0B' font-family='Arial,sans-serif' font-weight='800'>N</text></svg>">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">N</span>
+      <span class="brand-word">NAUKRI<em>SALA</em></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#courses">Courses</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#fees">Fees</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="index.html#tools" style="color:var(--accent-ink)">AI Tools</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="index.html#demo">Book free demo <span class="arr">→</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="tool-main">
+  <section class="tool-hero">
+    <div class="wrap">
+      <p class="eyebrow"><span class="dot"></span>AI Tools · Socrates</p>
+      <h1>Rehearse the interview<br><em>before it's real.</em></h1>
+      <p class="lede">Socrates runs a <strong>20-question timed round</strong> for your track — fundamentals, workplace scenarios and judgement calls. Answers lock as you go; the full scorecard with explanations waits at the end, like a real debrief.</p>
+      <span class="tool-tag"><span class="dot"></span>Free · runs in your browser</span>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="honest-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
+      <p><strong>Original practice questions, written by NaukriSala</strong> — not copied from any company's real interviews. Use the round to find your gaps; the scorecard's explanations are the study material.</p>
+    </div>
+
+    <!-- SETUP -->
+    <section class="tpanel" id="setupPanel">
+      <h2>Set up your round</h2>
+      <p class="sub">Twenty questions, thirty minutes, one question at a time. Once you answer, the answer locks — there's no going back, just like the room.</p>
+      <div class="tgrid">
+        <div class="field"><label for="socTrack">Interview track</label><select id="socTrack"></select></div>
+        <div class="field"><label for="socCompany">Target company (optional)</label><input id="socCompany" type="text" placeholder="e.g. a large private bank"></div>
+        <div class="field full"><label>Difficulty</label>
+          <div class="btn-row" id="socDiff" role="radiogroup" aria-label="Difficulty">
+            <button type="button" class="btn btn-outline btn-sm diff-btn" data-d="1">Beginner</button>
+            <button type="button" class="btn btn-dark btn-sm diff-btn" data-d="2">Intermediate</button>
+            <button type="button" class="btn btn-outline btn-sm diff-btn" data-d="3">Advanced</button>
+          </div>
+        </div>
+      </div>
+      <p class="hint" id="socNote" style="margin:16px 0;min-height:20px"></p>
+      <button class="btn btn-primary" id="socStart">Start the round — 20 questions, 30:00 <span class="arr">→</span></button>
+    </section>
+
+    <!-- QUIZ -->
+    <section class="tpanel" id="quizPanel" hidden>
+      <div class="quiz-top">
+        <span class="quiz-prog" id="quizProg">Q 1 / 20</span>
+        <span class="quiz-timer" id="quizTimer">30:00</span>
+      </div>
+      <div class="prog-bar"><i id="progFill" style="width:0%"></i></div>
+      <p class="hint" id="quizCtx" style="margin-bottom:14px"></p>
+      <div class="quiz-scenario" id="quizScenario" hidden></div>
+      <p class="quiz-q" id="quizQ"></p>
+      <div class="opts" id="quizOpts"></div>
+      <p class="hint" style="margin-top:16px">Your answer locks the moment you tap it. Explanations arrive with your scorecard.</p>
+    </section>
+
+    <!-- SCORECARD -->
+    <section class="tpanel" id="cardPanel" hidden>
+      <h2>Your scorecard</h2>
+      <p class="sub" id="cardRecap"></p>
+      <div class="score-hero">
+        <div class="score-ring" id="cardRing"><i><b id="cardScore">0/20</b><span>score</span></i></div>
+        <div class="score-verdict"><h3 id="cardVerdict"></h3><p id="cardVerdictSub"></p></div>
+      </div>
+      <div id="cardReview"></div>
+      <div class="btn-row" style="margin-top:24px">
+        <button class="btn btn-primary" id="cardRetake">Retake this round <span class="arr">→</span></button>
+        <a class="btn btn-outline" href="index.html#courses">See the matching course</a>
+        <a class="btn btn-ghost" href="apply.html" style="color:var(--navy);border-color:var(--line)">Tailor my resume →</a>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="brand"><span class="brand-mark">N</span><span class="brand-word">NAUKRI<em>SALA</em></span></p>
+      <p class="fine">Placement-first training academy · India<br>Founding batch — November 2026</p>
+    </div>
+    <nav class="footer-links">
+      <a href="index.html#courses">Courses</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#fees">Fees</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="apply.html">Apply Assistant</a>
+      <a href="index.html#tools">AI Tools</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#demo">Free demo</a>
+    </nav>
+  </div>
+  <div class="wrap"><p class="fine foot-base">© 2026 NaukriSala · Get placed first. Pay from your salary. · जहाँ नौकरी पक्की</p></div>
+</footer>
+
+<script src="keywords.js"></script>
+<script src="socrates-bank.js"></script>
+<script>
+const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $ = id => document.getElementById(id);
+const shuffle = arr => { const a = arr.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+
+const DIFF_LABEL = { 1: 'Beginner', 2: 'Intermediate', 3: 'Advanced' };
+let diff = 2;
+$('socTrack').innerHTML = TRACKS.map(t => `<option value="${t.slug}">${esc(t.label)}</option>`).join('');
+
+function bankKeyFor(slug) { return BANKS[slug] ? slug : 'general'; }
+function updateNote() {
+  const slug = $('socTrack').value;
+  const track = TRACKS.find(t => t.slug === slug);
+  $('socNote').textContent = BANKS[slug]
+    ? 'Dedicated ' + track.label + ' question bank — fundamentals, scenarios and workplace questions.'
+    : 'General round — the dedicated ' + track.label + ' bank is coming soon, so this round uses aptitude, workplace and HR questions.';
+}
+$('socTrack').addEventListener('change', updateNote);
+updateNote();
+
+document.querySelectorAll('.diff-btn').forEach(b => b.addEventListener('click', () => {
+  diff = Number(b.dataset.d);
+  document.querySelectorAll('.diff-btn').forEach(x => {
+    const on = Number(x.dataset.d) === diff;
+    x.classList.toggle('btn-dark', on);
+    x.classList.toggle('btn-outline', !on);
+  });
+}));
+
+function buildRound(slug, d) {
+  const key = bankKeyFor(slug);
+  const bank = BANKS[key];
+  const byD = { 1: [], 2: [], 3: [] };
+  bank.forEach(q => byD[q.d].push(q));
+  const order = d === 1 ? [1, 2, 3] : d === 2 ? [2, 1, 3] : [3, 2, 1];
+  let pool = [];
+  for (const dd of order) { pool = pool.concat(shuffle(byD[dd])); if (pool.length >= 20) break; }
+  if (pool.length < 20 && key !== 'general') {
+    const extra = shuffle(BANKS.general.filter(q => !pool.includes(q)));
+    pool = pool.concat(extra.slice(0, 20 - pool.length));
+  }
+  return shuffle(pool.slice(0, 20)).map(q => ({
+    q: q.q, s: q.s || '', w: q.w, d: q.d,
+    opts: shuffle(q.o.map((t, i) => ({ t, ok: i === q.a })))
+  }));
+}
+
+let round = [], idx = 0, answers = [], timerId = null, timeLeft = 30 * 60, finished = false, currentTrack = null;
+
+function fmtTime(s) { return Math.floor(s / 60) + ':' + String(s % 60).padStart(2, '0'); }
+function startTimer() {
+  clearInterval(timerId);
+  $('quizTimer').textContent = fmtTime(timeLeft);
+  $('quizTimer').classList.toggle('low', timeLeft <= 120);
+  timerId = setInterval(() => {
+    timeLeft--;
+    $('quizTimer').textContent = fmtTime(Math.max(0, timeLeft));
+    $('quizTimer').classList.toggle('low', timeLeft <= 120);
+    if (timeLeft <= 0) finishRound(true);
+  }, 1000);
+}
+
+function renderQ() {
+  const item = round[idx];
+  $('quizProg').textContent = 'Q ' + (idx + 1) + ' / ' + round.length;
+  $('progFill').style.width = Math.round(idx / round.length * 100) + '%';
+  const company = $('socCompany').value.trim();
+  $('quizCtx').textContent = company
+    ? 'Interview context: a role at an organisation like “' + company + '” — scenarios stay generic, as in a real first round.'
+    : '';
+  const sc = $('quizScenario');
+  if (item.s) { sc.hidden = false; sc.textContent = item.s; } else sc.hidden = true;
+  $('quizQ').textContent = item.q;
+  $('quizOpts').innerHTML = item.opts.map((o, i) => `
+    <button type="button" class="opt" data-i="${i}"><span class="ol">${'ABCD'[i]}</span><span>${esc(o.t)}</span></button>`).join('');
+  $('quizOpts').querySelectorAll('.opt').forEach(btn => btn.addEventListener('click', () => pick(Number(btn.dataset.i), btn)));
+}
+
+function pick(i, btn) {
+  if (finished || answers[idx] !== undefined) return;
+  answers[idx] = i;
+  btn.classList.add('picked');
+  $('quizOpts').querySelectorAll('.opt').forEach(b => b.disabled = true);
+  setTimeout(() => {
+    if (finished) return;
+    idx++;
+    if (idx >= round.length) finishRound(false);
+    else renderQ();
+  }, 380);
+}
+
+function finishRound(timeUp) {
+  if (finished) return;
+  finished = true;
+  clearInterval(timerId);
+  const score = round.reduce((n, item, i) => n + (answers[i] !== undefined && item.opts[answers[i]].ok ? 1 : 0), 0);
+  const pct = Math.round(score / round.length * 100);
+  const trackLabel = currentTrack.label;
+  const general = bankKeyFor(currentTrack.slug) === 'general';
+  $('cardRecap').textContent = trackLabel + ' · ' + DIFF_LABEL[diff] + (general ? ' · general bank' : '') + (timeUp ? ' · time expired — unanswered questions count as missed' : ' · round complete');
+  $('cardScore').textContent = score + '/' + round.length;
+  $('cardRing').style.background = 'conic-gradient(var(--amber) 0 ' + pct + '%, rgba(33,33,33,.08) ' + pct + '% 100%)';
+  const v = pct >= 80 ? ['Interview-ready form', 'Strong round. Keep the rhythm with another difficulty level, and make sure the resume behind it is just as sharp.']
+    : pct >= 55 ? ['A promising base', 'Your fundamentals are landing. The explanations below are your study list — they are exactly where the marks went.']
+    : pct >= 35 ? ['Gaps found — that is the point', 'Every miss below comes with the why. Work through them, then retake: these concepts are the interview syllabus.']
+    : ['Early days — good, now we know', 'This round mapped your starting point. Read each explanation, study the matching course material, and retake in a few days.'];
+  $('cardVerdict').textContent = v[0] + ' — ' + pct + '%';
+  $('cardVerdictSub').textContent = v[1];
+  $('cardReview').innerHTML = round.map((item, i) => {
+    const mine = answers[i];
+    const mineOk = mine !== undefined && item.opts[mine].ok;
+    const right = item.opts.find(o => o.ok);
+    return `<div class="review-item">
+      <h4><span class="rn">Q${i + 1}</span>${esc(item.q)}</h4>
+      ${item.s ? `<p class="ans-line">${esc(item.s)}</p>` : ''}
+      <p class="ans-line"><span class="tag you ${mineOk ? 'right' : ''}">You</span>${mine === undefined ? 'No answer (time)' : esc(item.opts[mine].t)}</p>
+      ${mineOk ? '' : `<p class="ans-line"><span class="tag right">Correct</span>${esc(right.t)}</p>`}
+      <p class="why"><strong>Why:</strong> ${esc(item.w)}</p>
+    </div>`;
+  }).join('');
+  $('quizPanel').hidden = true;
+  $('cardPanel').hidden = false;
+  $('cardPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function startRound() {
+  currentTrack = TRACKS.find(t => t.slug === $('socTrack').value);
+  round = buildRound(currentTrack.slug, diff);
+  idx = 0; answers = []; finished = false; timeLeft = 30 * 60;
+  $('setupPanel').hidden = true;
+  $('cardPanel').hidden = true;
+  $('quizPanel').hidden = false;
+  renderQ();
+  startTimer();
+  $('quizPanel').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+$('socStart').addEventListener('click', startRound);
+$('cardRetake').addEventListener('click', startRound);
+
+document.getElementById('navToggle').addEventListener('click', () =>
+  document.getElementById('navLinks').classList.toggle('open'));
+</script>
+</body>
+</html>

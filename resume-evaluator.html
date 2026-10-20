@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Resume Evaluator — NaukriSala AI Tools</title>
+<meta name="description" content="Score your resume against a NaukriSala track: contact basics, structure, skill keywords, quantified impact and ATS hygiene — rule-based, free, and entirely in your browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261021">
+<link rel="stylesheet" href="tools.css?v=20261021">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='10' fill='%230B1529'/><text x='50' y='70' font-size='56' text-anchor='middle' fill='%23F59E0B' font-family='Arial,sans-serif' font-weight='800'>N</text></svg>">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">N</span>
+      <span class="brand-word">NAUKRI<em>SALA</em></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#courses">Courses</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#fees">Fees</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="index.html#tools" style="color:var(--accent-ink)">AI Tools</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="index.html#demo">Book free demo <span class="arr">→</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="tool-main">
+  <section class="tool-hero">
+    <div class="wrap">
+      <p class="eyebrow"><span class="dot"></span>AI Tools · Resume Evaluator</p>
+      <h1>How strong is<br><em>your resume?</em></h1>
+      <p class="lede">Paste your resume and pick your target track. You get a score out of 100, the exact checks behind it, and a fix list in the order that matters — <strong>before</strong> an employer's screening software ever sees it.</p>
+      <span class="tool-tag"><span class="dot"></span>Free · runs in your browser</span>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <div class="honest-note">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 8h.01M12 11v5"/></svg>
+      <p><strong>Rule-based evaluator — runs entirely in your browser.</strong> No AI, no upload, nothing leaves your device. It checks the same things screening software and recruiters check first: contact basics, structure, skill keywords, numbers, and formatting hygiene.</p>
+    </div>
+
+    <section class="tpanel">
+      <h2>1 · Your resume</h2>
+      <p class="sub">Paste your resume text (from Word, PDF or LinkedIn — plain text is fine), choose the track you're targeting, and evaluate.</p>
+      <div class="tgrid">
+        <div class="field"><label for="evTrack">Target track</label><select id="evTrack"></select></div>
+        <div class="field"><label for="evRole">Target role (optional)</label><input id="evRole" type="text" placeholder="e.g. KYC Analyst"></div>
+        <div class="field full"><label for="evText">Resume text</label><textarea class="big" id="evText" placeholder="Paste your full resume text here…"></textarea></div>
+      </div>
+      <div class="btn-row" style="margin-top:20px">
+        <button class="btn btn-primary" id="evRun">Evaluate my resume <span class="arr">→</span></button>
+        <button class="btn btn-outline" id="evSample" type="button">Try a sample resume</button>
+      </div>
+      <p class="hint" id="evErr" style="color:var(--bad);font-weight:600;min-height:20px;margin-top:10px"></p>
+    </section>
+
+    <section class="tpanel" id="evResults" hidden>
+      <h2>2 · Your evaluation</h2>
+      <p class="sub" id="evFor"></p>
+      <div class="score-hero">
+        <div class="score-ring" id="evRing"><i><b id="evScore">0</b><span>of 100</span></i></div>
+        <div class="score-verdict"><h3 id="evVerdict"></h3><p id="evVerdictSub"></p></div>
+      </div>
+      <div id="evDims"></div>
+      <h3 style="font-family:var(--font-d);font-size:17px;font-weight:800;margin:26px 0 13px">Fix these first — biggest gains first</h3>
+      <ol class="fix-list" id="evFixes"></ol>
+      <div class="kw-group" style="margin-top:26px"><h4>Track keywords found in your resume ✓</h4>
+        <div class="kw-chips" id="evFound"></div>
+      </div>
+      <div class="kw-group"><h4>Track keywords missing — add only the ones that are true for you</h4>
+        <div class="kw-chips" id="evMissing"></div>
+      </div>
+      <p class="hint" id="evRoleNote"></p>
+    </section>
+
+    <section class="tpanel" id="evCta" hidden>
+      <h2>3 · Fix it properly</h2>
+      <p class="sub">The Apply Assistant rebuilds your resume around a real job's keywords — matched skills first, your best experience on top — and exports a clean, ATS-friendly .docx.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="apply.html">Open the Apply Assistant <span class="arr">→</span></a>
+        <a class="btn btn-outline" href="skill-gap.html">Plan my skill gaps instead</a>
+      </div>
+    </section>
+
+    <div class="course-cta" id="evCourse" hidden></div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="brand"><span class="brand-mark">N</span><span class="brand-word">NAUKRI<em>SALA</em></span></p>
+      <p class="fine">Placement-first training academy · India<br>Founding batch — November 2026</p>
+    </div>
+    <nav class="footer-links">
+      <a href="index.html#courses">Courses</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#fees">Fees</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="apply.html">Apply Assistant</a>
+      <a href="index.html#tools">AI Tools</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#demo">Free demo</a>
+    </nav>
+  </div>
+  <div class="wrap"><p class="fine foot-base">© 2026 NaukriSala · Get placed first. Pay from your salary. · जहाँ नौकरी पक्की</p></div>
+</footer>
+
+<script src="keywords.js"></script>
+<script>
+const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $ = id => document.getElementById(id);
+
+$('evTrack').innerHTML = TRACKS.map(t => `<option value="${t.slug}">${esc(t.label)}</option>`).join('');
+
+const CITIES = ['Bengaluru','Bangalore','Mumbai','Delhi','Hyderabad','Pune','Chennai','Kolkata','Ahmedabad','Noida','Gurugram','Gurgaon','Jaipur','Kochi','Lucknow','Indore','Bhubaneswar','Nagpur','Surat','Coimbatore','Chandigarh','India'];
+const ACTION_VERBS = ['achieved','analysed','analyzed','automated','built','checked','closed','coordinated','created','delivered','designed','developed','documented','escalated','generated','handled','helped','identified','implemented','improved','investigated','led','maintained','managed','monitored','prepared','processed','reduced','resolved','reviewed','screened','supported','trained','updated','verified'];
+const hasHeading = (text, re) => text.split('\n').some(l => l.trim().length <= 60 && re.test(l));
+
+function scoreResume(text, slug) {
+  const terms = TRACK_KW[slug] || [];
+  const lower = text.toLowerCase();
+  const words = (text.match(/\S+/g) || []).length;
+  const fixes = [];
+  const dims = [];
+  const addDim = (name, got, max, note) => { dims.push({ name, got, max, note }); return got; };
+  let total = 0;
+
+  /* contact & basics — 15 */
+  const hasEmail = /[\w.+-]+@[\w-]+\.[\w.]+/.test(text);
+  const hasPhone = /(?:\+?91[\s-]?)?[6-9]\d{9}\b/.test(text) || /\b\d{10}\b/.test(text);
+  const hasCity = CITIES.some(c => new RegExp('\\b' + c + '\\b', 'i').test(text));
+  let contact = (hasEmail ? 5 : 0) + (hasPhone ? 5 : 0) + (hasCity ? 5 : 0);
+  if (!hasEmail) fixes.push({ lost: 5, text: '<b>Add a professional email address</b> near your name — screening software looks for it in the first lines, and most application forms auto-fill from it.' });
+  if (!hasPhone) fixes.push({ lost: 5, text: '<b>Add a phone number</b> — recruiters call before they email; a resume without one often goes straight to the bottom of the pile.' });
+  if (!hasCity) fixes.push({ lost: 5, text: '<b>Add your city</b> (e.g. “Mumbai, India”) — location is one of the first filters recruiters apply.' });
+  total += addDim('Contact & basics', contact, 15, [hasEmail ? 'email ✓' : 'email missing', hasPhone ? 'phone ✓' : 'phone missing', hasCity ? 'city ✓' : 'city missing'].join(' · '));
+
+  /* structure — 15 */
+  const hasSummary = hasHeading(text, /summary|objective|profile/i);
+  const hasExp = hasHeading(text, /experience|employment|internship|work history/i) || /\bexperience\b/i.test(text);
+  const hasEdu = hasHeading(text, /education|qualification/i) || /\b(b\.?com|b\.?tech|b\.?sc|b\.?a\.?|mba|bachelor|master|graduat)/i.test(text);
+  const hasSkills = hasHeading(text, /skills/i);
+  let structure = (hasSummary ? 4 : 0) + (hasExp ? 4 : 0) + (hasEdu ? 4 : 0) + (hasSkills ? 3 : 0);
+  if (!hasSummary) fixes.push({ lost: 4, text: '<b>Add a 2–3 line Professional Summary</b> under your name: your target role, your strongest skills, and one proof point. It is the first thing a human reads.' });
+  if (!hasSkills) fixes.push({ lost: 3, text: '<b>Add a clearly headed Skills section</b> — screening software scans section headings, and buried skills often go uncounted.' });
+  if (!hasExp) fixes.push({ lost: 4, text: '<b>Add an Experience section</b> — jobs, internships, freelance or serious project work, with what you actually did under each.' });
+  if (!hasEdu) fixes.push({ lost: 4, text: '<b>Add your Education</b> — degree, institution and year. Most entry-level screens check for it explicitly.' });
+  total += addDim('Structure & sections', structure, 15, [hasSummary ? 'summary ✓' : 'no summary', hasExp ? 'experience ✓' : 'no experience', hasEdu ? 'education ✓' : 'no education', hasSkills ? 'skills ✓' : 'no skills section'].join(' · '));
+
+  /* skills match — 30 */
+  const matched = terms.filter(t => textHas(text, t.toLowerCase()));
+  const missing = terms.filter(t => !textHas(text, t.toLowerCase()));
+  const skills = terms.length ? Math.round(30 * matched.length / terms.length) : 0;
+  if (matched.length < terms.length) fixes.push({ lost: 30 - skills, text: `<b>Close the skill-keyword gap.</b> Your resume names ${matched.length} of the ${terms.length} skills this track screens for. Add every missing one that is <b>genuinely true for you</b> — and treat the rest as your study list (the Skill Gap Planner turns it into a plan).` });
+  total += addDim('Skills match for this track', skills, 30, matched.length + ' of ' + terms.length + ' track keywords present');
+
+  /* quantified impact — 15 */
+  const nums = (text.match(/\d[\d,]*(\.\d+)?/g) || []).length;
+  const quant = nums === 0 ? 0 : nums <= 2 ? 5 : nums <= 5 ? 9 : nums <= 9 ? 12 : 15;
+  if (quant < 15) fixes.push({ lost: 15 - quant, text: '<b>Put numbers on your work.</b> “Reviewed KYC documents” is weak; “Reviewed 40+ KYC files a day at 98% accuracy” gets interviews. Volumes, percentages, team sizes, turnaround times — add the ones you honestly know.' });
+  total += addDim('Quantified impact', quant, 15, nums + ' numbers found in the text');
+
+  /* action verbs — 10 */
+  const verbsFound = ACTION_VERBS.filter(v => new RegExp('\\b' + v + '\\b', 'i').test(text));
+  const verbs = Math.min(10, Math.round(verbsFound.length / 6 * 10));
+  if (verbs < 10) fixes.push({ lost: 10 - verbs, text: '<b>Start bullets with action verbs</b> — Reviewed, Screened, Escalated, Resolved, Processed, Verified. Only ' + verbsFound.length + ' distinct action verbs found; aim for 6 or more across your bullets.' });
+  total += addDim('Action verbs', verbs, 10, verbsFound.length + ' distinct action verbs found');
+
+  /* length — 10 */
+  const length = words === 0 ? 0 : words < 150 ? 3 : words <= 250 ? 6 : words <= 900 ? 10 : words <= 1200 ? 7 : 4;
+  if (length < 10) fixes.push({ lost: 10 - length, text: words < 250 ? '<b>Your resume is thin (' + words + ' words).</b> Most entry-level resumes that clear screens run 250–900 words — add real detail about what you did, not filler.' : '<b>Your resume is long (' + words + ' words).</b> Beyond ~900 words, recruiters skim and miss your best points — cut the oldest and least relevant material.' });
+  total += addDim('Length', length, 10, words + ' words (sweet spot: 250–900)');
+
+  /* ATS hygiene — 5 */
+  let hygiene = 5;
+  const firstPerson = (text.match(/\b(I|me|my|mine)\b/g) || []).length;
+  const hasBullets = text.split('\n').some(l => /^\s*[•\-–*]/.test(l));
+  if (firstPerson > 10) { hygiene -= 2; fixes.push({ lost: 2, text: '<b>Cut the first person.</b> “I” appears ' + firstPerson + ' times — resume bullets drop the pronoun (“Reviewed 40 files daily”, not “I reviewed 40 files”).' }); }
+  if (!hasBullets && hasExp) { hygiene -= 2; fixes.push({ lost: 2, text: '<b>Use bullet points for experience.</b> One achievement per line reads better for humans and parses more reliably than paragraphs.' }); }
+  total += addDim('ATS hygiene', Math.max(0, hygiene), 5, 'pronouns, bullets and parse-friendly habits');
+
+  fixes.sort((a, b) => b.lost - a.lost);
+  return { total, dims, fixes: fixes.slice(0, 7), matched, missing, words };
+}
+
+const SAMPLE = [
+  'Priya Sharma',
+  'priya.sharma@example.com · 9812345670',
+  '',
+  'Experience',
+  'KYC Analyst Intern — FinServe Solutions, Mumbai (2025)',
+  'I checked KYC documents for new customers and I updated records in the system.',
+  'I did name screening and sanctions screening for customer files.',
+  'I helped the team with customer onboarding and document verification.',
+  'My work included data entry and maintaining files for audits.',
+  '',
+  'Skills',
+  'KYC, sanctions screening, name screening, MS Office, data entry, customer onboarding',
+  '',
+  'Education',
+  'B.Com — Mumbai University, 2025'
+].join('\n');
+
+$('evSample').addEventListener('click', () => {
+  $('evText').value = SAMPLE;
+  $('evTrack').value = 'aml-kyc';
+  $('evRole').value = 'KYC Analyst';
+  $('evErr').textContent = '';
+  evaluate();
+});
+
+function verdictFor(total) {
+  if (total >= 80) return ['Strong resume', 'The fundamentals are in place. Now tailor it job-by-job with the Apply Assistant — that is where the remaining marks live.'];
+  if (total >= 60) return ['A solid base', 'You are closer than you think. Work through the fix list top-down — the first two items are worth the most.'];
+  if (total >= 40) return ['Needs focused work', 'The raw material is there, but screening software will pass over this version. Fix the top items and re-run the evaluator.'];
+  return ['Early draft', 'Start with the basics — contact details, clear sections, and your real skills in writing. Small fixes move this score fast.'];
+}
+
+function evaluate() {
+  const text = $('evText').value.trim();
+  if (text.length < 40) { $('evErr').textContent = 'Paste a little more of your resume first — the evaluator needs the real text to check.'; return; }
+  $('evErr').textContent = '';
+  const slug = $('evTrack').value;
+  const track = TRACKS.find(t => t.slug === slug);
+  const role = $('evRole').value.trim();
+  const r = scoreResume(text, slug);
+  $('evFor').textContent = 'Evaluated for: ' + track.label + (role ? ' · target role: ' + role : '') + ' · ' + r.words + ' words checked';
+  $('evScore').textContent = r.total;
+  const pct = Math.max(0, Math.min(100, r.total));
+  $('evRing').style.background = 'conic-gradient(var(--amber) 0 ' + pct + '%, rgba(33,33,33,.08) ' + pct + '% 100%)';
+  const v = verdictFor(r.total);
+  $('evVerdict').textContent = v[0] + ' — ' + r.total + '/100';
+  $('evVerdictSub').textContent = v[1];
+  $('evDims').innerHTML = r.dims.map((d, i) => `
+    <div class="dim">
+      <div class="dim-head"><span>${esc(d.name)}</span><b>${d.got} / ${d.max}</b></div>
+      <div class="dim-bar"><i class="${i === 2 ? 'amber' : i === 5 ? 'teal' : ''}" style="width:${Math.round(d.got / d.max * 100)}%"></i></div>
+      <p class="dim-note">${esc(d.note)}</p>
+    </div>`).join('');
+  $('evFixes').innerHTML = r.fixes.length ? r.fixes.map((f, i) => `
+    <li><span class="fx-n">${i + 1}</span><span>${f.text}</span><span class="fx-pts">+${f.lost} pts</span></li>`).join('')
+    : '<li><span class="fx-n">✓</span><span><b>Nothing material to fix</b> — every check passed. Tailor per job with the Apply Assistant.</span></li>';
+  $('evFound').innerHTML = r.matched.length ? r.matched.map(t => `<span class="kw">✓ ${esc(t)}</span>`).join('') : '<span class="hint">No track keywords found yet.</span>';
+  const shown = r.missing.slice(0, 18);
+  $('evMissing').innerHTML = shown.map(t => `<span class="kw-miss">${esc(t)}</span>`).join('') +
+    (r.missing.length > shown.length ? `<span class="kw-miss">+ ${r.missing.length - shown.length} more</span>` : '');
+  if (role) {
+    const roleKw = findKeywords(role).map(k => k.term);
+    const roleMissing = roleKw.filter(t => !textHas(text, t.toLowerCase()));
+    $('evRoleNote').textContent = roleKw.length
+      ? 'For the role “' + role + '”: ' + (roleMissing.length ? 'these role keywords are also missing from your resume — ' + roleMissing.join(', ') + '.' : 'every keyword in the role title already appears in your resume.')
+      : '';
+  } else $('evRoleNote').textContent = '';
+  $('evCourse').innerHTML = `
+    <div class="cc-main">
+      <h3>The <em>${esc(track.label)}</em> course</h3>
+      <p>The fastest way to close a keyword gap is to actually learn the skills — then they belong on your resume honestly.</p>
+      <p class="cc-fee">₹15,000 to start — rest after placement, from salary</p>
+    </div>
+    <a class="btn btn-primary" href="index.html#courses">See the course <span class="arr">→</span></a>`;
+  $('evResults').hidden = false;
+  $('evCta').hidden = false;
+  $('evCourse').hidden = false;
+  $('evResults').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+$('evRun').addEventListener('click', evaluate);
+
+document.getElementById('navToggle').addEventListener('click', () =>
+  document.getElementById('navLinks').classList.toggle('open'));
+</script>
+</body>
+</html>

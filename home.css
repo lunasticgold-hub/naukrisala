@@ -274,6 +274,22 @@
 .final-cta .btn{background:var(--navy);color:#fff;box-shadow:0 14px 30px rgba(11,21,41,.25)}
 .final-cta .btn:hover{background:var(--navy-2)}
 
+/* ---------- AI tools band ---------- */
+.tools-band{background:var(--navy-deep);color:#fff}
+.tools-band .sec-head-c h2{color:#fff}
+.tools-band .sec-head-c .lede-sm{color:#C9D5EA}
+.tools-band .eyebrow{color:var(--amber-light)}
+.ait-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(250px,100%),1fr));gap:16px}
+.ait-card{display:flex;flex-direction:column;gap:11px;background:var(--navy);border:1px solid var(--line-on-navy);border-radius:20px;padding:28px 26px;text-decoration:none;color:#fff;min-width:0;transition:transform .22s ease,border-color .22s ease}
+.ait-card:hover{transform:translateY(-4px);border-color:rgba(245,158,11,.55)}
+.ait-ic{width:50px;height:50px;border-radius:14px;background:rgba(245,158,11,.15);color:var(--amber);display:flex;align-items:center;justify-content:center}
+.ait-ic svg{width:26px;height:26px}
+.ait-card h3{font-family:var(--font-d);font-size:19px;font-weight:800;letter-spacing:-.015em;line-height:1.25}
+.ait-card p{font-size:14px;color:#C9D5EA;line-height:1.6;flex:1}
+.ait-foot{display:flex;justify-content:space-between;align-items:center;gap:10px;border-top:1px solid var(--line-on-navy);padding-top:15px}
+.ait-tag{font-size:11px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--amber-light)}
+.ait-go{font-size:14px;font-weight:700;color:#fff;white-space:nowrap}
+
 /* ---------- course cards (rich, Phase 2) ---------- */
 .c-chips{display:flex;flex-wrap:wrap;gap:6px}
 .c-chip{font-size:11.5px;font-weight:600;color:var(--ink2);background:var(--paper-2);border:1px solid var(--line-soft);border-radius:999px;padding:4px 10px}

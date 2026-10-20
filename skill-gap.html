@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Skill Gap Planner — NaukriSala AI Tools</title>
+<meta name="description" content="Pick a target track, tick the skills you already have, and get your readiness score, the exact skills left to learn, live openings and the matching NaukriSala course.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261021">
+<link rel="stylesheet" href="tools.css?v=20261021">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='10' fill='%230B1529'/><text x='50' y='70' font-size='56' text-anchor='middle' fill='%23F59E0B' font-family='Arial,sans-serif' font-weight='800'>N</text></svg>">
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <span class="brand-mark">N</span>
+      <span class="brand-word">NAUKRI<em>SALA</em></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html#courses">Courses</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#fees">Fees</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="index.html#tools" style="color:var(--accent-ink)">AI Tools</a>
+      <a href="index.html#faq">FAQ</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="index.html#demo">Book free demo <span class="arr">→</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main class="tool-main">
+  <section class="tool-hero">
+    <div class="wrap">
+      <p class="eyebrow"><span class="dot"></span>AI Tools · Skill Gap Planner</p>
+      <h1>Know exactly<br><em>what's left to learn.</em></h1>
+      <p class="lede">Pick your target track and honestly tick the skills you already have. The Planner computes your <strong>readiness</strong>, lists precisely what's missing, and matches you to the course and the live openings for that track.</p>
+      <span class="tool-tag"><span class="dot"></span>Free · runs in your browser</span>
+    </div>
+  </section>
+
+  <div class="wrap">
+    <section class="tpanel">
+      <h2>1 · Your target track</h2>
+      <p class="sub">The checklists come from the same skill dictionary our Apply Assistant uses against real job descriptions — these are the skills the roles actually screen for.</p>
+      <div class="field" style="max-width:460px"><label for="sgTrack">Target track</label><select id="sgTrack"></select></div>
+    </section>
+
+    <section class="tpanel">
+      <h2>2 · Tick what you genuinely know</h2>
+      <p class="sub">Be strict with yourself — tick a skill only if you could answer interview questions on it today. An honest gap list is a study plan; an inflated one is a surprise waiting in the interview.</p>
+      <div id="sgGroups"></div>
+    </section>
+
+    <section class="tpanel" id="sgResult">
+      <h2>3 · Your readiness</h2>
+      <p class="sub" id="sgSummary"></p>
+      <div class="score-hero">
+        <div class="score-ring" id="sgRing"><i><b id="sgPct">0%</b><span>ready</span></i></div>
+        <div class="score-verdict"><h3 id="sgVerdict"></h3><p id="sgVerdictSub"></p></div>
+      </div>
+      <h3 style="font-family:var(--font-d);font-size:17px;font-weight:800;margin:8px 0 13px">Your skills-to-learn list</h3>
+      <ul class="learn-list" id="sgLearn"></ul>
+    </section>
+
+    <div class="course-cta" id="sgCourse"></div>
+
+    <p class="hint" style="margin-top:18px">Openings counts come from the live NaukriSala board. On the board, use the track filter chips at the top to see only your track's openings.</p>
+    <div class="btn-row" style="margin-top:12px">
+      <a class="btn btn-dark" href="jobs.html">Browse the live jobs board <span class="arr">→</span></a>
+      <a class="btn btn-outline" href="socrates.html">Practise interviews with Socrates</a>
+    </div>
+  </div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-inner">
+    <div>
+      <p class="brand"><span class="brand-mark">N</span><span class="brand-word">NAUKRI<em>SALA</em></span></p>
+      <p class="fine">Placement-first training academy · India<br>Founding batch — November 2026</p>
+    </div>
+    <nav class="footer-links">
+      <a href="index.html#courses">Courses</a>
+      <a href="index.html#how">How it works</a>
+      <a href="index.html#fees">Fees</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="apply.html">Apply Assistant</a>
+      <a href="index.html#tools">AI Tools</a>
+      <a href="index.html#faq">FAQ</a>
+      <a href="index.html#demo">Free demo</a>
+    </nav>
+  </div>
+  <div class="wrap"><p class="fine foot-base">© 2026 NaukriSala · Get placed first. Pay from your salary. · जहाँ नौकरी पक्की</p></div>
+</footer>
+
+<script src="keywords.js"></script>
+<script>
+const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const $ = id => document.getElementById(id);
+
+/* Static fallback, counted from jobs.json on 2026-10-20; refreshed live below. */
+const OPENINGS = { 'aml-kyc': 1217, 'servicenow': 100, 'data-science-ai': 293, 'stom': 116, 'power-bi': 66, 'data-analyst': 108, 'workday': 85, 'python-fullstack': 167, 'java-fullstack': 195, 'qa-testing': 157, 'ib-operations': 103, 'sap-fico': 63, 'web-dev': 86, 'dotnet': 65, 'dbi': 181 };
+let liveOpenings = null;
+
+$('sgTrack').innerHTML = TRACKS.map(t => `<option value="${t.slug}">${esc(t.label)}</option>`).join('');
+
+function openingsFor(slug) {
+  if (liveOpenings && liveOpenings[slug]) return liveOpenings[slug];
+  return OPENINGS[slug];
+}
+
+function renderChecklist() {
+  const slug = $('sgTrack').value;
+  const groups = SKILL_GROUPS[slug] || [];
+  $('sgGroups').innerHTML = groups.map(([name, skills]) => `
+    <div class="sg-group"><h3>${esc(name)}</h3>
+      <div class="sg-grid">${skills.map(s => `
+        <label class="sg-item"><input type="checkbox" class="sg-box" value="${esc(s)}"><span>${esc(s)}</span></label>`).join('')}
+      </div>
+    </div>`).join('');
+  $('sgGroups').querySelectorAll('.sg-box').forEach(box => box.addEventListener('change', () => {
+    box.closest('.sg-item').classList.toggle('on', box.checked);
+    updateResult();
+  }));
+  updateResult();
+}
+
+function updateResult() {
+  const slug = $('sgTrack').value;
+  const track = TRACKS.find(t => t.slug === slug);
+  const all = (SKILL_GROUPS[slug] || []).flatMap(g => g[1]);
+  const known = [...document.querySelectorAll('.sg-box:checked')].map(b => b.value);
+  const toLearn = all.filter(s => !known.includes(s));
+  const pct = all.length ? Math.round(known.length / all.length * 100) : 0;
+  $('sgPct').textContent = pct + '%';
+  $('sgRing').style.background = 'conic-gradient(var(--amber) 0 ' + pct + '%, rgba(33,33,33,.08) ' + pct + '% 100%)';
+  $('sgSummary').textContent = 'You have ' + known.length + ' of ' + all.length + ' ' + track.label + ' skills ticked. ' +
+    (toLearn.length ? toLearn.length + ' to go — that is a finishable list, not a mountain.' : 'Nothing left on this checklist.');
+  const v = pct >= 80 ? ['Nearly job-ready', 'Your remaining list is short. Polish interview answers for the ticked skills and start applying — the board has live roles for this track today.']
+    : pct >= 50 ? ['Halfway there', 'You have the base. The list below is your syllabus — work it top to bottom and this number moves fast.']
+    : pct >= 25 ? ['A real start', 'Foundations are forming. The missing skills are exactly what the matching course teaches, in order.']
+    : ['Starting point mapped', 'Good news: the whole path is now visible. Nobody starts at 100% — they start with a list exactly like this one.'];
+  $('sgVerdict').textContent = v[0];
+  $('sgVerdictSub').textContent = v[1];
+  $('sgLearn').innerHTML = toLearn.length ? toLearn.map(s => `
+    <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg><span><b>${esc(s)}</b></span></li>`).join('')
+    : '<li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>Checklist complete</b> — now prove it in a Socrates round and tailor your resume.</span></li>';
+  const n = openingsFor(slug);
+  $('sgCourse').innerHTML = `
+    <div class="cc-main">
+      <h3>Learn the gap: the <em>${esc(track.label)}</em> course</h3>
+      <p>${n ? `<span class="cc-open">${n.toLocaleString('en-IN')} live openings</span> for this track are on the board right now. ` : ''}The course teaches the checklist above as a structured, mentor-led programme — 100% online.</p>
+      <p class="cc-fee">₹15,000 to start — rest after placement, from salary</p>
+    </div>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="index.html#demo">Book free demo <span class="arr">→</span></a>
+      <a class="btn btn-ghost" href="index.html#courses">Course details</a>
+    </div>`;
+}
+
+$('sgTrack').addEventListener('change', renderChecklist);
+renderChecklist();
+
+if ('fetch' in window) {
+  fetch('jobs.json').then(r => r.ok ? r.json() : null).then(d => {
+    if (!d || !d.jobs) return;
+    liveOpenings = {};
+    d.jobs.forEach(j => { liveOpenings[j.course] = (liveOpenings[j.course] || 0) + 1; });
+    updateResult();
+  }).catch(() => { /* static fallback stays */ });
+}
+
+document.getElementById('navToggle').addEventListener('click', () =>
+  document.getElementById('navLinks').classList.toggle('open'));
+</script>
+</body>
+</html>
