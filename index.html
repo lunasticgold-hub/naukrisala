@@ -8,11 +8,13 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261021">
-<link rel="stylesheet" href="home.css?v=20261021">
+<link rel="stylesheet" href="styles.css?v=20261021p3">
+<link rel="stylesheet" href="home.css?v=20261021p3">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230B1529'/><text x='50' y='70' font-size='56' text-anchor='middle' fill='%23F59E0B' font-family='Arial,sans-serif' font-weight='800'>N</text></svg>">
 </head>
 <body>
+
+<div class="topbar">Founding batch &nbsp;·&nbsp; <b>Batch 1 starts 10 Nov 2026</b> &nbsp;·&nbsp; Free demos from 3 Nov</div>
 
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
@@ -39,45 +41,57 @@
 
   <!-- HERO -->
   <section class="hero">
-    <svg class="hero-art" viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-      <defs>
-        <pattern id="hgrid" width="46" height="46" patternUnits="userSpaceOnUse">
-          <circle cx="2" cy="2" r="1.6" fill="rgba(255,255,255,.13)"/>
-        </pattern>
-      </defs>
-      <rect x="0" y="0" width="1440" height="640" fill="url(#hgrid)"/>
-      <g fill="none" stroke="rgba(245,158,11,.20)" stroke-width="1.5">
-        <circle cx="1240" cy="90" r="130"/><circle cx="1240" cy="90" r="200"/><circle cx="1240" cy="90" r="270"/>
-      </g>
-      <g stroke="rgba(245,158,11,.5)" stroke-width="2" stroke-linecap="round">
-        <path d="M120 512h18M129 503v18"/><path d="M1330 470h18M1339 461v18"/><path d="M660 74h18M669 65v18"/>
-      </g>
-      <path d="M-20 560 C 300 500, 520 610, 820 552 S 1300 500, 1470 548" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="1.5"/>
-    </svg>
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <div class="h-badges">
-          <span class="h-badge b-amber">Founding batch · Nov 2026</span>
-          <span class="h-badge">100% online · Live from anywhere in India</span>
-          <span class="h-badge b-green"><span class="dot"></span>Live jobs board — updated daily</span>
-        </div>
+        <span class="hero-eyebrow"><span class="dot"></span>Placement-first academy · 100% online</span>
         <h1>Get placed first.<br><em>Pay from your salary.</em></h1>
         <p class="lede">A placement-first training academy — <strong>100% online</strong>, every class live and interactive. Start with <strong>₹15,000</strong>. The rest is paid only after you sign an offer letter, in easy installments from your salary.</p>
+        <ul class="hero-ticks">
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>Live jobs board</b> — <span data-live-total>3,002</span> openings, refreshed every morning</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>Pay the balance only after placement</b> — in installments from your salary</span></li>
+          <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>1:1 mentor-led batches</b> — live online, from anywhere in India</span></li>
+        </ul>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#demo">Book free demo <span class="arr">→</span></a>
-          <a class="btn btn-ghost" href="jobs.html">See live openings <span class="arr">→</span></a>
-        </div>
-        <div class="promo">
-          <span class="promo-ic">◷</span>
-          <p>Free demo classes begin <strong>3 Nov</strong> — live online, no card, no commitment.</p>
-        </div>
-        <div class="stats">
-          <div class="stat"><strong>15</strong><span>career tracks</span></div>
-          <div class="stat"><strong>₹15k</strong><span>to start</span></div>
-          <div class="stat"><strong>₹0</strong><span>due during training</span></div>
+          <a class="link-arrow" href="jobs.html">See live openings <span class="arr">→</span></a>
         </div>
       </div>
-      <div class="hero-visual">
+      <div class="hero-form-col" id="demo">
+        <div class="demo-card">
+          <h3>Book your free demo class</h3>
+          <p class="demo-card-sub">Live online · demos from <strong>3 Nov 2026</strong> · no card, no commitment</p>
+          <form class="demo-form" id="demoForm">
+            <div class="field"><label for="fName">Full name</label><input type="text" id="fName" required placeholder="Your name" autocomplete="name"></div>
+            <div class="field"><label for="fPhone">WhatsApp number</label><input type="tel" id="fPhone" required placeholder="98XXXXXXXX" pattern="[0-9+ ]{10,15}" autocomplete="tel"></div>
+            <div class="field"><label for="fCourse">Interested course</label>
+              <select id="fCourse">
+                <option>AML &amp; KYC Analyst (flagship · live 10 Nov)</option>
+                <option>ServiceNow Developer</option>
+                <option>Data Science &amp; AI Engineering</option>
+                <option>STOM — Service Transition &amp; Ops</option>
+                <option>Power BI Developer</option>
+                <option>Data Analyst</option>
+                <option>Workday Consultant</option>
+                <option>Full Stack Python</option>
+                <option>Full Stack Java</option>
+                <option>Software Testing (QA)</option>
+                <option>Investment Banking Operations</option>
+                <option>SAP FICO</option>
+                <option>Web Development</option>
+                <option>.NET Developer</option>
+                <option>Database &amp; Business Intelligence</option>
+                <option>Not sure yet — help me choose</option>
+              </select>
+            </div>
+            <button class="btn btn-primary btn-block" type="submit">Book my free demo <span class="arr">→</span></button>
+            <p class="fine">Opens WhatsApp with your details pre-filled. We never spam.</p>
+          </form>
+        </div>
+        <p class="hero-trust"><strong data-live-total>3,002</strong> live openings today · No payment to book a demo</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="board-strip">
         <div class="board-card" id="boardCard">
           <div class="bc-head">
             <span class="bc-title">NaukriSala Jobs Board</span>
@@ -127,6 +141,175 @@
       <p class="proof-note">Openings are pulled from employer career pages and job boards across 7 source groups, and the board is refreshed every morning. <a href="jobs.html" style="color:inherit;font-weight:700">See the live board →</a></p>
     </div>
   </div>
+
+  <!-- COURSES -->
+  <section class="section section-soft" id="courses">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="dot"></span>Courses</p>
+        <h2>Train for the job. <em>Then get the job.</em></h2>
+        <p class="lede-sm">Flagship <strong>AML &amp; KYC Analyst</strong> goes live <strong>10 Nov 2026</strong>. Other tracks open as founding batches fill.</p>
+      </div>
+
+      <div class="flagship reveal">
+        <div class="flag-grid">
+          <div class="flag-main">
+            <div class="flag-chips">
+              <span class="fchip hot">Flagship programme</span>
+              <span class="fchip">Batch 1 · Live 10 Nov 2026</span>
+              <span class="fchip">Free demos from 3 Nov 2026</span>
+              <span class="fchip">100% online</span>
+            </div>
+            <h3>AML &amp; KYC Analyst — <em>the flagship.</em></h3>
+            <p class="flag-tag">Financial crime compliance, built for <strong>any graduate</strong>. Learn how banks verify customers, spot laundering and file the reports regulators demand — then apply to the <strong><span data-live-aml>1,217</span> live AML &amp; KYC openings</strong> already on the board.</p>
+            <p class="topics-label">What you'll master</p>
+            <div class="topics">
+              <span class="tchip">KYC &amp; Customer Onboarding</span><span class="tchip">CDD — Customer Due Diligence</span><span class="tchip">EDD — Enhanced Due Diligence</span><span class="tchip">Transaction Monitoring</span><span class="tchip">Sanctions &amp; Name Screening</span><span class="tchip">PEP Screening</span><span class="tchip">Adverse Media Checks</span><span class="tchip">SAR / STR Reporting</span><span class="tchip">Beneficial Ownership (UBO)</span><span class="tchip">Case Management</span><span class="tchip">World-Check · Actimize</span>
+            </div>
+            <div class="flag-meta">
+              <span class="fm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>45 days<small>Live online programme</small></span></span>
+              <span class="fm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="m10 9.5 5 2.5-5 2.5v-5Z"/><path d="M8 21h8"/></svg><span>Evening batches<small>Alongside college or a job</small></span></span>
+              <span class="fm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/></svg><span>Capstone case-work<small>Mirrors day-one job tasks</small></span></span>
+            </div>
+            <div class="flag-ctas">
+              <a class="btn btn-primary" href="#demo">Book free demo <span class="arr">→</span></a>
+              <a class="btn btn-ghost" href="#curriculum">See the curriculum</a>
+              <span class="flag-pay"><strong>₹9–28 LPA</strong><span>Placement range</span></span>
+            </div>
+          </div>
+          <aside class="flag-side">
+            <h4>The flagship, by the numbers</h4>
+            <p class="fs-sub">Counted from the live board and the Batch 1 calendar — nothing projected, nothing padded.</p>
+            <div class="fact-row"><span>Live AML &amp; KYC openings today</span><strong data-live-aml>1,217</strong></div>
+            <div class="fact-row"><span>Batch 1 begins</span><strong>10 Nov 2026</strong></div>
+            <div class="fact-row"><span>Free demos from</span><strong>3 Nov 2026</strong></div>
+            <div class="fact-row"><span>Programme length</span><strong>45 days</strong></div>
+            <div class="fact-row"><span>Format</span><strong>100% online, live</strong></div>
+            <div class="fact-row"><span>To start</span><strong><em>₹15,000</em></strong></div>
+            <div class="fs-cta">
+              <a href="jobs.html">Browse live AML &amp; KYC openings →</a>
+              <p>Every opening links straight to the employer's own career page.</p>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <div class="sec-head" style="margin-bottom:34px">
+        <h2 style="font-size:clamp(1.5rem,2.6vw,2rem)">All 15 career tracks</h2>
+        <p class="lede-sm" style="margin-bottom:0">One flagship now, fourteen more opening as founding batches fill.</p>
+      </div>
+      <div class="course-grid" id="courseGrid"></div>
+    </div>
+  </section>
+
+  <!-- CURRICULUM -->
+  <section class="section" id="curriculum">
+    <div class="wrap">
+      <div class="sec-head-c">
+        <p class="eyebrow"><span class="dot"></span>Curriculum · AML &amp; KYC</p>
+        <h2>What you'll actually learn, <em>module by module.</em></h2>
+        <p class="lede-sm">The flagship syllabus, in the order you'll learn it — taught live online over 45 days. Pick a module to see what it covers.</p>
+      </div>
+      <div class="curr">
+        <div class="curr-tabs" role="tablist" aria-label="AML and KYC course modules">
+          <button class="curr-tab is-active" role="tab" id="ct-1" aria-controls="cp-1" aria-selected="true" data-tab="0"><span class="ct-n">01</span><span class="ct-body"><span class="ct-t">Foundations of AML &amp; financial crime</span><span class="ct-m">Foundations</span></span></button>
+          <button class="curr-tab" role="tab" id="ct-2" aria-controls="cp-2" aria-selected="false" tabindex="-1" data-tab="1"><span class="ct-n">02</span><span class="ct-body"><span class="ct-t">KYC &amp; customer onboarding</span><span class="ct-m">Core skill</span></span></button>
+          <button class="curr-tab" role="tab" id="ct-3" aria-controls="cp-3" aria-selected="false" tabindex="-1" data-tab="2"><span class="ct-n">03</span><span class="ct-body"><span class="ct-t">Screening — sanctions, PEPs &amp; adverse media</span><span class="ct-m">Core skill</span></span></button>
+          <button class="curr-tab" role="tab" id="ct-4" aria-controls="cp-4" aria-selected="false" tabindex="-1" data-tab="3"><span class="ct-n">04</span><span class="ct-body"><span class="ct-t">Transaction monitoring &amp; investigations</span><span class="ct-m">Case-work</span></span></button>
+          <button class="curr-tab" role="tab" id="ct-5" aria-controls="cp-5" aria-selected="false" tabindex="-1" data-tab="4"><span class="ct-n">05</span><span class="ct-body"><span class="ct-t">Reporting — SAR, STR &amp; regulatory ops</span><span class="ct-m">Core skill</span></span></button>
+          <button class="curr-tab" role="tab" id="ct-6" aria-controls="cp-6" aria-selected="false" tabindex="-1" data-tab="5"><span class="ct-n">06</span><span class="ct-body"><span class="ct-t">Placement capstone</span><span class="ct-m">Placement</span></span></button>
+        </div>
+        <div class="curr-panels">
+          <div class="curr-panel is-active" role="tabpanel" id="cp-1" aria-labelledby="ct-1" tabindex="0">
+            <p class="cp-meta">Module 01 · Foundations · Live online</p>
+            <h3>Foundations of AML &amp; financial crime</h3>
+            <p class="cp-out">How money laundering actually works, why banks are on the front line, and the rulebook you'll operate under.</p>
+            <p class="cp-tlabel">Topics covered</p>
+            <div class="cp-topics"><span class="tchip sm">The 3 stages of laundering</span><span class="tchip sm">AML vs CFT</span><span class="tchip sm">FATF &amp; global standards</span><span class="tchip sm">RBI KYC directions</span><span class="tchip sm">The compliance function</span></div>
+          </div>
+          <div class="curr-panel" role="tabpanel" id="cp-2" aria-labelledby="ct-2" tabindex="0" hidden>
+            <p class="cp-meta">Module 02 · Core skill · Live online</p>
+            <h3>KYC &amp; customer onboarding</h3>
+            <p class="cp-out">Verifying who a customer really is — the daily bread of every KYC team in every bank.</p>
+            <p class="cp-tlabel">Topics covered</p>
+            <div class="cp-topics"><span class="tchip sm">Customer identification</span><span class="tchip sm">CDD</span><span class="tchip sm">EDD for high-risk customers</span><span class="tchip sm">Customer risk rating</span><span class="tchip sm">Beneficial ownership &amp; UBO</span><span class="tchip sm">Periodic review &amp; remediation</span></div>
+          </div>
+          <div class="curr-panel" role="tabpanel" id="cp-3" aria-labelledby="ct-3" tabindex="0" hidden>
+            <p class="cp-meta">Module 03 · Core skill · Live online</p>
+            <h3>Screening — sanctions, PEPs &amp; adverse media</h3>
+            <p class="cp-out">Checking customers against the lists that matter — and judging what a match really means.</p>
+            <p class="cp-tlabel">Topics covered</p>
+            <div class="cp-topics"><span class="tchip sm">Name screening</span><span class="tchip sm">Sanctions lists &amp; screening</span><span class="tchip sm">PEP screening</span><span class="tchip sm">Adverse media checks</span><span class="tchip sm">Watchlist management</span><span class="tchip sm">World-Check &amp; screening tools</span></div>
+          </div>
+          <div class="curr-panel" role="tabpanel" id="cp-4" aria-labelledby="ct-4" tabindex="0" hidden>
+            <p class="cp-meta">Module 04 · Case-work · Live online</p>
+            <h3>Transaction monitoring &amp; investigations</h3>
+            <p class="cp-out">Following the money: spotting the patterns no single transaction ever reveals.</p>
+            <p class="cp-tlabel">Topics covered</p>
+            <div class="cp-topics"><span class="tchip sm">Monitoring scenarios &amp; red flags</span><span class="tchip sm">Alert handling</span><span class="tchip sm">Case management</span><span class="tchip sm">Transaction analysis</span><span class="tchip sm">Investigations &amp; escalation</span><span class="tchip sm">Actimize &amp; monitoring tools</span></div>
+          </div>
+          <div class="curr-panel" role="tabpanel" id="cp-5" aria-labelledby="ct-5" tabindex="0" hidden>
+            <p class="cp-meta">Module 05 · Core skill · Live online</p>
+            <h3>Reporting — SAR, STR &amp; regulatory ops</h3>
+            <p class="cp-out">Turning findings into the filings regulators expect — accurate, evidenced and on time.</p>
+            <p class="cp-tlabel">Topics covered</p>
+            <div class="cp-topics"><span class="tchip sm">Suspicious Activity Reports (SAR)</span><span class="tchip sm">Suspicious Transaction Reports (STR)</span><span class="tchip sm">Regulatory reporting</span><span class="tchip sm">AML audit support</span><span class="tchip sm">Quality checks</span><span class="tchip sm">SOPs &amp; documentation</span></div>
+          </div>
+          <div class="curr-panel" role="tabpanel" id="cp-6" aria-labelledby="ct-6" tabindex="0" hidden>
+            <p class="cp-meta">Module 06 · Placement · Case-work</p>
+            <h3>Placement capstone</h3>
+            <p class="cp-out">Prove you're day-one ready — then go and get the offer.</p>
+            <p class="cp-tlabel">Topics covered</p>
+            <div class="cp-topics"><span class="tchip sm">Capstone case-work</span><span class="tchip sm">Resume overhaul</span><span class="tchip sm">Mock interviews</span><span class="tchip sm">Referrals &amp; applications</span><span class="tchip sm">Apply Assistant targeting</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="mentor-band reveal">
+        <span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span>
+        <div>
+          <h3>Taught by people who do this work</h3>
+          <p>Every module is taught live by working professionals from the industry — interactive evening sessions, real curriculum, zero recorded filler.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AI TOOLS -->
+  <section class="section tools-band" id="tools">
+    <div class="wrap">
+      <div class="sec-head-c">
+        <p class="eyebrow"><span class="dot"></span>Free AI tools</p>
+        <h2>Four tools. <em>Zero sign-up.</em></h2>
+        <p class="lede-sm">The same tools our students train with — free for anyone, right now. All four run entirely in your browser: nothing you type is uploaded anywhere.</p>
+      </div>
+      <div class="ait-grid">
+        <a class="ait-card reveal" href="apply.html">
+          <span class="ait-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="m9 14.5 2 2 4-4.5"/></svg></span>
+          <h3>Apply Assistant</h3>
+          <p>Tailors your resume to a live opening's exact keywords, reorders your experience around the match, and drafts your screening answers.</p>
+          <span class="ait-foot"><span class="ait-tag">Free · in your browser</span><span class="ait-go">Open tool →</span></span>
+        </a>
+        <a class="ait-card reveal" href="resume-evaluator.html">
+          <span class="ait-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a8 8 0 1 1 16 0"/><path d="M12 14l4-4"/><circle cx="12" cy="14" r="1.4" fill="currentColor"/><path d="M2.5 18.5h19"/></svg></span>
+          <h3>Resume Evaluator</h3>
+          <p>Scores your resume out of 100 against your target track — contact basics, structure, skill keywords, numbers — with a fix list in priority order.</p>
+          <span class="ait-foot"><span class="ait-tag">Free · in your browser</span><span class="ait-go">Open tool →</span></span>
+        </a>
+        <a class="ait-card reveal" href="socrates.html">
+          <span class="ait-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H4l2.3-2.9A8 8 0 1 1 21 12Z"/><path d="M9.2 9.3A2.9 2.9 0 1 1 12 12.5c-.8 0-1 .5-1 1.2"/><path d="M11 17h.01"/></svg></span>
+          <h3>Socrates · Interview Coach</h3>
+          <p>A 20-question timed mock round for your track — fundamentals, scenarios and judgement calls — ending in a full scorecard with explanations.</p>
+          <span class="ait-foot"><span class="ait-tag">Free · in your browser</span><span class="ait-go">Open tool →</span></span>
+        </a>
+        <a class="ait-card reveal" href="skill-gap.html">
+          <span class="ait-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></span>
+          <h3>Skill Gap Planner</h3>
+          <p>Tick the skills you already have and get your readiness percentage, the exact skills left to learn, and the live openings waiting at the end.</p>
+          <span class="ait-foot"><span class="ait-tag">Free · in your browser</span><span class="ait-go">Open tool →</span></span>
+        </a>
+      </div>
+    </div>
+  </section>
 
   <!-- BOARD BY THE NUMBERS -->
   <section class="section" id="board">
@@ -284,134 +467,6 @@
     </div>
   </section>
 
-  <!-- COURSES -->
-  <section class="section section-soft" id="courses">
-    <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow"><span class="dot"></span>Courses</p>
-        <h2>Train for the job. <em>Then get the job.</em></h2>
-        <p class="lede-sm">Flagship <strong>AML &amp; KYC Analyst</strong> goes live <strong>10 Nov 2026</strong>. Other tracks open as founding batches fill.</p>
-      </div>
-
-      <div class="flagship reveal">
-        <div class="flag-grid">
-          <div class="flag-main">
-            <div class="flag-chips">
-              <span class="fchip hot">Flagship programme</span>
-              <span class="fchip">Batch 1 · Live 10 Nov 2026</span>
-              <span class="fchip">Free demos from 3 Nov 2026</span>
-              <span class="fchip">100% online</span>
-            </div>
-            <h3>AML &amp; KYC Analyst — <em>the flagship.</em></h3>
-            <p class="flag-tag">Financial crime compliance, built for <strong>any graduate</strong>. Learn how banks verify customers, spot laundering and file the reports regulators demand — then apply to the <strong><span data-live-aml>1,217</span> live AML &amp; KYC openings</strong> already on the board.</p>
-            <p class="topics-label">What you'll master</p>
-            <div class="topics">
-              <span class="tchip">KYC &amp; Customer Onboarding</span><span class="tchip">CDD — Customer Due Diligence</span><span class="tchip">EDD — Enhanced Due Diligence</span><span class="tchip">Transaction Monitoring</span><span class="tchip">Sanctions &amp; Name Screening</span><span class="tchip">PEP Screening</span><span class="tchip">Adverse Media Checks</span><span class="tchip">SAR / STR Reporting</span><span class="tchip">Beneficial Ownership (UBO)</span><span class="tchip">Case Management</span><span class="tchip">World-Check · Actimize</span>
-            </div>
-            <div class="flag-meta">
-              <span class="fm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>45 days<small>Live online programme</small></span></span>
-              <span class="fm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="m10 9.5 5 2.5-5 2.5v-5Z"/><path d="M8 21h8"/></svg><span>Evening batches<small>Alongside college or a job</small></span></span>
-              <span class="fm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/></svg><span>Capstone case-work<small>Mirrors day-one job tasks</small></span></span>
-            </div>
-            <div class="flag-ctas">
-              <a class="btn btn-primary" href="#demo">Book free demo <span class="arr">→</span></a>
-              <a class="btn btn-ghost" href="#curriculum">See the curriculum</a>
-              <span class="flag-pay"><strong>₹9–28 LPA</strong><span>Placement range</span></span>
-            </div>
-          </div>
-          <aside class="flag-side">
-            <h4>The flagship, by the numbers</h4>
-            <p class="fs-sub">Counted from the live board and the Batch 1 calendar — nothing projected, nothing padded.</p>
-            <div class="fact-row"><span>Live AML &amp; KYC openings today</span><strong data-live-aml>1,217</strong></div>
-            <div class="fact-row"><span>Batch 1 begins</span><strong>10 Nov 2026</strong></div>
-            <div class="fact-row"><span>Free demos from</span><strong>3 Nov 2026</strong></div>
-            <div class="fact-row"><span>Programme length</span><strong>45 days</strong></div>
-            <div class="fact-row"><span>Format</span><strong>100% online, live</strong></div>
-            <div class="fact-row"><span>To start</span><strong><em>₹15,000</em></strong></div>
-            <div class="fs-cta">
-              <a href="jobs.html">Browse live AML &amp; KYC openings →</a>
-              <p>Every opening links straight to the employer's own career page.</p>
-            </div>
-          </aside>
-        </div>
-      </div>
-
-      <div class="sec-head" style="margin-bottom:34px">
-        <h2 style="font-size:clamp(1.5rem,2.6vw,2rem)">All 15 career tracks</h2>
-        <p class="lede-sm" style="margin-bottom:0">One flagship now, fourteen more opening as founding batches fill.</p>
-      </div>
-      <div class="course-grid" id="courseGrid"></div>
-    </div>
-  </section>
-
-  <!-- CURRICULUM -->
-  <section class="section" id="curriculum">
-    <div class="wrap">
-      <div class="sec-head-c">
-        <p class="eyebrow"><span class="dot"></span>Curriculum · AML &amp; KYC</p>
-        <h2>What you'll actually learn, <em>module by module.</em></h2>
-        <p class="lede-sm">The flagship syllabus, in the order you'll learn it — taught live online over 45 days.</p>
-      </div>
-      <div class="roadmap">
-        <div class="rm-item reveal">
-          <span class="rm-num">01</span>
-          <div class="rm-body">
-            <div class="rm-head"><h3>Foundations of AML &amp; financial crime</h3><span class="rm-meta">Live online · Foundations</span></div>
-            <p>How money laundering actually works, why banks are on the front line, and the rulebook you'll operate under.</p>
-            <div class="rm-topics"><span class="tchip sm">The 3 stages of laundering</span><span class="tchip sm">AML vs CFT</span><span class="tchip sm">FATF &amp; global standards</span><span class="tchip sm">RBI KYC directions</span><span class="tchip sm">The compliance function</span></div>
-          </div>
-        </div>
-        <div class="rm-item reveal">
-          <span class="rm-num">02</span>
-          <div class="rm-body">
-            <div class="rm-head"><h3>KYC &amp; customer onboarding</h3><span class="rm-meta">Live online · Core skill</span></div>
-            <p>Verifying who a customer really is — the daily bread of every KYC team in every bank.</p>
-            <div class="rm-topics"><span class="tchip sm">Customer identification</span><span class="tchip sm">CDD</span><span class="tchip sm">EDD for high-risk customers</span><span class="tchip sm">Customer risk rating</span><span class="tchip sm">Beneficial ownership &amp; UBO</span><span class="tchip sm">Periodic review &amp; remediation</span></div>
-          </div>
-        </div>
-        <div class="rm-item reveal">
-          <span class="rm-num">03</span>
-          <div class="rm-body">
-            <div class="rm-head"><h3>Screening — sanctions, PEPs &amp; adverse media</h3><span class="rm-meta">Live online · Core skill</span></div>
-            <p>Checking customers against the lists that matter — and judging what a match really means.</p>
-            <div class="rm-topics"><span class="tchip sm">Name screening</span><span class="tchip sm">Sanctions lists &amp; screening</span><span class="tchip sm">PEP screening</span><span class="tchip sm">Adverse media checks</span><span class="tchip sm">Watchlist management</span><span class="tchip sm">World-Check &amp; screening tools</span></div>
-          </div>
-        </div>
-        <div class="rm-item reveal">
-          <span class="rm-num">04</span>
-          <div class="rm-body">
-            <div class="rm-head"><h3>Transaction monitoring &amp; investigations</h3><span class="rm-meta">Live online · Case-work</span></div>
-            <p>Following the money: spotting the patterns no single transaction ever reveals.</p>
-            <div class="rm-topics"><span class="tchip sm">Monitoring scenarios &amp; red flags</span><span class="tchip sm">Alert handling</span><span class="tchip sm">Case management</span><span class="tchip sm">Transaction analysis</span><span class="tchip sm">Investigations &amp; escalation</span><span class="tchip sm">Actimize &amp; monitoring tools</span></div>
-          </div>
-        </div>
-        <div class="rm-item reveal">
-          <span class="rm-num">05</span>
-          <div class="rm-body">
-            <div class="rm-head"><h3>Reporting — SAR, STR &amp; regulatory ops</h3><span class="rm-meta">Live online · Core skill</span></div>
-            <p>Turning findings into the filings regulators expect — accurate, evidenced and on time.</p>
-            <div class="rm-topics"><span class="tchip sm">Suspicious Activity Reports (SAR)</span><span class="tchip sm">Suspicious Transaction Reports (STR)</span><span class="tchip sm">Regulatory reporting</span><span class="tchip sm">AML audit support</span><span class="tchip sm">Quality checks</span><span class="tchip sm">SOPs &amp; documentation</span></div>
-          </div>
-        </div>
-        <div class="rm-item reveal">
-          <span class="rm-num">06</span>
-          <div class="rm-body">
-            <div class="rm-head"><h3>Placement capstone</h3><span class="rm-meta">Case-work · Placement</span></div>
-            <p>Prove you're day-one ready — then go and get the offer.</p>
-            <div class="rm-topics"><span class="tchip sm">Capstone case-work</span><span class="tchip sm">Resume overhaul</span><span class="tchip sm">Mock interviews</span><span class="tchip sm">Referrals &amp; applications</span><span class="tchip sm">Apply Assistant targeting</span></div>
-          </div>
-        </div>
-      </div>
-      <div class="mentor-band reveal">
-        <span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span>
-        <div>
-          <h3>Taught by people who do this work</h3>
-          <p>Every module is taught live by working professionals from the industry — interactive evening sessions, real curriculum, zero recorded filler.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
   <!-- APPLY ASSISTANT -->
   <section class="section section-soft" id="assistant">
     <div class="wrap aa-grid">
@@ -463,43 +518,6 @@
           </div>
           <p class="aa-note">Product visual — a sample walkthrough from the live tool, tested on a real Morgan Stanley opening.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- AI TOOLS -->
-  <section class="section tools-band" id="tools">
-    <div class="wrap">
-      <div class="sec-head-c">
-        <p class="eyebrow"><span class="dot"></span>Free AI tools</p>
-        <h2>Four tools. <em>Zero sign-up.</em></h2>
-        <p class="lede-sm">The same tools our students train with — free for anyone, right now. All four run entirely in your browser: nothing you type is uploaded anywhere.</p>
-      </div>
-      <div class="ait-grid">
-        <a class="ait-card reveal" href="apply.html">
-          <span class="ait-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="m9 14.5 2 2 4-4.5"/></svg></span>
-          <h3>Apply Assistant</h3>
-          <p>Tailors your resume to a live opening's exact keywords, reorders your experience around the match, and drafts your screening answers.</p>
-          <span class="ait-foot"><span class="ait-tag">Free · in your browser</span><span class="ait-go">Open tool →</span></span>
-        </a>
-        <a class="ait-card reveal" href="resume-evaluator.html">
-          <span class="ait-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 14a8 8 0 1 1 16 0"/><path d="M12 14l4-4"/><circle cx="12" cy="14" r="1.4" fill="currentColor"/><path d="M2.5 18.5h19"/></svg></span>
-          <h3>Resume Evaluator</h3>
-          <p>Scores your resume out of 100 against your target track — contact basics, structure, skill keywords, numbers — with a fix list in priority order.</p>
-          <span class="ait-foot"><span class="ait-tag">Free · in your browser</span><span class="ait-go">Open tool →</span></span>
-        </a>
-        <a class="ait-card reveal" href="socrates.html">
-          <span class="ait-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a8 8 0 0 1-8 8H4l2.3-2.9A8 8 0 1 1 21 12Z"/><path d="M9.2 9.3A2.9 2.9 0 1 1 12 12.5c-.8 0-1 .5-1 1.2"/><path d="M11 17h.01"/></svg></span>
-          <h3>Socrates · Interview Coach</h3>
-          <p>A 20-question timed mock round for your track — fundamentals, scenarios and judgement calls — ending in a full scorecard with explanations.</p>
-          <span class="ait-foot"><span class="ait-tag">Free · in your browser</span><span class="ait-go">Open tool →</span></span>
-        </a>
-        <a class="ait-card reveal" href="skill-gap.html">
-          <span class="ait-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></span>
-          <h3>Skill Gap Planner</h3>
-          <p>Tick the skills you already have and get your readiness percentage, the exact skills left to learn, and the live openings waiting at the end.</p>
-          <span class="ait-foot"><span class="ait-tag">Free · in your browser</span><span class="ait-go">Open tool →</span></span>
-        </a>
       </div>
     </div>
   </section>
@@ -637,7 +655,7 @@
         </div>
         <div class="faq-item">
           <button class="faq-q">When do demo classes start?<span class="plus">+</span></button>
-          <div class="faq-a"><p>Free demo classes begin <strong>3 Nov 2026</strong>. Book a slot below — no card, no commitment.</p></div>
+          <div class="faq-a"><p>Free demo classes begin <strong>3 Nov 2026</strong>. Book your slot with the form at the top of this page — no card, no commitment.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Is the ₹15,000 refundable?<span class="plus">+</span></button>
@@ -647,45 +665,20 @@
     </div>
   </section>
 
-  <!-- DEMO -->
-  <section class="section demo-sec" id="demo">
-    <div class="wrap demo-grid">
-      <div>
+  <!-- AFTER YOU BOOK -->
+  <section class="section section-soft" id="after">
+    <div class="wrap">
+      <div class="sec-head">
         <p class="eyebrow"><span class="dot"></span>Free demo · no card, no commitment</p>
-        <h2>Start with a <em>free demo class.</em></h2>
-        <p class="lede-sm">Demo classes begin <strong>3 Nov 2026</strong>, live online. Drop your details — we'll confirm your slot on WhatsApp.</p>
-        <ul class="next-steps">
-          <li><span class="ns-n">1</span><p><b>Book your slot.</b> The form takes twenty seconds — name, number, course.</p></li>
-          <li><span class="ns-n">2</span><p><b>We confirm on WhatsApp.</b> One message with your demo time and joining link. No spam, ever.</p></li>
-          <li><span class="ns-n">3</span><p><b>Attend live online.</b> Meet the trainer, sit in on a real class, ask anything.</p></li>
-        </ul>
+        <h2>What happens <em>after you book.</em></h2>
+        <p class="lede-sm">Demo classes begin <strong>3 Nov 2026</strong>, live online. Three simple steps between you and your first class.</p>
       </div>
-      <form class="demo-form" id="demoForm">
-        <div class="field"><label for="fName">Full name</label><input type="text" id="fName" required placeholder="Your name" autocomplete="name"></div>
-        <div class="field"><label for="fPhone">WhatsApp number</label><input type="tel" id="fPhone" required placeholder="98XXXXXXXX" pattern="[0-9+ ]{10,15}" autocomplete="tel"></div>
-        <div class="field"><label for="fCourse">Interested course</label>
-          <select id="fCourse">
-            <option>AML &amp; KYC Analyst (flagship · live 10 Nov)</option>
-            <option>ServiceNow Developer</option>
-            <option>Data Science &amp; AI Engineering</option>
-            <option>STOM — Service Transition &amp; Ops</option>
-            <option>Power BI Developer</option>
-            <option>Data Analyst</option>
-            <option>Workday Consultant</option>
-            <option>Full Stack Python</option>
-            <option>Full Stack Java</option>
-            <option>Software Testing (QA)</option>
-            <option>Investment Banking Operations</option>
-            <option>SAP FICO</option>
-            <option>Web Development</option>
-            <option>.NET Developer</option>
-            <option>Database &amp; Business Intelligence</option>
-            <option>Not sure yet — help me choose</option>
-          </select>
-        </div>
-        <button class="btn btn-primary btn-block" type="submit">Book my free demo <span class="arr">→</span></button>
-        <p class="fine">Opens WhatsApp with your details pre-filled. We never spam.</p>
-      </form>
+      <ul class="next-steps">
+        <li><span class="ns-n">1</span><p><b>Book your slot.</b> The form at the top of this page takes twenty seconds — name, number, course.</p></li>
+        <li><span class="ns-n">2</span><p><b>We confirm on WhatsApp.</b> One message with your demo time and joining link. No spam, ever.</p></li>
+        <li><span class="ns-n">3</span><p><b>Attend live online.</b> Meet the trainer, sit in on a real class, ask anything.</p></li>
+      </ul>
+      <a class="btn btn-primary" href="#demo" style="margin-top:30px">Book my free demo <span class="arr">→</span></a>
     </div>
   </section>
 
@@ -694,7 +687,7 @@
     <div class="wrap">
       <h2>The next batch starts with a <em>free demo.</em></h2>
       <p>Demo classes begin 3 Nov 2026 — live online, from anywhere in India. AML &amp; KYC Batch 1 starts 10 Nov.</p>
-      <a class="btn" href="#demo">Book my free demo <span class="arr">→</span></a>
+      <a class="btn btn-primary" href="#demo">Book my free demo <span class="arr">→</span></a>
     </div>
   </section>
 
@@ -796,6 +789,36 @@
         '</h4><p><b>' + esc(j.company || '') + '</b>' + (j.city ? ' · ' + esc(j.city) : '') + '</p></a>';
     }).join('');
   }).catch(function () { /* static fallback stays */ });
+})();
+</script>
+<script>
+/* Curriculum module tabs — vanilla, ARIA tab pattern. */
+(function () {
+  var tabs = Array.prototype.slice.call(document.querySelectorAll('.curr-tab'));
+  var panels = Array.prototype.slice.call(document.querySelectorAll('.curr-panel'));
+  if (!tabs.length) return;
+  function select(i, focus) {
+    tabs.forEach(function (t, j) {
+      var on = i === j;
+      t.classList.toggle('is-active', on);
+      t.setAttribute('aria-selected', on ? 'true' : 'false');
+      t.tabIndex = on ? 0 : -1;
+      panels[j].classList.toggle('is-active', on);
+      if (on) panels[j].removeAttribute('hidden'); else panels[j].setAttribute('hidden', '');
+    });
+    if (focus) tabs[i].focus();
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener('click', function () { select(i, false); });
+    t.addEventListener('keydown', function (e) {
+      var n = null;
+      if (e.key === 'ArrowRight' || e.key === 'ArrowDown') n = (i + 1) % tabs.length;
+      else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') n = (i - 1 + tabs.length) % tabs.length;
+      else if (e.key === 'Home') n = 0;
+      else if (e.key === 'End') n = tabs.length - 1;
+      if (n !== null) { e.preventDefault(); select(n, true); }
+    });
+  });
 })();
 </script>
 </body>
