@@ -274,6 +274,15 @@
 .final-cta .btn{background:var(--navy);color:#fff;box-shadow:0 14px 30px rgba(11,21,41,.25)}
 .final-cta .btn:hover{background:var(--navy-2)}
 
+/* ---------- course cards (rich, Phase 2) ---------- */
+.c-chips{display:flex;flex-wrap:wrap;gap:6px}
+.c-chip{font-size:11.5px;font-weight:600;color:var(--ink2);background:var(--paper-2);border:1px solid var(--line-soft);border-radius:999px;padding:4px 10px}
+.c-meta{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.c-open{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:600;color:#0E5C31;background:var(--green-bg);border:1px solid rgba(23,138,76,.28);border-radius:999px;padding:5px 12px}
+.c-open b{font-family:var(--font-d);font-weight:800}
+.c-dur{font-size:12.5px;font-weight:600;color:var(--muted)}
+.c-fee{font-size:13px;font-weight:600;color:var(--amber-ink);border-top:1px solid var(--line-soft);padding-top:12px}
+
 /* ---------- responsive ---------- */
 @media(max-width:1020px){
   .hero-visual{max-width:560px}

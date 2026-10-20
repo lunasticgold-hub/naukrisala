@@ -734,6 +734,12 @@
     document.querySelectorAll('[data-live-aml]').forEach(function (el) {
       el.setAttribute('data-target', aml); el.textContent = fmt(aml);
     });
+    var byCourse = {};
+    jobs.forEach(function (j) { byCourse[j.course] = (byCourse[j.course] || 0) + 1; });
+    document.querySelectorAll('[data-openings]').forEach(function (el) {
+      var n = byCourse[el.getAttribute('data-openings')];
+      if (n) el.innerHTML = '<b>' + fmt(n) + '</b> live openings';
+    });
     var kw = /(aml|kyc|sanction|transaction monitoring|financial crime|compliance|due diligence)/i;
     var fresh = jobs.filter(function (j) {
       return j.course === 'aml-kyc' && !j.stale && kw.test(j.title || '');

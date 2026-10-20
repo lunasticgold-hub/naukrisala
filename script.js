@@ -19,21 +19,74 @@ const COURSES = [
   { name: "Database & Business Intelligence", tag: "SQL + BI tools", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
 ];
 
+/* Per-track live-openings counts, counted from jobs.json on 2026-10-20.
+   The homepage wiring refreshes them from jobs.json on every load —
+   these values are the static fallback. Keys are jobs.json course slugs. */
+const COURSE_SLUGS = {
+  "AML & KYC Analyst": "aml-kyc",
+  "ServiceNow Developer": "servicenow",
+  "Data Science & AI Engineering": "data-science-ai",
+  "STOM — Service Transition & Ops": "stom",
+  "Power BI Developer": "power-bi",
+  "Data Analyst": "data-analyst",
+  "Workday Consultant": "workday",
+  "Full Stack Python": "python-fullstack",
+  "Full Stack Java Developer": "java-fullstack",
+  "Software Testing (QA)": "qa-testing",
+  "Investment Banking Operations": "ib-operations",
+  "SAP FICO (S/4HANA Finance)": "sap-fico",
+  "Web Development": "web-dev",
+  ".NET Developer": "dotnet",
+  "Database & Business Intelligence": "dbi"
+};
+const COURSE_OPENINGS = {
+  "aml-kyc": 1217, "servicenow": 100, "data-science-ai": 293, "stom": 116,
+  "power-bi": 66, "data-analyst": 108, "workday": 85, "python-fullstack": 167,
+  "java-fullstack": 195, "qa-testing": 157, "ib-operations": 103,
+  "sap-fico": 63, "web-dev": 86, "dotnet": 65, "dbi": 181
+};
+/* Topic chips: taken from the course's own tag line where it lists topics;
+   the flagship's chips come from its curriculum topics on this page. */
+const COURSE_CHIPS = {
+  "aml-kyc": ["KYC & Customer Onboarding", "CDD — Customer Due Diligence", "EDD — Enhanced Due Diligence", "Transaction Monitoring", "Sanctions & Name Screening", "SAR / STR Reporting"]
+};
+function courseChips(c, slug) {
+  if (COURSE_CHIPS[slug]) return COURSE_CHIPS[slug];
+  const tag = c.tag || "";
+  if (/^(best for|any graduate)/i.test(tag)) return [];
+  const parts = tag.split(/[,+·]/).map(s => s.trim()).filter(Boolean);
+  if (parts.length < 2) return [];
+  return parts.slice(0, 6).map(s => s.charAt(0).toUpperCase() + s.slice(1));
+}
+
 function renderCourses() {
   const grid = document.getElementById("courseGrid");
-  grid.innerHTML = COURSES.map(c => `
+  grid.innerHTML = COURSES.map(c => {
+    const slug = COURSE_SLUGS[c.name] || "";
+    const openings = COURSE_OPENINGS[slug];
+    const chips = courseChips(c, slug);
+    const hasPay = c.pay && c.pay !== "TBA";
+    const hasDur = c.dur && c.dur !== "TBA";
+    return `
     <div class="course${c.flagship ? " flagship" : ""} reveal">
       ${c.flagship ? '<span class="course-flag">Flagship</span>' : ''}
       <p class="course-tag">${c.status}</p>
       <h3>${c.name}</h3>
       <p class="tag">${c.tag}</p>
-      <p class="pay">${c.pay}<small>placement range</small></p>
+      ${chips.length ? `<div class="c-chips">${chips.map(t => `<span class="c-chip">${t}</span>`).join("")}</div>` : ''}
+      <div class="c-meta">
+        ${openings ? `<span class="c-open" data-openings="${slug}"><b>${openings.toLocaleString('en-IN')}</b> live openings</span>` : ''}
+        ${hasDur ? `<span class="c-dur">${c.dur} · Live online</span>` : ''}
+      </div>
+      ${hasPay ? `<p class="pay">${c.pay}<small>placement range</small></p>` : ''}
+      <p class="c-fee">₹15,000 to start — rest after placement, from salary</p>
       <div class="foot">
-        <span class="dur">${c.dur}</span>
+        <span class="dur">${hasDur ? c.dur : c.status}</span>
         <a class="go" href="#demo">Details →</a>
       </div>
       <span class="course-bar"></span>
-    </div>`).join("");
+    </div>`;
+  }).join("");
   // cursor spotlight
   grid.querySelectorAll(".course").forEach(card => {
     card.addEventListener("pointermove", e => {
