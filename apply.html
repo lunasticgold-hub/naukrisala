@@ -7,18 +7,32 @@
 <meta name="description" content="Tailor your resume to a live job opening: keyword match against the job description, a reordered resume, and drafted screening answers. You review, then apply on the employer's site.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261020">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='10' fill='%230A1730'/><text x='50' y='70' font-size='56' text-anchor='middle' fill='%23F6A609' font-family='Arial,sans-serif' font-weight='800'>N</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261021">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='10' fill='%230B1529'/><text x='50' y='70' font-size='56' text-anchor='middle' fill='%23F59E0B' font-family='Arial,sans-serif' font-weight='800'>N</text></svg>">
 <style>
 main{background:var(--bg2);padding-bottom:70px}
-.aa-hero{background:radial-gradient(680px 380px at 90% -10%,rgba(246,166,9,.18),rgba(246,166,9,0) 62%),var(--navy);color:#fff;padding:64px 0 54px;margin-bottom:34px}
+.aa-hero{background:radial-gradient(680px 380px at 90% -10%,rgba(245,158,11,.18),rgba(245,158,11,0) 62%),var(--navy);color:#fff;padding:64px 0 54px;margin-bottom:34px}
 .aa-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center}
 .aa-hero h1{font-size:clamp(2.3rem,4.6vw,3.6rem);margin-bottom:16px}
 .aa-hero .lede{color:#C9D5EA}
 .aa-hero .lede strong{color:#fff}
-.aa-photo{display:block;width:100%;height:330px;object-fit:cover;border-radius:20px;box-shadow:var(--shadow-lg)}
-@media(max-width:900px){.aa-hero-grid{grid-template-columns:1fr}.aa-photo{height:250px}}
+.aa-visual{background:#fff;color:var(--ink);border-radius:20px;box-shadow:var(--shadow-lg);padding:24px 24px 20px;position:relative;overflow:hidden}
+.aa-visual::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--amber)}
+.aa-visual .v-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;padding-bottom:14px;border-bottom:1px solid var(--line-soft)}
+.aa-visual .v-head h3{font:800 16px var(--font-d);letter-spacing:-.01em;color:var(--navy);line-height:1.3}
+.aa-visual .v-head p{font-size:13px;color:var(--muted);margin-top:2px}
+.aa-visual .v-tag{flex:none;font-size:10.5px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--amber-ink);background:rgba(245,158,11,.13);border-radius:6px;padding:4px 9px}
+.aa-visual .v-match{display:flex;align-items:center;gap:18px;padding:16px 0 4px}
+.aa-visual .v-ring{width:76px;height:76px;border-radius:50%;flex:none;display:flex;align-items:center;justify-content:center;background:conic-gradient(var(--amber) 0 50%,rgba(33,33,33,.08) 50% 100%)}
+.aa-visual .v-ring i{width:56px;height:56px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font:800 16px var(--font-d);font-style:normal;color:var(--navy)}
+.aa-visual .v-kw h4{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+.aa-visual .v-chips{display:flex;flex-wrap:wrap;gap:6px}
+.aa-visual .v-chip{font-size:12px;font-weight:600;border-radius:999px;padding:5px 11px}
+.aa-visual .v-chip.ok{background:rgba(23,138,76,.08);color:#0E5C31;border:1px solid rgba(23,138,76,.3)}
+.aa-visual .v-chip.miss{background:#fff;color:var(--muted);border:1px dashed var(--line)}
+.aa-visual .v-note{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line-soft);padding-top:12px;margin-top:14px}
+@media(max-width:900px){.aa-hero-grid{grid-template-columns:1fr}}
 .panel{background:#fff;border:1px solid var(--line-soft);border-radius:18px;box-shadow:var(--shadow-sm);padding:32px;margin-bottom:22px;min-width:0}
 .panel-head{display:flex;align-items:center;gap:14px;margin-bottom:8px;flex-wrap:wrap;border-bottom:1px solid var(--line-soft);padding-bottom:14px}
 .step-n{display:inline-flex;align-items:center;font-family:var(--font-d);font-size:.7rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--navy);background:var(--amber);border-radius:999px;padding:6px 13px}
@@ -27,15 +41,15 @@ main{background:var(--bg2);padding-bottom:70px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .form-grid .full{grid-column:1/-1}
 .field textarea{width:100%;font-family:var(--font-b);font-size:15.5px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);resize:vertical;min-height:52px;line-height:1.55}
-.field textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(246,166,9,.22)}
+.field textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.22)}
 .exp-block{border:1px solid var(--line-soft);border-radius:14px;padding:20px;margin-bottom:16px;background:var(--bg2)}
 .exp-block .mono{display:block;margin-bottom:14px;color:var(--amber-ink)}
 .saved-note{font:500 13.5px var(--font-b);color:var(--good);min-height:20px;margin-top:12px}
 .jobpick{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .jobpick select{width:100%;font-family:var(--font-b);font-size:14.5px;padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
 .jobpick select option{background:#fff;color:var(--ink);padding:6px 8px}
-.job-card-view{border:1.5px solid rgba(246,166,9,.55);border-radius:16px;padding:22px;background:rgba(246,166,9,.06);min-width:0}
-.job-card-view .job-tag{display:inline-block;font:700 10.5px var(--font-b);letter-spacing:.07em;text-transform:uppercase;color:var(--amber-ink);background:rgba(246,166,9,.14);border:1px solid rgba(246,166,9,.35);border-radius:999px;padding:5px 11px;margin-bottom:10px}
+.job-card-view{border:1.5px solid rgba(245,158,11,.55);border-radius:16px;padding:22px;background:rgba(245,158,11,.06);min-width:0}
+.job-card-view .job-tag{display:inline-block;font:700 10.5px var(--font-b);letter-spacing:.07em;text-transform:uppercase;color:var(--amber-ink);background:rgba(245,158,11,.14);border:1px solid rgba(245,158,11,.35);border-radius:999px;padding:5px 11px;margin-bottom:10px}
 .job-card-view h3{font:700 20px/1.3 var(--font-d);letter-spacing:-.015em;overflow-wrap:break-word}
 .job-card-view .co{font:500 14px var(--font-b);color:var(--ink2);margin:4px 0 10px}
 .job-card-view .snip{font:400 14px/1.65 var(--font-b);color:var(--muted);overflow-wrap:break-word}
@@ -43,13 +57,13 @@ main{background:var(--bg2);padding-bottom:70px}
 #jobView a{color:var(--amber-ink)!important}
 .score-row{display:flex;align-items:center;gap:22px;flex-wrap:wrap;margin-bottom:20px}
 .score-num{font-family:var(--font-d);font-size:56px;font-weight:800;letter-spacing:-.03em;line-height:1;color:var(--navy)}
-.score-bar{flex:1;min-width:180px;height:10px;border-radius:99px;background:rgba(10,23,48,.1);overflow:hidden}
+.score-bar{flex:1;min-width:180px;height:10px;border-radius:99px;background:rgba(11,21,41,.1);overflow:hidden}
 .score-bar i{display:block;height:100%;background:var(--amber);border-radius:99px;transition:width .4s ease}
 .kw-group{margin-bottom:20px}
 .kw-group h4{font-size:.68rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
 .kw-chips{display:flex;gap:8px;flex-wrap:wrap}
 .kw{font:600 12.5px var(--font-b);border-radius:999px;padding:7px 13px;border:1px solid rgba(23,138,76,.45);color:var(--good);background:rgba(23,138,76,.06)}
-.kw-miss{display:inline-flex;align-items:center;gap:8px;font:600 12.5px var(--font-b);border-radius:999px;padding:7px 13px;border:1px solid rgba(246,166,9,.55);color:var(--ink);background:rgba(246,166,9,.05);cursor:pointer}
+.kw-miss{display:inline-flex;align-items:center;gap:8px;font:600 12.5px var(--font-b);border-radius:999px;padding:7px 13px;border:1px solid rgba(245,158,11,.55);color:var(--ink);background:rgba(245,158,11,.05);cursor:pointer}
 .kw-miss input{accent-color:var(--amber);width:15px;height:15px;cursor:pointer}
 .kw-miss.on{background:var(--navy);color:#fff;border-color:var(--navy)}
 .hint{font-size:13px;color:var(--muted);margin-top:10px}
@@ -75,10 +89,10 @@ main{background:var(--bg2);padding-bottom:70px}
 .ans-box label{display:block;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
 .ans-row{display:flex;gap:10px;align-items:flex-start}
 .ans-row textarea{flex:1;font-family:var(--font-b);font-size:14.5px;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);resize:vertical;min-height:74px;line-height:1.55;min-width:0}
-.ans-row textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(246,166,9,.22)}
+.ans-row textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.22)}
 .copy-btn{flex:none;font:600 12.5px var(--font-b);border:1px solid var(--line);background:#fff;color:var(--ink2);border-radius:10px;padding:10px 14px;cursor:pointer;transition:.2s}
 .copy-btn:hover{border-color:var(--navy);color:var(--ink)}
-.draft-label{display:inline-block;font:700 11px var(--font-b);letter-spacing:.08em;text-transform:uppercase;color:var(--amber-ink);background:rgba(246,166,9,.13);border:1px solid rgba(246,166,9,.5);border-radius:999px;padding:5px 12px;margin-bottom:16px}
+.draft-label{display:inline-block;font:700 11px var(--font-b);letter-spacing:.08em;text-transform:uppercase;color:var(--amber-ink);background:rgba(245,158,11,.13);border:1px solid rgba(245,158,11,.5);border-radius:999px;padding:5px 12px;margin-bottom:16px}
 .btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px}
 .apply-note{font-size:13.5px;color:var(--muted);margin-top:12px;text-align:center}
 .empty-note{color:var(--muted);font-size:14.5px;border:1px dashed var(--line);border-radius:14px;padding:20px;text-align:center}
@@ -134,7 +148,26 @@ main{background:var(--bg2);padding-bottom:70px}
         <h1>Tailor your resume<br>to <em>the job.</em></h1>
         <p class="lede">Pick a live opening and this tool matches its keywords against <strong>your</strong> profile, rebuilds your resume in the right order, and drafts your screening answers. You review everything — then apply on the employer's own site. Nothing is ever auto-submitted, and nothing gets added to your resume that you haven't confirmed is true.</p>
       </div>
-      <img class="aa-photo" src="assets/professional-laptop.jpg" alt="A young professional holding a laptop and smiling" fetchpriority="high">
+      <div class="aa-visual" role="img" aria-label="Illustration of the Apply Assistant matching a resume to a job's keywords">
+        <div class="v-head">
+          <div><h3>AML/KYC Analyst</h3><p>A live opening · keyword check</p></div>
+          <span class="v-tag">How it works</span>
+        </div>
+        <div class="v-match">
+          <div class="v-ring"><i>50%</i></div>
+          <div class="v-kw">
+            <h4>Keywords in your profile</h4>
+            <div class="v-chips">
+              <span class="v-chip ok">✓ KYC</span><span class="v-chip ok">✓ AML</span><span class="v-chip ok">✓ CDD</span><span class="v-chip ok">✓ Compliance</span>
+            </div>
+            <h4 style="margin-top:12px">Missing — learn or confirm</h4>
+            <div class="v-chips">
+              <span class="v-chip miss">Transaction Monitoring</span><span class="v-chip miss">Sanctions Screening</span><span class="v-chip miss">Name Screening</span>
+            </div>
+          </div>
+        </div>
+        <p class="v-note">The Assistant compares the job's keywords with your profile — then rebuilds your resume around the match.</p>
+      </div>
     </div>
   </section>
 

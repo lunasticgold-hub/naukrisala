@@ -7,25 +7,37 @@
 <meta name="description" content="Real job openings across India, matched to every NaukriSala course track. Browse, filter, and apply on the employer's site.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261020">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='10' fill='%230A1730'/><text x='50' y='70' font-size='56' text-anchor='middle' fill='%23F6A609' font-family='Arial,sans-serif' font-weight='800'>N</text></svg>">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261021">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='10' fill='%230B1529'/><text x='50' y='70' font-size='56' text-anchor='middle' fill='%23F59E0B' font-family='Arial,sans-serif' font-weight='800'>N</text></svg>">
 <style>
-.jobs-hero{background:radial-gradient(680px 380px at 90% -10%,rgba(246,166,9,.18),rgba(246,166,9,0) 62%),var(--navy);color:#fff;padding:62px 0 56px}
+.jobs-hero{background:radial-gradient(680px 380px at 90% -10%,rgba(245,158,11,.18),rgba(245,158,11,0) 62%),var(--navy);color:#fff;padding:62px 0 56px}
 .jobs-hero-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:52px;align-items:center}
 .jobs-hero h1{font-family:var(--font-d);font-weight:800;font-size:clamp(38px,5.2vw,62px);line-height:1.04;letter-spacing:-.03em;margin:16px 0 14px}
 .jobs-hero h1 em{font-style:normal;color:var(--amber)}
 .jobs-hero .lede{color:#C9D5EA}
 .jobs-hero .lede strong{color:#fff}
-.jobs-hero-media img{display:block;width:100%;height:320px;object-fit:cover;border-radius:20px;box-shadow:var(--shadow-lg)}
+.snap-card{background:#fff;color:var(--ink);border-radius:20px;box-shadow:var(--shadow-lg);padding:24px 24px 18px;overflow:hidden;position:relative}
+.snap-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--amber)}
+.snap-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--line-soft)}
+.snap-head h3{font:800 15.5px var(--font-d);letter-spacing:-.01em;color:var(--navy)}
+.snap-head span{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--good)}
+.snap-bars{display:flex;flex-direction:column;gap:12px;padding:16px 0 6px}
+.snap-row{display:grid;grid-template-columns:150px 1fr 46px;align-items:center;gap:12px}
+.snap-row .sn{font-size:13px;font-weight:600;color:var(--ink2);line-height:1.25}
+.snap-row .st{height:9px;border-radius:99px;background:rgba(33,33,33,.07);overflow:hidden}
+.snap-row .sf{display:block;height:100%;border-radius:99px;background:var(--navy)}
+.snap-row .sf.amber{background:var(--amber)}
+.snap-row .sv{font:800 13.5px var(--font-d);color:var(--navy);text-align:right}
+.snap-note{font-size:12.5px;color:var(--muted);border-top:1px solid var(--line-soft);padding-top:12px}
 .jobs-stats{display:flex;gap:26px;flex-wrap:wrap;margin-top:28px}
 .jobs-stats .js strong{display:block;font-family:var(--font-d);font-size:24px;font-weight:800;color:#fff;letter-spacing:-.01em}
 .jobs-stats .js span{font-size:11.5px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted-on-navy)}
 @media(max-width:900px){.jobs-hero-grid{grid-template-columns:1fr}.jobs-hero-media{display:none}}
-.controls{position:sticky;top:72px;z-index:50;background:#fff;border-bottom:1px solid var(--line-soft);box-shadow:0 10px 26px rgba(10,23,48,.07);padding:14px 0}
+.controls{position:sticky;top:72px;z-index:50;background:#fff;border-bottom:1px solid var(--line-soft);box-shadow:0 10px 26px rgba(11,21,41,.07);padding:14px 0}
 .controls-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .search{flex:1;min-width:220px;display:flex;align-items:center;gap:10px;background:var(--bg2);border:1px solid var(--line-soft);border-radius:12px;padding:12px 16px}
-.search:focus-within{border-color:var(--amber);box-shadow:0 0 0 3px rgba(246,166,9,.2);background:#fff}
+.search:focus-within{border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.2);background:#fff}
 .search input{flex:1;background:none;border:none;outline:none;color:var(--ink);font:500 15px var(--font-b)}
 .search input::placeholder{color:var(--muted)}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
@@ -46,7 +58,7 @@
 .job-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:16px;padding-bottom:20px}
 .job-card{background:var(--card);border:1px solid var(--line-soft);border-radius:var(--r);padding:22px;display:flex;flex-direction:column;gap:10px;min-width:0;box-shadow:var(--shadow-sm);transition:transform .22s ease,box-shadow .22s ease}
 .job-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
-.job-tag{align-self:flex-start;font:700 10.5px var(--font-b);letter-spacing:.08em;text-transform:uppercase;color:var(--amber-ink);background:rgba(246,166,9,.14);border:1px solid rgba(246,166,9,.35);border-radius:999px;padding:5px 11px}
+.job-tag{align-self:flex-start;font:700 10.5px var(--font-b);letter-spacing:.08em;text-transform:uppercase;color:var(--amber-ink);background:rgba(245,158,11,.14);border:1px solid rgba(245,158,11,.35);border-radius:999px;padding:5px 11px}
 .job-card h3{font:700 19.5px/1.28 var(--font-d);letter-spacing:-.015em;overflow-wrap:break-word}
 .job-co{font:500 13.5px var(--font-b);color:var(--ink2);overflow-wrap:break-word}
 .job-snip{font:400 13.5px/1.6 var(--font-b);color:var(--muted);flex:1;overflow-wrap:break-word;min-width:0}
@@ -71,7 +83,7 @@
 .lock-card p{font:400 14.5px/1.65 var(--font-b);color:var(--ink2);margin-bottom:22px}
 .code-row{display:flex;gap:10px;flex-wrap:wrap}
 .code-row input{flex:1;background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px 15px;color:var(--ink);font:600 15px var(--font-b);letter-spacing:.08em;text-transform:uppercase;outline:none;text-align:center}
-.code-row input:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(246,166,9,.2)}
+.code-row input:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.2)}
 .code-err{font:500 13px var(--font-b);color:var(--bad);min-height:20px;margin-top:12px}
 .shake{animation:shake .35s}
 @keyframes shake{25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-4px)}}
@@ -135,7 +147,18 @@
         </div>
       </div>
       <div class="jobs-hero-media">
-        <img src="assets/professional-docs.jpg" alt="A professional reviewing documents at his desk" fetchpriority="high">
+        <div class="snap-card" role="img" aria-label="Snapshot of today's board: openings by course track">
+          <div class="snap-head"><h3>Board snapshot</h3><span>Live · today</span></div>
+          <div class="snap-bars">
+            <div class="snap-row"><span class="sn">AML &amp; KYC Analyst</span><span class="st"><span class="sf amber" style="width:100%"></span></span><span class="sv">1,217</span></div>
+            <div class="snap-row"><span class="sn">Data Science &amp; AI</span><span class="st"><span class="sf" style="width:24%"></span></span><span class="sv">293</span></div>
+            <div class="snap-row"><span class="sn">Full Stack Java</span><span class="st"><span class="sf" style="width:16%"></span></span><span class="sv">195</span></div>
+            <div class="snap-row"><span class="sn">Database &amp; BI</span><span class="st"><span class="sf" style="width:15%"></span></span><span class="sv">181</span></div>
+            <div class="snap-row"><span class="sn">Full Stack Python</span><span class="st"><span class="sf" style="width:14%"></span></span><span class="sv">167</span></div>
+            <div class="snap-row"><span class="sn">Software Testing (QA)</span><span class="st"><span class="sf" style="width:13%"></span></span><span class="sv">157</span></div>
+          </div>
+          <p class="snap-note">Openings by NaukriSala track, counted from the live board below — filter by track to explore yours.</p>
+        </div>
       </div>
     </div>
   </section>
