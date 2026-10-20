@@ -4,11 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>NaukriSala — Get placed first. Pay from your salary.</title>
-<meta name="description" content="NaukriSala is a placement-first training academy. Start with ₹20,000. The ₹2,00,000 placement fee applies only after you sign an offer letter — paid from your salary.">
+<meta name="description" content="NaukriSala is a placement-first training academy — 100% online. Start with ₹15,000. The rest is paid only after you're placed, in easy installments from your salary.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=20261020">
+<link rel="stylesheet" href="home.css?v=20261020">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%230A1730'/><text x='50' y='70' font-size='56' text-anchor='middle' fill='%23F6A609' font-family='Arial,sans-serif' font-weight='800'>N</text></svg>">
 </head>
 <body>
@@ -37,75 +38,247 @@
 
   <!-- HERO -->
   <section class="hero">
+    <svg class="hero-art" viewBox="0 0 1440 640" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <defs>
+        <pattern id="hgrid" width="46" height="46" patternUnits="userSpaceOnUse">
+          <circle cx="2" cy="2" r="1.6" fill="rgba(255,255,255,.13)"/>
+        </pattern>
+      </defs>
+      <rect x="0" y="0" width="1440" height="640" fill="url(#hgrid)"/>
+      <g fill="none" stroke="rgba(246,166,9,.20)" stroke-width="1.5">
+        <circle cx="1240" cy="90" r="130"/><circle cx="1240" cy="90" r="200"/><circle cx="1240" cy="90" r="270"/>
+      </g>
+      <g stroke="rgba(246,166,9,.5)" stroke-width="2" stroke-linecap="round">
+        <path d="M120 512h18M129 503v18"/><path d="M1330 470h18M1339 461v18"/><path d="M660 74h18M669 65v18"/>
+      </g>
+      <path d="M-20 560 C 300 500, 520 610, 820 552 S 1300 500, 1470 548" fill="none" stroke="rgba(255,255,255,.07)" stroke-width="1.5"/>
+    </svg>
     <div class="wrap hero-grid">
       <div class="hero-copy">
-        <p class="eyebrow"><span class="dot"></span>Founding batch · AML &amp; KYC live 10 Nov 2026</p>
+        <div class="h-badges">
+          <span class="h-badge b-amber">Founding batch · Nov 2026</span>
+          <span class="h-badge">100% online · Live from anywhere in India</span>
+          <span class="h-badge b-green"><span class="dot"></span>Live jobs board — updated daily</span>
+        </div>
         <h1>Get placed first.<br><em>Pay from your salary.</em></h1>
-        <p class="lede">A placement-first training academy. Start with <strong>₹20,000</strong> — the <strong>₹2,00,000</strong> placement fee applies only after you sign an offer letter.</p>
+        <p class="lede">A placement-first training academy — <strong>100% online</strong>, every class live and interactive. Start with <strong>₹15,000</strong>. The rest is paid only after you sign an offer letter, in easy installments from your salary.</p>
         <div class="hero-ctas">
           <a class="btn btn-primary" href="#demo">Book free demo <span class="arr">→</span></a>
-          <a class="btn btn-ghost" href="#courses">Explore 15 courses</a>
+          <a class="btn btn-ghost" href="jobs.html">See live openings <span class="arr">→</span></a>
         </div>
         <div class="promo">
           <span class="promo-ic">◷</span>
-          <p>Free demo classes begin <strong>3 Nov</strong> — no card, no commitment.</p>
+          <p>Free demo classes begin <strong>3 Nov</strong> — live online, no card, no commitment.</p>
         </div>
         <div class="stats">
           <div class="stat"><strong>15</strong><span>career tracks</span></div>
-          <div class="stat"><strong>₹20k</strong><span>to start</span></div>
+          <div class="stat"><strong>₹15k</strong><span>to start</span></div>
           <div class="stat"><strong>₹0</strong><span>due during training</span></div>
         </div>
       </div>
-      <div class="hero-media">
-        <img src="assets/hero-students.jpg" alt="Two students working together on a laptop" fetchpriority="high">
-        <div class="hero-chip">
-          <strong><span class="chip-dot"></span>3,002 live openings</strong>
-          <span>on the NaukriSala job board today — refreshed every morning</span>
+      <div class="hero-visual">
+        <div class="board-card" id="boardCard">
+          <div class="bc-head">
+            <span class="bc-title">NaukriSala Jobs Board</span>
+            <span class="bc-live"><i></i>Live</span>
+          </div>
+          <div class="bc-count"><strong data-live-total>3,002</strong><span>live openings<br>right now</span></div>
+          <p class="bc-sub"><strong data-live-aml>1,217</strong> of them are AML &amp; KYC roles — our flagship track.</p>
+          <div class="bc-jobs" id="bcJobs">
+            <a class="bc-job" href="https://theapexgroup.wd3.myworkdayjobs.com/apexgroupcareers/job/Pune---Baner/Client-KYC-Analyst_JR-0026086" target="_blank" rel="noopener"><h4>Client KYC Analyst<span class="bc-new">New</span></h4><p><b>Apex Group</b> · Pune</p></a>
+            <a class="bc-job" href="https://jpmc.fa.oraclecloud.com/hcmUI/CandidateExperience/en/sites/CX_1001/job/210799162" target="_blank" rel="noopener"><h4>Associate - Compliance and Ops Risk Test Senior Specialist</h4><p><b>J.P. Morgan</b> · Bengaluru</p></a>
+            <a class="bc-job" href="https://mufgub.wd3.myworkdayjobs.com/MUFG-Careers/job/MUFG-Global-Service-Private-Ltd---Bengaluru-BCIT/Analyst---APAC-India-KYC_10080210-WD" target="_blank" rel="noopener"><h4>Analyst - APAC India KYC</h4><p><b>MUFG</b> · Bengaluru</p></a>
+            <a class="bc-job" href="https://visa.wd5.myworkdayjobs.com/Visa/job/IN---Mumbai-India/Compliance-officer_REF088286W" target="_blank" rel="noopener"><h4>Compliance officer</h4><p><b>Visa</b> · Mumbai</p></a>
+          </div>
+          <div class="bc-foot">
+            <a href="jobs.html">See all openings →</a>
+            <span>Refreshed every morning<br>from employer career pages</span>
+          </div>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- PROOF STRIP — live board numbers -->
+  <!-- EMPLOYER STRIP -->
+  <div class="emp">
+    <p class="emp-label">Companies with <b>live openings</b> on the NaukriSala board today</p>
+    <div class="emp-marquee" aria-hidden="true">
+      <div class="emp-track">
+        <div class="emp-group">
+          <span class="emp-name">J.P. Morgan<small>132 openings</small></span><span class="emp-name">Genpact<small>122</small></span><span class="emp-name">Paytm<small>91</small></span><span class="emp-name">Deutsche Bank<small>64</small></span><span class="emp-name">Accenture<small>53</small></span><span class="emp-name">HSBC<small>33</small></span><span class="emp-name">Razorpay<small>31</small></span><span class="emp-name">Stripe<small>27</small></span><span class="emp-name">Wells Fargo<small>26</small></span><span class="emp-name">Morgan Stanley<small>3</small></span>
+        </div>
+        <div class="emp-group">
+          <span class="emp-name">J.P. Morgan<small>132 openings</small></span><span class="emp-name">Genpact<small>122</small></span><span class="emp-name">Paytm<small>91</small></span><span class="emp-name">Deutsche Bank<small>64</small></span><span class="emp-name">Accenture<small>53</small></span><span class="emp-name">HSBC<small>33</small></span><span class="emp-name">Razorpay<small>31</small></span><span class="emp-name">Stripe<small>27</small></span><span class="emp-name">Wells Fargo<small>26</small></span><span class="emp-name">Morgan Stanley<small>3</small></span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- IMPACT BAND -->
   <div class="proof">
     <div class="wrap">
       <div class="proof-grid">
-        <div class="pstat"><strong>3,002</strong><span>live job openings on our board</span></div>
-        <div class="pstat"><strong>1,217</strong><span>AML &amp; KYC roles right now</span></div>
-        <div class="pstat"><strong>15</strong><span>career tracks to train for</span></div>
+        <div class="pstat"><strong class="hcount" data-target="3002" data-live-total>3,002</strong><span>live job openings on our board</span></div>
+        <div class="pstat"><strong class="hcount" data-target="1217" data-live-aml>1,217</strong><span>AML &amp; KYC roles right now</span></div>
+        <div class="pstat"><strong class="hcount" data-target="15">15</strong><span>career tracks to train for</span></div>
         <div class="pstat"><strong>₹0</strong><span>due while you train</span></div>
       </div>
-      <p class="proof-note">Openings are pulled from real employer career pages and job boards, and the board is refreshed every morning. <a href="jobs.html" style="color:inherit;font-weight:700">See the live board →</a></p>
+      <p class="proof-note">Openings are pulled from employer career pages and job boards across 7 source groups, and the board is refreshed every morning. <a href="jobs.html" style="color:inherit;font-weight:700">See the live board →</a></p>
     </div>
   </div>
 
-  <!-- MARQUEE -->
-  <div class="marquee" aria-hidden="true">
-    <div class="marquee-track">
-      <span>Get placed first</span><i>·</i><span class="hollow">Pay from your salary</span><i>·</i>
-      <span>Get placed first</span><i>·</i><span class="hollow">Pay from your salary</span><i>·</i>
-      <span>Get placed first</span><i>·</i><span class="hollow">Pay from your salary</span><i>·</i>
-    </div>
-  </div>
-
-  <!-- HOW IT WORKS -->
-  <section class="section" id="how">
+  <!-- BOARD BY THE NUMBERS -->
+  <section class="section" id="board">
     <div class="wrap">
-      <div class="sec-photo">
-        <div>
-          <p class="eyebrow"><span class="dot"></span>How it works</p>
-          <h2>Six steps. <em>Zero salary risk.</em></h2>
-          <p class="lede-sm">The big fee waits until a salary lands. The risk stays on our side of the table.</p>
-        </div>
-        <img src="assets/library.jpg" alt="A student reading in the library" loading="lazy">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="dot"></span>The live board</p>
+        <h2>Real openings. <em>Counted, not claimed.</em></h2>
+        <p class="lede-sm">Most academies show you a placement percentage. We show you the actual job market you're training for — every number below is counted from today's board.</p>
       </div>
-      <div class="steps">
-        <div class="step reveal"><span class="step-n">01</span><h3>Free demo</h3><p>Sit in on live demo classes from <strong>3 Nov</strong>. Meet the trainer, ask anything, pay nothing.</p></div>
-        <div class="step reveal"><span class="step-n">02</span><h3>Enroll — ₹20,000</h3><p>One-time onboarding fee reserves your founding-batch seat. That's all you pay to begin.</p></div>
-        <div class="step reveal"><span class="step-n">03</span><h3>Learn live</h3><p>Interactive evening sessions with working professionals. Real curriculum, zero recorded filler.</p></div>
-        <div class="step reveal"><span class="step-n">04</span><h3>Build</h3><p>Capstone projects mirroring day-one job tasks — a portfolio that speaks the interviewer's language.</p></div>
-        <div class="step reveal"><span class="step-n">05</span><h3>Get placed</h3><p>Resume overhaul, mock interviews, referrals arranged for you — until you hold an offer letter.</p></div>
-        <div class="step reveal"><span class="step-n">06</span><h3>Pay from salary</h3><p>The ₹2,00,000 placement fee applies only after a verified offer. No offer, no placement fee.</p></div>
+      <div class="charts-grid">
+        <div class="chart-card reveal">
+          <h3>Openings by course track</h3>
+          <p class="csub">Every track we teach maps to live demand on the board.</p>
+          <div class="bars">
+            <div class="bar-row"><span class="bar-name">AML &amp; KYC Analyst</span><span class="bar-track"><span class="bar-fill amber" style="--w:100%"></span></span><span class="bar-val">1,217</span></div>
+            <div class="bar-row"><span class="bar-name">Data Science &amp; AI</span><span class="bar-track"><span class="bar-fill" style="--w:24.1%"></span></span><span class="bar-val">293</span></div>
+            <div class="bar-row"><span class="bar-name">Full Stack Java</span><span class="bar-track"><span class="bar-fill" style="--w:16%"></span></span><span class="bar-val">195</span></div>
+            <div class="bar-row"><span class="bar-name">Database &amp; BI</span><span class="bar-track"><span class="bar-fill" style="--w:14.9%"></span></span><span class="bar-val">181</span></div>
+            <div class="bar-row"><span class="bar-name">Full Stack Python</span><span class="bar-track"><span class="bar-fill" style="--w:13.7%"></span></span><span class="bar-val">167</span></div>
+            <div class="bar-row"><span class="bar-name">Software Testing (QA)</span><span class="bar-track"><span class="bar-fill" style="--w:12.9%"></span></span><span class="bar-val">157</span></div>
+            <div class="bar-row"><span class="bar-name">STOM — Service Transition</span><span class="bar-track"><span class="bar-fill" style="--w:9.5%"></span></span><span class="bar-val">116</span></div>
+            <div class="bar-row"><span class="bar-name">Data Analyst</span><span class="bar-track"><span class="bar-fill" style="--w:8.9%"></span></span><span class="bar-val">108</span></div>
+          </div>
+          <p class="chart-note">Plus 7 more tracks — IB Operations, ServiceNow, Web Development, Workday, Power BI, .NET and SAP FICO — with 568 openings between them.</p>
+        </div>
+        <div class="chart-card reveal">
+          <h3>AML &amp; KYC share of the board</h3>
+          <p class="csub">Why it's our flagship: it's where the openings are.</p>
+          <div class="donut-flex">
+            <div class="donut-box">
+              <svg width="148" height="148" viewBox="0 0 148 148" aria-hidden="true">
+                <circle cx="74" cy="74" r="62" fill="none" stroke="rgba(11,21,38,.08)" stroke-width="17"/>
+                <circle cx="74" cy="74" r="62" fill="none" stroke="#F6A609" stroke-width="17" stroke-linecap="round" stroke-dasharray="157.9 389.6"/>
+              </svg>
+              <div class="donut-c"><strong>40.5%</strong><span>AML &amp; KYC</span></div>
+            </div>
+            <ul class="donut-legend">
+              <li><span class="sw" style="background:#F6A609"></span><span><b>1,217 openings</b> — AML &amp; KYC Analyst roles</span></li>
+              <li><span class="sw" style="background:#0A1730"></span><span><b>1,785 openings</b> — across the other 14 tracks</span></li>
+              <li><span class="sw" style="background:#fff;border:1px solid var(--line)"></span><span><b>3,002 total</b> — refreshed every morning</span></li>
+            </ul>
+          </div>
+          <p class="chart-note">Banks and financial firms hire KYC and compliance teams all year — the board proves it daily.</p>
+        </div>
+        <div class="chart-card reveal">
+          <h3>Where the openings are</h3>
+          <p class="csub">Openings by city, counted from the board.</p>
+          <div class="bars">
+            <div class="bar-row"><span class="bar-name">Bengaluru</span><span class="bar-track"><span class="bar-fill" style="--w:100%"></span></span><span class="bar-val">935</span></div>
+            <div class="bar-row"><span class="bar-name">Mumbai</span><span class="bar-track"><span class="bar-fill" style="--w:27.6%"></span></span><span class="bar-val">258</span></div>
+            <div class="bar-row"><span class="bar-name">Hyderabad</span><span class="bar-track"><span class="bar-fill" style="--w:27.2%"></span></span><span class="bar-val">254</span></div>
+            <div class="bar-row"><span class="bar-name">Pune</span><span class="bar-track"><span class="bar-fill" style="--w:20.6%"></span></span><span class="bar-val">193</span></div>
+            <div class="bar-row"><span class="bar-name">Noida</span><span class="bar-track"><span class="bar-fill" style="--w:17.2%"></span></span><span class="bar-val">161</span></div>
+            <div class="bar-row"><span class="bar-name">Gurugram</span><span class="bar-track"><span class="bar-fill" style="--w:15.7%"></span></span><span class="bar-val">147</span></div>
+            <div class="bar-row"><span class="bar-name">Chennai</span><span class="bar-track"><span class="bar-fill" style="--w:9.9%"></span></span><span class="bar-val">93</span></div>
+          </div>
+          <p class="chart-note">846 further openings are remote, multi-city, or don't name a single city. Training is 100% online — the jobs go where you are.</p>
+        </div>
+        <div class="chart-card reveal">
+          <h3>Where the board pulls from</h3>
+          <p class="csub">Seven source groups, merged and cleaned daily.</p>
+          <div class="src-list">
+            <div class="src-row"><span class="sname">Employer career pages</span><span class="sval">963</span><span class="strack"><span class="sfill" style="--w:100%"></span></span></div>
+            <div class="src-row"><span class="sname">Adzuna</span><span class="sval">628</span><span class="strack"><span class="sfill" style="--w:65.2%"></span></span></div>
+            <div class="src-row"><span class="sname">Employer ATS boards</span><span class="sval">553</span><span class="strack"><span class="sfill" style="--w:57.4%"></span></span></div>
+            <div class="src-row"><span class="sname">JSearch</span><span class="sval">405</span><span class="strack"><span class="sfill" style="--w:42.1%"></span></span></div>
+            <div class="src-row"><span class="sname">Jooble</span><span class="sval">238</span><span class="strack"><span class="sfill" style="--w:24.7%"></span></span></div>
+            <div class="src-row"><span class="sname">SerpApi · Google Jobs</span><span class="sval">133</span><span class="strack"><span class="sfill" style="--w:13.8%"></span></span></div>
+            <div class="src-row"><span class="sname">WhatJobs</span><span class="sval">82</span><span class="strack"><span class="sfill" style="--w:8.5%"></span></span></div>
+          </div>
+          <p class="chart-note">Every listing links straight to the employer's own career page — no middlemen, no scraped copies.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PIPELINE -->
+  <section class="section section-soft" id="pipeline">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="dot"></span>Under the hood</p>
+        <h2>How the board <em>stays live.</em></h2>
+        <p class="lede-sm">A job board is only useful if it's current. Ours rebuilds itself every morning.</p>
+      </div>
+      <div class="pipe-steps">
+        <div class="pipe-step reveal">
+          <span class="p-n">01</span>
+          <span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 3 8l9 5 9-5-9-5Z"/><path d="m3 13 9 5 9-5"/></svg></span>
+          <h3>7 source groups</h3><p>Employer career pages, ATS boards and job boards across India feed the board.</p>
+        </div>
+        <div class="pipe-step reveal">
+          <span class="p-n">02</span>
+          <span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 1 1-2.6-6.4"/><path d="M21 3v6h-6"/></svg></span>
+          <h3>Daily refresh</h3><p>Every morning, new postings are pulled in automatically — no stale screenshots of jobs.</p>
+        </div>
+        <div class="pipe-step reveal">
+          <span class="p-n">03</span>
+          <span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 4.4-3.2 7.4-8 9-4.8-1.6-8-4.6-8-9V6l8-3Z"/><path d="m9 12 2 2 4-4.5"/></svg></span>
+          <h3>Dedupe + expiry sweep</h3><p>Duplicates across sources are merged; dead listings are archived by a weekly sweep.</p>
+        </div>
+        <div class="pipe-step reveal">
+          <span class="p-n">04</span>
+          <span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><path d="M3 13h18"/></svg></span>
+          <h3>The live board</h3><p><span data-live-total>3,002</span> openings, searchable by role, company and city.</p>
+        </div>
+        <div class="pipe-step reveal">
+          <span class="p-n">05</span>
+          <span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="M9 14h6M9 17h4"/></svg></span>
+          <h3>Apply Assistant</h3><p>Tailor your resume to any opening, then apply on the employer's own site.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHO IT'S FOR -->
+  <section class="section" id="who">
+    <div class="wrap">
+      <div class="sec-head-c">
+        <p class="eyebrow"><span class="dot"></span>Who it's for</p>
+        <h2>Built for people <em>changing direction.</em></h2>
+        <p class="lede-sm">Three kinds of learners join NaukriSala. All of them train live online, from wherever they are in India.</p>
+      </div>
+      <div class="persona-grid">
+        <div class="persona reveal">
+          <span class="per-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M2 9.5 12 4l10 5.5L12 15 2 9.5Z"/><path d="M6 11.5V16c0 1.7 2.7 3 6 3s6-1.3 6-3v-4.5"/><path d="M22 9.5V16"/></svg></span>
+          <h3>Fresh graduates</h3>
+          <p class="who">Just finished college — any stream — and want a real first job, not another certificate.</p>
+          <ul class="gains">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>No experience needed</b> — the AML &amp; KYC track is built for any graduate.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>A focused 45-day flagship</b> — job skills, not semester theory.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>Placement support until you hold an offer</b> — referrals and interviews arranged for you.</span></li>
+          </ul>
+        </div>
+        <div class="persona reveal">
+          <span class="per-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h13"/><path d="m13 3 4 4-4 4"/><path d="M20 17H7"/><path d="m11 13-4 4 4 4"/></svg></span>
+          <h3>Career switchers</h3>
+          <p class="who">Working in support, sales or back-office roles — and stuck somewhere that's going nowhere.</p>
+          <ul class="gains">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>Evening live classes</b> that run alongside your current job.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>Non-coding tracks</b> — AML &amp; KYC and operations roles don't ask for an IT background.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>The rest waits for the new job</b> — you pay it only after the new offer lands.</span></li>
+          </ul>
+        </div>
+        <div class="persona reveal">
+          <span class="per-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21v-9l7-6 7 6v9"/><path d="M9.5 21v-4h5v4"/><path d="M12 9h.01"/></svg></span>
+          <h3>Commerce &amp; finance graduates</h3>
+          <p class="who">B.Com, BBA or MBA — aiming at banks, financial services and operations teams.</p>
+          <ul class="gains">
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>Tracks aligned to your degree</b> — AML &amp; KYC, IB Operations, SAP FICO.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b><span data-live-aml>1,217</span> live AML &amp; KYC openings</b> on the board to aim at, today.</span></li>
+            <li><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg><span><b>Interview prep built around real roles</b> — the same openings you'll apply to.</span></li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
@@ -113,55 +286,279 @@
   <!-- COURSES -->
   <section class="section section-soft" id="courses">
     <div class="wrap">
-      <div class="sec-photo">
-        <div>
-          <p class="eyebrow"><span class="dot"></span>Courses</p>
-          <h2>Train for the job. <em>Then get the job.</em></h2>
-          <p class="lede-sm">Flagship <strong>AML &amp; KYC Analyst</strong> goes live <strong>10 Nov 2026</strong>. Other tracks open as founding batches fill.</p>
+      <div class="sec-head">
+        <p class="eyebrow"><span class="dot"></span>Courses</p>
+        <h2>Train for the job. <em>Then get the job.</em></h2>
+        <p class="lede-sm">Flagship <strong>AML &amp; KYC Analyst</strong> goes live <strong>10 Nov 2026</strong>. Other tracks open as founding batches fill.</p>
+      </div>
+
+      <div class="flagship reveal">
+        <div class="flag-grid">
+          <div class="flag-main">
+            <div class="flag-chips">
+              <span class="fchip hot">Flagship programme</span>
+              <span class="fchip">Batch 1 · Live 10 Nov 2026</span>
+              <span class="fchip">Free demos from 3 Nov 2026</span>
+              <span class="fchip">100% online</span>
+            </div>
+            <h3>AML &amp; KYC Analyst — <em>the flagship.</em></h3>
+            <p class="flag-tag">Financial crime compliance, built for <strong>any graduate</strong>. Learn how banks verify customers, spot laundering and file the reports regulators demand — then apply to the <strong><span data-live-aml>1,217</span> live AML &amp; KYC openings</strong> already on the board.</p>
+            <p class="topics-label">What you'll master</p>
+            <div class="topics">
+              <span class="tchip">KYC &amp; Customer Onboarding</span><span class="tchip">CDD — Customer Due Diligence</span><span class="tchip">EDD — Enhanced Due Diligence</span><span class="tchip">Transaction Monitoring</span><span class="tchip">Sanctions &amp; Name Screening</span><span class="tchip">PEP Screening</span><span class="tchip">Adverse Media Checks</span><span class="tchip">SAR / STR Reporting</span><span class="tchip">Beneficial Ownership (UBO)</span><span class="tchip">Case Management</span><span class="tchip">World-Check · Actimize</span>
+            </div>
+            <div class="flag-meta">
+              <span class="fm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/></svg><span>45 days<small>Live online programme</small></span></span>
+              <span class="fm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="m10 9.5 5 2.5-5 2.5v-5Z"/><path d="M8 21h8"/></svg><span>Evening batches<small>Alongside college or a job</small></span></span>
+              <span class="fm"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/></svg><span>Capstone case-work<small>Mirrors day-one job tasks</small></span></span>
+            </div>
+            <div class="flag-ctas">
+              <a class="btn btn-primary" href="#demo">Book free demo <span class="arr">→</span></a>
+              <a class="btn btn-ghost" href="#curriculum">See the curriculum</a>
+              <span class="flag-pay"><strong>₹9–28 LPA</strong><span>Placement range</span></span>
+            </div>
+          </div>
+          <aside class="flag-side">
+            <h4>The flagship, by the numbers</h4>
+            <p class="fs-sub">Counted from the live board and the Batch 1 calendar — nothing projected, nothing padded.</p>
+            <div class="fact-row"><span>Live AML &amp; KYC openings today</span><strong data-live-aml>1,217</strong></div>
+            <div class="fact-row"><span>Batch 1 begins</span><strong>10 Nov 2026</strong></div>
+            <div class="fact-row"><span>Free demos from</span><strong>3 Nov 2026</strong></div>
+            <div class="fact-row"><span>Programme length</span><strong>45 days</strong></div>
+            <div class="fact-row"><span>Format</span><strong>100% online, live</strong></div>
+            <div class="fact-row"><span>To start</span><strong><em>₹15,000</em></strong></div>
+            <div class="fs-cta">
+              <a href="jobs.html">Browse live AML &amp; KYC openings →</a>
+              <p>Every opening links straight to the employer's own career page.</p>
+            </div>
+          </aside>
         </div>
-        <img src="assets/group-study.jpg" alt="Students studying together in a group" loading="lazy">
+      </div>
+
+      <div class="sec-head" style="margin-bottom:34px">
+        <h2 style="font-size:clamp(1.5rem,2.6vw,2rem)">All 15 career tracks</h2>
+        <p class="lede-sm" style="margin-bottom:0">One flagship now, fourteen more opening as founding batches fill.</p>
       </div>
       <div class="course-grid" id="courseGrid"></div>
     </div>
   </section>
 
-  <!-- PHOTO BAND -->
-  <section class="band">
-    <img src="assets/students-group.jpg" alt="A group of students smiling together" loading="lazy">
-    <div class="band-card">
-      <div class="wrap">
-        <div class="inner">
-          <h3>You learn with a batch, <em>not alone.</em></h3>
-          <p>Live evening cohorts, trainers who work in the industry, and a placement cell that starts working on your applications while you are still training.</p>
+  <!-- CURRICULUM -->
+  <section class="section" id="curriculum">
+    <div class="wrap">
+      <div class="sec-head-c">
+        <p class="eyebrow"><span class="dot"></span>Curriculum · AML &amp; KYC</p>
+        <h2>What you'll actually learn, <em>module by module.</em></h2>
+        <p class="lede-sm">The flagship syllabus, in the order you'll learn it — taught live online over 45 days.</p>
+      </div>
+      <div class="roadmap">
+        <div class="rm-item reveal">
+          <span class="rm-num">01</span>
+          <div class="rm-body">
+            <div class="rm-head"><h3>Foundations of AML &amp; financial crime</h3><span class="rm-meta">Live online · Foundations</span></div>
+            <p>How money laundering actually works, why banks are on the front line, and the rulebook you'll operate under.</p>
+            <div class="rm-topics"><span class="tchip sm">The 3 stages of laundering</span><span class="tchip sm">AML vs CFT</span><span class="tchip sm">FATF &amp; global standards</span><span class="tchip sm">RBI KYC directions</span><span class="tchip sm">The compliance function</span></div>
+          </div>
+        </div>
+        <div class="rm-item reveal">
+          <span class="rm-num">02</span>
+          <div class="rm-body">
+            <div class="rm-head"><h3>KYC &amp; customer onboarding</h3><span class="rm-meta">Live online · Core skill</span></div>
+            <p>Verifying who a customer really is — the daily bread of every KYC team in every bank.</p>
+            <div class="rm-topics"><span class="tchip sm">Customer identification</span><span class="tchip sm">CDD</span><span class="tchip sm">EDD for high-risk customers</span><span class="tchip sm">Customer risk rating</span><span class="tchip sm">Beneficial ownership &amp; UBO</span><span class="tchip sm">Periodic review &amp; remediation</span></div>
+          </div>
+        </div>
+        <div class="rm-item reveal">
+          <span class="rm-num">03</span>
+          <div class="rm-body">
+            <div class="rm-head"><h3>Screening — sanctions, PEPs &amp; adverse media</h3><span class="rm-meta">Live online · Core skill</span></div>
+            <p>Checking customers against the lists that matter — and judging what a match really means.</p>
+            <div class="rm-topics"><span class="tchip sm">Name screening</span><span class="tchip sm">Sanctions lists &amp; screening</span><span class="tchip sm">PEP screening</span><span class="tchip sm">Adverse media checks</span><span class="tchip sm">Watchlist management</span><span class="tchip sm">World-Check &amp; screening tools</span></div>
+          </div>
+        </div>
+        <div class="rm-item reveal">
+          <span class="rm-num">04</span>
+          <div class="rm-body">
+            <div class="rm-head"><h3>Transaction monitoring &amp; investigations</h3><span class="rm-meta">Live online · Case-work</span></div>
+            <p>Following the money: spotting the patterns no single transaction ever reveals.</p>
+            <div class="rm-topics"><span class="tchip sm">Monitoring scenarios &amp; red flags</span><span class="tchip sm">Alert handling</span><span class="tchip sm">Case management</span><span class="tchip sm">Transaction analysis</span><span class="tchip sm">Investigations &amp; escalation</span><span class="tchip sm">Actimize &amp; monitoring tools</span></div>
+          </div>
+        </div>
+        <div class="rm-item reveal">
+          <span class="rm-num">05</span>
+          <div class="rm-body">
+            <div class="rm-head"><h3>Reporting — SAR, STR &amp; regulatory ops</h3><span class="rm-meta">Live online · Core skill</span></div>
+            <p>Turning findings into the filings regulators expect — accurate, evidenced and on time.</p>
+            <div class="rm-topics"><span class="tchip sm">Suspicious Activity Reports (SAR)</span><span class="tchip sm">Suspicious Transaction Reports (STR)</span><span class="tchip sm">Regulatory reporting</span><span class="tchip sm">AML audit support</span><span class="tchip sm">Quality checks</span><span class="tchip sm">SOPs &amp; documentation</span></div>
+          </div>
+        </div>
+        <div class="rm-item reveal">
+          <span class="rm-num">06</span>
+          <div class="rm-body">
+            <div class="rm-head"><h3>Placement capstone</h3><span class="rm-meta">Case-work · Placement</span></div>
+            <p>Prove you're day-one ready — then go and get the offer.</p>
+            <div class="rm-topics"><span class="tchip sm">Capstone case-work</span><span class="tchip sm">Resume overhaul</span><span class="tchip sm">Mock interviews</span><span class="tchip sm">Referrals &amp; applications</span><span class="tchip sm">Apply Assistant targeting</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="mentor-band reveal">
+        <span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-6.5 8-6.5s8 2.5 8 6.5"/></svg></span>
+        <div>
+          <h3>Taught by people who do this work</h3>
+          <p>Every module is taught live by working professionals from the industry — interactive evening sessions, real curriculum, zero recorded filler.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- FEES -->
-  <section class="section" id="fees">
-    <div class="wrap">
-      <p class="eyebrow"><span class="dot"></span>Fees</p>
-      <h2>₹20,000 to start. <em>₹2,00,000 after you're placed.</em></h2>
-      <p class="lede-sm">Plain words, no fine-print traps.</p>
-      <div class="fee-grid">
-        <div class="fee-card reveal">
-          <p class="mono">To begin</p>
-          <p class="fee-amount">₹20,000</p>
-          <p class="fee-desc">One-time onboarding fee after your free demo. Seat, materials, live training infrastructure.</p>
-        </div>
-        <div class="fee-card reveal">
-          <p class="mono">During training</p>
-          <p class="fee-amount">₹0</p>
-          <p class="fee-desc">Nothing more is due while you learn, build and interview. Focus on getting placed.</p>
-        </div>
-        <div class="fee-card fee-hot reveal">
-          <p class="mono">After placement</p>
-          <p class="fee-amount">₹2,00,000</p>
-          <p class="fee-desc">Applies only after a verified offer letter — paid from your salary. Not placed? This fee doesn't exist.</p>
+  <!-- APPLY ASSISTANT -->
+  <section class="section section-soft" id="assistant">
+    <div class="wrap aa-grid">
+      <div>
+        <p class="eyebrow"><span class="dot"></span>Free tool · Live now</p>
+        <h2>Meet your <em>Apply Assistant.</em></h2>
+        <p class="lede-sm" style="margin-bottom:22px">Pick any opening on the board and the Assistant reads it, checks your resume against the keywords the job actually asks for, and rebuilds your resume around them — matched skills first, your best experience on top.</p>
+        <p class="lede-sm" style="margin-bottom:30px">Missing a keyword? It shows you exactly which ones — and only adds the ones you confirm are true. Then it drafts your screening answers and hands you a clean, ATS-friendly resume file.</p>
+        <a class="btn btn-dark" href="apply.html">Try the Apply Assistant <span class="arr">→</span></a>
+        <p class="fine" style="margin-top:16px">Free to use, no sign-up. Your profile stays in your browser — nothing is uploaded.</p>
+      </div>
+      <div class="aa-mock reveal">
+        <div class="aa-win"><i></i><i></i><i></i><span>Inside the Apply Assistant</span></div>
+        <div class="aa-body">
+          <div class="aa-jobline">
+            <div><h4>AML/KYC Analyst</h4><p>Morgan Stanley · from the live board</p></div>
+            <span class="aa-tag">Sample</span>
+          </div>
+          <div class="aa-match">
+            <div class="aa-ring">
+              <svg width="104" height="104" viewBox="0 0 104 104" aria-hidden="true">
+                <circle cx="52" cy="52" r="44" fill="none" stroke="rgba(11,21,38,.08)" stroke-width="10"/>
+                <circle cx="52" cy="52" r="44" fill="none" stroke="#F6A609" stroke-width="10" stroke-linecap="round" stroke-dasharray="138.2 276.5"/>
+              </svg>
+              <div class="rc"><strong>50%</strong><span>Match</span></div>
+            </div>
+            <div class="aa-kw">
+              <h5>Already in the resume</h5>
+              <div class="aa-chips">
+                <span class="kw kw-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg>KYC</span>
+                <span class="kw kw-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg>AML</span>
+                <span class="kw kw-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg>CDD</span>
+                <span class="kw kw-ok"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="m4.5 12.5 5 5 10-11"/></svg>Compliance</span>
+                <span class="kw kw-add">+ EDD — confirmed &amp; added</span>
+              </div>
+              <h5>Missing from the job description</h5>
+              <div class="aa-chips" style="margin-bottom:0">
+                <span class="kw kw-miss">Transaction Monitoring</span>
+                <span class="kw kw-miss">Sanctions Screening</span>
+                <span class="kw kw-miss">Name Screening</span>
+                <span class="kw kw-miss">SAR</span>
+                <span class="kw kw-miss">Financial Crime</span>
+              </div>
+            </div>
+          </div>
+          <div class="aa-out">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8l-5-5Z"/><path d="M14 3v5h5"/><path d="m9.5 13.5 2.5 2.5 2.5-2.5M12 16V9.5"/></svg>
+            <p>Tailored resume ready — <b>Priya_Sharma_AML_KYC_Analyst_Resume.docx</b></p>
+          </div>
+          <p class="aa-note">Product visual — a sample walkthrough from the live tool, tested on a real Morgan Stanley opening.</p>
         </div>
       </div>
-      <p class="fine">Eligibility: graduation in any stream + basic English communication. Full placement-fee terms shared in writing before you enroll.</p>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section class="section" id="how">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="dot"></span>How it works</p>
+        <h2>Six steps. <em>Zero salary risk.</em></h2>
+        <p class="lede-sm">The big fee waits until a salary lands. The risk stays on our side of the table.</p>
+      </div>
+      <div class="steps">
+        <div class="step reveal"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/><path d="m10.5 14.5 4.5 2.5-4.5 2.5v-5Z"/></svg></span><span class="step-n">Step 01</span><h3>Free demo</h3><p>Sit in on live online demo classes from <strong>3 Nov</strong>. Meet the trainer, ask anything, pay nothing.</p></div>
+        <div class="step reveal"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v2a2.5 2.5 0 0 0 0 5v1a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-1a2.5 2.5 0 0 0 0-5V8Z"/><path d="M13 6v2m0 3v2m0 3v2" stroke-dasharray="1.5 2.6"/></svg></span><span class="step-n">Step 02</span><h3>Enroll — ₹15,000</h3><p>One-time onboarding fee reserves your founding-batch seat. That's all you pay to begin.</p></div>
+        <div class="step reveal"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="m10 9.5 5 2.5-5 2.5v-5Z"/><path d="M8 21h8"/></svg></span><span class="step-n">Step 03</span><h3>Learn live</h3><p>Interactive evening sessions with working professionals — 100% online. Real curriculum, zero recorded filler.</p></div>
+        <div class="step reveal"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8Z"/><path d="M12 12.5v4M10 14.5h4"/></svg></span><span class="step-n">Step 04</span><h3>Build</h3><p>Capstone projects mirroring day-one job tasks — a portfolio that speaks the interviewer's language.</p></div>
+        <div class="step reveal"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.2" fill="currentColor"/></svg></span><span class="step-n">Step 05</span><h3>Get placed</h3><p>Resume overhaul, mock interviews, referrals arranged for you — until you hold an offer letter.</p></div>
+        <div class="step reveal"><span class="sic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7Z"/><path d="M16.5 12.5h.01"/><path d="M3 10h18" opacity=".45"/></svg></span><span class="step-n">Step 06</span><h3>Pay from salary</h3><p>The rest applies only after a verified offer — in easy installments from your salary. No offer, nothing more to pay.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEES -->
+  <section class="section section-soft" id="fees">
+    <div class="wrap">
+      <p class="eyebrow"><span class="dot"></span>Fees</p>
+      <h2>₹15,000 to start. <em>The rest only after you're placed.</em></h2>
+      <p class="lede-sm">Plain words, no fine-print traps.</p>
+      <div class="feeflow">
+        <div class="ff-step reveal">
+          <span class="mono">Step 1 · To begin</span>
+          <p class="ff-amt">₹15,000</p>
+          <p>Onboarding — that's all you pay to start. Your seat, materials and live training infrastructure, collected only after your free demo.</p>
+        </div>
+        <span class="ff-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></span>
+        <div class="ff-step reveal">
+          <span class="mono">Step 2 · While you train</span>
+          <p class="ff-amt">₹0</p>
+          <p>Nothing more is due while you learn. Live training, the live jobs board and the Apply Assistant are all included.</p>
+        </div>
+        <span class="ff-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h15"/><path d="m13 6 6 6-6 6"/></svg></span>
+        <div class="ff-step hot reveal">
+          <span class="mono">Step 3 · After placement</span>
+          <p class="ff-amt sm">From your salary</p>
+          <p>Placed? The rest comes from your salary, in easy installments. No placement, nothing more to pay.</p>
+        </div>
+      </div>
+      <div class="fee-table reveal">
+        <div class="ft-row"><span>Before your free demo</span><strong>₹0</strong></div>
+        <div class="ft-row"><span>To start — one-time onboarding</span><strong>₹15,000</strong></div>
+        <div class="ft-row"><span>During training</span><strong>₹0</strong></div>
+        <div class="ft-row"><span>After a verified offer letter</span><strong>Installments from your salary</strong></div>
+        <div class="ft-row hl"><span>If you're never placed</span><strong>Nothing beyond the ₹15,000 onboarding</strong></div>
+      </div>
+      <p class="fine">Eligibility: graduation in any stream + basic English communication. Full fee terms shared in writing before you enroll.</p>
+    </div>
+  </section>
+
+  <!-- CERTIFICATE + FOUNDER -->
+  <section class="section" id="about">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="dot"></span>The NaukriSala standard</p>
+        <h2>Proof over promises. <em>In writing.</em></h2>
+      </div>
+      <div class="aa-grid">
+        <div class="cert-col reveal">
+          <div class="cert">
+            <div class="cert-frame">
+              <span class="cert-wm">SAMPLE</span>
+              <div class="cert-brand"><span class="brand-mark">N</span><span>NAUKRISALA</span></div>
+              <h3>Certificate of Completion</h3>
+              <p class="c-name">Your Name Here</p>
+              <p class="c-course">has successfully completed the <b>AML &amp; KYC Analyst</b> programme</p>
+              <p class="c-sub">Live online training · Capstone case-work · Placement preparation</p>
+              <div class="cert-row">
+                <div class="c-cell"><b>Nov 2026</b><span>Completion date</span></div>
+                <svg class="cert-seal" viewBox="0 0 64 64" aria-hidden="true"><circle cx="32" cy="27" r="17" fill="none" stroke="#0A1730" stroke-width="2"/><circle cx="32" cy="27" r="12.5" fill="none" stroke="#F6A609" stroke-width="2"/><path d="m26.5 27 4 4 7.5-8" fill="none" stroke="#0A1730" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/><path d="M25 41l-3.5 12 7-4.5L33 54l1.8-8.5" fill="none" stroke="#0A1730" stroke-width="2" stroke-linejoin="round"/></svg>
+                <div class="c-cell" style="text-align:right"><b>Abhigyan Rai</b><span>Founder, NaukriSala</span></div>
+              </div>
+            </div>
+          </div>
+          <p class="chart-note">Sample shown. On completion, your certificate carries your name, your track and your completion date.</p>
+        </div>
+        <div class="letter reveal">
+          <span class="mono">A note from the founder</span>
+          <p>I started NaukriSala because the usual deal is broken: <strong>pay a big fee first, and carry all the risk yourself.</strong> Here, the risk sits with us — ₹15,000 to start, and the rest only after you're placed, from your salary.</p>
+          <p>We're a founding batch, so I'll be straight with you: <strong>no rented success stories, no inflated placement numbers.</strong> What we can show you today is real — <span data-live-total>3,002</span> live openings on our board, refreshed every morning, and a programme built around exactly those jobs.</p>
+          <p>Everything runs <strong>100% online</strong>, so your PIN code doesn't decide your career. If that sounds fair, sit in on a free demo and judge us live.</p>
+          <div class="letter-sign">
+            <!-- FOUNDER PHOTO: none by design — the monogram block is the final treatment. -->
+            <span class="monogram">AR</span>
+            <div><b>Abhigyan Rai</b><span>Founder, NaukriSala</span></div>
+          </div>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -171,18 +568,26 @@
       <div>
         <p class="eyebrow"><span class="dot"></span>FAQ</p>
         <h2>Questions, <em>answered straight.</em></h2>
-        <p class="lede-sm">Still unsure? Book a free demo and ask us anything, face to face.</p>
+        <p class="lede-sm">Still unsure? Book a free demo and ask us anything, face to face — online.</p>
         <a class="btn btn-dark" href="#demo">Book free demo</a>
-        <img class="faq-photo" src="assets/student-portrait.jpg" alt="A student smiling at his desk" loading="lazy">
+        <div class="online-card">
+          <span class="p-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="13" rx="2"/><path d="m10 9.5 5 2.5-5 2.5v-5Z"/><path d="M8 21h8"/></svg></span>
+          <h3>100% online, from anywhere in India</h3>
+          <p>Demos, classes, mentoring and mock interviews all happen live online. A phone or a laptop and an internet connection are all you need — there are no centres to travel to.</p>
+        </div>
       </div>
       <div class="faq" id="faqList">
         <div class="faq-item">
           <button class="faq-q">How does "pay from your salary" actually work?<span class="plus">+</span></button>
-          <div class="faq-a"><p>You pay ₹20,000 once to start. Nothing more is due during training. The ₹2,00,000 placement fee applies only after you're hired with a verified offer letter — designed to be paid from your salary, not your savings.</p></div>
+          <div class="faq-a"><p>You pay ₹15,000 once to start. Nothing more is due during training. The rest is paid only after you're hired with a verified offer letter — in easy installments from your salary, not your savings.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q">What if I'm not placed?<span class="plus">+</span></button>
-          <div class="faq-a"><p>Placement support doesn't stop when classes end — referrals and interview scheduling continue until you're hired. And the ₹2,00,000 placement fee simply never applies until you have an offer.</p></div>
+          <div class="faq-a"><p>Placement support doesn't stop when classes end — referrals and interview scheduling continue until you're hired. And you never pay anything beyond the ₹15,000 onboarding fee until you have an offer.</p></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q">Is NaukriSala fully online?<span class="plus">+</span></button>
+          <div class="faq-a"><p>Yes — completely. Every demo, class and mentoring session is live online, so you can join from anywhere in India. There are no physical centres.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q">Do I need a coding or IT background?<span class="plus">+</span></button>
@@ -190,14 +595,14 @@
         </div>
         <div class="faq-item">
           <button class="faq-q">Are classes live or recorded?<span class="plus">+</span></button>
-          <div class="faq-a"><p>Every session is live and interactive — never pre-recorded filler. Evening batches are designed so you can attend alongside college or a job.</p></div>
+          <div class="faq-a"><p>Every session is live and interactive online — never pre-recorded filler. Evening batches are designed so you can attend alongside college or a job.</p></div>
         </div>
         <div class="faq-item">
           <button class="faq-q">When do demo classes start?<span class="plus">+</span></button>
           <div class="faq-a"><p>Free demo classes begin <strong>3 Nov 2026</strong>. Book a slot below — no card, no commitment.</p></div>
         </div>
         <div class="faq-item">
-          <button class="faq-q">Is the ₹20,000 refundable?<span class="plus">+</span></button>
+          <button class="faq-q">Is the ₹15,000 refundable?<span class="plus">+</span></button>
           <div class="faq-a"><p>No — it covers training infrastructure, materials and live sessions, which is why it's collected only after you've attended the free demo and decided to join.</p></div>
         </div>
       </div>
@@ -210,8 +615,12 @@
       <div>
         <p class="eyebrow"><span class="dot"></span>Free demo · no card, no commitment</p>
         <h2>Start with a <em>free demo class.</em></h2>
-        <p class="lede-sm">Demo classes begin <strong>3 Nov 2026</strong>. Drop your details — we'll confirm your slot on WhatsApp.</p>
-        <img class="demo-photo" src="assets/study-woman.jpg" alt="A student taking notes while studying" loading="lazy">
+        <p class="lede-sm">Demo classes begin <strong>3 Nov 2026</strong>, live online. Drop your details — we'll confirm your slot on WhatsApp.</p>
+        <ul class="next-steps">
+          <li><span class="ns-n">1</span><p><b>Book your slot.</b> The form takes twenty seconds — name, number, course.</p></li>
+          <li><span class="ns-n">2</span><p><b>We confirm on WhatsApp.</b> One message with your demo time and joining link. No spam, ever.</p></li>
+          <li><span class="ns-n">3</span><p><b>Attend live online.</b> Meet the trainer, sit in on a real class, ask anything.</p></li>
+        </ul>
       </div>
       <form class="demo-form" id="demoForm">
         <div class="field"><label for="fName">Full name</label><input type="text" id="fName" required placeholder="Your name" autocomplete="name"></div>
@@ -242,6 +651,15 @@
     </div>
   </section>
 
+  <!-- FINAL CTA -->
+  <section class="final-cta">
+    <div class="wrap">
+      <h2>The next batch starts with a <em>free demo.</em></h2>
+      <p>Demo classes begin 3 Nov 2026 — live online, from anywhere in India. AML &amp; KYC Batch 1 starts 10 Nov.</p>
+      <a class="btn" href="#demo">Book my free demo <span class="arr">→</span></a>
+    </div>
+  </section>
+
 </main>
 
 <footer class="footer">
@@ -267,5 +685,73 @@
 </a>
 
 <script src="script.js"></script>
+<script>
+/* Homepage live-board wiring — additive, guarded. Static fallbacks in the
+   markup keep every number correct even if this fetch fails. */
+(function () {
+  function fmt(n) { return n.toLocaleString('en-IN'); }
+  function esc(s) {
+    return String(s || '').replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  /* animated counters (impact band) */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function animateCount(el) {
+    var target = parseInt(el.getAttribute('data-target') || '0', 10);
+    if (!target || reduce) { if (target) el.textContent = fmt(target); return; }
+    var t0 = null, dur = 1100;
+    function tick(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      el.textContent = fmt(Math.round(target * p));
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { animateCount(e.target); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.hcount').forEach(function (el) { io.observe(el); });
+  }
+  /* live board: real totals + freshest AML/KYC openings */
+  if (!('fetch' in window)) return;
+  fetch('jobs.json').then(function (r) {
+    if (!r.ok) throw new Error('jobs fetch failed');
+    return r.json();
+  }).then(function (d) {
+    var jobs = d.jobs || [];
+    if (!jobs.length) return;
+    var total = d.total || jobs.length;
+    var aml = 0;
+    jobs.forEach(function (j) { if (j.course === 'aml-kyc') aml++; });
+    document.querySelectorAll('[data-live-total]').forEach(function (el) {
+      el.setAttribute('data-target', total); el.textContent = fmt(total);
+    });
+    document.querySelectorAll('[data-live-aml]').forEach(function (el) {
+      el.setAttribute('data-target', aml); el.textContent = fmt(aml);
+    });
+    var kw = /(aml|kyc|sanction|transaction monitoring|financial crime|compliance|due diligence)/i;
+    var fresh = jobs.filter(function (j) {
+      return j.course === 'aml-kyc' && !j.stale && kw.test(j.title || '');
+    }).sort(function (a, b) {
+      return String(b.fetched || b.created || '').localeCompare(String(a.fetched || a.created || ''));
+    }).slice(0, 4);
+    var box = document.getElementById('bcJobs');
+    if (!box || !fresh.length) return;
+    var now = Date.now();
+    box.innerHTML = fresh.map(function (j) {
+      var isNew = j.fetched && (now - new Date(j.fetched).getTime()) < 2 * 864e5;
+      var meta = [j.company, j.city || ''].filter(Boolean).join(' · ');
+      return '<a class="bc-job" href="' + esc(j.url || 'jobs.html') + '" target="_blank" rel="noopener"><h4>' +
+        esc(j.title) + (isNew ? '<span class="bc-new">New</span>' : '') +
+        '</h4><p><b>' + esc(j.company || '') + '</b>' + (j.city ? ' · ' + esc(j.city) : '') + '</p></a>';
+    }).join('');
+  }).catch(function () { /* static fallback stays */ });
+})();
+</script>
 </body>
 </html>
