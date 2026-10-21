@@ -82,9 +82,16 @@
 .emp-label b{color:var(--amber-ink);font-weight:700;letter-spacing:.14em}
 .emp-marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
 .emp-track{display:flex;width:max-content;animation:emp-scroll 38s linear infinite}
-.emp-group{display:flex;gap:56px;padding-right:56px;align-items:baseline}
+.emp-group{display:flex;gap:56px;padding-right:56px;align-items:center}
 .emp-name{font-family:var(--font-d);font-size:20px;font-weight:700;letter-spacing:.01em;color:rgba(33,33,33,.52)}
 .emp-name small{font-family:var(--font-b);font-size:12px;font-weight:600;color:rgba(33,33,33,.38);margin-left:7px}
+.emp-item{display:flex;flex-direction:column;align-items:center;gap:6px;flex:none}
+.emp-logo{height:30px;width:auto;max-width:185px;filter:grayscale(1);opacity:.55;transition:filter .25s ease,opacity .25s ease}
+.emp-item:hover .emp-logo{filter:none;opacity:1}
+.emp-item small{font-family:var(--font-b);font-size:12px;font-weight:600;color:rgba(33,33,33,.42);white-space:nowrap}
+.emp-fallback{font-family:var(--font-d);font-size:20px;font-weight:700;letter-spacing:.01em;color:rgba(33,33,33,.52)}
+.emp-marquee:hover .emp-track{animation-play-state:paused}
+.emp-note{text-align:center;font-size:12.5px;color:var(--muted);margin-top:16px;padding:0 16px}
 @keyframes emp-scroll{to{transform:translateX(-50%)}}
 
 /* ---------- stats row (light, Scaler-style) ---------- */
