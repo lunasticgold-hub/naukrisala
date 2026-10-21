@@ -16,3 +16,6 @@ licence), downloaded and self-hosted on 2026-10-20. No AI-generated imagery.
 
 ## Employer logos (assets/logos/)
 Official brand marks of J.P. Morgan, Genpact, Paytm, Deutsche Bank, Accenture, HSBC, Razorpay, Stripe, Wells Fargo and Morgan Stanley, sourced from Wikimedia Commons (Oct 2026). Trademarks belong to their owners; shown only to identify the employers behind live openings aggregated on the board. NaukriSala claims no partnership or endorsement.
+
+## Employer logos — full board set (assets/logos/, Oct 2026 expansion)
+The strip now carries every distinct employer on the board. Beyond the 10 Wikimedia marks above, logos were resolved per employer from the company's own web icon (site favicon / touch icon, via the Google favicon service or the site directly), matched by company name — employers whose icon could not be verified as their real mark are shown as styled text wordmarks instead. All marks belong to their owners; shown only to identify the employers behind live openings aggregated on the board. NaukriSala claims no partnership or endorsement.
