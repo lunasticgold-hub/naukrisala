@@ -254,6 +254,128 @@ def workday_all_jobs(host, tenant, site):
     return out
 
 
+def clean_html(text):
+    return re.sub(r"<[^>]+>", " ", text or "")[:2000]
+
+
+def generic_html_jobs(board):
+    """Config-driven extraction from a server-rendered HTML jobs page
+    (no JSON API — the jobs are baked into the HTML, e.g. EY's
+    SuccessFactors search). Config keys: list_url (with {offset}),
+    row_pattern (regex with named groups title, url, location),
+    url_prefix, pagination {step, max_pages}. Stops when a page yields
+    no job rows. No detail-page fetches — title/location/link only, so
+    classification runs on titles (which is the strict rule anyway).
+    """
+    import html as htmlmod
+
+    cfg = board["params"]
+    pat = re.compile(cfg["row_pattern"], re.S)
+    step = cfg.get("pagination", {}).get("step", 25)
+    max_pages = cfg.get("pagination", {}).get("max_pages", 40)
+    out = []
+    for page in range(max_pages):
+        offset = page * step
+        url = cfg["list_url"].replace("{offset}", str(offset))
+        try:
+            req = urllib.request.Request(url, headers=UA)
+            with urllib.request.urlopen(req, timeout=60) as r:
+                html = r.read().decode("utf-8", "replace")
+        except Exception as e:  # noqa: BLE001
+            print(f"[html] {board['company']}: {e}", file=sys.stderr)
+            break
+        found = 0
+        for m in pat.finditer(html):
+            href = (m.group("url") or "").replace("&amp;", "&").strip()
+            if not href:
+                continue
+            if href.startswith("/"):
+                href = cfg.get("url_prefix", "").rstrip("/") + href
+            elif not href.startswith("http"):
+                continue
+            title = htmlmod.unescape(
+                re.sub(r"<[^>]+>", " ", m.group("title") or "")).strip()
+            loc = htmlmod.unescape(
+                re.sub(r"<[^>]+>", " ", m.group("location") or "")).strip()
+            if not title:
+                continue
+            out.append({"title": title, "location": loc, "url": href,
+                        "desc": "", "posted": ""})
+            found += 1
+        if not found:
+            break
+        time.sleep(0.4)
+    return out
+
+
+def ripplehire_jobs(board):
+    """RippleHire SPA API (proven: HDFC Bank, 465 jobs).
+
+    Flow: GET the public careers entry URL and follow its redirect to
+    the tokenized portal URL; take the site token from that URL and use
+    it ONLY in-memory for this run (never logged, never stored — it is
+    the site's own public CAREERSITE link parameter). Then POST
+    candidatejobsearch pages; the response is XML (JobPageVO with
+    totalJobCount + jobVoList/jobVoList items). Apply links point at the
+    public careers entry page, not a tokenized detail URL, so links
+    never rot if the site token ever changes; cards show the Job ID
+    for instant lookup on the portal.
+    """
+    import xml.etree.ElementTree as ET
+
+    p = board["params"]
+    opener = urllib.request.build_opener()
+    req = urllib.request.Request(p["entry_url"], headers=UA)
+    with opener.open(req, timeout=60) as r:
+        final_url = r.url
+    m = re.search(r"[?&]token=([^&#]+)", final_url)
+    token = m.group(1) if m else ""
+    out, page, total = [], 0, None
+    while True:
+        params = {"page": page, "search": "*:*", "token": token,
+                  "source": p.get("source", "CAREERSITE"), "pagesize": 10}
+        data = urllib.parse.urlencode(
+            {"careerSiteUrlParams": json.dumps(params),
+             "lang": "en"}).encode()
+        req = urllib.request.Request(
+            p["api_url"], data=data,
+            headers={**UA,
+                     "Content-Type": "application/x-www-form-urlencoded"})
+        try:
+            with opener.open(req, timeout=60) as r:
+                root = ET.fromstring(r.read())
+        except Exception as e:  # noqa: BLE001
+            print(f"[ripplehire] {board['company']}: {e}", file=sys.stderr)
+            break
+        if total is None:
+            try:
+                total = int(root.findtext("totalJobCount") or 0)
+            except ValueError:
+                total = 0
+        items = root.findall("./jobVoList/jobVoList")
+        if not items:
+            break
+        for j in items:
+            title = (j.findtext("jobTitle") or "").strip()
+            if not title:
+                continue
+            loc = (j.findtext("locations") or "").strip()
+            exp = (j.findtext("jobReqExp") or "").strip()
+            openings = (j.findtext("numOfOpening") or "").strip()
+            code = (j.findtext("jobCode") or "").strip()
+            desc = " · ".join(x for x in
+                              [exp + " experience" if exp else "",
+                               openings + " openings" if openings else "",
+                               "Job ID " + code if code else ""] if x)
+            out.append({"title": title, "location": loc,
+                        "url": p["entry_url"], "desc": desc, "posted": ""})
+        page += 1
+        if total and page * 10 >= total:
+            break
+        time.sleep(0.4)
+    return out
+
+
 def engine_jobs(board):
     """Dispatch one board config to its engine. Returns posting dicts."""
     eng = board["engine"]
@@ -272,6 +394,10 @@ def engine_jobs(board):
         return oracle_jobs(p["host"], p["site"])
     if eng == "generic_json":
         return generic_json_jobs(board)
+    if eng == "generic_html":
+        return generic_html_jobs(board)
+    if eng == "ripplehire":
+        return ripplehire_jobs(board)
     raise ValueError(f"unknown engine: {eng}")
 
 
