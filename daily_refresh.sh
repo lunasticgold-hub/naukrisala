@@ -35,6 +35,9 @@ python3 fetch_whatjobs.py 2>&1 | tail -2 || echo "[info] whatjobs skipped (error
 # normalize new jobs (pull-date stamp, contract/city cleanup) and sort newest-first
 python3 normalize_jobs.py 2>&1 | tail -2 || echo "[warn] normalize failed"
 
+# re-tag everything with the strict classifier (title-first; unmatched -> General)
+python3 retag_board.py 2>&1 | tail -3 || echo "[warn] retag failed"
+
 # bump cache-buster so browsers pick up the fresh jobs.json
 V=$(date +%Y%m%d)
 sed -i "s|jobs.json?v=[0-9]*[a-z]*|jobs.json?v=${V}|" jobs.html

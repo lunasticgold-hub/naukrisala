@@ -44,7 +44,7 @@ import time
 import urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from fetch_ats import TRACK_FILTERS, TRACK_LABELS, aml_gate, norm
+from fetch_ats import AML_STRONG, TRACK_FILTERS, TRACK_LABELS, aml_gate, norm
 from fetch_ats import board_jobs as ats_board_jobs
 from fetch_ats2 import board_jobs as ats2_board_jobs
 from fetch_aml_boards import loc_ok
@@ -159,20 +159,65 @@ def generic_json_jobs(board):
     return out
 
 
+def _track_keywords(slug):
+    """Keywords used for classification. aml-kyc uses the gate's full
+    vocabulary (TRACK_FILTERS misses industry terms like SAR, KYX,
+    Actimize, fincrime that the gate already understands)."""
+    if slug == "aml-kyc":
+        return list(dict.fromkeys(TRACK_FILTERS["aml-kyc"] + AML_STRONG +
+                                  ["sar", "cdd", "edd"]))
+    return TRACK_FILTERS[slug]
+
+
+def _kw_positions(text, kw):
+    """All start positions of kw in text. 'java' never matches inside
+    'javascript'; short tokens (sar, cdd, edd, qa) match whole words only,
+    mirroring _word_in (so 'sar' never trips on 'salary')."""
+    if kw == "java":
+        return [m.start() for m in re.finditer(r"java(?!script)", text)]
+    if len(kw) <= 3:
+        pat = r"(?<![a-z])" + re.escape(kw) + r"(?![a-z])"
+        return [m.start() for m in re.finditer(pat, text)]
+    pos, out = 0, []
+    while True:
+        i = text.find(kw, pos)
+        if i < 0:
+            return out
+        out.append(i)
+        pos = i + len(kw)
+
+
 def classify(title, desc):
     """Course slug for a posting, or None if it matches no course.
 
-    First matching track wins (TRACK_FILTERS order). aml-kyc matches
-    additionally require aml_gate(): a posting that trips an AML keyword
-    but fails the gate is NOT an AML role — it keeps trying other tracks
-    (e.g. a Java dev at a bank whose description mentions "regulatory"
-    lands in java-fullstack, not aml-kyc).
+    Two passes, title first — this is what the old first-match-wins rule
+    got wrong (a snippet mention could override the actual job title):
+      1. TITLE pass: the track whose keyword appears earliest IN THE TITLE
+         wins ("Java & Python Developer" -> java; "Manager - .Net, Python"
+         -> dotnet). aml-kyc title matches additionally require aml_gate().
+         "java" never matches inside "javascript".
+      2. SNIPPET fallback: only when the title names no course at all
+         (generic titles like "Associate" or "Consultant") — first matching
+         track in TRACK_FILTERS order, aml-kyc still gated.
+    A posting matching neither pass returns None (caller sends it to
+    General); a snippet mention can never override a title match.
     """
+    t = norm(title or "")
+    best, best_pos = None, None
+    for slug in TRACK_FILTERS:
+        if slug == "aml-kyc" and not aml_gate(title, desc):
+            continue
+        for k in _track_keywords(slug):
+            for pos in _kw_positions(t, k):
+                if best_pos is None or pos < best_pos:
+                    best, best_pos = slug, pos
+    if best:
+        return best
     hay = norm(str(title or "") + " " + (desc or ""))
-    for slug, kws in TRACK_FILTERS.items():
-        if any(k in hay for k in kws):
-            if slug == "aml-kyc" and not aml_gate(title, desc):
-                continue
+    for slug in TRACK_FILTERS:
+        if slug == "aml-kyc" and not aml_gate(title, desc):
+            continue
+        if any(_kw_positions(hay, k) for k in _track_keywords(slug)):
             return slug
     return None
 

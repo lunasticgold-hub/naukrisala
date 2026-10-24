@@ -202,6 +202,7 @@ AML_STRONG = [
     "politically exposed", "adverse media", "watchlist", "name screening",
     "trade-based money laundering", "correspondent banking",
     "regulatory compliance", "compliance monitoring",
+    "kyx", "actimize",
 ]
 
 
@@ -222,6 +223,11 @@ def aml_gate(title, desc):
     """
     t, d = norm(title), norm(desc)
     if _has_any(t, AML_STRONG):
+        return True
+    # Industry acronyms that only mean AML work as whole words in a title
+    # (SAR = Suspicious Activity Report, CDD/EDD = customer/enhanced due
+    # diligence). Word-boundary matched, so "salary" never trips "sar".
+    if any(_word_in(t, w) for w in ["sar", "cdd", "edd"]):
         return True
     if any(k in t for k in ["engineer", "developer", "designer", "architect",
                             "sales", "marketing", "campaign", "recruiter",
