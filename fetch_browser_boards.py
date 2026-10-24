@@ -18,8 +18,15 @@ How it works (honest architecture):
     browser-task extraction — never by guessing a URL.
 
 Hard rules (per user 2026-10-24):
-  - Course is always aml-kyc; every candidate passes aml_gate() (title-led
-    v2) — no gate pass, no merge.
+  - EVERY job is classified into one of the 15 courses (TRACK_FILTERS) and
+    only jobs matching a course merge — a posting matching NO course is
+    dropped, never dumped into a generic bucket. This is the user's
+    "scrape all jobs which align with other courses, classify each post"
+    order, and it preserves the older "don't add a job if it's not
+    relevant" rule: relevance = matches a real course.
+  - aml-kyc classification additionally requires aml_gate() (title-led v2):
+    a posting that merely mentions compliance/risk/fraud in passing is NOT
+    an AML role; if it also matches another course it lands there instead.
   - Location: India OR Remote/global (loc_ok from fetch_aml_boards).
   - Public pages only. Never log in, never scrape behind auth.
   - Merges into jobs.json, deduped by normalized (title, company).
@@ -37,11 +44,11 @@ import time
 import urllib.request
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from fetch_ats import TRACK_LABELS, aml_gate, norm
+from fetch_ats import TRACK_FILTERS, TRACK_LABELS, aml_gate, norm
 from fetch_ats import board_jobs as ats_board_jobs
 from fetch_ats2 import board_jobs as ats2_board_jobs
-from fetch_aml_boards import loc_ok, workday_aml_jobs
-from fetch_enterprise import eightfold_jobs, oracle_jobs, sr_jobs
+from fetch_aml_boards import loc_ok
+from fetch_enterprise import eightfold_jobs, oracle_jobs, post_json, sr_jobs
 
 SITE = os.path.dirname(os.path.abspath(__file__))
 JOBS_PATH = os.path.join(SITE, "jobs.json")
@@ -152,6 +159,56 @@ def generic_json_jobs(board):
     return out
 
 
+def classify(title, desc):
+    """Course slug for a posting, or None if it matches no course.
+
+    First matching track wins (TRACK_FILTERS order). aml-kyc matches
+    additionally require aml_gate(): a posting that trips an AML keyword
+    but fails the gate is NOT an AML role — it keeps trying other tracks
+    (e.g. a Java dev at a bank whose description mentions "regulatory"
+    lands in java-fullstack, not aml-kyc).
+    """
+    hay = norm(str(title or "") + " " + (desc or ""))
+    for slug, kws in TRACK_FILTERS.items():
+        if any(k in hay for k in kws):
+            if slug == "aml-kyc" and not aml_gate(title, desc):
+                continue
+            return slug
+    return None
+
+
+def workday_all_jobs(host, tenant, site):
+    """Workday CXS, ALL jobs (empty search), paginated — classification
+    happens in main(), so this must not pre-filter to AML terms."""
+    out, seen, offset = [], set(), 0
+    for _ in range(200):
+        try:
+            d = post_json(f"https://{host}/wday/cxs/{tenant}/{site}/jobs",
+                          {"appliedFacets": {}, "limit": 20,
+                           "offset": offset, "searchText": ""})
+        except Exception as e:  # noqa: BLE001
+            print(f"[workday] {host}: {e}", file=sys.stderr)
+            break
+        posts = d.get("jobPostings", [])
+        if not posts:
+            break
+        for p in posts:
+            ep = p.get("externalPath") or ""
+            url = f"https://{host}/{site}{ep}"
+            if url in seen:
+                continue
+            seen.add(url)
+            bullets = " ".join(str(b) for b in (p.get("bulletFields") or []))
+            out.append({"title": p.get("title"),
+                        "location": p.get("locationsText") or "",
+                        "url": url, "desc": bullets})
+        offset += 20
+        if d.get("total") and offset >= d["total"]:
+            break
+        time.sleep(0.5)
+    return out
+
+
 def engine_jobs(board):
     """Dispatch one board config to its engine. Returns posting dicts."""
     eng = board["engine"]
@@ -161,7 +218,7 @@ def engine_jobs(board):
     if eng in ("workable", "recruitee", "personio", "breezy", "teamtailor"):
         return ats2_board_jobs({"ats": eng, "slug": p["slug"]})
     if eng == "workday":
-        return workday_aml_jobs(p["host"], p["tenant"], p["site"])
+        return workday_all_jobs(p["host"], p["tenant"], p["site"])
     if eng == "smartrecruiters":
         return sr_jobs(p["slug"])
     if eng == "eightfold":
@@ -208,7 +265,8 @@ def main():
         for p in postings:
             if not p.get("url") or not loc_ok(p.get("location")):
                 continue
-            if not aml_gate(p.get("title"), p.get("desc") or ""):
+            course = classify(p.get("title"), p.get("desc") or "")
+            if not course:
                 continue
             key = (norm(p["title"]), norm(company))
             if key in seen:
@@ -217,8 +275,8 @@ def main():
             uid = re.sub(r"\D", "", p["url"])[-10:] or str(abs(hash(key)))[-10:]
             jobs.append({
                 "id": "brw_" + uid,
-                "course": "aml-kyc",
-                "course_label": TRACK_LABELS["aml-kyc"],
+                "course": course,
+                "course_label": TRACK_LABELS[course],
                 "title": p["title"],
                 "company": company,
                 "location": p.get("location", ""),
