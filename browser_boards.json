@@ -120,6 +120,18 @@
     "host": "hcbt.fa.em2.oraclecloud.com",
     "site": "CX"
    }
+  },
+  {
+   "company": "YES BANK",
+   "careers_url": "https://www.yes.bank.in/work-with-us/career-opportunities",
+   "engine": "talentrecruit",
+   "params": {
+    "api_url": "https://app.api.talentrecruit.com/api/v1/career/template/job/list",
+    "appcareer": "https://appcareer.talentrecruit.com/career-page/?sortName=yesforyou&departmentname=",
+    "shortname": "https://yesforyou.talentrecruit.com",
+    "career_page": "https://yesforyou.talentrecruit.com/career-page",
+    "max_pages": 30
+   }
   }
  ]
 }

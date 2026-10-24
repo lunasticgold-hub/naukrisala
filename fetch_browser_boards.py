@@ -384,6 +384,114 @@ def ripplehire_jobs(board):
     return out
 
 
+def talentrecruit_jobs(board):
+    """TalentRecruit career-page API (proven: YES BANK, 499 jobs).
+
+    Flow: the public career page is an embedded app whose jobs come from
+    app.api.talentrecruit.com/api/v1/career/template/job/list
+    (?limit=&offset=) with a `shortname: https://<tenant>.talentrecruit.com`
+    header (without it the API 500s). Responses are NaCl boxes
+    ({text, iv=sender public key, key=nonce}) opened with the vendor's
+    own client key Kd, which is shipped in its public career-page JS
+    bundle — extracted fresh every run from the bundle itself, never
+    stored in the repo (it is the vendor's constant, not a credential,
+    and the listings are public/anonymous). Decryption runs through
+    tools/talentrecruit_decrypt.js (vendored tweetnacl) because the
+    sandbox's Node build cannot do TLS through the egress proxy, while
+    Python's urllib can — so Python fetches, Node only decrypts offline.
+
+    Audit note (2026-10-25, all 499 YES BANK jobs classified): only the
+    aml-kyc bucket is merged for this board. The other tracks' matches
+    were generic banking roles matching on JD phrases (e.g. Relationship
+    Manager / Product Sales Manager tagged STOM via "service delivery"
+    in the description, Auditor tagged data-analyst) — not real course
+    roles. The aml-kyc bucket is gate-protected (title-led v2) and all
+    21 are genuine compliance/risk/KYC/EDD/sanctions roles. Until the
+    classifier's snippet fallback is tightened board-wide, other
+    TalentRecruit tenants inherit the same AML-only rule.
+    """
+    import base64
+    import subprocess
+    import urllib.parse
+
+    p = board["params"]
+    opener = urllib.request.build_opener()
+
+    def fetch_text(url, headers=None):
+        req = urllib.request.Request(
+            url, headers={**UA, **(headers or {})})
+        with opener.open(req, timeout=60) as r:
+            return r.read().decode("utf-8", "replace")
+
+    shell = fetch_text(p["appcareer"])
+    m = re.search(r'src="([^"]*main\.[^"]*\.js)"', shell)
+    if not m:
+        raise ValueError("talentrecruit: main bundle not found in shell")
+    src = m.group(1)
+    if src.startswith("http"):
+        bundle_url = src
+    elif src.startswith("/"):
+        parsed = urllib.parse.urlparse(p["appcareer"])
+        bundle_url = f"{parsed.scheme}://{parsed.netloc}{src}"
+    else:
+        # src is a bare filename served from the app root, NOT relative
+        # to the career-page path (that path returns the SPA shell).
+        parsed = urllib.parse.urlparse(p["appcareer"])
+        bundle_url = f"{parsed.scheme}://{parsed.netloc}/{src}"
+    bundle = fetch_text(bundle_url)
+    km = re.search(
+        r"Kd=Ru\.encodeBase64\(new Uint8Array\(\[([0-9,]+)\]\)\)", bundle)
+    if not km:
+        raise ValueError("talentrecruit: Kd not found in bundle")
+    kd_b64 = base64.b64encode(
+        bytes(int(x) for x in km.group(1).split(","))).decode()
+    decrypt_js = os.path.join(SITE, "tools", "talentrecruit_decrypt.js")
+
+    def fetch_page(limit, offset):
+        url = (f"{p['api_url']}?limit={limit}&offset={offset}")
+        req = urllib.request.Request(url, headers={
+            **UA, "shortname": p["shortname"],
+            "Referer": p["career_page"]})
+        with opener.open(req, timeout=60) as r:
+            env = json.load(r)
+        proc = subprocess.run(
+            ["node", decrypt_js, kd_b64], input=json.dumps(env).encode(),
+            capture_output=True, timeout=60)
+        if proc.returncode != 0:
+            raise ValueError("talentrecruit: decrypt failed: "
+                             + proc.stderr.decode()[:200])
+        return json.loads(proc.stdout.decode("utf-8"))
+
+    out, offset = [], 0
+    max_pages = p.get("max_pages", 30)
+    while offset // 20 < max_pages:
+        obj = fetch_page(20, offset)
+        items = obj["data"]["data"]["data"]
+        if not items:
+            break
+        for j in items:
+            title = (j.get("title") or "").strip()
+            if not title:
+                continue
+            desc = clean_html(j.get("description") or "")
+            if classify(title, desc) != "aml-kyc":
+                continue
+            token = j.get("jobid") or ""
+            url = (p["career_page"] + "/apply/"
+                   + urllib.parse.quote(
+                       urllib.parse.quote(token, safe=""), safe="")
+                   + "?viewJD=true") if token else p["career_page"]
+            posted = (j.get("publishedtime") or "")[:10]
+            out.append({"title": title,
+                        "location": (j.get("city") or "").strip(),
+                        "url": url, "desc": desc, "posted": posted})
+        if len(items) < 20:
+            break
+        offset += 20
+        time.sleep(0.4)
+    return out
+
+
 def engine_jobs(board):
     """Dispatch one board config to its engine. Returns posting dicts."""
     eng = board["engine"]
@@ -406,6 +514,8 @@ def engine_jobs(board):
         return generic_html_jobs(board)
     if eng == "ripplehire":
         return ripplehire_jobs(board)
+    if eng == "talentrecruit":
+        return talentrecruit_jobs(board)
     raise ValueError(f"unknown engine: {eng}")
 
 
