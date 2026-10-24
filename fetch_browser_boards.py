@@ -318,7 +318,10 @@ def ripplehire_jobs(board):
     candidatejobsearch pages; the response is XML (JobPageVO with
     totalJobCount + jobVoList/jobVoList items). Apply links point at the
     public careers entry page, not a tokenized detail URL, so links
-    never rot if the site token ever changes; cards show the Job ID
+    never rot if the site token ever changes; each job gets a unique
+    ?job=<jobSeq> query anchor (the portal ignores it) because the
+    board's dedup collapses same-URL jobs — a shared entry URL alone
+    silently killed 6 of HDFC's first 7 jobs. Cards show the Job ID
     for instant lookup on the portal.
     """
     import xml.etree.ElementTree as ET
@@ -364,12 +367,14 @@ def ripplehire_jobs(board):
             exp = (j.findtext("jobReqExp") or "").strip()
             openings = (j.findtext("numOfOpening") or "").strip()
             code = (j.findtext("jobCode") or "").strip()
+            seq = (j.findtext("jobSeq") or "").strip()
             desc = " · ".join(x for x in
                               [exp + " experience" if exp else "",
                                openings + " openings" if openings else "",
                                "Job ID " + code if code else ""] if x)
+            url = p["entry_url"] + ("?job=" + seq if seq else "")
             out.append({"title": title, "location": loc,
-                        "url": p["entry_url"], "desc": desc, "posted": ""})
+                        "url": url, "desc": desc, "posted": ""})
         page += 1
         if total and page * 10 >= total:
             break
