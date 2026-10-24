@@ -100,6 +100,17 @@
     "api_url": "https://hdfcbank.ripplehire.com/candidate/candidatejobsearch",
     "source": "CAREERSITE"
    }
+  },
+  {
+   "company": "Axis Bank",
+   "careers_url": "https://www.axis.bank.in/careers",
+   "engine": "ripplehire",
+   "params": {
+    "entry_url": "https://axisbank.ripplehire.com/candidate/careers",
+    "api_url": "https://axisbank.ripplehire.com/candidate/candidatejobsearch",
+    "source": "CAREERSITE",
+    "max_pages": 200
+   }
   }
  ]
 }
