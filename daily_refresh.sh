@@ -39,7 +39,7 @@ python3 normalize_jobs.py 2>&1 | tail -2 || echo "[warn] normalize failed"
 python3 retag_board.py 2>&1 | tail -3 || echo "[warn] retag failed"
 
 # bump cache-buster so browsers pick up the fresh jobs.json
-V=$(date +%Y%m%d)
+V=$(date +%Y%m%d%H%M)
 sed -i "s|jobs.json?v=[0-9]*[a-z]*|jobs.json?v=${V}|" jobs.html
 
 if git diff --quiet jobs.json jobs.html; then
