@@ -177,3 +177,66 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# ---------- AML/KYC relevance gate (strict; shared by AML-focused fetchers) ----------
+def _word_in(text, token):
+    # word-boundary match for short tokens (avoids "aml" matching "family");
+    # substring match for longer phrases.
+    if len(token) <= 3:
+        return re.search(r"(?<![a-z])" + re.escape(token) + r"(?![a-z])",
+                         text) is not None
+    return token in text
+
+
+def _has_any(text, tokens):
+    return any(_word_in(text, t) for t in tokens)
+
+
+AML_STRONG = [
+    "aml", "kyc", "know your customer", "anti-money laundering",
+    "anti money laundering", "anti-money-laundering", "money laundering",
+    "transaction monitoring", "sanctions", "customer due diligence",
+    "enhanced due diligence", "financial crime", "fincrime", "fin-crime",
+    "suspicious activity", "suspicious transaction", "beneficial ownership",
+    "politically exposed", "adverse media", "watchlist", "name screening",
+    "trade-based money laundering", "correspondent banking",
+    "regulatory compliance", "compliance monitoring",
+]
+
+
+def aml_gate(title, desc):
+    """True only when the job is directly AML/KYC-related (v2, title-led).
+
+    Why title-led: ATS descriptions carry company boilerplate ("we fight
+    financial crime") that made every job at an AML company pass v1. So:
+      - a strong anchor IN THE TITLE passes outright (even for engineering
+        roles building AML systems, e.g. "AML Platform Engineer");
+      - disqualifying function words (sales/engineering/marketing/design/
+        IT/architect/talent-community) fail unless the title has an anchor;
+      - adjacent titles (fraud/risk/compliance/screening/monitoring/...)
+        pass only with AML/financial context in the description;
+      - description-only anchors no longer pass (boilerplate).
+    False negatives (generic-titled KYC ops roles) are accepted: the user's
+    rule is "don't add a job if it's not relevant".
+    """
+    t, d = norm(title), norm(desc)
+    if _has_any(t, AML_STRONG):
+        return True
+    if any(k in t for k in ["engineer", "developer", "designer", "architect",
+                            "sales", "marketing", "campaign", "recruiter",
+                            "talent acquisition", "human resources",
+                            "account executive", "account manager",
+                            "community", "data engineer",
+                            "information technology", "customer success",
+                            "business development"]):
+        return False
+    adjacent = ["fraud", "compliance", "investigat", "onboarding",
+                "screening", "monitoring", "verification", "due diligence",
+                "financial crime", "sanctions"]
+    if any(k in t for k in adjacent) or _word_in(t, "risk"):
+        if _has_any(d, ["aml", "kyc", "financial crime", "sanctions",
+                        "compliance", "bank", "financial services",
+                        "fintech", "payments"]):
+            return True
+    return False

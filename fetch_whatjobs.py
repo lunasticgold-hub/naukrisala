@@ -62,6 +62,9 @@ SPAM_RE = re.compile("|".join(SPAM_RES), re.I)
 SITE = __import__("os").path.dirname(__import__("os").path.abspath(__file__))
 JOBS_PATH = SITE + "/jobs.json"
 
+sys.path.insert(0, SITE)
+from fetch_ats import aml_gate  # strict AML/KYC relevance gate
+
 
 def norm(s):
     return re.sub(r"\s+", " ", (s or "").lower().strip())
@@ -121,7 +124,11 @@ def main():
                     title = it.get("title") or ""
                     if SPAM_RE.search(title):
                         continue
-                    if not relevant(it, kfilter):
+                    if slug == "aml-kyc":
+                        # strict gate: title/snippet must be directly AML/KYC
+                        if not aml_gate(title, it.get("snippet") or ""):
+                            continue
+                    elif not relevant(it, kfilter):
                         continue
                     url = it.get("url") or ""
                     if not url:
