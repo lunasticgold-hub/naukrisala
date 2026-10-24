@@ -9,6 +9,9 @@ The key is never printed or stored.
 """
 import json, os, re, sys, time, urllib.request
 
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from fetch_ats import aml_gate  # shared v2 title-led AML/KYC relevance gate
+
 KEY = os.environ.get("JOOBLE_KEY")
 if not KEY:
     sys.exit("Set JOOBLE_KEY env var.")
@@ -75,7 +78,9 @@ def main():
     seen = {(norm(j.get("title")), norm(j.get("company"))) for j in jobs}
 
     added = 0
-    for slug, label, queries, max_pages, keywords in TRACKS:
+    only = os.environ.get("JOOBLE_TRACKS")
+    tracks = [t for t in TRACKS if t[0] in only.split(",")] if only else TRACKS
+    for slug, label, queries, max_pages, keywords in tracks:
         track_added = 0
         for q in queries:
             for page in range(1, max_pages + 1):
@@ -88,7 +93,14 @@ def main():
                 if not results:
                     break
                 for r in results:
-                    if not r.get("link") or not relevant(r, keywords):
+                    if not r.get("link"):
+                        continue
+                    # AML/KYC track: shared v2 title-led gate (boilerplate-proof).
+                    # Other tracks: their query already defines the course.
+                    if slug == "aml-kyc":
+                        if not aml_gate(r.get("title"), r.get("snippet")):
+                            continue
+                    elif not relevant(r, keywords):
                         continue
                     key = (norm(r.get("title")), norm(r.get("company")))
                     if key in seen:
