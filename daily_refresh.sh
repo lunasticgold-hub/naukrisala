@@ -6,6 +6,12 @@
 set -u
 cd "$(dirname "$0")"
 
+# API keys for the daily run (Jooble; Adzuna held, see below): stored in a
+# locked file OUTSIDE this repo (0600, this account only) — never committed.
+if [ -f "$HOME/.config/naukrisala/secrets.env" ]; then
+  set -a; . "$HOME/.config/naukrisala/secrets.env"; set +a
+fi
+
 echo "=== refresh start: $(date -u +%FT%TZ) ==="
 
 python3 fetch_ats.py 2>&1 | tail -3 || echo "[warn] fetch_ats failed"
@@ -14,8 +20,9 @@ python3 fetch_enterprise.py 2>&1 | tail -5 || echo "[warn] fetch_enterprise fail
 python3 fetch_jsearch.py 2>&1 | tail -2 || echo "[info] jsearch skipped (quota or error)"
 python3 fetch_serpapi.py 2>&1 | tail -2 || echo "[info] serpapi skipped (quota or error)"
 
-# Adzuna: 8 calls/day, well under the 250/day free-tier cap
-python3 fetch_adzuna_aml.py 2>&1 | tail -2 || echo "[info] adzuna skipped (no key or error)"
+# Adzuna: HELD — key is test-tier only (25 calls, pending activation); the
+# daily run must NOT consume it until the paid/free decision is made.
+# python3 fetch_adzuna_aml.py 2>&1 | tail -2 || echo "[info] adzuna held (test tier)"
 # Jooble: ~76 calls/run with 0.5s delays; skips cleanly without JOOBLE_KEY
 python3 fetch_jooble.py 2>&1 | tail -2 || echo "[info] jooble skipped (no key or error)"
 # WhatJobs: keyless publisher feed

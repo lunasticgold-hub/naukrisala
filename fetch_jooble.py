@@ -55,7 +55,7 @@ def clean(text, n=280):
 def fetch(keywords, location="India", page=1):
     body = json.dumps({"keywords": keywords, "location": location, "page": page}).encode()
     req = urllib.request.Request(
-        "https://jooble.org/api/" + KEY, data=body,
+        "https://in.jooble.org/api/" + KEY, data=body,
         headers={"Content-Type": "application/json"})
     with urllib.request.urlopen(req, timeout=60) as resp:
         return json.load(resp)
