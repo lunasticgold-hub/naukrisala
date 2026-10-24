@@ -111,6 +111,15 @@
     "source": "CAREERSITE",
     "max_pages": 200
    }
+  },
+  {
+   "company": "Kotak Mahindra Bank",
+   "careers_url": "https://www.kotak.com",
+   "engine": "oracle",
+   "params": {
+    "host": "hcbt.fa.em2.oraclecloud.com",
+    "site": "CX"
+   }
   }
  ]
 }
