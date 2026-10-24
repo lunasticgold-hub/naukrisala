@@ -13,7 +13,8 @@
   "teamtailor": "params: {slug} — teamtailor board slug",
   "workable": "params: {slug} — workable account slug",
   "workday": "params: {host, tenant, site} — host like <tenant>.wd5.myworkdayjobs.com, tenant = Workday tenant name, site = career site name",
-  "generic_html": "params: {list_url (with {offset}), url_prefix, row_pattern (regex, named groups title/url/location), pagination{step, max_pages}} — for server-rendered HTML job pages with no JSON API (proven: EY SuccessFactors search)"
+  "generic_html": "params: {list_url (with {offset}), url_prefix, row_pattern (regex, named groups title/url/location), pagination{step, max_pages}} — for server-rendered HTML job pages with no JSON API (proven: EY SuccessFactors search)",
+  "ripplehire": "params: {entry_url (public careers entry, redirect gives site token), api_url (candidatejobsearch), source, max_pages?} — RippleHire SPA XML API (proven: HDFC 465, Axis 10759); token used in-memory only, never stored; apply links = entry_url (never tokenized)"
  },
  "_how_to_add": "1) Run: python3 discover_board.py <careers-page-URL>  2) If it reports a working engine + sample count, paste the suggested entry below.  3) Test: python3 fetch_browser_boards.py --dry-run --board <Company>  4) If clean, run without --dry-run and commit.",
  "_schema": "Browser-boards engine config (fetch_browser_boards.py). One entry per employer career page. EVERY job is classified into one of the 15 courses (TRACK_FILTERS) — a posting matching no course is dropped. aml-kyc additionally requires aml_gate(). Location must be India or Remote/global. Public pages only; never behind login.",
@@ -88,6 +89,16 @@
     "host": "pru.wd5.myworkdayjobs.com",
     "tenant": "pru",
     "site": "Careers"
+   }
+  },
+  {
+   "company": "HDFC Bank",
+   "careers_url": "https://www.hdfc.bank.in/careers",
+   "engine": "ripplehire",
+   "params": {
+    "entry_url": "https://hdfcbank.ripplehire.com/candidate/careers",
+    "api_url": "https://hdfcbank.ripplehire.com/candidate/candidatejobsearch",
+    "source": "CAREERSITE"
    }
   }
  ]

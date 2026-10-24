@@ -331,6 +331,7 @@ def ripplehire_jobs(board):
     m = re.search(r"[?&]token=([^&#]+)", final_url)
     token = m.group(1) if m else ""
     out, page, total = [], 0, None
+    max_pages = p.get("max_pages")
     while True:
         params = {"page": page, "search": "*:*", "token": token,
                   "source": p.get("source", "CAREERSITE"), "pagesize": 10}
@@ -371,6 +372,8 @@ def ripplehire_jobs(board):
                         "url": p["entry_url"], "desc": desc, "posted": ""})
         page += 1
         if total and page * 10 >= total:
+            break
+        if max_pages and page >= max_pages:
             break
         time.sleep(0.4)
     return out
