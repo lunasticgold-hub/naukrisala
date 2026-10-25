@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CI/CD pipelines: what happens between commit and deploy | NaukriSala</title>
+<meta name="description" content="A pipeline tests and ships code automatically, and understanding its stages explains most DevOps job descriptions.">
+<link rel="canonical" href="https://lunasticgold-hub.github.io/naukrisala/blog/ci-cd-pipeline-commit-to-deploy.html">
+<meta property="og:title" content="CI/CD pipelines: what happens between commit and deploy | NaukriSala">
+<meta property="og:description" content="A pipeline tests and ships code automatically, and understanding its stages explains most DevOps job descriptions.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://lunasticgold-hub.github.io/naukrisala/blog/ci-cd-pipeline-commit-to-deploy.html">
+<meta property="og:image" content="https://lunasticgold-hub.github.io/naukrisala/assets/brand/ns-logo-blue.png">
+<meta property="og:site_name" content="NaukriSala">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="CI/CD pipelines: what happens between commit and deploy | NaukriSala">
+<meta name="twitter:description" content="A pipeline tests and ships code automatically, and understanding its stages explains most DevOps job descriptions.">
+<meta name="twitter:image" content="https://lunasticgold-hub.github.io/naukrisala/assets/brand/ns-logo-blue.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css?v=20261025n9">
+<link rel="stylesheet" href="../home.css?v=20261025n9">
+<link rel="icon" type="image/png" href="../assets/brand/ns-logo-blue.png">
+</head>
+<body>
+<div class="topbar"><b>Batch 9 starts 10 Nov 2026</b> &nbsp;·&nbsp; Free demos from 3 Nov</div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="../index.html">
+      <img class="brand-mark-img" src="../assets/brand/ns-logo-blue.png" alt="NaukriSala logo">
+      <span class="brand-word">naukrisala<span class="brand-dot">.</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="../courses.html">Courses</a>
+      <a href="../how-it-works.html">How it works</a>
+      <a href="../fees.html">Fees</a>
+      <a href="../jobs.html">Jobs</a>
+      <a href="../ai-tools.html">AI Tools</a>
+      <a href="../faq.html">FAQ</a>
+      <a href="../blog.html">Blog</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="../index.html#demo">Book free demo <span class="arr">→</span></a>
+      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+<main>
+  <section class="section">
+    <div class="wrap post-wrap">
+      <p class="eyebrow"><span class="dot"></span>Cloud &amp; DevOps</p>
+      <h1>CI/CD pipelines: what happens between commit and deploy</h1>
+      <p class="blog-read">1 min read</p>
+      <div class="post-body"><p>Continuous integration and continuous delivery, or CI/CD, is the automated path from code change to running software. A developer commits code, the pipeline builds it, runs tests, and, if everything passes, deploys it. The point is to catch problems early and make releases boring. Manual releases are slow and error-prone precisely because humans repeat steps differently each time.</p><h3>The stages in order</h3><ul><li>Build: the code is compiled or packaged, and missing dependencies fail here, early and cheaply.</li><li>Test: automated checks run, including unit tests and basic integration checks, before any user sees the change.</li><li>Staging: the change runs in an environment shaped like production, where configuration problems surface.</li><li>Deploy: the change reaches production, ideally in small steps with a way back if something breaks.</li></ul><p>When a pipeline fails, read the failing stage first. It tells you whether the problem is code, tests, configuration, or the deployment itself.</p></div>
+      <div class="post-foot">
+        <a class="link-arrow" href="../blog.html">&larr; Back to the blog</a>
+        <a class="btn btn-primary" href="../index.html#demo">Book a free demo <span class="arr">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="foot-brand">
+      <a class="brand" href="../index.html">
+        <img class="brand-mark-img" src="../assets/brand/ns-logo-blue.png" alt="NaukriSala logo">
+        <span class="brand-word">naukrisala<span class="brand-dot">.</span></span>
+      </a>
+      <p class="fine">Get placed first. Pay from your salary.</p>
+      <a class="foot-cta" href="../index.html#demo">Book a free demo <span class="arr">→</span></a>
+      <p class="foot-cta-sub">Batch 9 starts 10 Nov 2026 · Free demos from 3 Nov</p>
+    </div>
+    <nav class="foot-col">
+      <h4>Top courses</h4>
+      <a href="../course-aml-kyc.html">AML &amp; KYC</a>
+      <a href="../course-servicenow.html">ServiceNow</a>
+      <a href="../course-stom.html">STOM</a>
+      <a href="../course-data-science-ai.html">Data Science &amp; AI</a>
+      <a href="../course-full-stack-python.html">Full Stack Python</a>
+      <a href="../courses.html">All courses</a>
+    </nav>
+    <nav class="foot-col">
+      <h4>AI tools</h4>
+      <a href="../socrates.html">AI Interview Coach</a>
+      <a href="../resume-evaluator.html">Resume Evaluator</a>
+      <a href="../skill-gap.html">Skill Gap</a>
+      <a href="../apply.html">Apply Assistant</a>
+    </nav>
+    <nav class="foot-col">
+      <h4>Company</h4>
+      <a href="../how-it-works.html">How it works</a>
+      <a href="../fees.html">Fees</a>
+      <a href="../jobs.html">Jobs</a>
+      <a href="../faq.html">FAQ</a>
+      <a href="../track-record.html">Track record</a>
+      <a href="../blog.html">Blog</a>
+      <a href="../terms.html">Terms</a>
+      <a href="../privacy.html">Privacy</a>
+    </nav>
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <a href="tel:+918450049035">+91 84500 49035</a>
+      <a href="https://wa.me/918450049035">Chat on WhatsApp</a>
+    </div>
+  </div>
+  <div class="wrap foot-seo">
+    <div class="foot-seo-row"><h4>Top courses</h4><a href="../course-aml-kyc.html">AML &amp; KYC</a> | <a href="../course-servicenow.html">ServiceNow</a> | <a href="../course-stom.html">STOM</a> | <a href="../course-data-science-ai.html">Data Science &amp; AI</a> | <a href="../course-full-stack-python.html">Full Stack Python</a> | <a href="../courses.html">All courses</a></div>
+    <div class="foot-seo-row"><h4>AI tools</h4><a href="../socrates.html">AI Interview Coach</a> | <a href="../resume-evaluator.html">Resume Evaluator</a> | <a href="../skill-gap.html">Skill Gap</a> | <a href="../apply.html">Apply Assistant</a></div>
+    <div class="foot-seo-row"><h4>Company</h4><a href="../how-it-works.html">How it works</a> | <a href="../fees.html">Fees</a> | <a href="../jobs.html">Jobs</a> | <a href="../faq.html">FAQ</a> | <a href="../track-record.html">Track record</a> | <a href="../blog.html">Blog</a> | <a href="../terms.html">Terms</a> | <a href="../privacy.html">Privacy</a></div>
+  </div>
+  <div class="wrap" aria-hidden="true"><p class="foot-watermark">naukrisala.</p></div>
+  <div class="wrap foot-bar">
+    <p>© 2026 NaukriSala. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="#" aria-label="Chat on WhatsApp"></a>
+<script src="../script.js"></script>
+</body>
+</html>

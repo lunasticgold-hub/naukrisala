@@ -306,3 +306,26 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .mod-list{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px}
 .mod-list li{background:var(--card);border:1px solid var(--line-soft);border-radius:12px;padding:16px 18px;font:500 15px var(--font-b)}
 @media(max-width:700px){.mod-list{grid-template-columns:1fr}}
+
+/* ============ blog ============ */
+.blog-filters{display:flex;flex-wrap:wrap;gap:10px;margin:26px 0 30px}
+.blog-filter{font:700 14px var(--font-b);color:var(--navy);background:#fff;border:1px solid var(--line-soft);border-radius:999px;padding:9px 18px;cursor:pointer}
+.blog-filter.active{background:var(--amber);border-color:var(--amber);color:#fff}
+.blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.blog-card{background:#fff;border:1px solid var(--line-soft);border-radius:16px;padding:24px}
+.blog-card h3{font-size:19px;line-height:1.35;margin:12px 0 8px}
+.blog-card h3 a{color:var(--ink);text-decoration:none}
+.blog-card h3 a:hover{color:var(--amber)}
+.blog-card p{color:var(--muted);font-size:15px;line-height:1.6;margin:0 0 14px}
+.blog-tag{display:inline-block;font:700 12px var(--font-b);letter-spacing:.08em;text-transform:uppercase;color:var(--amber-ink);background:rgba(0,82,255,.1);border:1px solid rgba(0,82,255,.25);padding:5px 11px;border-radius:999px}
+.blog-read{font:600 13px var(--font-b);color:var(--muted)}
+.post-wrap{max-width:760px}
+.post-wrap h1{font-size:42px;line-height:1.15;margin:0 0 12px}
+.post-wrap .blog-read{display:block;margin-bottom:28px}
+.post-body p{font-size:17px;line-height:1.8;color:var(--ink);margin:0 0 18px}
+.post-body h3{font-size:21px;margin:30px 0 12px}
+.post-body ul{margin:0 0 18px;padding-left:22px}
+.post-body li{font-size:17px;line-height:1.7;margin-bottom:8px}
+.post-foot{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;border-top:1px solid var(--line-soft);padding-top:26px;margin-top:34px}
+@media(max-width:900px){.blog-grid{grid-template-columns:1fr 1fr}.post-wrap h1{font-size:32px}}
+@media(max-width:600px){.blog-grid{grid-template-columns:1fr}}

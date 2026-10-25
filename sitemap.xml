@@ -1,17 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/</loc></url>
   <url><loc>https://lunasticgold-hub.github.io/naukrisala/ai-tools.html</loc></url>
   <url><loc>https://lunasticgold-hub.github.io/naukrisala/apply.html</loc></url>
-  <url><loc>https://lunasticgold-hub.github.io/naukrisala/courses.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/accounts-payable-three-way-match.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/accounts-receivable-ageing-who-owes.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/adverse-media-checks-public-news.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/aml-interview-questions-judgement.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/applying-smartly-fewer-better-fit.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/aws-building-blocks-ec2-s3-iam.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/bank-reconciliations-statements-ledger.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/bpo-desk-into-compliance-role.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/bpo-to-compliance-mapping-skills.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/bug-reports-developers-act-on.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/building-rest-api-frontend-use.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/catalog-items-request-workflows.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/cdd-vs-edd-when-each-applies.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/change-enablement-checks-before-release.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/changing-fields-at-thirty-plan.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/choosing-between-two-career-paths.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/ci-cd-pipeline-commit-to-deploy.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/cleaning-messy-data-pandas.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/cloud-support-roles-day-to-day.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/customer-support-to-it-bridge.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/data-portfolio-project-shows-thinking.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/debugging-python-reading-tracebacks.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/deploying-small-python-app-setup.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/devops-interview-systems-thinking.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/django-vs-flask-first-project.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/docker-containers-without-jargon.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/evaluating-language-model-output.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/explaining-career-gap-honestly.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/explaining-failed-interview-usefully.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/finance-operations-interview-process-questions.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/first-flow-designer-workflow-no-code.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/first-ninety-days-learning-team.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/follow-up-emails-after-interview.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/full-stack-project-database-api-ui.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/fund-accounting-nav-daily-activity.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/gap-year-build-proof.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/gliderecord-basics-new-developers.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/group-discussions-contributing.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/hr-round-why-this-role-why-now.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/html-css-javascript-minimum-python-developer.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/iam-mistakes-beginner-cloud-incidents.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/incident-bridges-down-systems.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/incident-problem-change-itsm-tickets.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/invoice-exceptions-stall-payments.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/itil-practices-real-operations-jobs.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/kubernetes-pods-services-why-exist.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/kyc-documents-spotting-mismatch.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/manual-to-automation-skills-transfer.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/monitoring-alerts-signal-vs-noise.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/month-end-close-checklists.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/moving-cities-for-job-questions.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/no-degree-routes-operations-roles.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/offer-letters-clauses-before-sign.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/overfitting-ace-training-fail-live.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/payroll-inputs-data-right-before-payday.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/peps-family-members-screening.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/probation-periods-confirm-day-one.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/prompting-llm-context-constraints-examples.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/python-basics-carry-into-frameworks.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/qa-interview-questions-thinking.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/questions-to-ask-interviewer-real-job.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/rag-grounding-answers-own-documents.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/re-entering-work-after-break-routine.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/reading-an-sla-clearly.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/reading-cloud-bills-logs-costs.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/reading-job-description-what-it-hides.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/reconciliation-breaks-records-disagree.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/referrals-asking-without-awkward.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/regression-vs-classification-model-type.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/remote-job-listings-checking-real.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/resume-bullets-show-what-changed.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/resume-formatting-screening-software.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/salary-discussions-without-number-first.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/sanctions-screening-false-positives-cleared.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/sar-str-reports-useful-filing.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/selenium-locators-survive-ui-changes.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/service-desk-to-operations-engineer.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/service-transition-vs-operations.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/servicenow-admin-vs-developer.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/servicenow-certifications-practical-order.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/servicenow-interview-scenarios.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/shift-work-it-operations-nights.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/spreadsheet-work-to-data-analyst.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/sql-questions-data-interviews-practise.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/starting-fresh-after-graduation-no-experience.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/stop-applying-start-preparing.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/switching-careers-without-coding.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/technical-rounds-thinking-aloud.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/test-planning-release-coverage.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/tracking-applications-nothing-slips.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/train-test-split-false-confidence.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/transaction-monitoring-alerts-reading-scenario.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/treasury-basics-cash-positioning.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/two-offers-comparing-beyond-headline.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/update-sets-work-missing-instances.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/user-login-passwords-sessions-mistakes.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/using-jobs-board-filters-save-hours.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/what-kyc-analysts-check-new-account.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/when-short-course-worth-it.html.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/blog/writing-test-case-stranger-execute.html.html</loc></url>
   <url><loc>https://lunasticgold-hub.github.io/naukrisala/course-aml-kyc.html</loc></url>
   <url><loc>https://lunasticgold-hub.github.io/naukrisala/course-data-science-ai.html</loc></url>
   <url><loc>https://lunasticgold-hub.github.io/naukrisala/course-full-stack-python.html</loc></url>
   <url><loc>https://lunasticgold-hub.github.io/naukrisala/course-servicenow.html</loc></url>
   <url><loc>https://lunasticgold-hub.github.io/naukrisala/course-stom.html</loc></url>
+  <url><loc>https://lunasticgold-hub.github.io/naukrisala/courses.html</loc></url>
   <url><loc>https://lunasticgold-hub.github.io/naukrisala/faq.html</loc></url>
   <url><loc>https://lunasticgold-hub.github.io/naukrisala/fees.html</loc></url>
   <url><loc>https://lunasticgold-hub.github.io/naukrisala/how-it-works.html</loc></url>
-  <url><loc>https://lunasticgold-hub.github.io/naukrisala/</loc></url>
   <url><loc>https://lunasticgold-hub.github.io/naukrisala/jobs.html</loc></url>
   <url><loc>https://lunasticgold-hub.github.io/naukrisala/privacy.html</loc></url>
   <url><loc>https://lunasticgold-hub.github.io/naukrisala/resume-evaluator.html</loc></url>
