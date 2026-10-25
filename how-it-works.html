@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css?v=20261025n3">
-<link rel="stylesheet" href="home.css?v=20261025n3">
+<link rel="stylesheet" href="home.css?v=20261025n4">
 <link rel="icon" type="image/png" href="assets/brand/ns-logo-blue.png">
 </head>
 <body>
@@ -38,6 +38,25 @@
 </header>
 
 <main>
+
+  <!-- THE SYSTEM (Scaler-missing section, added 2026-10-25) -->
+  <section class="section" id="system">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="dot"></span>The system</p>
+        <h2>Not just videos. <em>A system that gets you hired.</em></h2>
+        <p class="lede-sm">A course alone doesn&rsquo;t place anyone. Five pieces working together do.</p>
+      </div>
+      <div class="persona-grid">
+        <div class="persona"><span class="per-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H4z M8 21h8"/></svg></span><h3>Live mentor-led classes</h3><p>Every class live and interactive, 100% online.</p><a class="link-arrow" href="#how">See how it works <span class="arr">→</span></a></div>
+        <div class="persona"><span class="per-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16 M4 12h16 M4 19h16"/></svg></span><h3>AI-led curriculum</h3><p>The flagship AML &amp; KYC curriculum, module by module &mdash; foundations to placement capstone.</p><a class="link-arrow" href="courses.html#curriculum">See the curriculum <span class="arr">→</span></a></div>
+        <div class="persona"><span class="per-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H4z M9 9l5 3-5 3z"/></svg></span><h3>AI mock interviews, scored</h3><p>Socrates runs 20-question rounds with a countdown and a scorecard &mdash; practice that gets evaluated.</p><a class="link-arrow" href="socrates.html">Try Socrates <span class="arr">→</span></a></div>
+        <div class="persona"><span class="per-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18H6z M9 8h6 M9 12h6 M9 16h4"/></svg></span><h3>Resumes rebuilt by AI</h3><p>Apply Assistant and the resume evaluator rebuild your resume around the keywords the job actually asks for &mdash; only the ones you confirm are true.</p><a class="link-arrow" href="apply.html">Try the Apply Assistant <span class="arr">→</span></a></div>
+        <div class="persona"><span class="per-ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/></svg></span><h3>Proof from the live board</h3><p><span data-live-total>4,006</span> openings counted this morning, so you train for demand that exists &mdash; not last year&rsquo;s syllabus.</p><a class="link-arrow" href="jobs.html">See the live board <span class="arr">→</span></a></div>
+      </div>
+    </div>
+  </section>
+
 
 <section class="section" id="how">
     <div class="wrap">
@@ -178,6 +197,88 @@
 </a>
 
 <script src="script.js"></script>
+<script>
+/* Homepage live-board wiring — additive, guarded. Static fallbacks in the
+   markup keep every number correct even if this fetch fails. */
+(function () {
+  function fmt(n) { return n.toLocaleString('en-IN'); }
+  function esc(s) {
+    return String(s || '').replace(/[&<>"]/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c];
+    });
+  }
+  /* animated counters (impact band) */
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function animateCount(el) {
+    var target = parseInt(el.getAttribute('data-target') || '0', 10);
+    if (!target || reduce) { if (target) el.textContent = fmt(target); return; }
+    var t0 = null, dur = 1100;
+    function tick(ts) {
+      if (!t0) t0 = ts;
+      var p = Math.min((ts - t0) / dur, 1);
+      el.textContent = fmt(Math.round(target * p));
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { animateCount(e.target); io.unobserve(e.target); }
+      });
+    }, { threshold: 0.4 });
+    document.querySelectorAll('.hcount').forEach(function (el) { io.observe(el); });
+  }
+  /* live board: real totals + freshest AML/KYC openings */
+  if (!('fetch' in window)) return;
+  fetch('jobs.json').then(function (r) {
+    if (!r.ok) throw new Error('jobs fetch failed');
+    return r.json();
+  }).then(function (d) {
+    var jobs = d.jobs || [];
+    if (!jobs.length) return;
+    var total = d.total || jobs.length;
+    var aml = 0;
+    jobs.forEach(function (j) { if (j.course === 'aml-kyc') aml++; });
+    document.querySelectorAll('[data-live-total]').forEach(function (el) {
+      el.setAttribute('data-target', total); el.textContent = fmt(total);
+    });
+    document.querySelectorAll('[data-live-aml]').forEach(function (el) {
+      el.setAttribute('data-target', aml); el.textContent = fmt(aml);
+    });
+    var byCourse = {};
+    jobs.forEach(function (j) { byCourse[j.course] = (byCourse[j.course] || 0) + 1; });
+    document.querySelectorAll('[data-openings]').forEach(function (el) {
+      var n = byCourse[el.getAttribute('data-openings')];
+      if (n) el.innerHTML = '<b>' + fmt(n) + '</b> live openings';
+    });
+    var byEmp = {};
+    jobs.forEach(function (j) { if (j.company) byEmp[j.company] = (byEmp[j.company] || 0) + 1; });
+    document.querySelectorAll('[data-emp]').forEach(function (el) {
+      var n = byEmp[el.getAttribute('data-emp')] || 0;
+      var sm = el.querySelector('small');
+      if (n > 0) { if (sm) sm.textContent = fmt(n) + ' openings'; }
+      else { el.style.display = 'none'; }
+    });
+    var kw = /(aml|kyc|sanction|transaction monitoring|financial crime|compliance|due diligence)/i;
+    var fresh = jobs.filter(function (j) {
+      return j.course === 'aml-kyc' && !j.stale && kw.test(j.title || '');
+    }).sort(function (a, b) {
+      return String(b.fetched || b.created || '').localeCompare(String(a.fetched || a.created || ''));
+    }).slice(0, 4);
+    var box = document.getElementById('bcJobs');
+    if (!box || !fresh.length) return;
+    var now = Date.now();
+    box.innerHTML = fresh.map(function (j) {
+      var isNew = j.fetched && (now - new Date(j.fetched).getTime()) < 2 * 864e5;
+      var meta = [j.company, j.city || ''].filter(Boolean).join(' · ');
+      return '<a class="bc-job" href="' + esc(j.url || 'jobs.html') + '" target="_blank" rel="noopener"><h4>' +
+        esc(j.title) + (isNew ? '<span class="bc-new">New</span>' : '') +
+        '</h4><p><b>' + esc(j.company || '') + '</b>' + (j.city ? ' · ' + esc(j.city) : '') + '</p></a>';
+    }).join('');
+  }).catch(function () { /* static fallback stays */ });
+})();
+</script>
 
 </body>
 </html>

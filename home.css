@@ -363,3 +363,9 @@
   .bc-live i{animation:none}
   .bar-fill,.src-row .sfill{transition:none;width:var(--w)}
 }
+
+/* ---------- AI-era live stats (added 2026-10-25) ---------- */
+.ai-stats{display:flex;gap:36px;flex-wrap:wrap;margin-top:30px}
+.ai-stats div b{display:block;font-family:var(--font-d);font-size:22px;font-weight:800;color:var(--navy)}
+.ai-stats div b span{font-size:22px}
+.ai-stats div span{font-size:13.5px;color:var(--muted)}
