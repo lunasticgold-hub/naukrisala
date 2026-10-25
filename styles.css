@@ -340,3 +340,8 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .foot-social a{width:40px;height:40px;border-radius:50%;border:1px solid var(--line-soft);display:inline-flex;align-items:center;justify-content:center;color:var(--navy);background:#fff;transition:all .18s}
 .foot-social a:hover{border-color:var(--amber);color:var(--amber)}
 .foot-social svg{width:18px;height:18px}
+
+/* ============ peak package banner ============ */
+.peak-banner{text-align:center;padding:14px 0 30px}
+.peak-banner span{display:block;font:700 .72rem var(--font-b);letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin-bottom:6px}
+.peak-banner strong{display:block;font:800 clamp(44px,7vw,64px) var(--font-b);line-height:1;color:var(--navy)}
