@@ -40,10 +40,10 @@ const COURSE_SLUGS = {
   "Database & Business Intelligence": "dbi"
 };
 const COURSE_OPENINGS = {
-  "aml-kyc": 1217, "servicenow": 100, "data-science-ai": 293, "stom": 116,
-  "power-bi": 66, "data-analyst": 108, "workday": 85, "python-fullstack": 167,
-  "java-fullstack": 195, "qa-testing": 157, "ib-operations": 103,
-  "sap-fico": 63, "web-dev": 86, "dotnet": 65, "dbi": 181
+  "aml-kyc": 567, "servicenow": 145, "data-science-ai": 253, "stom": 75,
+  "power-bi": 58, "data-analyst": 147, "workday": 122, "python-fullstack": 202,
+  "java-fullstack": 346, "qa-testing": 236, "ib-operations": 91,
+  "sap-fico": 88, "web-dev": 96, "dotnet": 122, "dbi": 223
 };
 /* Topic chips: taken from the course's own tag line where it lists topics;
    the flagship's chips come from its curriculum topics on this page. */
@@ -61,6 +61,7 @@ function courseChips(c, slug) {
 
 function renderCourses() {
   const grid = document.getElementById("courseGrid");
+  if (!grid) return;
   grid.innerHTML = COURSES.map(c => {
     const slug = COURSE_SLUGS[c.name] || "";
     const openings = COURSE_OPENINGS[slug];
@@ -82,7 +83,7 @@ function renderCourses() {
       <p class="c-fee">₹15,000 to start — rest after placement, from salary</p>
       <div class="foot">
         <span class="dur">${hasDur ? c.dur : c.status}</span>
-        <a class="go" href="#demo">Details →</a>
+        <a class="go" href="index.html#demo">Details →</a>
       </div>
       <span class="course-bar"></span>
     </div>`;
@@ -112,6 +113,7 @@ function initFaq() {
 function initNav() {
   const toggle = document.getElementById("navToggle");
   const links = document.getElementById("navLinks");
+  if (!toggle || !links) return;
   toggle.addEventListener("click", () => links.classList.toggle("open"));
   links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => links.classList.remove("open")));
 }
@@ -127,8 +129,11 @@ function initReveal() {
 // Demo form -> WhatsApp deep link
 function initDemoForm() {
   const waLink = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent("Hi NaukriSala! I want to book a free demo class.")}`;
-  document.getElementById("waFloat").href = waLink;
-  document.getElementById("demoForm").addEventListener("submit", e => {
+  const waFloat = document.getElementById("waFloat");
+  if (waFloat) waFloat.href = waLink;
+  const form = document.getElementById("demoForm");
+  if (!form) return;
+  form.addEventListener("submit", e => {
     e.preventDefault();
     const name = document.getElementById("fName").value.trim();
     const phone = document.getElementById("fPhone").value.trim();
