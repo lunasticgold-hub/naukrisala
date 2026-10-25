@@ -131,9 +131,10 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 /* ============ proof strip (amber block) ============ */
 .proof{background:var(--amber);color:#fff}
 .proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;padding:34px 0}
+.proof-grid.five{grid-template-columns:repeat(5,1fr)}
 .proof .pstat strong{display:block;font-family:var(--font-d);font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.05}
-.proof .pstat span{font-size:13px;font-weight:600;color:rgba(11,21,41,.72)}
-.proof-note{border-top:1px solid rgba(11,21,41,.18);padding:13px 0 16px;font-size:13px;font-weight:500;color:rgba(11,21,41,.75)}
+.proof .pstat span{font-size:13px;font-weight:600;color:rgba(255,255,255,.82)}
+.proof-note{border-top:1px solid rgba(255,255,255,.25);padding:13px 0 16px;font-size:13px;font-weight:500;color:rgba(255,255,255,.8)}
 
 /* ============ marquee ============ */
 .marquee{background:var(--navy-deep);border-top:1px solid var(--line-on-navy);border-bottom:1px solid var(--line-on-navy);overflow:hidden;padding:15px 0}
@@ -271,6 +272,8 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
   .hero-chip{left:10px;bottom:12px;max-width:250px;padding:11px 14px}
   .section{padding:66px 0}
   .proof-grid{grid-template-columns:1fr 1fr;gap:20px}
+  .proof-grid.five{grid-template-columns:1fr 1fr}
+  .proof-grid.five .pstat:last-child{grid-column:1/-1;text-align:center}
   .band img{height:340px}
   .band-card{bottom:18px}
   .band-card .inner{padding:22px}

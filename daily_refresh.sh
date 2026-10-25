@@ -29,8 +29,19 @@ python3 fetch_serpapi.py 2>&1 | tail -2 || echo "[info] serpapi skipped (quota o
 # python3 fetch_adzuna_aml.py 2>&1 | tail -2 || echo "[info] adzuna held (test tier)"
 # Jooble: ~76 calls/run with 0.5s delays; skips cleanly without JOOBLE_KEY
 python3 fetch_jooble.py 2>&1 | tail -2 || echo "[info] jooble skipped (no key or error)"
-# WhatJobs: keyless publisher feed
-python3 fetch_whatjobs.py 2>&1 | tail -2 || echo "[info] whatjobs skipped (error)"
+# WhatJobs: keyless publisher feed (10-min timeout + one retry; a hang
+# must not stall the morning run — WhatJobs has hung ~30 min before.
+# fetch_whatjobs.py writes jobs.json directly (not atomic), so back it
+# up first and restore it if both attempts fail.)
+cp jobs.json /tmp/jobs.json.bak
+if ! timeout 600 python3 fetch_whatjobs.py > /tmp/whatjobs_run.log 2>&1; then
+  echo "[warn] whatjobs first attempt failed or timed out, retrying once"
+  if ! timeout 600 python3 fetch_whatjobs.py > /tmp/whatjobs_run.log 2>&1; then
+    echo "[info] whatjobs skipped (error) — restoring jobs.json backup"
+    cp /tmp/jobs.json.bak jobs.json
+  fi
+fi
+tail -2 /tmp/whatjobs_run.log
 
 # normalize new jobs (pull-date stamp, contract/city cleanup) and sort newest-first
 python3 normalize_jobs.py 2>&1 | tail -2 || echo "[warn] normalize failed"
