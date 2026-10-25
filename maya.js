@@ -58,7 +58,7 @@
   var launcher = document.createElement('button');
   launcher.className = 'maya-launcher';
   launcher.setAttribute('aria-label', 'Chat with Maya');
-  launcher.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg>';
+  launcher.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg><span class="maya-launcher-label">Ask Maya</span>';
   var panel = document.createElement('div');
   panel.className = 'maya-panel';
   panel.innerHTML =
@@ -72,7 +72,8 @@
     '<a class="cb" href="' + WA + '?text=' + encodeURIComponent('Hi NaukriSala, please call me back about courses.') + '" target="_blank" rel="noopener">Request a callback</a>' +
     '<a class="wa" href="' + WA + '" target="_blank" rel="noopener">WhatsApp</a></div>' +
     '<form class="maya-form"><input type="text" placeholder="Ask about courses, fees, placement…" aria-label="Ask Maya">' +
-    '<button type="submit" aria-label="Send">&rarr;</button></form>';
+    '<button type="submit" aria-label="Send">&rarr;</button></form>' +
+    '<div class="maya-note">Maya answers from NaukriSala\u2019s published information.</div>';
   document.body.appendChild(launcher);
   document.body.appendChild(panel);
   var msgs = panel.querySelector('.maya-msgs');
@@ -89,7 +90,7 @@
     addMsg(text, 'user');
     var typing = document.createElement('div');
     typing.className = 'maya-typing';
-    typing.textContent = 'Maya is typing…';
+    typing.innerHTML = '<i></i><i></i><i></i>';
     msgs.appendChild(typing);
     msgs.scrollTop = msgs.scrollHeight;
     setTimeout(function () {

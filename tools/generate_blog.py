@@ -97,7 +97,7 @@ def chrome(prefix):
 
 <a class="wa-float" id="waFloat" href="#" aria-label="Chat on WhatsApp"></a>
 <script src="{prefix}script.js"></script>
-<script src="{prefix}maya.js?v=20261026n1"></script>"""
+<script src="{prefix}maya.js?v=20261026n2"></script>"""
     return nav, foot
 
 def head(title, desc, canon, prefix):
@@ -124,7 +124,7 @@ def head(title, desc, canon, prefix):
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="{prefix}styles.css?v=20261025n11">
 <link rel="stylesheet" href="{prefix}home.css?v=20261025n9">
-<link rel="stylesheet" href="{prefix}maya.css?v=20261026n1">
+<link rel="stylesheet" href="{prefix}maya.css?v=20261026n2">
 <link rel="icon" type="image/png" href="{prefix}assets/brand/ns-logo-blue.png">
 </head>
 <body>
