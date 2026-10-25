@@ -39,6 +39,13 @@ const COURSE_SLUGS = {
   ".NET Developer": "dotnet",
   "Database & Business Intelligence": "dbi"
 };
+const COURSE_PAGE = {
+  "aml-kyc": "course-aml-kyc.html",
+  "servicenow": "course-servicenow.html",
+  "stom": "course-stom.html",
+  "data-science-ai": "course-data-science-ai.html",
+  "python-fullstack": "course-full-stack-python.html"
+};
 const COURSE_OPENINGS = {
   "aml-kyc": 567, "servicenow": 145, "data-science-ai": 253, "stom": 75,
   "power-bi": 58, "data-analyst": 147, "workday": 122, "python-fullstack": 202,
@@ -83,7 +90,7 @@ function renderCourses() {
       <p class="c-fee">₹15,000 to start — rest after placement, from salary</p>
       <div class="foot">
         <span class="dur">${hasDur ? c.dur : c.status}</span>
-        <a class="go" href="index.html#demo">Details →</a>
+        <a class="go" href="${COURSE_PAGE[slug] || "index.html#demo"}">Details →</a>
       </div>
       <span class="course-bar"></span>
     </div>`;
