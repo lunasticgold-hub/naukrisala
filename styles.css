@@ -227,15 +227,21 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .demo-form .fine{color:var(--muted)}
 
 /* ============ footer (dark) ============ */
-.footer{background:var(--navy-deep);color:#C9D5EA;padding:58px 0 30px;position:relative;z-index:1}
-.footer-inner{display:flex;justify-content:space-between;align-items:flex-start;gap:36px;margin-bottom:42px;flex-wrap:wrap}
+.footer{background:var(--navy-deep);color:#C9D5EA;padding:56px 0 0;position:relative;z-index:1}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr 1fr;gap:32px;padding-bottom:38px}
 .footer .brand-word{font-size:24px}
 .footer .brand-mark-img{width:40px;height:40px}
-.footer .fine{margin-top:14px;color:var(--muted-on-navy)}
-.footer-links{display:flex;gap:26px;flex-wrap:wrap}
-.footer-links a{color:#C9D5EA;text-decoration:none;font-size:14.5px;font-weight:500}
-.footer-links a:hover{color:var(--amber)}
-.foot-base{border-top:1px solid var(--line-on-navy);padding-top:24px;text-align:center;color:var(--muted-on-navy)}
+.foot-brand .fine{margin-top:14px;color:var(--muted-on-navy)}
+.foot-col h4{font:700 11px var(--font-b);letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.55);margin-bottom:14px}
+.foot-col a{display:block;color:rgba(255,255,255,.85);text-decoration:none;font:500 14px var(--font-b);padding:4px 0}
+.foot-col a:hover{color:#fff}
+.foot-col .fine{margin:0 0 4px;color:var(--muted-on-navy)}
+.foot-bar{border-top:1px solid var(--line-on-navy);display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;padding:18px 0 22px;font-size:12.5px;color:var(--muted-on-navy)}
+.foot-bar nav{display:flex;gap:18px}
+.foot-bar a{color:var(--muted-on-navy);text-decoration:none}
+.foot-bar a:hover{color:#fff}
+@media(max-width:900px){.footer-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:560px){.footer-grid{grid-template-columns:1fr}}
 
 /* whatsapp float */
 .wa-float{position:fixed;bottom:28px;right:28px;width:58px;height:58px;border-radius:50%;background:#22b358;border:1px solid #22b358;color:#fff;display:flex;align-items:center;justify-content:center;z-index:110;box-shadow:0 12px 28px rgba(11,21,41,.30);transition:transform .2s}
