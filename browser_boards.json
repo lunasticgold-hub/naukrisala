@@ -151,6 +151,26 @@
     "host": "eofh.fa.em2.oraclecloud.com",
     "site": "CX_3001"
    }
+  },
+  {
+   "company": "Bajaj Finance",
+   "careers_url": "https://bflcareers.peoplestrong.com/job/joblist",
+   "engine": "peoplestrong",
+   "params": {
+    "host": "bflcareers.peoplestrong.com",
+    "entry_url": "https://bflcareers.peoplestrong.com/job/joblist",
+    "max_pages": 100
+   }
+  },
+  {
+   "company": "RBL Bank",
+   "careers_url": "https://rblcareers.peoplestrong.com/job/joblist",
+   "engine": "peoplestrong",
+   "params": {
+    "host": "rblcareers.peoplestrong.com",
+    "entry_url": "https://rblcareers.peoplestrong.com/job/joblist",
+    "max_pages": 10
+   }
   }
  ]
 }

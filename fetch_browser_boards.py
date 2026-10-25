@@ -500,6 +500,71 @@ def talentrecruit_jobs(board):
     return out
 
 
+def peoplestrong_jobs(board):
+    """PeopleStrong candidate portal API (proven: Bajaj Finance 12,184
+    jobs, RBL Bank 3 jobs — same platform build, same endpoint).
+
+    Traced from the public career-page JS bundles (2026-10-25): the
+    jobService calls POST {portal}/api/cp/rest/altone/cp/jobs/v1
+    ?offset=&limit= with a JSON filter body ({} unfiltered); the
+    portal host carries the tenant (bflcareers/rblcareers). Session
+    cookies come from a home-page fetch first (Incapsula) — without
+    them the server drops connections. List records carry title,
+    jobCode, jobPostedDate, jobClosureDate, locationHierarchy
+    (city) + locationHierarchyComplete (India>State>...>city path),
+    and a unique jobDetailUrl — but no description, so
+    classification is title-only (same strictness as the Oracle
+    engine: adjacent titles fail the AML gate without context).
+    Location is rendered "City, India" for India-path jobs so the
+    shared loc_ok filter accepts small towns not in its city list.
+    """
+    import http.cookiejar
+    p = board.get("params", {})
+    host = p["host"]
+    entry = p.get("entry_url", f"https://{host}/job/joblist")
+    max_pages = int(p.get("max_pages", 100))
+    cj = http.cookiejar.CookieJar()
+    opener = urllib.request.build_opener(
+        urllib.request.HTTPCookieProcessor(cj))
+    try:
+        req = urllib.request.Request(entry, headers=UA)
+        opener.open(req, timeout=30).read()
+    except Exception:
+        pass  # cookies may still be set; the API call is the real test
+    out, offset, limit = [], 0, 45
+    for _ in range(max_pages):
+        url = (f"https://{host}/api/cp/rest/altone/cp/jobs/v1"
+               f"?offset={offset}&limit={limit}")
+        req = urllib.request.Request(
+            url, data=b"{}",
+            headers={"User-Agent": UA["User-Agent"],
+                     "Content-Type": "application/json"},
+            method="POST")
+        try:
+            with opener.open(req, timeout=45) as r:
+                d = json.load(r)
+        except Exception as e:  # noqa: BLE001
+            print(f"[peoplestrong] {host} offset {offset}: {e}",
+                  file=sys.stderr)
+            break
+        resp = d.get("response") or []
+        if not resp:
+            break
+        for j in resp:
+            path = j.get("locationHierarchyComplete") or ""
+            city = j.get("locationHierarchy") or ""
+            loc = f"{city}, India" if path.startswith("India") else city
+            out.append({"title": j.get("jobTitle"),
+                        "location": loc,
+                        "url": j.get("jobDetailUrl") or "",
+                        "posted": (j.get("jobPostedDate") or "")[:10]})
+        offset += limit
+        if offset >= (d.get("totalRecords") or 0):
+            break
+        time.sleep(0.4)
+    return out
+
+
 def engine_jobs(board):
     """Dispatch one board config to its engine. Returns posting dicts."""
     eng = board["engine"]
@@ -524,6 +589,8 @@ def engine_jobs(board):
         return ripplehire_jobs(board)
     if eng == "talentrecruit":
         return talentrecruit_jobs(board)
+    if eng == "peoplestrong":
+        return peoplestrong_jobs(board)
     raise ValueError(f"unknown engine: {eng}")
 
 
