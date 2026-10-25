@@ -48,6 +48,11 @@ def chrome(prefix):
         <img class="brand-mark-img" src="{prefix}assets/brand/ns-logo-blue.png" alt="NaukriSala logo">
         <span class="brand-word">naukrisala<span class="brand-dot">.</span></span>
       </a>
+      <div class="foot-social">
+        <a href="#" aria-label="Social link 1 — coming soon" title="Coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a>
+        <a href="#" aria-label="Social link 2 — coming soon" title="Coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a>
+        <a href="#" aria-label="Social link 3 — coming soon" title="Coming soon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg></a>
+      </div>
       <p class="fine">Get placed first. Pay from your salary.</p>
       <a class="foot-cta" href="{prefix}index.html#demo">Book a free demo <span class="arr">→</span></a>
       <p class="foot-cta-sub">Batch 9 starts 10 Nov 2026 · Free demos from 3 Nov</p>
@@ -85,7 +90,6 @@ def chrome(prefix):
       <a href="https://wa.me/918450049035">Chat on WhatsApp</a>
     </div>
   </div>
-  <div class="wrap" aria-hidden="true"><p class="foot-watermark">naukrisala.</p></div>
   <div class="wrap foot-bar">
     <p>© 2026 NaukriSala. All rights reserved.</p>
   </div>
@@ -118,7 +122,7 @@ def head(title, desc, canon, prefix):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{prefix}styles.css?v=20261025n10">
+<link rel="stylesheet" href="{prefix}styles.css?v=20261025n11">
 <link rel="stylesheet" href="{prefix}home.css?v=20261025n9">
 <link rel="stylesheet" href="{prefix}maya.css?v=20261026n1">
 <link rel="icon" type="image/png" href="{prefix}assets/brand/ns-logo-blue.png">
