@@ -1,176 +1,205 @@
 {
- "_engines": {
-  "ashby": "params: {slug} — ashbyhq board slug",
-  "breezy": "params: {slug} — breezy board slug",
-  "eightfold": "params: {slug} — <slug>.eightfold.ai subdomain",
-  "generic_json": "params: {api_url, method, payload, jobs_path, fields{title,location,url,desc,posted}, pagination{kind: offset|page|next_url|none, step, start, param, next_path, max_pages}, headers, url_prefix, url_field} — for custom portals whose JSON endpoint was found by discover_board.py",
-  "greenhouse": "params: {slug} — boards-api.greenhouse.io board token (from boards.greenhouse.io/<slug>)",
-  "lever": "params: {slug} — api.lever.co company slug",
-  "oracle": "params: {host, site} — Oracle Recruiting Cloud host + site number/name",
-  "personio": "params: {slug} — personio XML board slug",
-  "recruitee": "params: {slug} — recruitee board slug",
-  "smartrecruiters": "params: {slug} — api.smartrecruiters.com company slug",
-  "teamtailor": "params: {slug} — teamtailor board slug",
-  "workable": "params: {slug} — workable account slug",
-  "workday": "params: {host, tenant, site} — host like <tenant>.wd5.myworkdayjobs.com, tenant = Workday tenant name, site = career site name",
-  "generic_html": "params: {list_url (with {offset}), url_prefix, row_pattern (regex, named groups title/url/location), pagination{step, max_pages}} — for server-rendered HTML job pages with no JSON API (proven: EY SuccessFactors search)",
-  "ripplehire": "params: {entry_url (public careers entry, redirect gives site token), api_url (candidatejobsearch), source, max_pages?} — RippleHire SPA XML API (proven: HDFC 465, Axis 10759); token used in-memory only, never stored; apply links = entry_url (never tokenized)"
- },
- "_how_to_add": "1) Run: python3 discover_board.py <careers-page-URL>  2) If it reports a working engine + sample count, paste the suggested entry below.  3) Test: python3 fetch_browser_boards.py --dry-run --board <Company>  4) If clean, run without --dry-run and commit.",
- "_schema": "Browser-boards engine config (fetch_browser_boards.py). One entry per employer career page. EVERY job is classified into one of the 15 courses (TRACK_FILTERS) — a posting matching no course is dropped. aml-kyc additionally requires aml_gate(). Location must be India or Remote/global. Public pages only; never behind login.",
- "boards": [
-  {
-   "company": "Northern Trust",
-   "careers_url": "https://www.northerntrust.com/united-states/about-us/careers/working-in-pune",
-   "engine": "workday",
-   "params": {
-    "host": "ntrs.wd1.myworkdayjobs.com",
-    "tenant": "ntrs",
-    "site": "northerntrust"
-   }
+  "_engines": {
+    "ashby": "params: {slug} \u2014 ashbyhq board slug",
+    "breezy": "params: {slug} \u2014 breezy board slug",
+    "eightfold": "params: {slug} \u2014 <slug>.eightfold.ai subdomain",
+    "generic_json": "params: {api_url, method, payload, jobs_path, fields{title,location,url,desc,posted}, pagination{kind: offset|page|next_url|none, step, start, param, next_path, max_pages}, headers, url_prefix, url_field} \u2014 for custom portals whose JSON endpoint was found by discover_board.py",
+    "greenhouse": "params: {slug} \u2014 boards-api.greenhouse.io board token (from boards.greenhouse.io/<slug>)",
+    "lever": "params: {slug} \u2014 api.lever.co company slug",
+    "oracle": "params: {host, site} \u2014 Oracle Recruiting Cloud host + site number/name",
+    "personio": "params: {slug} \u2014 personio XML board slug",
+    "recruitee": "params: {slug} \u2014 recruitee board slug",
+    "smartrecruiters": "params: {slug} \u2014 api.smartrecruiters.com company slug",
+    "teamtailor": "params: {slug} \u2014 teamtailor board slug",
+    "workable": "params: {slug} \u2014 workable account slug",
+    "workday": "params: {host, tenant, site} \u2014 host like <tenant>.wd5.myworkdayjobs.com, tenant = Workday tenant name, site = career site name",
+    "generic_html": "params: {list_url (with {offset}), url_prefix, row_pattern (regex, named groups title/url/location), pagination{step, max_pages}} \u2014 for server-rendered HTML job pages with no JSON API (proven: EY SuccessFactors search)",
+    "ripplehire": "params: {entry_url (public careers entry, redirect gives site token), api_url (candidatejobsearch), source, max_pages?} \u2014 RippleHire SPA XML API (proven: HDFC 465, Axis 10759); token used in-memory only, never stored; apply links = entry_url (never tokenized)"
   },
-  {
-   "company": "EY",
-   "careers_url": "https://careers.ey.com/search/?q=India",
-   "engine": "generic_html",
-   "params": {
-    "list_url": "https://careers.ey.com/search/?createNewAlert=false&q=India&startrow={offset}",
-    "url_prefix": "https://careers.ey.com",
-    "row_pattern": "<tr[^>]*>\\s*<td[^>]*>.*?<a[^>]*href=\"(?P<url>[^\"]+)\"[^>]*>(?P<title>.*?)</a>.*?</td>\\s*<td[^>]*>(?P<location>.*?)</td>",
-    "pagination": {
-     "step": 25,
-     "max_pages": 140
+  "_how_to_add": "1) Run: python3 discover_board.py <careers-page-URL>  2) If it reports a working engine + sample count, paste the suggested entry below.  3) Test: python3 fetch_browser_boards.py --dry-run --board <Company>  4) If clean, run without --dry-run and commit.",
+  "_schema": "Browser-boards engine config (fetch_browser_boards.py). One entry per employer career page. EVERY job is classified into one of the 15 courses (TRACK_FILTERS) \u2014 a posting matching no course is dropped. aml-kyc additionally requires aml_gate(). Location must be India or Remote/global. Public pages only; never behind login.",
+  "boards": [
+    {
+      "company": "Northern Trust",
+      "careers_url": "https://www.northerntrust.com/united-states/about-us/careers/working-in-pune",
+      "engine": "workday",
+      "params": {
+        "host": "ntrs.wd1.myworkdayjobs.com",
+        "tenant": "ntrs",
+        "site": "northerntrust"
+      }
+    },
+    {
+      "company": "EY",
+      "careers_url": "https://careers.ey.com/search/?q=India",
+      "engine": "generic_html",
+      "params": {
+        "list_url": "https://careers.ey.com/search/?createNewAlert=false&q=India&startrow={offset}",
+        "url_prefix": "https://careers.ey.com",
+        "row_pattern": "<tr[^>]*>\\s*<td[^>]*>.*?<a[^>]*href=\"(?P<url>[^\"]+)\"[^>]*>(?P<title>.*?)</a>.*?</td>\\s*<td[^>]*>(?P<location>.*?)</td>",
+        "pagination": {
+          "step": 25,
+          "max_pages": 140
+        }
+      }
+    },
+    {
+      "company": "Nasdaq",
+      "careers_url": "https://www.nasdaq.com/about/careers/bangalore",
+      "engine": "workday",
+      "params": {
+        "host": "nasdaq.wd1.myworkdayjobs.com",
+        "tenant": "nasdaq",
+        "site": "Global_External_Site"
+      }
+    },
+    {
+      "company": "Citigroup (Citi)",
+      "careers_url": "https://jobs.citi.com/search-jobs?acm=ALL&alrpm=290557&ascf=[%7B%22key%22:%22ALL%22,%22value%22:%22%22%7D]&icid=AECGF10&ecid=AECACCCMENRP01&lid=AETLLMMECCPCANCS2&eOfferCode=AEIGPDTWAL",
+      "engine": "workday",
+      "params": {
+        "host": "citi.wd5.myworkdayjobs.com",
+        "tenant": "citi",
+        "site": "2"
+      }
+    },
+    {
+      "company": "DTCC",
+      "careers_url": "https://www.dtcc.com",
+      "engine": "oracle",
+      "params": {
+        "host": "ebxr.fa.us2.oraclecloud.com",
+        "site": "CX_1"
+      }
+    },
+    {
+      "company": "Citco",
+      "careers_url": "https://www.citco.com",
+      "engine": "oracle",
+      "params": {
+        "host": "fa-euxc-saasfaprod1.fa.ocs.oraclecloud.com",
+        "site": "CX_1"
+      }
+    },
+    {
+      "company": "PGIM India Mutual Fund (PGIM India Asset Management Private Limited)",
+      "careers_url": "https://jobs.pgim.com/ar-en/",
+      "engine": "workday",
+      "params": {
+        "host": "pru.wd5.myworkdayjobs.com",
+        "tenant": "pru",
+        "site": "Careers"
+      }
+    },
+    {
+      "company": "HDFC Bank",
+      "careers_url": "https://www.hdfc.bank.in/careers",
+      "engine": "ripplehire",
+      "params": {
+        "entry_url": "https://hdfcbank.ripplehire.com/candidate/careers",
+        "api_url": "https://hdfcbank.ripplehire.com/candidate/candidatejobsearch",
+        "source": "CAREERSITE"
+      }
+    },
+    {
+      "company": "Axis Bank",
+      "careers_url": "https://www.axis.bank.in/careers",
+      "engine": "ripplehire",
+      "params": {
+        "entry_url": "https://axisbank.ripplehire.com/candidate/careers",
+        "api_url": "https://axisbank.ripplehire.com/candidate/candidatejobsearch",
+        "source": "CAREERSITE",
+        "max_pages": 200
+      }
+    },
+    {
+      "company": "Kotak Mahindra Bank",
+      "careers_url": "https://www.kotak.com",
+      "engine": "oracle",
+      "params": {
+        "host": "hcbt.fa.em2.oraclecloud.com",
+        "site": "CX"
+      }
+    },
+    {
+      "company": "YES BANK",
+      "careers_url": "https://www.yes.bank.in/work-with-us/career-opportunities",
+      "engine": "talentrecruit",
+      "params": {
+        "api_url": "https://app.api.talentrecruit.com/api/v1/career/template/job/list",
+        "appcareer": "https://appcareer.talentrecruit.com/career-page/?sortName=yesforyou&departmentname=",
+        "shortname": "https://yesforyou.talentrecruit.com",
+        "career_page": "https://yesforyou.talentrecruit.com/career-page",
+        "max_pages": 30
+      }
+    },
+    {
+      "company": "Mphasis",
+      "careers_url": "https://careers.mphasis.com/",
+      "engine": "ripplehire",
+      "params": {
+        "entry_url": "https://mphasis.ripplehire.com/candidate/careers",
+        "api_url": "https://mphasis.ripplehire.com/candidate/candidatejobsearch",
+        "max_pages": 30
+      }
+    },
+    {
+      "company": "Tata Capital",
+      "careers_url": "https://www.tatacapital.com/careers.html",
+      "engine": "oracle",
+      "params": {
+        "host": "eofh.fa.em2.oraclecloud.com",
+        "site": "CX_3001"
+      }
+    },
+    {
+      "company": "Bajaj Finance",
+      "careers_url": "https://bflcareers.peoplestrong.com/job/joblist",
+      "engine": "peoplestrong",
+      "params": {
+        "host": "bflcareers.peoplestrong.com",
+        "entry_url": "https://bflcareers.peoplestrong.com/job/joblist",
+        "max_pages": 100
+      }
+    },
+    {
+      "company": "RBL Bank",
+      "careers_url": "https://rblcareers.peoplestrong.com/job/joblist",
+      "engine": "peoplestrong",
+      "params": {
+        "host": "rblcareers.peoplestrong.com",
+        "entry_url": "https://rblcareers.peoplestrong.com/job/joblist",
+        "max_pages": 10
+      }
+    },
+    {
+      "company": "Broadridge",
+      "careers_url": "https://www.broadridge.com",
+      "engine": "workday",
+      "params": {
+        "host": "broadridge.wd5.myworkdayjobs.com",
+        "tenant": "broadridge",
+        "site": "Careers"
+      }
+    },
+    {
+      "company": "Universal Sompo General Insurance Company Limited",
+      "careers_url": "https://www.universalsompo.com",
+      "engine": "oracle",
+      "params": {
+        "host": "usgi-iacoiz.fa.ocs.oraclecloud.com",
+        "site": "CX_1"
+      }
+    },
+    {
+      "company": "Hitachi Payment Services",
+      "careers_url": "https://hrnextcareers.peoplestrong.com/job/joblist",
+      "engine": "peoplestrong",
+      "params": {
+        "host": "hrnextcareers.peoplestrong.com",
+        "entry_url": "https://hrnextcareers.peoplestrong.com/job/joblist",
+        "max_pages": 100
+      }
     }
-   }
-  },
-  {
-   "company": "Nasdaq",
-   "careers_url": "https://www.nasdaq.com/about/careers/bangalore",
-   "engine": "workday",
-   "params": {
-    "host": "nasdaq.wd1.myworkdayjobs.com",
-    "tenant": "nasdaq",
-    "site": "Global_External_Site"
-   }
-  },
-  {
-   "company": "Citigroup (Citi)",
-   "careers_url": "https://jobs.citi.com/search-jobs?acm=ALL&alrpm=290557&ascf=[%7B%22key%22:%22ALL%22,%22value%22:%22%22%7D]&icid=AECGF10&ecid=AECACCCMENRP01&lid=AETLLMMECCPCANCS2&eOfferCode=AEIGPDTWAL",
-   "engine": "workday",
-   "params": {
-    "host": "citi.wd5.myworkdayjobs.com",
-    "tenant": "citi",
-    "site": "2"
-   }
-  },
-  {
-   "company": "DTCC",
-   "careers_url": "https://www.dtcc.com",
-   "engine": "oracle",
-   "params": {
-    "host": "ebxr.fa.us2.oraclecloud.com",
-    "site": "CX_1"
-   }
-  },
-  {
-   "company": "Citco",
-   "careers_url": "https://www.citco.com",
-   "engine": "oracle",
-   "params": {
-    "host": "fa-euxc-saasfaprod1.fa.ocs.oraclecloud.com",
-    "site": "CX_1"
-   }
-  },
-  {
-   "company": "PGIM India Mutual Fund (PGIM India Asset Management Private Limited)",
-   "careers_url": "https://jobs.pgim.com/ar-en/",
-   "engine": "workday",
-   "params": {
-    "host": "pru.wd5.myworkdayjobs.com",
-    "tenant": "pru",
-    "site": "Careers"
-   }
-  },
-  {
-   "company": "HDFC Bank",
-   "careers_url": "https://www.hdfc.bank.in/careers",
-   "engine": "ripplehire",
-   "params": {
-    "entry_url": "https://hdfcbank.ripplehire.com/candidate/careers",
-    "api_url": "https://hdfcbank.ripplehire.com/candidate/candidatejobsearch",
-    "source": "CAREERSITE"
-   }
-  },
-  {
-   "company": "Axis Bank",
-   "careers_url": "https://www.axis.bank.in/careers",
-   "engine": "ripplehire",
-   "params": {
-    "entry_url": "https://axisbank.ripplehire.com/candidate/careers",
-    "api_url": "https://axisbank.ripplehire.com/candidate/candidatejobsearch",
-    "source": "CAREERSITE",
-    "max_pages": 200
-   }
-  },
-  {
-   "company": "Kotak Mahindra Bank",
-   "careers_url": "https://www.kotak.com",
-   "engine": "oracle",
-   "params": {
-    "host": "hcbt.fa.em2.oraclecloud.com",
-    "site": "CX"
-   }
-  },
-  {
-   "company": "YES BANK",
-   "careers_url": "https://www.yes.bank.in/work-with-us/career-opportunities",
-   "engine": "talentrecruit",
-   "params": {
-    "api_url": "https://app.api.talentrecruit.com/api/v1/career/template/job/list",
-    "appcareer": "https://appcareer.talentrecruit.com/career-page/?sortName=yesforyou&departmentname=",
-    "shortname": "https://yesforyou.talentrecruit.com",
-    "career_page": "https://yesforyou.talentrecruit.com/career-page",
-    "max_pages": 30
-   }
-  },
-  {
-   "company": "Mphasis",
-   "careers_url": "https://careers.mphasis.com/",
-   "engine": "ripplehire",
-   "params": {
-    "entry_url": "https://mphasis.ripplehire.com/candidate/careers",
-    "api_url": "https://mphasis.ripplehire.com/candidate/candidatejobsearch",
-    "max_pages": 30
-   }
-  },
-  {
-   "company": "Tata Capital",
-   "careers_url": "https://www.tatacapital.com/careers.html",
-   "engine": "oracle",
-   "params": {
-    "host": "eofh.fa.em2.oraclecloud.com",
-    "site": "CX_3001"
-   }
-  },
-  {
-   "company": "Bajaj Finance",
-   "careers_url": "https://bflcareers.peoplestrong.com/job/joblist",
-   "engine": "peoplestrong",
-   "params": {
-    "host": "bflcareers.peoplestrong.com",
-    "entry_url": "https://bflcareers.peoplestrong.com/job/joblist",
-    "max_pages": 100
-   }
-  },
-  {
-   "company": "RBL Bank",
-   "careers_url": "https://rblcareers.peoplestrong.com/job/joblist",
-   "engine": "peoplestrong",
-   "params": {
-    "host": "rblcareers.peoplestrong.com",
-    "entry_url": "https://rblcareers.peoplestrong.com/job/joblist",
-    "max_pages": 10
-   }
-  }
- ]
+  ]
 }
