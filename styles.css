@@ -132,6 +132,7 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .proof{background:var(--amber);color:#fff}
 .proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;padding:34px 0}
 .proof-grid.five{grid-template-columns:repeat(5,1fr)}
+.proof-grid.three{grid-template-columns:repeat(3,1fr)}
 .proof .pstat strong{display:block;font-family:var(--font-d);font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.05}
 .proof .pstat span{font-size:13px;font-weight:600;color:rgba(255,255,255,.82)}
 .proof-note{border-top:1px solid rgba(255,255,255,.25);padding:13px 0 16px;font-size:13px;font-weight:500;color:rgba(255,255,255,.8)}
@@ -232,14 +233,14 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .foot-brand{margin-right:48px}
 .footer .brand{color:var(--navy)}
 .footer .brand-word{font-size:28px;color:var(--navy)}
-.footer .brand-mark-img{width:48px;height:48px}
+.footer .brand-mark-img{width:56px;height:56px}
 .foot-brand .fine{margin-top:14px;color:var(--muted)}
 .foot-brand .foot-cta{margin-top:18px}
 .foot-col h4{font:700 15px var(--font-b);color:var(--amber);margin-bottom:14px}
 .foot-col a{display:block;color:var(--ink2);text-decoration:none;font:500 14px var(--font-b);padding:4px 0}
 .foot-col a:hover{color:var(--amber)}
 .foot-col .fine{margin:0 0 4px;color:var(--muted)}
-.foot-cta{display:inline-block;background:var(--amber);color:#fff !important;font:700 14px var(--font-b);padding:12px 20px;border-radius:999px;margin-bottom:10px}
+.foot-cta{display:inline-flex;align-items:center;gap:8px;background:var(--amber);color:#fff !important;font:700 14px var(--font-b);padding:12px 20px;border-radius:999px;margin-bottom:10px}
 .foot-cta:hover{background:var(--amber-strong);color:#fff}
 .foot-cta-sub{font-size:12.5px;color:var(--muted);margin:0;line-height:1.55}
 .foot-seo{border-top:1px solid var(--line-soft);padding:22px 0}
@@ -290,6 +291,7 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
   .proof-grid{grid-template-columns:1fr 1fr;gap:20px}
   .proof-grid.five{grid-template-columns:1fr 1fr}
   .proof-grid.five .pstat:last-child{grid-column:1/-1;text-align:center}
+  .proof-grid.three .pstat:last-child{grid-column:1/-1;text-align:center}
   .band img{height:340px}
   .band-card{bottom:18px}
   .band-card .inner{padding:22px}
