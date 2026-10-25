@@ -85,11 +85,6 @@ def chrome(prefix):
       <a href="https://wa.me/918450049035">Chat on WhatsApp</a>
     </div>
   </div>
-  <div class="wrap foot-seo">
-    <div class="foot-seo-row"><h4>Top courses</h4><a href="{prefix}course-aml-kyc.html">AML &amp; KYC</a> | <a href="{prefix}course-servicenow.html">ServiceNow</a> | <a href="{prefix}course-stom.html">STOM</a> | <a href="{prefix}course-data-science-ai.html">Data Science &amp; AI</a> | <a href="{prefix}course-full-stack-python.html">Full Stack Python</a> | <a href="{prefix}courses.html">All courses</a></div>
-    <div class="foot-seo-row"><h4>AI tools</h4><a href="{prefix}socrates.html">AI Interview Coach</a> | <a href="{prefix}resume-evaluator.html">Resume Evaluator</a> | <a href="{prefix}skill-gap.html">Skill Gap</a> | <a href="{prefix}apply.html">Apply Assistant</a></div>
-    <div class="foot-seo-row"><h4>Company</h4><a href="{prefix}how-it-works.html">How it works</a> | <a href="{prefix}fees.html">Fees</a> | <a href="{prefix}jobs.html">Jobs</a> | <a href="{prefix}faq.html">FAQ</a> | <a href="{prefix}track-record.html">Track record</a> | <a href="{prefix}blog.html">Blog</a> | <a href="{prefix}terms.html">Terms</a> | <a href="{prefix}privacy.html">Privacy</a></div>
-  </div>
   <div class="wrap" aria-hidden="true"><p class="foot-watermark">naukrisala.</p></div>
   <div class="wrap foot-bar">
     <p>© 2026 NaukriSala. All rights reserved.</p>
@@ -97,7 +92,8 @@ def chrome(prefix):
 </footer>
 
 <a class="wa-float" id="waFloat" href="#" aria-label="Chat on WhatsApp"></a>
-<script src="{prefix}script.js"></script>"""
+<script src="{prefix}script.js"></script>
+<script src="{prefix}maya.js?v=20261026n1"></script>"""
     return nav, foot
 
 def head(title, desc, canon, prefix):
@@ -122,8 +118,9 @@ def head(title, desc, canon, prefix):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{prefix}styles.css?v=20261025n9">
+<link rel="stylesheet" href="{prefix}styles.css?v=20261025n10">
 <link rel="stylesheet" href="{prefix}home.css?v=20261025n9">
+<link rel="stylesheet" href="{prefix}maya.css?v=20261026n1">
 <link rel="icon" type="image/png" href="{prefix}assets/brand/ns-logo-blue.png">
 </head>
 <body>
@@ -155,16 +152,18 @@ blog_html = head('Blog', 'Practical guides for the careers NaukriSala trains for
 
 """ + foot + """
 <script>
-document.querySelectorAll('.blog-filter').forEach(function(btn){
-  btn.addEventListener('click', function(){
-    document.querySelectorAll('.blog-filter').forEach(function(b){b.classList.remove('active')});
-    btn.classList.add('active');
-    var t = btn.getAttribute('data-track');
-    document.querySelectorAll('.blog-card').forEach(function(c){
-      c.style.display = (t === 'all' || c.getAttribute('data-track') === t) ? '' : 'none';
-    });
+var TRACK_BY_HASH = {"aml-kyc":"AML & KYC","servicenow":"ServiceNow","stom":"STOM","data-science-ai":"Data Science & AI","full-stack-python":"Full Stack Python","cloud-devops":"Cloud & DevOps","testing":"Testing","finance-operations":"Finance Operations","career-change":"Career Change","interviews-resume":"Interviews & Resume","jobs-placement":"Jobs & Placement"};
+function applyFilter(t){
+  document.querySelectorAll('.blog-filter').forEach(function(b){b.classList.toggle('active', b.getAttribute('data-track') === t)});
+  document.querySelectorAll('.blog-card').forEach(function(c){
+    c.style.display = (t === 'all' || c.getAttribute('data-track') === t) ? '' : 'none';
   });
+}
+document.querySelectorAll('.blog-filter').forEach(function(btn){
+  btn.addEventListener('click', function(){ applyFilter(btn.getAttribute('data-track')); });
 });
+var h = window.location.hash.replace('#','');
+if (TRACK_BY_HASH[h]) applyFilter(TRACK_BY_HASH[h]);
 </script>
 </body>
 </html>
@@ -174,7 +173,21 @@ open('blog.html', 'w', encoding='utf-8').write(blog_html)
 # ---------- post pages ----------
 nav2, foot2 = chrome('../')
 os.makedirs('blog', exist_ok=True)
+RELATED = {
+  "AML & KYC": [("AML & KYC course", "../course-aml-kyc.html"), ("Jobs board", "../jobs.html")],
+  "ServiceNow": [("ServiceNow course", "../course-servicenow.html"), ("Jobs board", "../jobs.html")],
+  "STOM": [("STOM course", "../course-stom.html"), ("Jobs board", "../jobs.html")],
+  "Data Science & AI": [("Data Science & AI course", "../course-data-science-ai.html"), ("Jobs board", "../jobs.html")],
+  "Full Stack Python": [("Full Stack Python course", "../course-full-stack-python.html"), ("Jobs board", "../jobs.html")],
+  "Cloud & DevOps": [("All courses", "../courses.html"), ("Jobs board", "../jobs.html")],
+  "Testing": [("All courses", "../courses.html"), ("Jobs board", "../jobs.html")],
+  "Finance Operations": [("All courses", "../courses.html"), ("Jobs board", "../jobs.html")],
+  "Career Change": [("All courses", "../courses.html"), ("Placement stories", "../track-record.html")],
+  "Interviews & Resume": [("Jobs board", "../jobs.html"), ("Apply Assistant", "../apply.html")],
+  "Jobs & Placement": [("Jobs board", "../jobs.html"), ("All courses", "../courses.html")],
+}
 for p in POSTS:
+    rel_html = '<div class="related-links"><span>Related:</span> ' + ' \u00b7 '.join('<a href="' + u + '">' + t + '</a>' for t, u in RELATED[p['track']]) + '</div>'
     page = head(p['title'], p['excerpt'], f"blog/{p['slug']}.html", '../') + nav2 + f"""
 <main>
   <section class="section">
@@ -183,6 +196,7 @@ for p in POSTS:
       <h1>{html.escape(p['title'])}</h1>
       <p class="blog-read">{p['read']} min read</p>
       <div class="post-body">{p['body']}</div>
+      {rel_html}
       <div class="post-foot">
         <a class="link-arrow" href="../blog.html">&larr; Back to the blog</a>
         <a class="btn btn-primary" href="../index.html#demo">Book a free demo <span class="arr">→</span></a>

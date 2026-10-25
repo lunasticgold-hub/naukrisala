@@ -19,7 +19,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261025n9">
+<link rel="stylesheet" href="styles.css?v=20261025n10">
+<link rel="stylesheet" href="maya.css?v=20261026n1">
 <link rel="icon" type="image/png" href="assets/brand/ns-logo-blue.png">
 <link rel="stylesheet" href="home.css?v=20261025n9">
 </head>
@@ -1885,7 +1886,23 @@
   <!-- AFTER YOU BOOK -->
   
   <!-- FINAL CTA -->
-  <section class="final-cta">
+    <section class="section">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="eyebrow"><span class="dot"></span>From the blog</p>
+        <h2>Reading that helps you get placed.</h2>
+        <p class="lede-sm">Practical guides from the NaukriSala blog — no fluff, no fake promises.</p>
+      </div>
+      <div class="blog-grid">
+        <article class="blog-card"><span class="blog-tag">AML &amp; KYC</span><h3><a href="blog/what-kyc-analysts-check-new-account.html">What KYC analysts actually check in a new account</a></h3><p>A new account file is judged on identity, address, purpose, and risk, not on how thick the folder is.</p><span class="blog-read">1 min read</span></article>
+        <article class="blog-card"><span class="blog-tag">ServiceNow</span><h3><a href="blog/servicenow-admin-vs-developer.html">ServiceNow admin vs developer: which path fits your background</a></h3><p>Admins keep the platform healthy and configured, while developers build new logic, and the two paths suit different strengths.</p><span class="blog-read">1 min read</span></article>
+        <article class="blog-card"><span class="blog-tag">Career Change</span><h3><a href="blog/switching-careers-without-coding.html">Switching careers without learning to code</a></h3><p>Plenty of growing roles need process, judgement, and communication, and none of them require writing code.</p><span class="blog-read">1 min read</span></article>
+      </div>
+      <p style="margin-top:22px"><a class="link-arrow" href="blog.html">Read all 100 posts <span class="arr">→</span></a></p>
+    </div>
+  </section>
+
+<section class="final-cta">
     <div class="wrap">
       <h2>The next batch starts with a <em>free demo.</em></h2>
       <p>Demo classes begin 3 Nov 2026 — live online, from anywhere in India. AML &amp; KYC Batch 9 starts 10 Nov.</p>
@@ -1939,11 +1956,6 @@
       <a href="https://wa.me/918450049035">Chat on WhatsApp</a>
     </div>
   </div>
-  <div class="wrap foot-seo">
-    <div class="foot-seo-row"><h4>Top courses</h4><a href="course-aml-kyc.html">AML &amp; KYC</a> | <a href="course-servicenow.html">ServiceNow</a> | <a href="course-stom.html">STOM</a> | <a href="course-data-science-ai.html">Data Science &amp; AI</a> | <a href="course-full-stack-python.html">Full Stack Python</a> | <a href="courses.html">All courses</a></div>
-    <div class="foot-seo-row"><h4>AI tools</h4><a href="socrates.html">AI Interview Coach</a> | <a href="resume-evaluator.html">Resume Evaluator</a> | <a href="skill-gap.html">Skill Gap</a> | <a href="apply.html">Apply Assistant</a></div>
-    <div class="foot-seo-row"><h4>Company</h4><a href="how-it-works.html">How it works</a> | <a href="fees.html">Fees</a> | <a href="jobs.html">Jobs</a> | <a href="faq.html">FAQ</a> | <a href="track-record.html">Track record</a> | <a href="blog.html">Blog</a> | <a href="terms.html">Terms</a> | <a href="privacy.html">Privacy</a></div>
-  </div>
   <div class="wrap" aria-hidden="true"><p class="foot-watermark">naukrisala.</p></div>
   <div class="wrap foot-bar">
     <p>© 2026 NaukriSala. All rights reserved.</p>
@@ -1955,6 +1967,7 @@
 </a>
 
 <script src="script.js"></script>
+<script src="maya.js?v=20261026n1"></script>
 <script>
 /* Homepage live-board wiring — additive, guarded. Static fallbacks in the
    markup keep every number correct even if this fetch fails. */

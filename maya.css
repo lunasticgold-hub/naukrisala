@@ -1,0 +1,31 @@
+/* Maya — NaukriSala on-site guide (rule-based, answers from published site facts) */
+.maya-launcher{position:fixed;right:28px;bottom:28px;width:58px;height:58px;border-radius:50%;background:var(--amber);border:1px solid var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;z-index:120;box-shadow:0 12px 28px rgba(0,82,255,.35);transition:transform .2s}
+.maya-launcher:hover{transform:scale(1.06)}
+.maya-launcher svg{width:26px;height:26px}
+.maya-panel{position:fixed;right:20px;bottom:172px;width:370px;max-width:calc(100vw - 40px);max-height:min(560px,calc(100vh - 200px));background:#fff;border:1px solid var(--line-soft);border-radius:18px;box-shadow:0 24px 60px rgba(11,21,41,.30);z-index:118;display:none;flex-direction:column;overflow:hidden}
+.maya-panel.open{display:flex}
+.maya-head{background:var(--navy);color:#fff;padding:16px 18px;display:flex;align-items:center;gap:12px}
+.maya-head .maya-avatar{width:38px;height:38px;border-radius:50%;background:var(--amber);color:#fff;display:flex;align-items:center;justify-content:center;font:800 17px var(--font-b);flex:none}
+.maya-head b{font-size:16px;display:block}
+.maya-head span{font-size:12.5px;color:rgba(255,255,255,.75)}
+.maya-close{margin-left:auto;background:none;border:none;color:#fff;font-size:22px;cursor:pointer;line-height:1}
+.maya-msgs{padding:16px;overflow-y:auto;display:flex;flex-direction:column;gap:10px;flex:1}
+.maya-msg{max-width:85%;padding:11px 14px;border-radius:14px;font-size:14.5px;line-height:1.55}
+.maya-msg.bot{background:#E9F1FF;color:var(--ink);align-self:flex-start;border-bottom-left-radius:4px}
+.maya-msg.user{background:var(--amber);color:#fff;align-self:flex-end;border-bottom-right-radius:4px}
+.maya-msg a{color:var(--amber-ink);font-weight:700}
+.maya-msg.user a{color:#fff}
+.maya-typing{font-size:13px;color:var(--muted);align-self:flex-start}
+.maya-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 10px}
+.maya-chip{font:700 13px var(--font-b);color:var(--navy);background:#fff;border:1px solid var(--line-soft);border-radius:999px;padding:7px 13px;cursor:pointer}
+.maya-chip:hover{border-color:var(--amber);color:var(--amber)}
+.maya-actions{display:flex;gap:8px;padding:0 16px 12px}
+.maya-actions a{flex:1;text-align:center;font:700 13.5px var(--font-b);border-radius:999px;padding:10px 8px;text-decoration:none}
+.maya-actions .cb{background:var(--amber);color:#fff}
+.maya-actions .wa{background:#22b358;color:#fff}
+.maya-form{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--line-soft)}
+.maya-form input{flex:1;border:1px solid var(--line-soft);border-radius:999px;padding:11px 15px;font-size:14.5px;outline:none}
+.maya-form input:focus{border-color:var(--amber)}
+.maya-form button{background:var(--amber);border:none;color:#fff;border-radius:50%;width:42px;height:42px;font-size:17px;cursor:pointer;flex:none}
+.wa-float{bottom:100px}
+@media(max-width:600px){.maya-panel{bottom:172px}}
