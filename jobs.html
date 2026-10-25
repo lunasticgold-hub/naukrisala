@@ -322,7 +322,7 @@ function chipRow(el, options, get, set, parse) {
   });
 }
 
-fetch('jobs.json?v=202610250316').then(r => r.json()).then(d => {
+fetch('jobs.json?v=202610250520').then(r => r.json()).then(d => {
   JOBS = d.jobs;
   updated.textContent = 'Updated ' + d.fetched_at;
   const labels = [['all', 'All tracks']];

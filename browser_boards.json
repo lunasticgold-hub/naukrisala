@@ -132,6 +132,16 @@
     "career_page": "https://yesforyou.talentrecruit.com/career-page",
     "max_pages": 30
    }
+  },
+  {
+   "company": "Mphasis",
+   "careers_url": "https://careers.mphasis.com/",
+   "engine": "ripplehire",
+   "params": {
+    "entry_url": "https://mphasis.ripplehire.com/candidate/careers",
+    "api_url": "https://mphasis.ripplehire.com/candidate/candidatejobsearch",
+    "max_pages": 30
+   }
   }
  ]
 }
