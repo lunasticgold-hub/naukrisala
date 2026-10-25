@@ -2,7 +2,7 @@
 const WHATSAPP_NUMBER = "918450049035"; // NaukriSala demo bookings (confirmed by Abhigyan 2026-10-14)
 
 const COURSES = [
-  { name: "AML & KYC Analyst", tag: "Financial crime compliance · any graduate", dur: "45 days", pay: "₹9–28 LPA", flagship: true,  status: "Batch 1 · Live 10 Nov" },
+  { name: "AML & KYC Analyst", tag: "Financial crime compliance · any graduate", dur: "45 days", pay: "₹9–28 LPA", flagship: true,  status: "Batch 9 · Live 10 Nov" },
   { name: "ServiceNow Developer", tag: "Best for freshers & IT support", dur: "3 months", pay: "₹7–18 LPA", flagship: false, status: "Upcoming" },
   { name: "Data Science & AI Engineering", tag: "Python, ML, GenAI, LLMs, MLOps", dur: "4 months", pay: "₹12–45 LPA", flagship: false, status: "Upcoming" },
   { name: "STOM — Service Transition & Ops", tag: "Best for non-coders & career switchers", dur: "2 months", pay: "₹8–36 LPA", flagship: false, status: "Upcoming" },

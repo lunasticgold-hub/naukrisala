@@ -397,5 +397,9 @@
 .review-quote{margin-top:18px;font:400 14.5px/1.65 var(--font-b);color:rgba(255,255,255,.88);border-left:2px solid rgba(157,184,255,.5);padding-left:14px}
 /* hiring-partner name pills (text only, no logos) */
 .partner-strip{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
-.partner-strip span{font:700 14px var(--font-d);color:var(--navy);background:#fff;border:1px solid var(--line-soft);border-radius:999px;padding:10px 18px}
+.partner-strip span{display:inline-flex;align-items:center;gap:8px;font:700 14px var(--font-d);color:var(--navy);background:#fff;border:1px solid var(--line-soft);border-radius:999px;padding:8px 16px}
+.partner-strip img{height:22px;width:auto;max-width:90px;object-fit:contain}
+.review-avatar{padding:0;overflow:hidden}
+.review-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+.persona-avatar{width:56px;height:56px;border-radius:50%;object-fit:cover;display:block;margin-bottom:10px}
 .partner-strip span.more{color:var(--ink2);border-style:dashed}
