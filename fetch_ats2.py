@@ -21,7 +21,7 @@ import sys
 import time
 import urllib.request
 
-from fetch_ats import INDIA_RE, TRACK_FILTERS, TRACK_LABELS, get, is_india, norm
+from fetch_ats import INDIA_RE, TRACK_FILTERS, TRACK_LABELS, get, is_india, norm, _word_in
 
 SITE = os.path.dirname(os.path.abspath(__file__))
 JOBS_PATH = os.path.join(SITE, "jobs.json")
@@ -168,7 +168,7 @@ def main():
                 continue
             hay = norm(str(p["title"]) + " " + p["desc"])
             matched = [s for s, kws in TRACK_FILTERS.items()
-                       if any(k in hay for k in kws)]
+                       if any(_word_in(hay, k) for k in kws)]
             for slug in matched:
                 comp = p.get("company") or company
                 key = (norm(p["title"]), norm(comp))

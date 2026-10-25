@@ -170,21 +170,29 @@ def _track_keywords(slug):
 
 
 def _kw_positions(text, kw):
-    """All start positions of kw in text. 'java' never matches inside
-    'javascript'; short tokens (sar, cdd, edd, qa) match whole words only,
-    mirroring _word_in (so 'sar' never trips on 'salary')."""
-    if kw == "java":
-        return [m.start() for m in re.finditer(r"java(?!script)", text)]
-    if len(kw) <= 3:
-        pat = r"(?<![a-z])" + re.escape(kw) + r"(?![a-z])"
-        return [m.start() for m in re.finditer(pat, text)]
-    pos, out = 0, []
-    while True:
-        i = text.find(kw, pos)
-        if i < 0:
-            return out
-        out.append(i)
-        pos = i + len(kw)
+    """All start positions of kw in text, matched as a whole word/phrase.
+
+    The keyword must start at a word edge, and after it must come a word
+    edge OR a plain morphological suffix (s / es / ing / ed) followed by
+    an edge. That combination is what substring search got wrong in both
+    directions: 'java' matched inside place names ('Undrajavaram',
+    'Javaranahalli') and 'itil' inside 'Titilagarh', tagging 17 bank
+    jobs as Java/STOM roles on 2026-10-25 — but a strict word-edge rule
+    overcorrects the other way, dropping genuine 'Data Engineering'
+    roles (keyword 'data engineer'), 'Financial Crimes' ('financial
+    crime') and 'trade settlements' ('trade settlement'). The suffix
+    allowance keeps those; 'javascript' still fails ('script' is no
+    plain suffix) and tokens starting/ending in punctuation (e.g.
+    '.net') skip that side's check so 'ASP.NET' still matches.
+    """
+    pre = r"(?<![a-z])" if kw[:1].isalpha() else ""
+    if kw[-1:].isalpha():
+        post = (r"(?:(?![a-z])|(?=s(?![a-z])|es(?![a-z])|"
+                r"ing(?![a-z])|ed(?![a-z])|js(?![a-z])))")
+    else:
+        post = ""
+    pat = pre + re.escape(kw) + post
+    return [m.start() for m in re.finditer(pat, text)]
 
 
 def classify(title, desc):

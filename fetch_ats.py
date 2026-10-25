@@ -141,7 +141,7 @@ def main():
                 continue
             hay = norm(str(p["title"]) + " " + p["desc"])
             matched = [s for s, kws in TRACK_FILTERS.items()
-                       if any(k in hay for k in kws)]
+                       if any(_word_in(hay, k) for k in kws)]
             for slug in matched:
                 key = (norm(p["title"]), norm(company))
                 if key in seen:
@@ -181,12 +181,22 @@ if __name__ == "__main__":
 
 # ---------- AML/KYC relevance gate (strict; shared by AML-focused fetchers) ----------
 def _word_in(text, token):
-    # word-boundary match for short tokens (avoids "aml" matching "family");
-    # substring match for longer phrases.
-    if len(token) <= 3:
-        return re.search(r"(?<![a-z])" + re.escape(token) + r"(?![a-z])",
-                         text) is not None
-    return token in text
+    # Whole-word/phrase match with a plain-suffix allowance (s / es /
+    # ing / ed): substring search let place names fake a skill ('java'
+    # in 'Undrajavaram'/'Javaranahalli', 'itil' in 'Titilagarh' — 17
+    # mis-tagged bank jobs on 2026-10-25), while a strict edge rule
+    # drops genuine 'Data Engineering' ('data engineer'), 'Financial
+    # Crimes' ('financial crime') and 'trade settlements' ('trade
+    # settlement') roles. 'javascript' still fails ('script' is no
+    # plain suffix); tokens starting/ending in punctuation (e.g.
+    # '.net') skip that side's check so 'ASP.NET' still matches.
+    pre = r"(?<![a-z])" if token[:1].isalpha() else ""
+    if token[-1:].isalpha():
+        post = (r"(?:(?![a-z])|(?=s(?![a-z])|es(?![a-z])|"
+                r"ing(?![a-z])|ed(?![a-z])|js(?![a-z])))")
+    else:
+        post = ""
+    return re.search(pre + re.escape(token) + post, text) is not None
 
 
 def _has_any(text, tokens):

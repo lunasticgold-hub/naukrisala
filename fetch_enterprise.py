@@ -17,7 +17,7 @@ import json, os, re, sys, time, urllib.request, urllib.parse
 from concurrent.futures import ThreadPoolExecutor
 
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-from fetch_ats import TRACK_FILTERS, TRACK_LABELS, INDIA_RE, norm
+from fetch_ats import TRACK_FILTERS, TRACK_LABELS, INDIA_RE, norm, _word_in
 
 SITE = os.path.dirname(os.path.abspath(__file__))
 JOBS_PATH = os.path.join(SITE, "jobs.json")
@@ -324,7 +324,7 @@ def main():
                 continue
             hay = norm(str(p["title"]))
             matched = [s for s, kws in TRACK_FILTERS.items()
-                       if any(k in hay for k in kws)]
+                       if any(_word_in(hay, k) for k in kws)]
             for slug in matched:
                 key = (norm(p["title"]), norm(company))
                 if key in seen:
