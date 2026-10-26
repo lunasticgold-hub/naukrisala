@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=20261025n12">
+<link rel="stylesheet" href="../styles.css?v=20261025n13">
 <link rel="stylesheet" href="../home.css?v=20261025n9">
 <link rel="stylesheet" href="../maya.css?v=20261026n2">
 <link rel="icon" type="image/png" href="../assets/brand/ns-logo-blue.png">
@@ -55,7 +55,7 @@
       <h1>Train-test split: the habit that prevents false confidence</h1>
       <p class="blog-read">1 min read</p>
       <div class="post-body"><p>A model that has seen the answers during training will score well on those answers. That score says nothing about new data. The train-test split fixes this by holding out part of the data before training, then testing only on the held-out part. It is a simple habit, and skipping it is the most common beginner mistake in machine learning.</p><h3>Doing the split properly</h3><ul><li>Split before any preprocessing that learns from data, such as scaling or imputation, or information leaks into the test set.</li><li>Keep the test set untouched during model selection. Repeated peeking turns it into training data.</li><li>Stratify the split for classification, so each class appears in both parts in roughly its original proportion.</li><li>Report the test score alongside the training score. A large gap between them signals overfitting.</li></ul><p>When a model scores far better in training than in testing, it has memorised, not learned. Trust the test score, and fix the model, not the split.</p></div>
-      <div class="related-links"><span>Related:</span> <a href="../course-data-science-ai.html">Data Science & AI course</a> · <a href="../jobs.html">Jobs board</a></div>
+      <div class="related-links"><span>Related:</span> <a href="../course-data-science-ai.html">Data Science & AI course</a><a href="../jobs.html">Jobs board</a></div>
       <div class="post-foot">
         <a class="link-arrow" href="../blog.html">&larr; Back to the blog</a>
         <a class="btn btn-primary" href="../index.html#demo">Book a free demo <span class="arr">→</span></a>

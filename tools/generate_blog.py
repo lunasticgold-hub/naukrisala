@@ -122,7 +122,7 @@ def head(title, desc, canon, prefix):
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="{prefix}styles.css?v=20261025n12">
+<link rel="stylesheet" href="{prefix}styles.css?v=20261025n13">
 <link rel="stylesheet" href="{prefix}home.css?v=20261025n9">
 <link rel="stylesheet" href="{prefix}maya.css?v=20261026n2">
 <link rel="icon" type="image/png" href="{prefix}assets/brand/ns-logo-blue.png">
@@ -191,7 +191,7 @@ RELATED = {
   "Jobs & Placement": [("Jobs board", "../jobs.html"), ("All courses", "../courses.html")],
 }
 for p in POSTS:
-    rel_html = '<div class="related-links"><span>Related:</span> ' + ' \u00b7 '.join('<a href="' + u + '">' + t + '</a>' for t, u in RELATED[p['track']]) + '</div>'
+    rel_html = '<div class="related-links"><span>Related:</span> ' + ''.join('<a href="' + u + '">' + t + '</a>' for t, u in RELATED[p['track']]) + '</div>'
     page = head(p['title'], p['excerpt'], f"blog/{p['slug']}.html", '../') + nav2 + f"""
 <main>
   <section class="section">

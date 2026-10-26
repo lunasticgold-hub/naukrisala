@@ -19,7 +19,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="../styles.css?v=20261025n12">
+<link rel="stylesheet" href="../styles.css?v=20261025n13">
 <link rel="stylesheet" href="../home.css?v=20261025n9">
 <link rel="stylesheet" href="../maya.css?v=20261026n2">
 <link rel="icon" type="image/png" href="../assets/brand/ns-logo-blue.png">
@@ -55,7 +55,7 @@
       <h1>Selenium locators: picking one that survives UI changes</h1>
       <p class="blog-read">1 min read</p>
       <div class="post-body"><p>Selenium finds page elements through locators, and the choice of locator decides whether tests survive the next redesign. Locators based on page layout break whenever designers move things. Locators based on stable identifiers survive. The skill is picking the locator that is least likely to change for reasons unrelated to the feature under test.</p><h3>Locator choices ranked by stability</h3><ul><li>Unique IDs are best, when developers provide them, since they exist precisely to identify the element.</li><li>Meaningful attributes, such as names and test-specific attributes, come next and rarely change by accident.</li><li>Visible text works for buttons and links, but breaks when wording changes, so use it sparingly.</li><li>Long paths through the page structure are the weakest option and should be a last resort.</li></ul><p>When no stable locator exists, ask developers to add one. Testability is a team responsibility, not a tester workaround.</p></div>
-      <div class="related-links"><span>Related:</span> <a href="../courses.html">All courses</a> · <a href="../jobs.html">Jobs board</a></div>
+      <div class="related-links"><span>Related:</span> <a href="../courses.html">All courses</a><a href="../jobs.html">Jobs board</a></div>
       <div class="post-foot">
         <a class="link-arrow" href="../blog.html">&larr; Back to the blog</a>
         <a class="btn btn-primary" href="../index.html#demo">Book a free demo <span class="arr">→</span></a>
