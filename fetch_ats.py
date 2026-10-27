@@ -175,10 +175,6 @@ def main():
     print(f"Merged {added_total} ATS jobs. Board total: {len(jobs)}.")
 
 
-if __name__ == "__main__":
-    main()
-
-
 # ---------- AML/KYC relevance gate (strict; shared by AML-focused fetchers) ----------
 def _word_in(text, token):
     # Whole-word/phrase match with a plain-suffix allowance (s / es /
@@ -256,3 +252,7 @@ def aml_gate(title, desc):
                         "fintech", "payments"]):
             return True
     return False
+
+
+if __name__ == "__main__":
+    main()
