@@ -251,7 +251,7 @@
 
 /* ---------- AI tools band (the page's dark section) ---------- */
 .tools-band{background:var(--navy-deep);color:#fff}
-.tools-band .sec-head-c h2{color:#fff}
+.tools-band .sec-head-c h2,.tools-band .sec-head-c h1{color:#fff}
 .tools-band .sec-head-c .lede-sm{color:#C9D5EA}
 .tools-band .eyebrow{color:var(--amber-light)}
 .ait-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(250px,100%),1fr));gap:16px}

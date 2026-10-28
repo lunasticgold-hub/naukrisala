@@ -97,8 +97,9 @@ body{background:var(--paper);color:var(--ink);font-family:var(--font-b);line-hei
 h1,h2{font-family:var(--font-d);font-weight:800;letter-spacing:-.03em;line-height:1.05}
 h1{font-size:clamp(2.55rem,5.6vw,4.35rem)}
 h1 em,h2 em{font-style:normal;color:var(--amber)}
-.section h2 em,.faq-grid h2 em,.demo-sec h2 em{color:var(--amber-strong)}
+.section h2 em,.section h1 em,.faq-grid h2 em,.faq-grid h1 em,.demo-sec h2 em,.demo-sec h1 em{color:var(--amber-strong)}
 h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
+.page-headline{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .lede{font-size:1.19rem;font-weight:400;line-height:1.6;color:var(--ink2);max-width:600px}
 .lede strong{color:var(--ink);font-weight:700}
 .on-navy .lede,.hero .lede{color:#C9D5EA}
