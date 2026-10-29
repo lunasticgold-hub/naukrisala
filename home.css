@@ -420,3 +420,10 @@
 
 /* marquee quotes clamp so narrow 5-across cards stay compact, not stretched */
 .review-marquee .review-quote{display:-webkit-box;-webkit-line-clamp:5;line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;margin-top:14px}
+
+/* testimonials band: full-width fluid marquee, small side margins (user order 2026-10-30) */
+#testimonials .wrap{max-width:none;padding:0 16px}
+.review-marquee{container-type:inline-size}
+#testimonials .review-card{width:calc((100cqw - 112px)/5)}
+@media(max-width:1023px){#testimonials .review-card{width:calc((100cqw - 56px)/3)}}
+@media(max-width:639px){#testimonials .review-card{width:100cqw}}
