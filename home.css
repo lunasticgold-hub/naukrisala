@@ -380,9 +380,9 @@
 .btn-ghost-light{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:14px;color:#fff;background:transparent;border:1.5px solid rgba(255,255,255,.35);border-radius:999px;padding:11px 20px;text-decoration:none;white-space:nowrap}
 .btn-ghost-light:hover{border-color:#fff}
 .review-marquee{overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
-.review-track{display:flex;width:max-content;animation:review-scroll 140s linear infinite}
+.review-marquee > .review-track{display:flex;width:max-content;animation:review-scroll 140s linear infinite}
 .review-group{display:flex;gap:28px;padding-right:28px}
-.review-marquee:hover .review-track{animation-play-state:paused}
+.review-marquee:hover > .review-track{animation-play-state:paused}
 @keyframes review-scroll{to{transform:translateX(-50%)}}
 @media(prefers-reduced-motion:reduce){.review-track{animation:none}}
 .review-card{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.12);border-radius:18px;padding:24px;flex:none;width:min(204px,85vw)}
@@ -419,6 +419,7 @@
 .review-marquee .review-top>div{min-width:0}
 
 /* marquee quotes clamp so narrow 5-across cards stay compact, not stretched */
+.review-card .review-track{display:block;width:auto;animation:none}
 .review-marquee .review-quote{display:-webkit-box;-webkit-line-clamp:5;line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;margin-top:14px}
 
 /* testimonials band: full-width fluid marquee, small side margins (user order 2026-10-30) */
