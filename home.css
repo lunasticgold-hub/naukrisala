@@ -417,3 +417,6 @@
 .review-marquee .review-avatar{width:40px;height:40px}
 .review-marquee .review-mult{padding:4px 8px}
 .review-marquee .review-top>div{min-width:0}
+
+/* marquee quotes clamp so narrow 5-across cards stay compact, not stretched */
+.review-marquee .review-quote{display:-webkit-box;-webkit-line-clamp:5;line-clamp:5;-webkit-box-orient:vertical;overflow:hidden;margin-top:14px}
