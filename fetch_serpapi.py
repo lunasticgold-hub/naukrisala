@@ -5,7 +5,8 @@ Usage: SERPAPI_KEY=... python3 fetch_serpapi.py
 Merges results into jobs.json, deduped by normalized (title, company).
 Apply links prefer the employer's direct careers URL (apply_options[0]).
 Free plan: 250 searches/month. Usage tracked in serpapi_usage.json.
-The key is never printed or stored.
+The key lives in ~/.config/naukrisala/secrets.env (wired 2026-11-02);
+never printed in chat or logs, never committed.
 """
 import json, os, re, sys, time, urllib.request, urllib.parse
 
@@ -40,6 +41,7 @@ TRACKS = [
     ("web-dev", "Web Development", ["web developer"], 5, None),
     ("dotnet", ".NET Developer", [".NET developer"], 5, None),
     ("dbi", "Database & Business Intelligence", ["business intelligence developer"], 5, None),
+    ("android", "Android App Developer", ["Android app developer"], 5, None),
 ]
 
 SITE = os.path.dirname(os.path.abspath(__file__))

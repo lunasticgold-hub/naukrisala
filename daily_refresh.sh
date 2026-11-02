@@ -29,6 +29,9 @@ python3 fetch_serpapi.py 2>&1 | tail -2 || echo "[info] serpapi skipped (quota o
 # python3 fetch_adzuna_aml.py 2>&1 | tail -2 || echo "[info] adzuna held (test tier)"
 # Jooble: ~76 calls/run with 0.5s delays; skips cleanly without JOOBLE_KEY
 python3 fetch_jooble.py 2>&1 | tail -2 || echo "[info] jooble skipped (no key or error)"
+# Keyless feeds (added 2026-11-02): remote-first boards, India/remote-relevant only
+python3 fetch_remoteok.py 2>&1 | tail -2 || echo "[info] remoteok skipped (error)"
+python3 fetch_muse.py 2>&1 | tail -2 || echo "[info] muse skipped (error)"
 # WhatJobs: keyless publisher feed (10-min timeout + one retry; a hang
 # must not stall the morning run — WhatJobs has hung ~30 min before.
 # fetch_whatjobs.py writes jobs.json directly (not atomic), so back it
@@ -58,7 +61,7 @@ if git diff --quiet jobs.json jobs.html; then
   exit 0
 fi
 
-git add jobs.json jobs.html ats_boards.json ats_boards2.json enterprise_boards.json aml_boards.json browser_boards.json \
+git add jobs.json jobs.html ats_boards.json ats_boards2.json enterprise_boards.json aml_boards.json browser_boards.json fetch_remoteok.py fetch_muse.py \
         jsearch_usage.json serpapi_usage.json 2>/dev/null
 N=$(python3 -c "import json; print(json.load(open('jobs.json'))['total'])")
 AML=$(python3 -c "

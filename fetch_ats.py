@@ -49,6 +49,7 @@ TRACK_FILTERS = {
     "dotnet": [".net", "dotnet", "c#", "asp.net"],
     "dbi": ["business intelligence", "bi developer", "etl", "data warehouse",
             "data engineer"],
+    "android": ["android", "kotlin", "android studio"],
 }
 TRACK_LABELS = {
     "aml-kyc": "AML & KYC Analyst", "servicenow": "ServiceNow Developer",
@@ -61,6 +62,7 @@ TRACK_LABELS = {
     "ib-operations": "Investment Banking Operations",
     "sap-fico": "SAP FICO (S/4HANA Finance)", "web-dev": "Web Development",
     "dotnet": ".NET Developer", "dbi": "Database & Business Intelligence",
+    "android": "Android App Developer", "general": "General",
 }
 
 
@@ -111,6 +113,25 @@ def board_jobs(board):
                         "desc": re.sub(r"<[^>]+>", " ",
                                        j.get("descriptionHtml") or "")[:2000]})
         return out
+    if ats == "workable":
+        d = get(f"https://apply.workable.com/api/v1/widget/accounts/{slug}")
+        out, seen_urls = [], set()
+        for j in d.get("jobs", []):
+            url = j.get("url") or j.get("shortlink") or ""
+            if not url or url in seen_urls:
+                continue
+            seen_urls.add(url)
+            locs = [l for l in (j.get("locations") or []) if isinstance(l, dict)]
+            india = any((l.get("countryCode") or "") == "IN" for l in locs)
+            if not india and (j.get("country") or "") != "India":
+                continue
+            loc = "; ".join(f"{l.get('city', '')}, {l.get('country', '')}".strip(", ")
+                            for l in locs)
+            if not loc:
+                loc = f"{j.get('city', '')}, {j.get('country', '')}".strip(", ")
+            out.append({"title": j.get("title"), "location": loc,
+                        "url": url, "desc": ""})
+        return out
     return []
 
 
@@ -142,6 +163,8 @@ def main():
             hay = norm(str(p["title"]) + " " + p["desc"])
             matched = [s for s, kws in TRACK_FILTERS.items()
                        if any(_word_in(hay, k) for k in kws)]
+            if not matched and b.get("general"):
+                matched = ["general"]
             for slug in matched:
                 key = (norm(p["title"]), norm(company))
                 if key in seen:
@@ -164,7 +187,7 @@ def main():
                     "publisher": company + " careers",
                     "posted": "",
                 })
-                per_track[slug] += 1
+                per_track[slug] = per_track.get(slug, 0) + 1
                 added_total += 1
         time.sleep(0.4)
     data["fetched_at"] = time.strftime("%Y-%m-%d")

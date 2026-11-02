@@ -325,6 +325,8 @@ def main():
             hay = norm(str(p["title"]))
             matched = [s for s, kws in TRACK_FILTERS.items()
                        if any(_word_in(hay, k) for k in kws)]
+            if not matched and b.get("general"):
+                matched = ["general"]
             for slug in matched:
                 key = (norm(p["title"]), norm(company))
                 if key in seen:
@@ -349,7 +351,7 @@ def main():
                     "publisher": company + " careers",
                     "posted": p.get("posted", ""),
                 })
-                per_track[slug] += 1
+                per_track[slug] = per_track.get(slug, 0) + 1
                 added_total += 1
                 kept += 1
         print(f"[ok] {company}: {kept} added ({len(postings)} India postings)")

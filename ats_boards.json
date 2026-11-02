@@ -516,5 +516,195 @@
   "slug": "chainalysis-careers",
   "total_jobs": 51,
   "india_jobs": 2
+ },
+ {
+  "company": "AlphaSense India",
+  "ats": "greenhouse",
+  "slug": "alphasenseindia",
+  "total_jobs": 30,
+  "india_jobs": 30,
+  "general": true
+ },
+ {
+  "company": "Ensono",
+  "ats": "greenhouse",
+  "slug": "ensono",
+  "total_jobs": 84,
+  "india_jobs": 35,
+  "general": true
+ },
+ {
+  "company": "Zafin",
+  "ats": "greenhouse",
+  "slug": "zafinlabsamericasinc",
+  "total_jobs": 32,
+  "india_jobs": 17,
+  "general": true
+ },
+ {
+  "company": "SingleStore",
+  "ats": "greenhouse",
+  "slug": "singlestore",
+  "total_jobs": 42,
+  "india_jobs": 10,
+  "general": true
+ },
+ {
+  "company": "Blenheim Chalcot India",
+  "ats": "greenhouse",
+  "slug": "blenheimchalcotindia",
+  "total_jobs": 6,
+  "india_jobs": 6,
+  "general": true
+ },
+ {
+  "company": "Simpplr",
+  "ats": "greenhouse",
+  "slug": "simpplr",
+  "total_jobs": 7,
+  "india_jobs": 5,
+  "general": true
+ },
+ {
+  "company": "CommerceIQ",
+  "ats": "greenhouse",
+  "slug": "commerceiq",
+  "total_jobs": 15,
+  "india_jobs": 5,
+  "general": true
+ },
+ {
+  "company": "Interview Kickstart",
+  "ats": "ashby",
+  "slug": "interview-kickstart",
+  "total_jobs": 18,
+  "india_jobs": 12,
+  "general": true
+ },
+ {
+  "company": "Build AI",
+  "ats": "ashby",
+  "slug": "build-ai",
+  "total_jobs": 30,
+  "india_jobs": 5,
+  "general": true
+ },
+ {
+  "company": "Bolna",
+  "ats": "ashby",
+  "slug": "bolna",
+  "total_jobs": 4,
+  "india_jobs": 4,
+  "general": true
+ },
+ {
+  "company": "emagine",
+  "ats": "ashby",
+  "slug": "emagine",
+  "total_jobs": 28,
+  "india_jobs": 3,
+  "general": true
+ },
+ {
+  "company": "Applause",
+  "ats": "ashby",
+  "slug": "applausejobs",
+  "total_jobs": 14,
+  "india_jobs": 2,
+  "general": true
+ },
+ {
+  "company": "ImagineArt",
+  "ats": "ashby",
+  "slug": "imagineart",
+  "total_jobs": 16,
+  "india_jobs": 2,
+  "general": true
+ },
+ {
+  "company": "Sarvam",
+  "ats": "ashby",
+  "slug": "sarvam",
+  "total_jobs": 46,
+  "india_jobs": 40,
+  "general": true
+ },
+ {
+  "company": "Kobie",
+  "ats": "lever",
+  "slug": "kobie",
+  "india_jobs": 10,
+  "general": true
+ },
+ {
+  "company": "Exponent Energy",
+  "ats": "workable",
+  "slug": "exponent-energy",
+  "total_jobs": 68,
+  "india_jobs": 68,
+  "general": true
+ },
+ {
+  "company": "Sleek",
+  "ats": "workable",
+  "slug": "careers-at-sleek",
+  "india_jobs": 13,
+  "general": true
+ },
+ {
+  "company": "Mercari India",
+  "ats": "workable",
+  "slug": "mercari-india",
+  "total_jobs": 12,
+  "india_jobs": 12,
+  "general": true
+ },
+ {
+  "company": "Centrient",
+  "ats": "workable",
+  "slug": "centrient",
+  "total_jobs": 18,
+  "india_jobs": 7,
+  "general": true
+ },
+ {
+  "company": "FE fundinfo",
+  "ats": "workable",
+  "slug": "fe-fundinfo",
+  "total_jobs": 26,
+  "india_jobs": 5,
+  "general": true
+ },
+ {
+  "company": "Tecsys",
+  "ats": "workable",
+  "slug": "tecsys",
+  "total_jobs": 32,
+  "india_jobs": 4,
+  "general": true
+ },
+ {
+  "company": "WATI.io",
+  "ats": "workable",
+  "slug": "wati-dot-i-o",
+  "total_jobs": 12,
+  "india_jobs": 3,
+  "general": true
+ },
+ {
+  "company": "Checkmate",
+  "ats": "workable",
+  "slug": "itsacheckmate-dot-com",
+  "total_jobs": 3,
+  "india_jobs": 1,
+  "general": true
+ },
+ {
+  "company": "Eriez",
+  "ats": "workable",
+  "slug": "eriez",
+  "total_jobs": 12,
+  "india_jobs": 3,
+  "general": true
  }
 ]

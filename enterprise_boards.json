@@ -374,5 +374,99 @@
   },
   "platform": "workday",
   "total_jobs": 2000
+ },
+ {
+  "company": "WNS Global Services",
+  "platform": "smartrecruiters",
+  "params": {
+   "slug": "WNSGlobalServices144"
+  },
+  "total_jobs": 361,
+  "india_jobs": 40,
+  "notes": "BPO/KPO finance-ops; page for full India count.",
+  "general": true
+ },
+ {
+  "company": "Miratech",
+  "platform": "smartrecruiters",
+  "params": {
+   "slug": "miratech1"
+  },
+  "total_jobs": 319,
+  "india_jobs": 36,
+  "notes": "Full stack/Python/DevOps across India cities; page for full count.",
+  "general": true
+ },
+ {
+  "company": "Freshworks",
+  "platform": "smartrecruiters",
+  "params": {
+   "slug": "Freshworks"
+  },
+  "total_jobs": 123,
+  "india_jobs": 35,
+  "notes": "Chennai/Bengaluru/Hyderabad; full count incl. page 2.",
+  "general": true
+ },
+ {
+  "company": "Nagarro",
+  "platform": "smartrecruiters",
+  "params": {
+   "slug": "nagarro1"
+  },
+  "total_jobs": 599,
+  "india_jobs": 17,
+  "notes": "Data Science/Power BI/SAP/GenAI; page for full count.",
+  "general": true
+ },
+ {
+  "company": "Alteryx",
+  "platform": "workday",
+  "params": {
+   "host": "alteryx.wd108.myworkdayjobs.com",
+   "tenant": "alteryx",
+   "site": "AlteryxCareers"
+  },
+  "total_jobs": 53,
+  "india_jobs": 6,
+  "notes": "Minimum India count; CXS run confirms exact.",
+  "general": true
+ },
+ {
+  "company": "Zebra",
+  "platform": "workday",
+  "params": {
+   "host": "zebra.wd501.myworkdayjobs.com",
+   "tenant": "zebra",
+   "site": "Zebra_careers"
+  },
+  "total_jobs": 244,
+  "india_jobs": 2,
+  "notes": "Minimum India count; CXS run confirms exact.",
+  "general": true
+ },
+ {
+  "company": "Coca-Cola",
+  "platform": "workday",
+  "params": {
+   "host": "coke.wd1.myworkdayjobs.com",
+   "tenant": "coke",
+   "site": "coca-cola-careers"
+  },
+  "total_jobs": 237,
+  "india_jobs": 4,
+  "notes": "Verified via indexed crawls; CXS run confirms exact.",
+  "general": true
+ },
+ {
+  "company": "Dr Reddy's Laboratories",
+  "platform": "smartrecruiters",
+  "params": {
+   "slug": "DrReddysLaboratoriesLimited"
+  },
+  "total_jobs": 97,
+  "india_jobs": 46,
+  "notes": "General tier: pharma plant/sales/QA, no course match.",
+  "general": true
  }
 ]
