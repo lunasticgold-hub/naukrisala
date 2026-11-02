@@ -201,8 +201,8 @@
         <h1>Jobs matched to<br><em>your course.</em></h1>
         <p class="lede">Real openings across India, grouped by every NaukriSala track. Find your role, then apply directly on the employer's site.</p>
         <div class="jobs-stats">
-          <div class="js"><strong>3,002</strong><span>openings today</span></div>
-          <div class="js"><strong>1,217</strong><span>AML &amp; KYC roles</span></div>
+          <div class="js"><strong data-hero-total>4,838</strong><span>openings today</span></div>
+          <div class="js"><strong data-hero-aml>640</strong><span>AML &amp; KYC roles</span></div>
           <div class="js"><strong>Daily</strong><span>board refresh</span></div>
         </div>
       </div>
@@ -210,12 +210,12 @@
         <div class="snap-card" role="img" aria-label="Snapshot of today's board: openings by course track">
           <div class="snap-head"><h3>Board snapshot</h3><span>Live · today</span></div>
           <div class="snap-bars">
-            <div class="snap-row"><span class="sn">AML &amp; KYC Analyst</span><span class="st"><span class="sf amber" style="width:100%"></span></span><span class="sv">1,217</span></div>
-            <div class="snap-row"><span class="sn">Data Science &amp; AI</span><span class="st"><span class="sf" style="width:24%"></span></span><span class="sv">293</span></div>
-            <div class="snap-row"><span class="sn">Full Stack Java</span><span class="st"><span class="sf" style="width:16%"></span></span><span class="sv">195</span></div>
-            <div class="snap-row"><span class="sn">Database &amp; BI</span><span class="st"><span class="sf" style="width:15%"></span></span><span class="sv">181</span></div>
-            <div class="snap-row"><span class="sn">Full Stack Python</span><span class="st"><span class="sf" style="width:14%"></span></span><span class="sv">167</span></div>
-            <div class="snap-row"><span class="sn">Software Testing (QA)</span><span class="st"><span class="sf" style="width:13%"></span></span><span class="sv">157</span></div>
+            <div class="snap-row" data-snap="aml-kyc"><span class="sn">AML &amp; KYC Analyst</span><span class="st"><span class="sf amber" style="width:100%"></span></span><span class="sv">640</span></div>
+            <div class="snap-row" data-snap="data-science-ai"><span class="sn">Data Science &amp; AI</span><span class="st"><span class="sf" style="width:43%"></span></span><span class="sv">272</span></div>
+            <div class="snap-row" data-snap="java-fullstack"><span class="sn">Full Stack Java</span><span class="st"><span class="sf" style="width:64%"></span></span><span class="sv">411</span></div>
+            <div class="snap-row" data-snap="dbi"><span class="sn">Database &amp; BI</span><span class="st"><span class="sf" style="width:40%"></span></span><span class="sv">255</span></div>
+            <div class="snap-row" data-snap="python-fullstack"><span class="sn">Full Stack Python</span><span class="st"><span class="sf" style="width:36%"></span></span><span class="sv">232</span></div>
+            <div class="snap-row" data-snap="qa-testing"><span class="sn">Software Testing (QA)</span><span class="st"><span class="sf" style="width:41%"></span></span><span class="sv">261</span></div>
           </div>
           <p class="snap-note">Openings by NaukriSala track, counted from the live board below — filter by track to explore yours.</p>
           <p class="snap-note">Searching from Bhubaneswar? Filter by city below — or read how <a href="placement-courses-bhubaneswar.html">placement courses in Bhubaneswar</a> work: 100% online, no centre to travel to.</p>
@@ -538,6 +538,17 @@ document.getElementById('navToggle').addEventListener('click', () =>
     jobs.forEach(function (j) { if (j.course === 'aml-kyc') aml++; });
     document.querySelectorAll('#boardCard [data-live-total]').forEach(function (el) { el.textContent = fmt(total); });
     document.querySelectorAll('#boardCard [data-live-aml]').forEach(function (el) { el.textContent = fmt(aml); });
+    /* Hero stats + Board snapshot bars: same live counts, so they can never drift from the card again. */
+    document.querySelectorAll('[data-hero-total]').forEach(function (el) { el.textContent = fmt(total); });
+    document.querySelectorAll('[data-hero-aml]').forEach(function (el) { el.textContent = fmt(aml); });
+    var trackCounts = {};
+    jobs.forEach(function (j) { trackCounts[j.course] = (trackCounts[j.course] || 0) + 1; });
+    document.querySelectorAll('[data-snap]').forEach(function (row) {
+      var n = trackCounts[row.getAttribute('data-snap')] || 0;
+      var v = row.querySelector('.sv'); if (v) v.textContent = fmt(n);
+      var bar = row.querySelector('.sf');
+      if (bar) bar.style.width = (aml ? Math.round(n / aml * 100) : 0) + '%';
+    });
     var kw = /(aml|kyc|sanction|transaction monitoring|financial crime|compliance|due diligence)/i;
     var fresh = jobs.filter(function (j) {
       return j.course === 'aml-kyc' && !j.stale && kw.test(j.title || '');
