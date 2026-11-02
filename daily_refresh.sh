@@ -21,6 +21,8 @@ python3 fetch_enterprise.py 2>&1 | tail -5 || echo "[warn] fetch_enterprise fail
 python3 fetch_aml_boards.py 2>&1 | tail -3 || echo "[warn] fetch_aml_boards failed"
 # Browser-boards engine (custom/SPA career pages; no-op until boards added)
 python3 fetch_browser_boards.py 2>&1 | tail -3 || echo "[warn] fetch_browser_boards failed"
+# Internal career-pages engine (direct-from-career-page pulls; no aggregators)
+python3 fetch_career_pages.py 2>&1 | tail -3 || echo "[warn] fetch_career_pages failed"
 python3 fetch_jsearch.py 2>&1 | tail -2 || echo "[info] jsearch skipped (quota or error)"
 python3 fetch_serpapi.py 2>&1 | tail -2 || echo "[info] serpapi skipped (quota or error)"
 
@@ -61,7 +63,7 @@ if git diff --quiet jobs.json jobs.html; then
   exit 0
 fi
 
-git add jobs.json jobs.html ats_boards.json ats_boards2.json enterprise_boards.json aml_boards.json browser_boards.json fetch_remoteok.py fetch_muse.py \
+git add jobs.json jobs.html ats_boards.json ats_boards2.json enterprise_boards.json aml_boards.json browser_boards.json career_pages.json fetch_remoteok.py fetch_muse.py \
         jsearch_usage.json serpapi_usage.json 2>/dev/null
 N=$(python3 -c "import json; print(json.load(open('jobs.json'))['total'])")
 AML=$(python3 -c "
