@@ -109,7 +109,15 @@ def relevant(job, keywords):
 
 def main():
     u = usage()
-    planned = sum(len(q) * p for _, _, q, p, _ in TRACKS)
+    # Lean cycle (JSEARCH_LEAN=1): cap every track at 2 pages/query so a
+    # run fits a nearly-exhausted quota. AML 8x2 + 15 others x1 = 31
+    # credits/run. REMOVE the env prefix in daily_refresh.sh after the
+    # Nov 15 quota reset to restore the full 159-credit run.
+    tracks = TRACKS
+    if os.environ.get("JSEARCH_LEAN") == "1":
+        tracks = [(sg, lb, q, min(p, 2), kw) for sg, lb, q, p, kw in TRACKS]
+        print("[lean] JSEARCH_LEAN=1: pages capped at 2 (31 credits/run)")
+    planned = sum(len(q) * p for _, _, q, p, _ in tracks)
     if u["credits"] + planned > SAFETY_CAP:
         sys.exit(f"Refusing: {u['credits']} credits used this month, "
                  f"{planned} more would exceed safety cap {SAFETY_CAP}/{MONTHLY_LIMIT}.")
@@ -120,7 +128,7 @@ def main():
     seen = {(norm(j.get("title")), norm(j.get("company"))) for j in jobs}
 
     added, spent = 0, 0
-    for slug, label, queries, pages, keywords in TRACKS:
+    for slug, label, queries, pages, keywords in tracks:
         track_added = 0
         for query in queries:
             try:

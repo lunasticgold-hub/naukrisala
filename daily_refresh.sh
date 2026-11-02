@@ -23,7 +23,9 @@ python3 fetch_aml_boards.py 2>&1 | tail -3 || echo "[warn] fetch_aml_boards fail
 python3 fetch_browser_boards.py 2>&1 | tail -3 || echo "[warn] fetch_browser_boards failed"
 # Internal career-pages engine (direct-from-career-page pulls; no aggregators)
 python3 fetch_career_pages.py 2>&1 | tail -3 || echo "[warn] fetch_career_pages failed"
-python3 fetch_jsearch.py 2>&1 | tail -2 || echo "[info] jsearch skipped (quota or error)"
+# JSEARCH_LEAN=1 until the Nov 15 quota reset (95 credits left in this
+# cycle; full run needs 159). Drop the prefix after the reset.
+JSEARCH_LEAN=1 python3 fetch_jsearch.py 2>&1 | tail -2 || echo "[info] jsearch skipped (quota or error)"
 python3 fetch_serpapi.py 2>&1 | tail -2 || echo "[info] serpapi skipped (quota or error)"
 
 # Adzuna: HELD — key is test-tier only (25 calls, pending activation); the
