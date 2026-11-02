@@ -259,8 +259,8 @@
           <span class="bc-title">NaukriSala Jobs Board</span>
           <span class="bc-live"><i></i>Live</span>
         </div>
-        <div class="bc-count"><strong data-live-total>4,530</strong><span>live openings<br>right now</span></div>
-        <p class="bc-sub"><strong data-live-aml>542</strong> of them are AML &amp; KYC roles — our flagship track.</p>
+        <div class="bc-count"><strong data-live-total>4,609</strong><span>live openings<br>right now</span></div>
+        <p class="bc-sub"><strong data-live-aml>544</strong> of them are AML &amp; KYC roles — our flagship track.</p>
         <div class="bc-jobs" id="bcJobs">
           <a class="bc-job" href="https://in.jooble.org/jdp/-612859102274543270" target="_blank" rel="noopener"><h4>Lead - Partner Onboarding &amp; Due Diligence</h4><p><b>nium</b> · Mumbai</p></a>
           <a class="bc-job" href="https://portal.careers.hsbc.com/careers/job/563774612541598" target="_blank" rel="noopener"><h4>Global Sanctions and SWIFT Utility Delivery Lead</h4><p><b>HSBC</b> · Bengaluru</p></a>
@@ -481,7 +481,7 @@ function chipRow(el, options, get, set, parse) {
   });
 }
 
-fetch('jobs.json?v=202611021339').then(r => r.json()).then(d => {
+fetch('jobs.json?v=202611021536').then(r => r.json()).then(d => {
   JOBS = d.jobs;
   updated.textContent = 'Updated ' + d.fetched_at;
   const labels = [['all', 'All tracks']];
@@ -528,7 +528,7 @@ document.getElementById('navToggle').addEventListener('click', () =>
   if (!('fetch' in window)) return;
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function fmt(n) { return Number(n).toLocaleString('en-IN'); }
-  fetch('jobs.json?v=202611021339').then(function (r) {
+  fetch('jobs.json?v=202611021536').then(function (r) {
     if (!r.ok) throw new Error('jobs fetch failed');
     return r.json();
   }).then(function (d) {
