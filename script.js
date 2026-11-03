@@ -19,9 +19,9 @@ const COURSES = [
   { name: "Database & Business Intelligence", tag: "SQL + BI tools", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
 ];
 
-/* Per-track live-openings counts, counted from jobs.json on 2026-10-20.
-   The homepage wiring refreshes them from jobs.json on every load —
-   these values are the static fallback. Keys are jobs.json course slugs. */
+/* Per-track live-openings counts, counted from jobs.json on 2026-11-03.
+   The homepage, courses page and course pages refresh them from jobs.json
+   on every load — these values are the static fallback. Keys are jobs.json course slugs. */
 const COURSE_SLUGS = {
   "AML & KYC Analyst": "aml-kyc",
   "ServiceNow Developer": "servicenow",
@@ -47,10 +47,10 @@ const COURSE_PAGE = {
   "python-fullstack": "course-full-stack-python.html"
 };
 const COURSE_OPENINGS = {
-  "aml-kyc": 567, "servicenow": 145, "data-science-ai": 253, "stom": 75,
-  "power-bi": 58, "data-analyst": 147, "workday": 122, "python-fullstack": 202,
-  "java-fullstack": 346, "qa-testing": 236, "ib-operations": 91,
-  "sap-fico": 88, "web-dev": 96, "dotnet": 122, "dbi": 223
+  "aml-kyc": 644, "servicenow": 132, "data-science-ai": 276, "stom": 81,
+  "power-bi": 59, "data-analyst": 155, "workday": 124, "python-fullstack": 242,
+  "java-fullstack": 427, "qa-testing": 267, "ib-operations": 85,
+  "sap-fico": 74, "web-dev": 121, "dotnet": 126, "dbi": 271
 };
 /* Topic chips: taken from the course's own tag line where it lists topics;
    the flagship's chips come from its curriculum topics on this page. */
