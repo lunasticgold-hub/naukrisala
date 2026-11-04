@@ -69,6 +69,11 @@ def save_usage(u):
 
 
 def fetch(query, start=0):
+    # NOTE 2026-11-04: urllib truncates SerpApi's ~97KB responses through
+    # this sandbox's egress proxy (http.client.IncompleteRead at ~62KB),
+    # which killed every SerpApi query for 2 days. curl fetches the full
+    # body fine (verified 97,689 bytes, 10 jobs), so the fetcher uses it.
+    import subprocess
     params = {
         "engine": "google_jobs",
         "q": query,
@@ -77,8 +82,11 @@ def fetch(query, start=0):
         "api_key": KEY,
     }
     url = "https://serpapi.com/search?" + urllib.parse.urlencode(params)
-    with urllib.request.urlopen(url, timeout=60) as resp:
-        return json.load(resp)
+    out = subprocess.run(["curl", "-s", "--max-time", "60", url],
+                         capture_output=True, text=True, timeout=90)
+    if out.returncode != 0:
+        raise RuntimeError(f"curl failed: {out.stderr[:200]}")
+    return json.loads(out.stdout)
 
 
 def clean(text, n=280):
