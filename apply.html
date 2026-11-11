@@ -476,7 +476,7 @@ document.querySelectorAll('#profileSec input, #profileSec textarea, #profileSec 
 let JOBS = [], job = null, ticked = new Set(), analysis = null;
 const MAX_OPTS = 250;
 
-function jobLabel(j) { return j.title + ' — ' + j.company + (j.city ? ', ' + j.city : ''); }
+function jobLabel(j) { return j.title + ' — ' + [j.company, j.city].filter(Boolean).join(', '); }
 
 function renderJobOptions() {
   const term = $('jobSearch').value.trim().toLowerCase();
@@ -507,7 +507,7 @@ function renderJobView() {
   $('jobView').innerHTML = `
     <span class="job-tag">${esc(job.course_label)}</span>
     <h3>${esc(job.title)}</h3>
-    <p class="co">${esc(job.company)} · ${esc(job.location)}</p>
+    <p class="co">${esc([job.company, job.location].filter(Boolean).join(' · '))}</p>
     ${job.salary_text ? `<p class="sal">${esc(job.salary_text)}</p>` : ''}
     <p class="snip">${esc(job.snippet)}</p>
     ${url ? `<p style="margin-top:12px"><a href="${esc(url)}" target="_blank" rel="noopener" style="color:var(--amber);font-weight:600;text-decoration:none">View original listing ↗</a></p>` : ''}`;
