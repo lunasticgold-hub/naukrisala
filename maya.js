@@ -105,7 +105,69 @@
       addMsg("Hi, I'm Maya — your NaukriSala guide. Ask me about courses, fees, placement, batches, or the jobs board. Or tap a topic below.", 'bot');
     }
   }
-  launcher.addEventListener('click', function () { panel.classList.contains('open') ? panel.classList.remove('open') : open(); });
+  /* ---- draggable launcher: press-and-drag to move it anywhere on the page;
+     a plain tap still opens the chat. Position is remembered across pages. ---- */
+  var POS_KEY = 'ns_maya_pos';
+  var dragMoved = false;
+  function clampPos(x, y) {
+    var w = launcher.offsetWidth || 56, h = launcher.offsetHeight || 56;
+    return {
+      x: Math.max(0, Math.min(x, Math.max(0, window.innerWidth - w))),
+      y: Math.max(0, Math.min(y, Math.max(0, window.innerHeight - h)))
+    };
+  }
+  function placeLauncher(x, y) {
+    var p = clampPos(x, y);
+    launcher.style.left = p.x + 'px';
+    launcher.style.top = p.y + 'px';
+    launcher.style.right = 'auto';
+    launcher.style.bottom = 'auto';
+  }
+  function savePos() {
+    try {
+      var r = launcher.getBoundingClientRect();
+      localStorage.setItem(POS_KEY, JSON.stringify({ x: Math.round(r.left), y: Math.round(r.top) }));
+    } catch (e) { /* storage unavailable — position just won't persist */ }
+  }
+  function reclamp() {
+    var r = launcher.getBoundingClientRect();
+    if (launcher.style.left) placeLauncher(r.left, r.top);
+  }
+  try {
+    var saved = JSON.parse(localStorage.getItem(POS_KEY) || 'null');
+    if (saved && typeof saved.x === 'number' && typeof saved.y === 'number') placeLauncher(saved.x, saved.y);
+  } catch (e) { /* ignore bad saved data */ }
+  window.addEventListener('resize', reclamp);
+  window.addEventListener('load', reclamp);
+  launcher.addEventListener('pointerdown', function (e) {
+    if (e.button !== undefined && e.button !== 0) return;
+    var startX = e.clientX, startY = e.clientY;
+    var rect = launcher.getBoundingClientRect();
+    var offX = startX - rect.left, offY = startY - rect.top;
+    dragMoved = false;
+    if (launcher.setPointerCapture) { try { launcher.setPointerCapture(e.pointerId); } catch (err) {} }
+    function onMove(ev) {
+      var dx = ev.clientX - startX, dy = ev.clientY - startY;
+      if (!dragMoved && Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+      dragMoved = true;
+      launcher.classList.add('maya-dragging');
+      placeLauncher(ev.clientX - offX, ev.clientY - offY);
+    }
+    function onUp() {
+      launcher.classList.remove('maya-dragging');
+      launcher.removeEventListener('pointermove', onMove);
+      launcher.removeEventListener('pointerup', onUp);
+      launcher.removeEventListener('pointercancel', onUp);
+      if (dragMoved) savePos();
+    }
+    launcher.addEventListener('pointermove', onMove);
+    launcher.addEventListener('pointerup', onUp);
+    launcher.addEventListener('pointercancel', onUp);
+  });
+  launcher.addEventListener('click', function () {
+    if (dragMoved) { dragMoved = false; return; }
+    panel.classList.contains('open') ? panel.classList.remove('open') : open();
+  });
   panel.querySelector('.maya-close').addEventListener('click', function () { panel.classList.remove('open'); });
   document.addEventListener('keydown', function (e) { if (e.key === 'Escape') panel.classList.remove('open'); });
   panel.querySelectorAll('.maya-chip').forEach(function (chip) {

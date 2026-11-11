@@ -11,7 +11,7 @@ Usage: python3 sitemap_gen.py   (run from the repo root; writes sitemap.xml)
 import os
 from xml.sax.saxutils import escape
 
-BASE = "https://lunasticgold-hub.github.io/naukrisala"
+BASE = "https://naukrisala.in"
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
 urls = [BASE + "/"]
