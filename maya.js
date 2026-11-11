@@ -144,22 +144,41 @@
     var startX = e.clientX, startY = e.clientY;
     var rect = launcher.getBoundingClientRect();
     var offX = startX - rect.left, offY = startY - rect.top;
+    var dragActive = false, holdTimer = null;
     dragMoved = false;
-    if (launcher.setPointerCapture) { try { launcher.setPointerCapture(e.pointerId); } catch (err) {} }
-    function onMove(ev) {
-      var dx = ev.clientX - startX, dy = ev.clientY - startY;
-      if (!dragMoved && Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
-      dragMoved = true;
+    function activate() {
+      dragActive = true;
+      launcher.style.touchAction = 'none';
+      if (launcher.setPointerCapture) { try { launcher.setPointerCapture(e.pointerId); } catch (err) {} }
       launcher.classList.add('maya-dragging');
-      placeLauncher(ev.clientX - offX, ev.clientY - offY);
     }
-    function onUp() {
+    function cleanup() {
+      if (holdTimer) { clearTimeout(holdTimer); holdTimer = null; }
       launcher.classList.remove('maya-dragging');
+      launcher.style.touchAction = '';
       launcher.removeEventListener('pointermove', onMove);
       launcher.removeEventListener('pointerup', onUp);
       launcher.removeEventListener('pointercancel', onUp);
+    }
+    function onMove(ev) {
+      if (!dragActive) {
+        /* Not dragging yet: a quick swipe is a page scroll — leave it alone. */
+        if (Math.abs(ev.clientX - startX) > 10 || Math.abs(ev.clientY - startY) > 10) cleanup();
+        return;
+      }
+      var dx = ev.clientX - startX, dy = ev.clientY - startY;
+      if (!dragMoved && Math.abs(dx) < 8 && Math.abs(dy) < 8) return;
+      dragMoved = true;
+      placeLauncher(ev.clientX - offX, ev.clientY - offY);
+    }
+    function onUp() {
+      cleanup();
       if (dragMoved) savePos();
     }
+    /* Mouse: drag starts at once. Touch/pen: press-and-hold ~300ms first,
+       so a swipe to scroll the page never drags the button by accident. */
+    if (e.pointerType === 'mouse') { activate(); }
+    else { holdTimer = setTimeout(activate, 300); }
     launcher.addEventListener('pointermove', onMove);
     launcher.addEventListener('pointerup', onUp);
     launcher.addEventListener('pointercancel', onUp);
