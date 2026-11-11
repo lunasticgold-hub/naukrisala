@@ -100,6 +100,21 @@
   }
   function open() {
     panel.classList.add('open');
+    /* Park the panel next to wherever the button was dragged: above it when
+       there is room, below it near the top of the screen, clamped on-screen. */
+    var r = launcher.getBoundingClientRect();
+    var pw = Math.min(380, window.innerWidth - 24);
+    var left = Math.max(12, Math.min(r.right - pw, window.innerWidth - pw - 12));
+    panel.style.left = left + 'px';
+    panel.style.right = 'auto';
+    var ph = panel.offsetHeight || 480;
+    if (r.top - 12 >= ph) {
+      panel.style.bottom = (window.innerHeight - r.top + 12) + 'px';
+      panel.style.top = 'auto';
+    } else {
+      panel.style.top = (r.bottom + 12) + 'px';
+      panel.style.bottom = 'auto';
+    }
     if (!greeted) {
       greeted = true;
       addMsg("Hi, I'm Maya — your NaukriSala guide. Ask me about courses, fees, placement, batches, or the jobs board. Or tap a topic below.", 'bot');
@@ -130,8 +145,18 @@
     } catch (e) { /* storage unavailable — position just won't persist */ }
   }
   function reclamp() {
+    /* A transient resize (e.g. the phone keyboard opening) must not strand the
+       button: always restore the last saved position, clamped to the viewport. */
+    if (!launcher.style.left) return;
+    try {
+      var saved = JSON.parse(localStorage.getItem(POS_KEY) || 'null');
+      if (saved && typeof saved.x === 'number' && typeof saved.y === 'number') {
+        placeLauncher(saved.x, saved.y);
+        return;
+      }
+    } catch (e) { /* fall through to clamping the live position */ }
     var r = launcher.getBoundingClientRect();
-    if (launcher.style.left) placeLauncher(r.left, r.top);
+    placeLauncher(r.left, r.top);
   }
   try {
     var saved = JSON.parse(localStorage.getItem(POS_KEY) || 'null');

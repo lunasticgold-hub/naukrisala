@@ -428,3 +428,5 @@
 #testimonials .review-card{width:calc((100cqw - 112px)/5)}
 @media(max-width:1023px){#testimonials .review-card{width:calc((100cqw - 56px)/3)}}
 @media(max-width:639px){#testimonials .review-card{width:100cqw}}
+
+@media(max-width:680px){.hero-eyebrow{font-size:11px;letter-spacing:.1em}}

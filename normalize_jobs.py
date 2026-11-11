@@ -30,6 +30,83 @@ def norm_contract(c):
     return ""
 
 
+# Company-name canonicalisation: the same employer arrives under many
+# spellings ("MUFG", "Mufg", "MUFG Bank, Ltd.", ...). Merging them keeps the
+# Full-time filter, the companies marquee and the per-company counts honest.
+# Junk aggregator names are blanked (cards then show the location only).
+COMPANY_MAP = {
+    "mufg": "MUFG",
+    "mufg bank, ltd.": "MUFG",
+    "mufg global service private limited": "MUFG",
+    "mufg global service": "MUFG",
+    "jpmorganchase": "J.P. Morgan",
+    "jpmorgan chase & co.": "J.P. Morgan",
+    "jp morgan chase & co.": "J.P. Morgan",
+    "jpmorgan chase": "J.P. Morgan",
+    "jp morgan services india private limited": "J.P. Morgan",
+    "jpmc candidate experience page": "J.P. Morgan",
+    "citi": "Citigroup (Citi)",
+    "dbs bank": "DBS",
+    "dbs bank ltd": "DBS",
+    "infosys ltd": "Infosys",
+    "infosys limited": "Infosys",
+    "deloitte": "Deloitte",
+    "epam systems": "EPAM Systems",
+    "wells fargo bank": "Wells Fargo",
+    "accenture india private limited": "Accenture",
+    "alphasense india": "AlphaSense",
+    "aml rightsource india private limited": "AML RightSource",
+    "birlasoft limited": "Birlasoft",
+    "birlasoft": "Birlasoft",
+    "genpact india pvt. ltd.": "Genpact",
+    "kyndryl inc": "Kyndryl",
+    "mphasis limited": "Mphasis",
+    "workday india private limited": "Workday",
+    "willware technologies private limited": "Willware Technologies",
+    "willware technologies": "Willware Technologies",
+    "remotepromsp": "",
+    "remote quest jobs": "",
+    "vmysmartpros": "",
+}
+
+LEGAL_SUFFIX = re.compile(
+    r",?\s+(private\s+limited|pvt\.?\s*ltd\.?|limited|ltd\.?|inc\.?|llc\.?)$",
+    re.I)
+
+
+def norm_company(c):
+    c = (c or "").strip()
+    if not c:
+        return ""
+    low = c.lower()
+    if low in COMPANY_MAP:
+        return COMPANY_MAP[low]
+    # Generic: strip a trailing legal suffix ("X Private Limited" -> "X").
+    stripped = LEGAL_SUFFIX.sub("", c).strip()
+    if stripped and stripped.lower() in COMPANY_MAP:
+        return COMPANY_MAP[stripped.lower()]
+    return stripped or c
+
+
+def ensure_unique_ids(jobs):
+    """Duplicate ids break apply.html deep-links (find() returns the first
+    match). Re-derive colliding ids from the job URL, which is unique."""
+    import hashlib
+
+    seen, fixed = set(), 0
+    for j in jobs:
+        i = j.get("id") or ""
+        if i and i not in seen:
+            seen.add(i)
+            continue
+        prefix = (i.split("_", 1)[0] if "_" in i else "job") or "job"
+        cu = canon_url(j.get("direct_url") or j.get("url"))
+        j["id"] = prefix + "_" + hashlib.sha1(cu.encode()).hexdigest()[:12]
+        seen.add(j["id"])
+        fixed += 1
+    return fixed
+
+
 CITIES = [
     "Mumbai", "Delhi", "Bengaluru", "Bangalore", "Hyderabad", "Chennai", "Pune",
     "Kolkata", "Gurugram", "Gurgaon", "Noida", "Ahmedabad", "Jaipur", "Kochi",
@@ -155,17 +232,19 @@ def main():
     today = datetime.date.today().isoformat()
     for j in jobs:
         j["fetched"] = j.get("fetched") or today
-        j["contract"] = norm_contract(j.get("contract"))
+        j["contract"] = norm_contract(j.get("contract")) or "Full-time"
+        j["company"] = norm_company(j.get("company"))
         j["city"] = city_of(j.get("location"))
         j["snippet"] = clean_snippet(j.get("snippet"))
         j["salary_text"] = salary_text(j)
     jobs.sort(key=lambda j: (j["fetched"], j.get("created") or ""), reverse=True)
     jobs, dropped = dedup(jobs)
+    fixed = ensure_unique_ids(jobs)
     d["jobs"] = jobs
     d["total"] = len(jobs)
     d["fetched_at"] = today
     json.dump(d, open(JP, "w"), ensure_ascii=False)
-    print(f"normalized {len(jobs)} jobs (sorted newest-first, {dropped} duplicates removed)")
+    print(f"normalized {len(jobs)} jobs (sorted newest-first, {dropped} duplicates removed, {fixed} ids fixed)")
 
 
 if __name__ == "__main__":

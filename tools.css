@@ -16,10 +16,10 @@
 .tpanel .sub strong{color:var(--ink)}
 .tgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .tgrid .full{grid-column:1/-1}
-.field textarea.big{min-height:300px;font-size:14.5px;line-height:1.6}
-.field select{width:100%;font-family:var(--font-b);font-size:15.5px;padding:14px 16px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink)}
+.field textarea.big{min-height:300px;font-size:16px;line-height:1.6}
+.field select{width:100%;font-family:var(--font-b);font-size:16px;padding:14px 16px;border:1px solid var(--line);border-radius:11px;background:#fff;color:var(--ink)}
 .field select:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(0,82,255,.22)}
-.field textarea{width:100%;font-family:var(--font-b);font-size:15.5px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);resize:vertical;line-height:1.55}
+.field textarea{width:100%;font-family:var(--font-b);font-size:16px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);resize:vertical;line-height:1.55}
 .field textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(0,82,255,.22)}
 .hint{font-size:13px;color:var(--muted)}
 .hint strong{color:var(--ink2)}
@@ -114,5 +114,7 @@
   .tool-hero{padding:44px 0 36px}
   .field textarea.big{min-height:230px}
   .course-cta{padding:24px 22px}
+  .course-cta .cc-main{min-width:0}
+  #evResults,#cardPanel,#quizPanel{scroll-margin-top:90px}
   .score-hero{gap:18px}
 }

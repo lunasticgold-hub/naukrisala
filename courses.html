@@ -86,7 +86,7 @@
     </nav>
     <div class="nav-cta">
       <a class="btn btn-primary btn-sm" href="index.html#demo">Book free demo <span class="arr">→</span></a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     </div>
   </div>
 </header>
@@ -180,12 +180,12 @@
       </div>
       <div class="curr">
         <div class="curr-tabs" role="tablist" aria-label="AML and KYC course modules">
-          <button class="curr-tab is-active" role="tab" id="ct-1" aria-controls="cp-1" aria-selected="true" data-tab="0"><span class="ct-n">01</span><span class="ct-body"><span class="ct-t">Foundations of AML &amp; financial crime</span><span class="ct-m">Foundations</span></span></button>
-          <button class="curr-tab" role="tab" id="ct-2" aria-controls="cp-2" aria-selected="false" tabindex="-1" data-tab="1"><span class="ct-n">02</span><span class="ct-body"><span class="ct-t">KYC &amp; customer onboarding</span><span class="ct-m">Core skill</span></span></button>
-          <button class="curr-tab" role="tab" id="ct-3" aria-controls="cp-3" aria-selected="false" tabindex="-1" data-tab="2"><span class="ct-n">03</span><span class="ct-body"><span class="ct-t">Screening — sanctions, PEPs &amp; adverse media</span><span class="ct-m">Core skill</span></span></button>
-          <button class="curr-tab" role="tab" id="ct-4" aria-controls="cp-4" aria-selected="false" tabindex="-1" data-tab="3"><span class="ct-n">04</span><span class="ct-body"><span class="ct-t">Transaction monitoring &amp; investigations</span><span class="ct-m">Case-work</span></span></button>
-          <button class="curr-tab" role="tab" id="ct-5" aria-controls="cp-5" aria-selected="false" tabindex="-1" data-tab="4"><span class="ct-n">05</span><span class="ct-body"><span class="ct-t">Reporting — SAR, STR &amp; regulatory ops</span><span class="ct-m">Core skill</span></span></button>
-          <button class="curr-tab" role="tab" id="ct-6" aria-controls="cp-6" aria-selected="false" tabindex="-1" data-tab="5"><span class="ct-n">06</span><span class="ct-body"><span class="ct-t">Placement capstone</span><span class="ct-m">Placement</span></span></button>
+          <button type="button" class="curr-tab is-active" role="tab" id="ct-1" aria-controls="cp-1" aria-selected="true" data-tab="0"><span class="ct-n">01</span><span class="ct-body"><span class="ct-t">Foundations of AML &amp; financial crime</span><span class="ct-m">Foundations</span></span></button>
+          <button type="button" class="curr-tab" role="tab" id="ct-2" aria-controls="cp-2" aria-selected="false" tabindex="-1" data-tab="1"><span class="ct-n">02</span><span class="ct-body"><span class="ct-t">KYC &amp; customer onboarding</span><span class="ct-m">Core skill</span></span></button>
+          <button type="button" class="curr-tab" role="tab" id="ct-3" aria-controls="cp-3" aria-selected="false" tabindex="-1" data-tab="2"><span class="ct-n">03</span><span class="ct-body"><span class="ct-t">Screening — sanctions, PEPs &amp; adverse media</span><span class="ct-m">Core skill</span></span></button>
+          <button type="button" class="curr-tab" role="tab" id="ct-4" aria-controls="cp-4" aria-selected="false" tabindex="-1" data-tab="3"><span class="ct-n">04</span><span class="ct-body"><span class="ct-t">Transaction monitoring &amp; investigations</span><span class="ct-m">Case-work</span></span></button>
+          <button type="button" class="curr-tab" role="tab" id="ct-5" aria-controls="cp-5" aria-selected="false" tabindex="-1" data-tab="4"><span class="ct-n">05</span><span class="ct-body"><span class="ct-t">Reporting — SAR, STR &amp; regulatory ops</span><span class="ct-m">Core skill</span></span></button>
+          <button type="button" class="curr-tab" role="tab" id="ct-6" aria-controls="cp-6" aria-selected="false" tabindex="-1" data-tab="5"><span class="ct-n">06</span><span class="ct-body"><span class="ct-t">Placement capstone</span><span class="ct-m">Placement</span></span></button>
         </div>
         <div class="curr-panels">
           <div class="curr-panel is-active" role="tabpanel" id="cp-1" aria-labelledby="ct-1" tabindex="0">
@@ -304,7 +304,7 @@
 </a>
 
 <script src="script.js"></script>
-<script src="maya.js?v=20261111d2"></script>
+<script src="maya.js?v=20261111d3"></script>
 <script>
 /* Homepage live-board wiring — additive, guarded. Static fallbacks in the
    markup keep every number correct even if this fetch fails. */
@@ -358,7 +358,7 @@
     jobs.forEach(function (j) { byCourse[j.course] = (byCourse[j.course] || 0) + 1; });
     document.querySelectorAll('[data-openings]').forEach(function (el) {
       var n = byCourse[el.getAttribute('data-openings')];
-      if (n) el.innerHTML = '<b>' + fmt(n) + '</b> live openings';
+      if (n !== undefined) el.innerHTML = '<b>' + fmt(n) + '</b> live openings';
     });
     var byEmp = {};
     jobs.forEach(function (j) { if (j.company) byEmp[j.company] = (byEmp[j.company] || 0) + 1; });

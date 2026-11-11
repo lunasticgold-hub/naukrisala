@@ -50,24 +50,25 @@
 .controls-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
 .search{flex:1;min-width:220px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 16px}
 .search:focus-within{border-color:var(--amber);box-shadow:0 0 0 3px rgba(0,82,255,.2);background:#fff}
-.search input{flex:1;background:none;border:none;outline:none;color:var(--ink);font:500 15px var(--font-b)}
+.search input{flex:1;background:none;border:none;outline:none;color:var(--ink);font:500 16px var(--font-b)}
 .search input::placeholder{color:var(--muted)}
 .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
 .ctl{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:0 16px;height:50px;cursor:pointer}
 .ctl>span{font:700 11px var(--font-b);letter-spacing:.07em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
-.ctl select{background:none;border:none;outline:none;color:var(--ink);font:600 14px var(--font-b);cursor:pointer;max-width:190px}
+.ctl select{background:none;border:none;outline:none;color:var(--ink);font:600 16px var(--font-b);cursor:pointer;max-width:190px}
 .ctl select option{background:#fff;color:var(--ink)}
 .frow{display:flex;gap:28px;flex-wrap:wrap;margin-top:12px}
 .fgroup{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .fgroup .chips{margin-top:0}
 .flabel{font:700 11px var(--font-b);letter-spacing:.08em;color:var(--muted);text-transform:uppercase;white-space:nowrap}
 @media(max-width:680px){.ctl{flex:1;min-width:calc(50% - 6px)}.ctl select{max-width:100%}}
-.chip{font:600 12.5px var(--font-b);color:var(--ink2);border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 15px;cursor:pointer;transition:.2s}
+.chip{font:600 12.5px var(--font-b);color:var(--ink2);border:1px solid var(--line);background:#fff;border-radius:999px;padding:10px 16px;cursor:pointer;transition:.2s}
 .chip:hover{border-color:var(--navy);color:var(--ink)}
 .chip.active{background:var(--navy);border-color:var(--navy);color:#fff}
 .meta{display:flex;justify-content:space-between;align-items:baseline;gap:12px;margin:28px 0 18px;flex-wrap:wrap}
 .meta .count{font:700 15px var(--font-d);color:var(--ink);letter-spacing:-.01em}
 .job-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(300px,100%),1fr));gap:16px;padding-bottom:20px}
+#grid,#listings{scroll-margin-top:400px}
 .pager{display:flex;align-items:center;justify-content:center;gap:14px;padding:8px 0 40px;flex-wrap:wrap}
 .pager button{font:700 13.5px var(--font-b);color:var(--navy);background:#fff;border:1.5px solid var(--navy);border-radius:8px;padding:10px 18px;cursor:pointer}
 .pager button:disabled{opacity:.4;cursor:default}
@@ -98,7 +99,7 @@
 .lock-card h2 em{font-style:normal;color:var(--amber-strong)}
 .lock-card p{font:400 14.5px/1.65 var(--font-b);color:var(--ink2);margin-bottom:22px}
 .code-row{display:flex;gap:10px;flex-wrap:wrap}
-.code-row input{flex:1;background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px 15px;color:var(--ink);font:600 15px var(--font-b);letter-spacing:.08em;text-transform:uppercase;outline:none;text-align:center}
+.code-row input{flex:1;background:#fff;border:1px solid var(--line);border-radius:11px;padding:13px 15px;color:var(--ink);font:600 16px var(--font-b);letter-spacing:.08em;text-transform:uppercase;outline:none;text-align:center}
 .code-row input:focus{border-color:var(--amber);box-shadow:0 0 0 3px rgba(0,82,255,.2)}
 .code-err{font:500 13px var(--font-b);color:var(--bad);min-height:20px;margin-top:12px}
 .shake{animation:shake .35s}
@@ -106,7 +107,7 @@
 #board{display:none}
 #board.open{display:block}
 #board section{background:var(--bg2)}
-@media(max-width:680px){.jobs-hero{padding:44px 0 38px}.controls{top:64px}.job-apply{flex:1;text-align:center}.related-links{gap:6px}.related-links span{display:none}.related-links a{font-size:11px;padding:5px 10px;border-width:1px}}
+@media(max-width:680px){.jobs-hero{padding:44px 0 38px}.controls{position:static;top:64px}.job-apply{flex:1;text-align:center}.related-links{gap:6px}.related-links span{display:none}.related-links a{font-size:11px;padding:5px 10px;border-width:1px}#grid,#listings{scroll-margin-top:80px}#chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}#chips::-webkit-scrollbar{display:none}#chips .chip{flex:none}}
 </style>
 
 
@@ -171,12 +172,10 @@
     </nav>
     <div class="nav-cta">
       <a class="btn btn-primary btn-sm" href="index.html#demo">Book free demo <span class="arr">→</span></a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     </div>
   </div>
 </header>
-
-</div>
 
 <main>
   <section class="lock" id="lock">
@@ -187,7 +186,7 @@
         <p>The live job board unlocks after enrollment. Your access code was shared with you when you joined — enter it below.</p>
         <div class="code-row">
           <input id="codeInput" type="text" placeholder="NS-XXXX-XXXX" autocomplete="off" spellcheck="false">
-          <button class="btn btn-primary" id="unlockBtn">Unlock</button>
+          <button type="button" class="btn btn-primary" id="unlockBtn">Unlock</button>
         </div>
         <p class="code-err" id="codeErr"></p>
       </div>
@@ -202,8 +201,8 @@
         <h1>Jobs matched to<br><em>your course.</em></h1>
         <p class="lede">Real openings across India, grouped by every NaukriSala track. Find your role, then apply directly on the employer's site.</p>
         <div class="jobs-stats">
-          <div class="js"><strong data-hero-total>4,838</strong><span>openings today</span></div>
-          <div class="js"><strong data-hero-aml>640</strong><span>AML &amp; KYC roles</span></div>
+          <div class="js"><strong data-hero-total>5,589</strong><span>openings today</span></div>
+          <div class="js"><strong data-hero-aml>697</strong><span>AML &amp; KYC roles</span></div>
           <div class="js"><strong>Daily</strong><span>board refresh</span></div>
         </div>
       </div>
@@ -211,12 +210,12 @@
         <div class="snap-card" role="img" aria-label="Snapshot of today's board: openings by course track">
           <div class="snap-head"><h3>Board snapshot</h3><span>Live · today</span></div>
           <div class="snap-bars">
-            <div class="snap-row" data-snap="aml-kyc"><span class="sn">AML &amp; KYC Analyst</span><span class="st"><span class="sf amber" style="width:100%"></span></span><span class="sv">640</span></div>
-            <div class="snap-row" data-snap="data-science-ai"><span class="sn">Data Science &amp; AI</span><span class="st"><span class="sf" style="width:43%"></span></span><span class="sv">272</span></div>
-            <div class="snap-row" data-snap="java-fullstack"><span class="sn">Full Stack Java</span><span class="st"><span class="sf" style="width:64%"></span></span><span class="sv">411</span></div>
-            <div class="snap-row" data-snap="dbi"><span class="sn">Database &amp; BI</span><span class="st"><span class="sf" style="width:40%"></span></span><span class="sv">255</span></div>
-            <div class="snap-row" data-snap="python-fullstack"><span class="sn">Full Stack Python</span><span class="st"><span class="sf" style="width:36%"></span></span><span class="sv">232</span></div>
-            <div class="snap-row" data-snap="qa-testing"><span class="sn">Software Testing (QA)</span><span class="st"><span class="sf" style="width:41%"></span></span><span class="sv">261</span></div>
+            <div class="snap-row" data-snap="aml-kyc"><span class="sn">AML &amp; KYC Analyst</span><span class="st"><span class="sf amber" style="width:100%"></span></span><span class="sv">697</span></div>
+            <div class="snap-row" data-snap="data-science-ai"><span class="sn">Data Science &amp; AI</span><span class="st"><span class="sf" style="width:47%"></span></span><span class="sv">329</span></div>
+            <div class="snap-row" data-snap="java-fullstack"><span class="sn">Full Stack Java</span><span class="st"><span class="sf" style="width:70%"></span></span><span class="sv">488</span></div>
+            <div class="snap-row" data-snap="dbi"><span class="sn">Database &amp; BI</span><span class="st"><span class="sf" style="width:43%"></span></span><span class="sv">302</span></div>
+            <div class="snap-row" data-snap="python-fullstack"><span class="sn">Full Stack Python</span><span class="st"><span class="sf" style="width:39%"></span></span><span class="sv">271</span></div>
+            <div class="snap-row" data-snap="qa-testing"><span class="sn">Software Testing (QA)</span><span class="st"><span class="sf" style="width:45%"></span></span><span class="sv">312</span></div>
           </div>
           <p class="snap-note">Openings by NaukriSala track, counted from the live board below — filter by track to explore yours.</p>
           <p class="snap-note">Searching from Bhubaneswar? Filter by city below — or read how <a href="placement-courses-bhubaneswar.html">placement courses in Bhubaneswar</a> work: 100% online, no centre to travel to.</p>
@@ -260,8 +259,8 @@
           <span class="bc-title">NaukriSala Jobs Board</span>
           <span class="bc-live"><i></i>Live</span>
         </div>
-        <div class="bc-count"><strong data-live-total>5,349</strong><span>live openings<br>right now</span></div>
-        <p class="bc-sub"><strong data-live-aml>708</strong> of them are AML &amp; KYC roles — our flagship track.</p>
+        <div class="bc-count"><strong data-live-total>5,589</strong><span>live openings<br>right now</span></div>
+        <p class="bc-sub"><strong data-live-aml>697</strong> of them are AML &amp; KYC roles — our flagship track.</p>
         <div class="bc-jobs" id="bcJobs">
           <a class="bc-job" href="https://in.jooble.org/jdp/-612859102274543270" target="_blank" rel="noopener"><h4>Lead - Partner Onboarding &amp; Due Diligence</h4><p><b>nium</b> · Mumbai</p></a>
           <a class="bc-job" href="https://portal.careers.hsbc.com/careers/job/563774612541598" target="_blank" rel="noopener"><h4>Global Sanctions and SWIFT Utility Delivery Lead</h4><p><b>HSBC</b> · Bengaluru</p></a>
@@ -431,7 +430,7 @@ function currentList() {
   const list = JOBS.filter(j =>
     (active === 'all' || j.course === active) &&
     (!term || (j.title + ' ' + j.company + ' ' + j.location).toLowerCase().includes(term)) &&
-    (typeF === 'all' || j.contract === typeF) &&
+    (typeF === 'all' || (j.contract || 'Full-time') === typeF) &&
     (locF === '' || (locF === '__pan' ? !j.city : j.city === locF)) &&
     (!ageF || (now - new Date((j.fetched || '1970-01-01') + 'T00:00:00Z').getTime()) / 864e5 <= ageF)
   );
@@ -452,9 +451,9 @@ function render() {
     <article class="job-card">
       <span class="job-tag">${esc(j.course_label)}</span>
       <h3>${esc(j.title)}</h3>
-      <p class="job-co">${esc(j.company)} · ${esc(j.location)}</p>
+      <p class="job-co">${esc([j.company, j.location].filter(Boolean).join(' · '))}</p>
       ${j.salary_text ? `<p class="job-sal">${esc(j.salary_text)}</p>` : ''}
-      <p class="job-snip">${esc(j.snippet)}</p>
+      ${j.snippet ? `<p class="job-snip">${esc(j.snippet)}</p>` : ''}
       <a class="job-tailor" href="apply.html?job=${encodeURIComponent(j.id)}">✦ Tailor resume for this job</a>
       <div class="job-foot">
         <span class="job-date">${rel(j.created) || rel(j.fetched + 'T00:00:00Z')}${j.contract ? ' · ' + esc(j.contract) : ''}${j.stale ? ' · <span class="stale">old listing</span>' : ''}</span>
@@ -463,7 +462,7 @@ function render() {
     </article>`).join('')
     : '<p class="empty">No openings match those filters. Try widening the date range or clearing a filter.</p>';
   const pager = document.getElementById('pager');
-  pager.innerHTML = total ? `<button id="pgPrev"${page <= 1 ? ' disabled' : ''}>\u2190 Previous</button><span>Showing ${start + 1}\u2013${Math.min(start + PER_PAGE, total)} of ${total} \u00b7 Page ${page} of ${pages}</span><button id="pgNext"${page >= pages ? ' disabled' : ''}>Next \u2192</button>` : '';
+  pager.innerHTML = total ? `<button type="button" id="pgPrev"${page <= 1 ? ' disabled' : ''}>\u2190 Previous</button><span>Showing ${start + 1}\u2013${Math.min(start + PER_PAGE, total)} of ${total} \u00b7 Page ${page} of ${pages}</span><button type="button" id="pgNext"${page >= pages ? ' disabled' : ''}>Next \u2192</button>` : '';
   const prev = document.getElementById('pgPrev');
   if (prev) prev.addEventListener('click', () => { page--; render(); document.getElementById('grid').scrollIntoView({behavior: 'smooth'}); });
   const next = document.getElementById('pgNext');
@@ -472,7 +471,7 @@ function render() {
 
 function chipRow(el, options, get, set, parse) {
   el.innerHTML = options.map(([v, l]) =>
-    `<button class="chip${get() === v ? ' active' : ''}" data-v="${v}">${esc(l)}</button>`).join('');
+    `<button type="button" class="chip${get() === v ? ' active' : ''}" data-v="${v}">${esc(l)}</button>`).join('');
   el.addEventListener('click', e => {
     const b = e.target.closest('.chip'); if (!b) return;
     set(parse ? parse(b.dataset.v) : b.dataset.v);
@@ -482,13 +481,15 @@ function chipRow(el, options, get, set, parse) {
   });
 }
 
-fetch('jobs.json?v=202611110247').then(r => r.json()).then(d => {
+const jobsPromise = fetch('jobs.json?v=202611111225').then(r => { if (!r.ok) throw new Error('jobs fetch failed'); return r.json(); });
+
+jobsPromise.then(d => {
   JOBS = d.jobs;
   updated.textContent = 'Updated ' + d.fetched_at;
   const labels = [['all', 'All tracks']];
   d.jobs.forEach(j => { if (!labels.find(l => l[0] === j.course)) labels.push([j.course, j.course_label]); });
   chips.innerHTML = labels.map(([s, l]) =>
-    `<button class="chip${s === 'all' ? ' active' : ''}" data-s="${s}">${esc(l)}</button>`).join('');
+    `<button type="button" class="chip${s === 'all' ? ' active' : ''}" data-s="${s}">${esc(l)}</button>`).join('');
   chips.addEventListener('click', e => {
     const b = e.target.closest('.chip'); if (!b) return;
     active = b.dataset.s;
@@ -507,7 +508,7 @@ fetch('jobs.json?v=202611110247').then(r => r.json()).then(d => {
   const counts = {};
   JOBS.forEach(j => { if (j.city) counts[j.city] = (counts[j.city] || 0) + 1; });
   const panN = JOBS.filter(j => !j.city).length;
-  Object.entries(counts).filter(([, n]) => n >= 3)
+  Object.entries(counts).filter(([, n]) => n >= 1)
     .sort((a, b) => b[1] - a[1])
     .forEach(([c, n]) => locSel.insertAdjacentHTML('beforeend',
       `<option value="${esc(c)}">${esc(c)} (${n})</option>`));
@@ -515,7 +516,8 @@ fetch('jobs.json?v=202611110247').then(r => r.json()).then(d => {
     `<option value="__pan">Pan-India — city not listed (${panN})</option>`);
   document.getElementById('sort').addEventListener('change', e => { sortMode = e.target.value; page = 1; render(); });
   locSel.addEventListener('change', e => { locF = e.target.value; page = 1; render(); });
-  q.addEventListener('input', () => { page = 1; render(); });
+  let searchTimer = null;
+  q.addEventListener('input', () => { clearTimeout(searchTimer); searchTimer = setTimeout(() => { page = 1; render(); }, 250); });
   render();
 }).catch(() => { count.textContent = 'Could not load jobs right now.'; });
 }
@@ -526,13 +528,10 @@ document.getElementById('navToggle').addEventListener('click', () =>
 <script>
 /* Jobs-page board card: live totals + freshest AML/KYC openings (same logic as the home card had). */
 (function () {
-  if (!('fetch' in window)) return;
+  if (!('fetch' in window) || typeof jobsPromise === 'undefined') return;
   function esc(s) { return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) { return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]; }); }
   function fmt(n) { return Number(n).toLocaleString('en-IN'); }
-  fetch('jobs.json?v=202611110247').then(function (r) {
-    if (!r.ok) throw new Error('jobs fetch failed');
-    return r.json();
-  }).then(function (d) {
+  jobsPromise.then(function (d) {
     var jobs = d.jobs || [];
     if (!jobs.length) return;
     var total = d.total || jobs.length, aml = 0;
@@ -568,6 +567,10 @@ document.getElementById('navToggle').addEventListener('click', () =>
   }).catch(function () { /* static fallback stays */ });
 })();
 </script>
-<script src="maya.js?v=20261111d2"></script>
+<script src="maya.js?v=20261111d3"></script>
+<a class="wa-float" id="waFloat" href="https://wa.me/918450049035?text=Hi%20NaukriSala!%20I%20want%20to%20book%20a%20free%20demo%20class." aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.3.6-.6.8-.4 1.1.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1l.8-.9c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .7-.2 1.3z"/></svg>
+</a>
+
 </body>
 </html>

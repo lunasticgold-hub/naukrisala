@@ -52,13 +52,13 @@ main{background:var(--bg2);padding-bottom:70px}
 .panel .sub{color:var(--ink2);font-size:14.5px;margin-bottom:22px;max-width:640px}
 .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
 .form-grid .full{grid-column:1/-1}
-.field textarea{width:100%;font-family:var(--font-b);font-size:15.5px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);resize:vertical;min-height:52px;line-height:1.55}
+.field textarea{width:100%;font-family:var(--font-b);font-size:16px;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);resize:vertical;min-height:52px;line-height:1.55}
 .field textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.22)}
 .exp-block{border:1px solid var(--line-soft);border-radius:12px;padding:20px;margin-bottom:16px;background:var(--bg2)}
 .exp-block .mono{display:block;margin-bottom:14px;color:var(--amber-ink)}
 .saved-note{font:500 13.5px var(--font-b);color:var(--good);min-height:20px;margin-top:12px}
 .jobpick{display:grid;grid-template-columns:1fr 1fr;gap:18px}
-.jobpick select{width:100%;font-family:var(--font-b);font-size:14.5px;padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
+.jobpick select{width:100%;font-family:var(--font-b);font-size:16px;padding:10px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink)}
 .jobpick select option{background:#fff;color:var(--ink);padding:6px 8px}
 .job-card-view{border:1.5px solid rgba(245,158,11,.55);border-radius:12px;padding:22px;background:rgba(245,158,11,.06);min-width:0}
 .job-card-view .job-tag{display:inline-block;font:700 10.5px var(--font-b);letter-spacing:.07em;text-transform:uppercase;color:var(--amber-ink);background:rgba(245,158,11,.14);border:1px solid rgba(245,158,11,.35);border-radius:999px;padding:5px 11px;margin-bottom:10px}
@@ -100,9 +100,9 @@ main{background:var(--bg2);padding-bottom:70px}
 .ans-box{margin-bottom:18px}
 .ans-box label{display:block;font-size:.66rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
 .ans-row{display:flex;gap:10px;align-items:flex-start}
-.ans-row textarea{flex:1;font-family:var(--font-b);font-size:14.5px;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);resize:vertical;min-height:74px;line-height:1.55;min-width:0}
+.ans-row textarea{flex:1;font-family:var(--font-b);font-size:16px;padding:13px 15px;border:1px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);resize:vertical;min-height:74px;line-height:1.55;min-width:0}
 .ans-row textarea:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(245,158,11,.22)}
-.copy-btn{flex:none;font:600 12.5px var(--font-b);border:1px solid var(--line);background:#fff;color:var(--ink2);border-radius:10px;padding:10px 14px;cursor:pointer;transition:.2s}
+.copy-btn{flex:none;font:600 12.5px var(--font-b);border:1px solid var(--line);background:#fff;color:var(--ink2);border-radius:10px;padding:12px 16px;cursor:pointer;transition:.2s}
 .copy-btn:hover{border-color:var(--navy);color:var(--ink)}
 .draft-label{display:inline-block;font:700 11px var(--font-b);letter-spacing:.08em;text-transform:uppercase;color:var(--amber-ink);background:rgba(245,158,11,.13);border:1px solid rgba(245,158,11,.5);border-radius:999px;padding:5px 12px;margin-bottom:16px}
 .aa-sec .btn-ghost{border-color:var(--line);color:var(--ink);background:#fff}
@@ -192,12 +192,10 @@ main{background:var(--bg2);padding-bottom:70px}
     </nav>
     <div class="nav-cta">
       <a class="btn btn-primary btn-sm" href="index.html#demo">Book free demo <span class="arr">→</span></a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     </div>
   </div>
 </header>
-
-</div>
 
 <main>
   <section class="aa-hero">
@@ -252,7 +250,7 @@ main{background:var(--bg2);padding-bottom:70px}
         <div class="field"><label for="p_notice">Notice period</label><input id="p_notice" type="text" placeholder="e.g. Immediate, 15 days, 1 month"></div>
         <div class="field"><label for="p_relocate">Open to relocate?</label><select id="p_relocate"><option value="yes">Yes</option><option value="no">No</option></select></div>
       </div>
-      <button class="btn btn-primary" id="saveProfile" style="margin-top:22px">Save profile</button>
+      <button type="button" class="btn btn-primary" id="saveProfile" style="margin-top:22px">Save profile</button>
       <p class="saved-note" id="savedNote"></p>
     </section>
 
@@ -284,9 +282,9 @@ main{background:var(--bg2);padding-bottom:70px}
       <div class="panel-head"><span class="step-n">Step 04</span><h2>Your tailored resume</h2></div>
       <p class="sub no-print">Built only from your profile and the keywords you confirmed, in a single-column ATS-safe format. Experience bullets are reordered so the ones matching this job come first — the wording is never changed. Download the .docx for job portals; its file name carries your name and the job title.</p>
       <div class="btn-row no-print">
-        <button class="btn btn-primary btn-sm" id="docxBtn">Download .docx (ATS-friendly)</button>
-        <button class="btn btn-ghost btn-sm" id="printBtn">Print / Save PDF</button>
-        <button class="btn btn-ghost btn-sm" id="copyResumeBtn">Copy resume as text</button>
+        <button type="button" class="btn btn-primary btn-sm" id="docxBtn">Download .docx (ATS-friendly)</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="printBtn">Print / Save PDF</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="copyResumeBtn">Copy resume as text</button>
       </div>
       <div id="checkBody"></div>
       <div id="resumeBody"><p class="empty-note">Pick a job above to build your resume.</p></div>
@@ -466,7 +464,7 @@ function fillProfile(p) {
 try { fillProfile(JSON.parse(localStorage.getItem('ns_profile') || 'null')); } catch (e) { /* fresh profile */ }
 
 $('saveProfile').addEventListener('click', () => {
-  localStorage.setItem('ns_profile', JSON.stringify(readProfile()));
+  try { localStorage.setItem('ns_profile', JSON.stringify(readProfile())); } catch (e) { /* storage blocked — profile just won't persist */ }
   $('savedNote').textContent = 'Profile saved ✓ — it will be prefilled next time you visit.';
   analyse();
 });
@@ -501,7 +499,7 @@ function selectJob(id) {
   const j = JOBS.find(x => x.id === id);
   if (!j) return;
   job = j; ticked = new Set();
-  renderJobView(); analyse();
+  renderJobView(); analyse(); renderJobOptions();
 }
 function renderJobView() {
   if (!job) return;
@@ -515,7 +513,7 @@ function renderJobView() {
     ${url ? `<p style="margin-top:12px"><a href="${esc(url)}" target="_blank" rel="noopener" style="color:var(--amber);font-weight:600;text-decoration:none">View original listing ↗</a></p>` : ''}`;
 }
 
-fetch('jobs.json?v=20261020').then(r => r.json()).then(d => {
+fetch('jobs.json?v=202611111225').then(r => r.json()).then(d => {
   JOBS = d.jobs || [];
   renderJobOptions();
   const want = new URLSearchParams(location.search).get('job');
@@ -844,6 +842,10 @@ $('printBtn').addEventListener('click', () => {
 $('docxBtn').addEventListener('click', downloadDocx);
 $('copyResumeBtn').addEventListener('click', e => { if (analysis) copyText(resumeText(analysis.p), e.currentTarget); });
 </script>
-<script src="maya.js?v=20261111d2"></script>
+<script src="maya.js?v=20261111d3"></script>
+<a class="wa-float" id="waFloat" href="https://wa.me/918450049035?text=Hi%20NaukriSala!%20I%20want%20to%20book%20a%20free%20demo%20class." aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.3.6-.6.8-.4 1.1.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1l.8-.9c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .7-.2 1.3z"/></svg>
+</a>
+
 </body>
 </html>

@@ -138,7 +138,7 @@ def main():
                         continue
                     seen.add(key)
                     jobs.append({
-                        "id": "wj_" + re.sub(r"\D", "", url)[-12:],
+                        "id": "wj_" + (re.search(r"pub_api__cpl__(\d+)", url).group(1) if "pub_api__cpl__" in url else re.sub(r"\D", "", url)[-12:]),
                         "course": slug,
                         "course_label": label,
                         "title": title,

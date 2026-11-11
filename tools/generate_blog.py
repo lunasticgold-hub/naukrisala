@@ -37,7 +37,7 @@ def chrome(prefix):
     </nav>
     <div class="nav-cta">
       <a class="btn btn-primary btn-sm" href="{prefix}index.html#demo">Book free demo <span class="arr">→</span></a>
-      <button class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     </div>
   </div>
 </header>"""
@@ -97,7 +97,7 @@ def chrome(prefix):
 
 <a class="wa-float" id="waFloat" href="#" aria-label="Chat on WhatsApp"></a>
 <script src="{prefix}script.js"></script>
-<script src="{prefix}maya.js?v=20261111d2"></script>"""
+<script src="{prefix}maya.js?v=20261111d3"></script>"""
     return nav, foot
 
 def head(title, desc, canon, prefix):
@@ -132,8 +132,8 @@ def head(title, desc, canon, prefix):
 
 # ---------- blog.html ----------
 nav, foot = chrome('')
-filters = '<button class="blog-filter active" data-track="all">All topics</button>' + ''.join(
-    f'<button class="blog-filter" data-track="{html.escape(t)}">{html.escape(t)}</button>' for t in TRACKS)
+filters = '<button type="button" class="blog-filter active" data-track="all">All topics</button>' + ''.join(
+    f'<button type="button" class="blog-filter" data-track="{html.escape(t)}">{html.escape(t)}</button>' for t in TRACKS)
 cards = '\n'.join(
     f'      <article class="blog-card" data-track="{html.escape(p["track"])}"><span class="blog-tag">{html.escape(p["track"])}</span><h3><a href="blog/{p["slug"]}.html">{html.escape(p["title"])}</a></h3><p>{html.escape(p["excerpt"])}</p><span class="blog-read">{p["read"]} min read</span></article>'
     for p in POSTS)
