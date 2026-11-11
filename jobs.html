@@ -78,7 +78,7 @@
 .job-card h3{font:700 19.5px/1.28 var(--font-d);letter-spacing:-.015em;overflow-wrap:break-word}
 .job-co{font:500 13.5px var(--font-b);color:var(--ink2);overflow-wrap:break-word}
 .job-snip{font:400 13.5px/1.6 var(--font-b);color:var(--muted);flex:1;overflow-wrap:break-word;min-width:0}
-.job-foot{display:flex;justify-content:space-between;align-items:center;margin-top:6px;padding-top:14px;border-top:1px solid var(--line-soft)}
+.job-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 12px;margin-top:6px;padding-top:14px;border-top:1px solid var(--line-soft)}
 .job-date{font:500 12px var(--font-b);color:var(--muted)}
 .job-sal{font:800 14.5px var(--font-d);color:var(--amber-ink);overflow-wrap:break-word}
 .job-apply{display:inline-block;font:700 13.5px var(--font-b);color:var(--navy);background:var(--amber);text-decoration:none;white-space:nowrap;padding:9px 16px;border-radius:8px;transition:background .18s ease}
@@ -87,7 +87,7 @@
 .job-tailor:hover{background:var(--navy);color:#fff}
 .job-site{font:600 12.5px var(--font-b);color:var(--ink2);text-decoration:none;margin-right:12px;white-space:nowrap}
 .job-site:hover{color:var(--amber-ink);text-decoration:underline}
-.foot-links{display:flex;align-items:center}
+.foot-links{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px}
 .stale{display:inline-block;color:#B3261E;background:#FDECEA;font-weight:700;font-size:10px;letter-spacing:.07em;text-transform:uppercase;border:1px solid rgba(176,38,30,.35);border-radius:999px;padding:2px 8px}
 .empty{grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--muted)}
 .src-note{margin:34px 0 70px;padding:20px 22px;border:1px dashed var(--line);border-radius:14px;background:var(--bg2)}
@@ -106,7 +106,7 @@
 #board{display:none}
 #board.open{display:block}
 #board section{background:var(--bg2)}
-@media(max-width:680px){.jobs-hero{padding:44px 0 38px}.controls{top:64px}}
+@media(max-width:680px){.jobs-hero{padding:44px 0 38px}.controls{top:64px}.job-apply{flex:1;text-align:center}}
 </style>
 <!-- NS-JSONLD-START -->
 <script type="application/ld+json">
