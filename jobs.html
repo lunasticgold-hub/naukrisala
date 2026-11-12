@@ -481,7 +481,7 @@ function chipRow(el, options, get, set, parse) {
   });
 }
 
-const jobsPromise = fetch('jobs.json?v=202611111225').then(r => { if (!r.ok) throw new Error('jobs fetch failed'); return r.json(); });
+const jobsPromise = fetch('jobs.json?v=202611120243').then(r => { if (!r.ok) throw new Error('jobs fetch failed'); return r.json(); });
 
 jobsPromise.then(d => {
   JOBS = d.jobs;
