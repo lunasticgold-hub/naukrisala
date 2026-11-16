@@ -119,14 +119,36 @@ main{background:var(--bg2);padding-bottom:70px}
   .score-num{font-size:44px}
 }
 @media print{
-  .grain,.glow,.nav,.topbar,.footer,.aa-hero,.aa-sec:not(#resumeSec),.no-print{display:none!important}
+  .grain,.glow,.nav,.topbar,.footer,.aa-hero,.aa-sec:not(#resumeSec),.no-print,.related-links,.wa-float,.maya-launcher,.maya-panel{display:none!important}
   body{background:#fff;overflow:visible}
   .wrap{max-width:100%;padding:0}
   #resumeSec{padding:0;margin:0}
   .panel{background:none;border:none;padding:0;margin:0}
-  .sheet{box-shadow:none;border-radius:0;padding:6px 2px}
+  .sheet{box-shadow:none;border-radius:0;padding:6px 2px;background:#fff}
+  .sheet .headline,.sheet .sec{color:#111}
+  .sheet .sec{border-bottom-color:#999}
   @page{margin:13mm}
 }
+.skill-suggest{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.skill-suggest .sg-label{font-size:12.5px;font-weight:700;color:var(--muted)}
+.skill-chip{border:1px solid var(--line);background:#fff;color:var(--ink2);border-radius:999px;padding:6px 12px;font:600 12.5px var(--font-b);cursor:pointer}
+.skill-chip:hover{border-color:var(--navy);color:var(--ink)}
+.skill-ac{margin-top:8px;border:1px solid var(--line);border-radius:10px;background:#fff;overflow:hidden}
+.skill-ac button{display:block;width:100%;text-align:left;padding:9px 12px;border:none;background:none;font:500 14px var(--font-b);color:var(--ink);cursor:pointer}
+.skill-ac button:hover{background:var(--bg2)}
+.job-list{border:1px solid var(--line);border-radius:12px;background:#fff;max-height:300px;overflow:auto}
+.job-row{display:flex;gap:10px;align-items:flex-start;padding:11px 12px;border-bottom:1px solid var(--line-soft);cursor:pointer}
+.job-row:last-child{border-bottom:none}
+.job-row:hover{background:var(--bg2)}
+.job-row.active{background:rgba(245,158,11,.09)}
+.job-row input{flex:none;margin-top:3px;width:16px;height:16px;accent-color:var(--navy)}
+.job-row span{font-size:14.5px;line-height:1.45;color:var(--ink)}
+.shortlist-bar{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:14px}
+.shortlist-bar span{font-size:13.5px;font-weight:600;color:var(--ink2)}
+.batch-card{border:1px solid var(--line);border-radius:14px;padding:18px;margin-top:14px;background:#fff}
+.batch-card h4{font-size:16px;margin-bottom:4px}
+.batch-card .fine{margin-bottom:10px}
+.batch-card .btn-row{margin-bottom:0}
 </style>
 
 
@@ -240,7 +262,7 @@ main{background:var(--bg2);padding-bottom:70px}
         <div class="field"><label for="p_phone">Phone</label><input id="p_phone" type="tel" autocomplete="tel" placeholder="+91 …"></div>
         <div class="field"><label for="p_city">Your city</label><input id="p_city" type="text" placeholder="e.g. Mumbai"></div>
         <div class="field full"><label for="p_role">Target role</label><input id="p_role" type="text" placeholder="e.g. AML &amp; KYC Analyst"></div>
-        <div class="field full"><label for="p_skills">Your skills (comma-separated)</label><textarea id="p_skills" rows="2" placeholder="KYC, CDD, transaction monitoring, Excel, SQL, …"></textarea></div>
+        <div class="field full"><label for="p_skills">Your skills (comma-separated)</label><textarea id="p_skills" rows="2" placeholder="KYC, CDD, transaction monitoring, Excel, SQL, …"></textarea><div class="skill-suggest" id="skillSuggest"></div><div class="skill-ac" id="skillAc" hidden></div></div>
       </div>
 
       <div id="expWrap" style="margin-top:22px"></div>
@@ -257,17 +279,23 @@ main{background:var(--bg2);padding-bottom:70px}
     <!-- STEP 2 : JOB PICKER -->
     <section class="panel aa-sec" id="jobSec">
       <div class="panel-head"><span class="step-n">Step 02</span><h2>Pick the job</h2></div>
-      <p class="sub">Search the live NaukriSala board and select the opening you're applying to.</p>
+      <p class="sub">Search the live NaukriSala board. Click a job to tailor your resume for it — or <strong>tick several jobs</strong> and tailor all of them at once below. You review everything; the final Apply click stays with you.</p>
       <div class="jobpick">
         <div>
           <div class="field" style="margin-bottom:14px"><label for="jobSearch">Search jobs</label><input id="jobSearch" type="search" placeholder="Role, company, or city…" autocomplete="off"></div>
-          <select id="jobSelect" size="9" aria-label="Choose a job"></select>
+          <div id="jobList" class="job-list" role="listbox" aria-label="Choose a job"></div>
+          <div class="shortlist-bar" id="shortlistBar" hidden>
+            <span id="shortlistCount"></span>
+            <button type="button" class="btn btn-primary btn-sm" id="batchBtn">Tailor resumes for ticked jobs</button>
+            <button type="button" class="btn btn-ghost btn-sm" id="clearShortlistBtn">Clear ticks</button>
+          </div>
           <p class="hint" id="jobCount"></p>
         </div>
         <div class="job-card-view" id="jobView">
           <p class="empty-note" style="border:none;padding:8px">Loading jobs…</p>
         </div>
       </div>
+      <div id="batchBody"></div>
     </section>
 
     <!-- STEP 3 : KEYWORD MATCH -->
@@ -392,7 +420,16 @@ const KEYWORDS = [
   'MIS Reporting','MS Office','Stakeholder Management','Process Improvement','SLA','SOP','Documentation',
   'Internal Audit','Audit','Back Office','Middle Office','Investment Banking Operations','Custody',
   'Fund Accounting','Derivatives','Equities','Fixed Income','FX','Treasury','Operations',
-  'Machine Learning','Data Science','ETL','Data Warehouse','Business Intelligence','Communication Skills'
+  'Machine Learning','Data Science','ETL','Data Warehouse','Business Intelligence','Communication Skills',
+  // ServiceNow / ITSM / SPM / CMDB
+  'ServiceNow SPM','SPM','Strategic Portfolio Management','CMDB','Configuration Management Database',
+  'ITSM','ITOM','ITAM','Incident Management','Problem Management','Change Management','Service Catalog',
+  'Catalog Items','Demand Management','Resource Management','Flow Designer',
+  'GlideRecord','Client Scripts','Business Rules','UI Policies','UI Actions','ACLs','Access Control Lists',
+  'IntegrationHub','ATF','Automated Test Framework','Update Sets','Service Portal','Knowledge Management',
+  'SLA Management','Asset Management','Discovery','Service Mapping','MID Server',
+  'Script Includes','Transform Maps','Import Sets','Data Policies','Notifications','Approvals',
+  'ServiceNow Development','ServiceNow Administration','ServiceNow Consultant','ServiceNow Developer'
 ];
 const kwRegex = term => {
   const e = term.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
@@ -427,6 +464,7 @@ $('expWrap').innerHTML = Array.from({ length: EXP_N }, (_, i) => `
     <div class="form-grid">
       <div class="field"><label for="exp${i}_company">Company</label><input id="exp${i}_company" type="text" placeholder="Company name"></div>
       <div class="field"><label for="exp${i}_role">Role</label><input id="exp${i}_role" type="text" placeholder="Your job title there"></div>
+      <div class="field"><label for="exp${i}_dates">Duration (optional)</label><input id="exp${i}_dates" type="text" placeholder="e.g. Jan 2024 – Present"></div>
       <div class="field full"><label for="exp${i}_bullets">What you did — one point per line</label><textarea id="exp${i}_bullets" rows="3" placeholder="Reviewed KYC documents for new customer onboarding&#10;Monitored transactions and escalated suspicious alerts"></textarea></div>
     </div>
   </div>`).join('');
@@ -437,6 +475,7 @@ function readProfile() {
     exp.push({
       company: $('exp' + i + '_company').value.trim(),
       role: $('exp' + i + '_role').value.trim(),
+      dates: $('exp' + i + '_dates').value.trim(),
       bullets: $('exp' + i + '_bullets').value.split('\n').map(s => s.trim()).filter(Boolean)
     });
   }
@@ -458,10 +497,59 @@ function fillProfile(p) {
   (p.exp || []).slice(0, EXP_N).forEach((e, i) => {
     $('exp' + i + '_company').value = e.company || '';
     $('exp' + i + '_role').value = e.role || '';
+  $('exp' + i + '_dates').value = e.dates || '';
     $('exp' + i + '_bullets').value = (e.bullets || []).join('\n');
   });
 }
 try { fillProfile(JSON.parse(localStorage.getItem('ns_profile') || 'null')); } catch (e) { /* fresh profile */ }
+
+/* ---------- skill suggestions: based on your target role ---------- */
+function currentSkills() { return splitSkills($('p_skills').value); }
+function addSkill(term) {
+  const cur = currentSkills();
+  if (cur.some(s => s.toLowerCase() === term.toLowerCase())) return;
+  $('p_skills').value = cur.concat([term]).join(', ');
+  $('p_skills').dispatchEvent(new Event('input', { bubbles: true }));
+  renderSkillSuggest();
+}
+function renderSkillSuggest() {
+  const box = $('skillSuggest');
+  if (!box) return;
+  const p = readProfile();
+  const src = (p.role || '') + ' ' + (job ? job.title + ' ' + (job.snippet || '') : '');
+  const have = new Set(currentSkills().map(s => s.toLowerCase()));
+  const sugg = findKeywords(src).filter(k => !have.has(k.lower)).slice(0, 12);
+  if (!sugg.length) { box.innerHTML = ''; return; }
+  const label = p.role ? 'Suggested for ' + p.role + ' — tap to add:' : 'Suggested skills — tap to add:';
+  box.innerHTML = '<span class="sg-label">' + esc(label) + '</span>' + sugg.map(k => `<button type="button" class="skill-chip" data-skill="${esc(k.term)}">${esc(k.term)}</button>`).join('');
+  box.querySelectorAll('.skill-chip').forEach(b => b.addEventListener('click', () => addSkill(b.dataset.skill)));
+}
+function renderSkillAc() {
+  const box = $('skillAc');
+  if (!box) return;
+  const frag = $('p_skills').value.split(',').pop().trim();
+  if (frag.length < 1) { box.innerHTML = ''; box.hidden = true; return; }
+  const have = new Set(currentSkills().map(s => s.toLowerCase()));
+  const fl = frag.toLowerCase();
+  const hits = KEYWORDS
+    .filter(t => !have.has(t.toLowerCase()) && (t.toLowerCase().startsWith(fl) || t.toLowerCase().includes(fl)))
+    .sort((a, b) => (a.toLowerCase().startsWith(fl) ? 0 : 1) - (b.toLowerCase().startsWith(fl) ? 0 : 1))
+    .slice(0, 8);
+  if (!hits.length) { box.innerHTML = ''; box.hidden = true; return; }
+  box.hidden = false;
+  box.innerHTML = hits.map(t => `<button type="button" data-skill="${esc(t)}">${esc(t)}</button>`).join('');
+  box.querySelectorAll('button').forEach(b => b.addEventListener('click', () => {
+    const parts = $('p_skills').value.split(',');
+    parts[parts.length - 1] = ' ' + b.dataset.skill + ', ';
+    $('p_skills').value = parts.join(',').replace(/,\s*,/g, ',').replace(/^,\s*/, '');
+    $('p_skills').dispatchEvent(new Event('input', { bubbles: true }));
+    renderSkillSuggest(); renderSkillAc();
+    $('p_skills').focus();
+  }));
+}
+$('p_skills').addEventListener('input', renderSkillAc);
+$('p_role').addEventListener('input', renderSkillSuggest);
+renderSkillSuggest();
 
 $('saveProfile').addEventListener('click', () => {
   try { localStorage.setItem('ns_profile', JSON.stringify(readProfile())); } catch (e) { /* storage blocked — profile just won't persist */ }
@@ -473,7 +561,7 @@ document.querySelectorAll('#profileSec input, #profileSec textarea, #profileSec 
   .forEach(el => el.addEventListener('input', () => { clearTimeout(saveT); saveT = setTimeout(analyse, 350); }));
 
 /* ---------- job picker ---------- */
-let JOBS = [], job = null, ticked = new Set(), analysis = null;
+let JOBS = [], job = null, ticked = new Set(), analysis = null, shortlisted = new Set();
 const MAX_OPTS = 250;
 
 function jobLabel(j) { return j.title + ' — ' + [j.company, j.city].filter(Boolean).join(', '); }
@@ -486,14 +574,38 @@ function renderJobOptions() {
   const total = list.length;
   list = list.slice(0, MAX_OPTS);
   if (job && !list.find(j => j.id === job.id)) list = [job, ...list].slice(0, MAX_OPTS);
-  $('jobSelect').innerHTML = list.map(j =>
-    `<option value="${esc(j.id)}"${job && j.id === job.id ? ' selected' : ''}>${esc(jobLabel(j))}</option>`).join('');
+  $('jobList').innerHTML = list.map(j =>
+    `<label class="job-row${job && j.id === job.id ? ' active' : ''}"><input type="checkbox" data-job="${esc(j.id)}"${shortlisted.has(j.id) ? ' checked' : ''} aria-label="Tick to shortlist ${esc(jobLabel(j))}"><span>${esc(jobLabel(j))}</span></label>`).join('') || '<p class="empty-note">No jobs match that search.</p>';
+  updateShortlistBar();
   $('jobCount').textContent = total > MAX_OPTS
     ? 'Showing first ' + MAX_OPTS + ' of ' + total + ' — type to narrow down.'
     : total + (total === 1 ? ' opening' : ' openings');
 }
 $('jobSearch').addEventListener('input', renderJobOptions);
-$('jobSelect').addEventListener('change', e => selectJob(e.target.value));
+$('jobList').addEventListener('click', e => {
+  const row = e.target.closest('.job-row');
+  if (!row) return;
+  const cb = row.querySelector('input[data-job]');
+  if (e.target === cb) {
+    cb.checked ? shortlisted.add(cb.dataset.job) : shortlisted.delete(cb.dataset.job);
+    try { localStorage.setItem('ns_shortlist', JSON.stringify([...shortlisted])); } catch (err) { /* storage blocked */ }
+    updateShortlistBar();
+    return;
+  }
+  selectJob(cb.dataset.job);
+});
+try { shortlisted = new Set(JSON.parse(localStorage.getItem('ns_shortlist') || '[]')); } catch (e) { shortlisted = new Set(); }
+function updateShortlistBar() {
+  const bar = $('shortlistBar');
+  if (!bar) return;
+  bar.hidden = shortlisted.size === 0;
+  $('shortlistCount').textContent = shortlisted.size + (shortlisted.size === 1 ? ' job ticked' : ' jobs ticked') + ' — AI tailors each one, you click Apply.';
+}
+$('clearShortlistBtn').addEventListener('click', () => {
+  shortlisted.clear();
+  try { localStorage.removeItem('ns_shortlist'); } catch (e) { /* storage blocked */ }
+  renderJobOptions(); $('batchBody').innerHTML = '';
+});
 
 function selectJob(id) {
   const j = JOBS.find(x => x.id === id);
@@ -518,7 +630,7 @@ fetch('jobs.json?v=202611111225').then(r => r.json()).then(d => {
   renderJobOptions();
   const want = new URLSearchParams(location.search).get('job');
   const pre = want && JOBS.find(j => j.id === want);
-  if (pre) { selectJob(pre.id); $('jobSelect').value = pre.id; }
+  if (pre) { selectJob(pre.id); }
   else if (JOBS.length) { $('jobView').innerHTML = '<p class="empty-note" style="border:none;padding:8px">Select a job from the list to begin.</p>'; }
 }).catch(() => { $('jobView').innerHTML = '<p class="empty-note" style="border:none;padding:8px">Could not load jobs right now — please open the <a href="jobs.html" style="color:var(--amber)">jobs board</a> instead.</p>'; });
 
@@ -526,6 +638,22 @@ document.getElementById('navToggle').addEventListener('click', () =>
   document.getElementById('navLinks').classList.toggle('open'));
 
 /* ---------- analysis ---------- */
+/* Board titles carry "Company - Role" (e.g. "InfoBeans - ServiceNow SPM
+   Developer - CMDB"). The resume needs the role part on its own; the
+   company already has its own field. */
+function roleTitle() {
+  if (!job) return '';
+  const t = job.title || '';
+  const c = (job.company || '').trim();
+  if (c && t.toLowerCase().startsWith(c.toLowerCase() + ' - ')) return t.slice(c.length + 3).trim();
+  return t;
+}
+function computeAnalysis(j, p) {
+  const jdText = j.title + ' \n ' + (j.snippet || '') + ' \n ' + (j.course_label || '');
+  const jd = findKeywords(jdText);
+  const pText = profileText(p);
+  return { jd, matched: jd.filter(k => textHas(pText, k.lower)), missing: jd.filter(k => !textHas(pText, k.lower)), p };
+}
 function profileText(p) {
   return [p.role, p.skills, p.education,
     ...p.exp.flatMap(e => [e.company, e.role, ...e.bullets])].join(' \n ');
@@ -535,14 +663,9 @@ function splitSkills(s) {
 }
 
 function analyse() {
+  renderSkillSuggest();
   if (!job) return;
-  const p = readProfile();
-  const jdText = job.title + ' \n ' + (job.snippet || '') + ' \n ' + (job.course_label || '');
-  const jd = findKeywords(jdText);
-  const pText = profileText(p);
-  const matched = jd.filter(k => textHas(pText, k.lower));
-  const missing = jd.filter(k => !textHas(pText, k.lower));
-  analysis = { jd, matched, missing, p };
+  analysis = computeAnalysis(job, readProfile());
   renderMatch(); renderResume(); renderAnswers(); renderApply();
 }
 
@@ -604,17 +727,18 @@ function buildSummary(p) {
   const skills = orderedSkills(p);
   const top = skills.slice(0, 5);
   const companies = p.exp.filter(e => e.company).map(e => e.company);
+  const role = roleTitle();
   const s1 = companies.length
-    ? `${job.title} professional with hands-on experience at ${companies.join(', ')}.`
-    : `${job.title} candidate with strong foundational training and a focused, relevant skill set.`;
+    ? `${role} professional with hands-on experience at ${companies.join(', ')}.`
+    : `${role} candidate with strong foundational training and a focused, relevant skill set.`;
   const s2 = top.length ? `Brings hands-on strengths in ${top.join(', ')}, aligned to the core requirements of this role.` : '';
-  const s3 = `Applying for the ${job.title} position at ${job.company}${job.city ? ' in ' + job.city : ''}.`;
+  const s3 = `Applying for the ${roleTitle()} position at ${job.company}${job.city ? ' in ' + job.city : ''}.`;
   return [s1, s2, s3].filter(Boolean).join(' ');
 }
 function resumeText(p) {
   const L = [];
   L.push((p.name || 'Your Name').toUpperCase());
-  L.push(job.title);
+  L.push(roleTitle());
   L.push([p.email, p.phone, p.city].filter(Boolean).join(' • '));
   L.push('', 'Professional Summary', buildSummary(p));
   const skills = orderedSkills(p);
@@ -623,7 +747,7 @@ function resumeText(p) {
   if (exps.length) {
     L.push('', 'Professional Experience');
     for (const e of exps) {
-      L.push('', [e.role, e.company].filter(Boolean).join(' — '));
+      L.push('', [e.role, e.company].filter(Boolean).join(' — ') + (e.dates ? ' (' + e.dates + ')' : ''));
       for (const b of sortedBullets(e)) L.push('• ' + b);
     }
   }
@@ -638,13 +762,13 @@ function renderResume() {
   $('resumeBody').innerHTML = `
   <div class="sheet" id="resumeSheet">
     <h3>${esc(p.name || 'Your Name')}</h3>
-    <p class="headline">${esc(job.title)}</p>
+    <p class="headline">${esc(roleTitle())}</p>
     ${contact ? `<p class="contact">${esc(contact)}</p>` : ''}
     <p class="sec">Professional Summary</p>
     <p>${esc(buildSummary(p))}</p>
     ${skills.length ? `<p class="sec">Skills</p><p>${skills.map(esc).join(', ')}</p>` : ''}
     ${exps.length ? `<p class="sec">Professional Experience</p>` + exps.map(e => `
-      <p class="role-line">${esc(e.role)}${e.role && e.company ? ' <span>— ' + esc(e.company) + '</span>' : e.company ? ' <span>' + esc(e.company) + '</span>' : ''}</p>
+      <p class="role-line">${esc(e.role)}${e.role && e.company ? ' <span>— ' + esc(e.company) + '</span>' : e.company ? ' <span>' + esc(e.company) + '</span>' : ''}${e.dates ? ' <span>· ' + esc(e.dates) + '</span>' : ''}</p>
       <ul>${sortedBullets(e).map(b => `<li>${esc(b)}</li>`).join('')}</ul>`).join('') : ''}
     ${p.education ? `<p class="sec">Education</p><p>${esc(p.education)}</p>` : ''}
   </div>`;
@@ -682,6 +806,49 @@ function renderAnswers() {
   }));
 }
 
+/* ---------- batch tailor: ticked jobs, one click each ---------- */
+function buildBatch() {
+  const ids = [...shortlisted].map(id => JOBS.find(j => j.id === id)).filter(Boolean);
+  const body = $('batchBody');
+  if (!ids.length) { body.innerHTML = ''; return; }
+  const keepJob = job, keepAnalysis = analysis, keepTicked = ticked;
+  const p = readProfile();
+  const cards = ids.map(j => {
+    job = j; ticked = new Set();
+    analysis = computeAnalysis(j, p);
+    const pct = analysis.jd.length ? Math.round(analysis.matched.length / analysis.jd.length * 100) : 100;
+    const url = siteUrl(j.direct_url || j.url);
+    return `<div class="batch-card" data-job="${esc(j.id)}">
+      <h4>${esc(roleTitle())}</h4>
+      <p class="fine">${esc([j.company, j.location].filter(Boolean).join(' · '))} — <strong>${pct}%</strong> keyword match (${analysis.matched.length} of ${analysis.jd.length})</p>
+      ${analysis.missing.length ? `<p class="fine">Missing keywords (tick only what is true — open the job to add them): ${esc(analysis.missing.slice(0, 6).map(k => k.term).join(', '))}${analysis.missing.length > 6 ? '…' : ''}</p>` : '<p class="fine">Your profile covers every keyword in this listing.</p>'}
+      <div class="btn-row">
+        <button type="button" class="btn btn-primary btn-sm" data-open-resume="${esc(j.id)}">Open tailored resume</button>
+        <button type="button" class="btn btn-ghost btn-sm" data-dl-docx="${esc(j.id)}">Download .docx</button>
+        ${url ? `<a class="btn btn-ghost btn-sm" href="${esc(url)}" target="_blank" rel="noopener">Apply on employer site →</a>` : ''}
+      </div></div>`;
+  }).join('');
+  job = keepJob; analysis = keepAnalysis; ticked = keepTicked;
+  if (keepJob) { job = keepJob; analysis = keepAnalysis; renderMatch(); renderResume(); renderAnswers(); renderApply(); }
+  body.innerHTML = `<div class="panel-head" style="margin-top:18px"><span class="step-n">Batch</span><h2 style="font-size:19px">Your ticked jobs — tailored and ready</h2></div>
+    <p class="sub">Each resume below is tailored from your profile for that job. Download the .docx, then click Apply — the employer site opens in a new tab. NaukriSala never submits an application for you.</p>` + cards;
+  body.querySelectorAll('[data-open-resume]').forEach(b => b.addEventListener('click', () => {
+    selectJob(b.dataset.openResume);
+    document.getElementById('resumeSec').scrollIntoView({ behavior: 'smooth' });
+  }));
+  body.querySelectorAll('[data-dl-docx]').forEach(b => b.addEventListener('click', () => {
+    const j = JOBS.find(x => x.id === b.dataset.dlDocx);
+    if (!j) return;
+    const kj = job, ka = analysis, kt = ticked;
+    job = j; ticked = new Set(); analysis = computeAnalysis(j, readProfile());
+    downloadDocx();
+    job = kj; analysis = ka; ticked = kt;
+    if (kj) { renderMatch(); renderResume(); renderAnswers(); renderApply(); }
+  }));
+  body.scrollIntoView({ behavior: 'smooth' });
+}
+$('batchBtn').addEventListener('click', buildBatch);
+
 /* ---------- apply ---------- */
 function renderApply() {
   const url = siteUrl(job.direct_url || job.url);
@@ -711,12 +878,16 @@ function renderChecklist() {
   const pct = jd.length ? Math.round(included / jd.length * 100) : 100;
   const missingContact = ['name', 'email', 'phone'].filter(f => !p[f]);
   const bullets = p.exp.reduce((n, e) => n + e.bullets.length, 0);
+  const skillN = splitSkills(p.skills).length;
+  const shortBullets = p.exp.flatMap(e => e.bullets).filter(b => b.split(/\s+/).length < 4).length;
   const row = (ok, html) => `<li class="${ok ? 'ok' : 'warn'}"><span class="mark">${ok ? '✓' : '⚠'}</span><span>${html}</span></li>`;
   el.innerHTML = `<div class="ats-check no-print"><h4>ATS checklist — is this resume ready to send?</h4><ul>
     ${row(true, 'Single-column, ATS-safe format — no tables, columns or graphics')}
     ${row(!jd.length || pct >= 60, `Keywords matched: <strong>${included} of ${jd.length}</strong> job keywords included${jd.length && pct < 60 ? ' — tick more of your true skills above to cross 60%' : ''}`)}
     ${row(!missingContact.length, missingContact.length ? 'Contact details incomplete — missing: <strong>' + missingContact.join(', ') + '</strong> (add them in Step 01)' : 'Contact details present — name, email and phone')}
     ${row(bullets > 0, bullets ? `Experience bullets present (${bullets})` : 'No experience bullets yet — add what you did, one point per line, in Step 01')}
+    ${row(skillN >= 5, skillN >= 5 ? `Skills listed: <strong>${skillN}</strong> — good coverage for ATS keyword scans` : `Only <strong>${skillN}</strong> skill${skillN === 1 ? '' : 's'} listed — tap the suggestions under "Your skills" in Step 01 to add more of your real skills`)}
+    ${row(!shortBullets, shortBullets ? `<strong>${shortBullets}</strong> experience point${shortBullets === 1 ? ' is' : 's are'} very short (under 4 words) — say what you actually did and the result, one point per line in Step 01` : 'Experience bullets have enough detail')}
     ${row(!!p.name, `File name ready: <strong>${esc(resumeFilename(p))}</strong>${p.name ? '' : ' — add your name in Step 01 to personalise it'}`)}
   </ul></div>`;
 }
@@ -770,7 +941,7 @@ function buildDocxBytes(p) {
   const contact = [p.email, p.phone, p.city].filter(Boolean).join(' • ');
   const P = [];
   P.push(docxParagraph(p.name || 'Your Name', { b: true, sz: 32, after: 20 }));
-  P.push(docxParagraph(job.title, { b: true, sz: 24, after: 20 }));
+  P.push(docxParagraph(roleTitle(), { b: true, sz: 24, after: 20 }));
   if (contact) P.push(docxParagraph(contact, { sz: 21, after: 160 }));
   P.push(docxParagraph('Professional Summary', { b: true, sz: 24, before: 200, after: 60 }));
   P.push(docxParagraph(buildSummary(p), {}));
@@ -781,7 +952,7 @@ function buildDocxBytes(p) {
   if (exps.length) {
     P.push(docxParagraph('Professional Experience', { b: true, sz: 24, before: 200, after: 60 }));
     for (const e of exps) {
-      P.push(docxParagraph([e.role, e.company].filter(Boolean).join(' — '), { b: true, before: 120, after: 40 }));
+      P.push(docxParagraph([e.role, e.company].filter(Boolean).join(' — ') + (e.dates ? ' (' + e.dates + ')' : ''), { b: true, before: 120, after: 40 }));
       for (const b of sortedBullets(e)) P.push(docxParagraph('• ' + b, { ind: true, after: 40 }));
     }
   }
