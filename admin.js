@@ -111,15 +111,23 @@ async function init() {
   }
   const { data: { session } } = await sb.auth.getSession();
   const hash = window.location.hash || "";
-  // Invite landing takes precedence: the invite session is temporary, so the
-  // user must set a password now or they cannot log back in later.
-  if (hash.includes("type=invite") || hash.includes("access_token")) {
+  // Invite landing (brand-new account, no password yet): the user must set
+  // a password now or they cannot log back in later.
+  if (hash.includes("type=invite")) {
     $("#setPassBox").hidden = false;
+    return;
+  }
+  // Recovery landing (existing account): the link already signed the user
+  // in, so go straight to the app — do NOT trap an authenticated user on
+  // the login view. The set-password form is only needed when there is no
+  // session yet; password changes inside the app use the Password button.
+  if (hash.includes("access_token")) {
     if (session) {
-      // Keep the invite session (updateUser needs it) but stay on the
-      // login view so the set-password form is what the user sees.
+      history.replaceState(null, "", window.location.pathname);
+      showApp(session.user);
       return;
     }
+    $("#setPassBox").hidden = false;
     return;
   }
   if (session) {
