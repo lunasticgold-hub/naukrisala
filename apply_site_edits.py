@@ -306,7 +306,12 @@ def main():
     sb = SB(secrets["SUPABASE_NS_URL"], secrets["SUPABASE_NS_SERVICE_KEY"])
 
     if not args.dry_run:
-        r = run(["git", "status", "--porcelain"], cwd=root)
+        # Tracked changes only: untracked files (scout artifacts, generated
+        # job_flags.json) live in this repo permanently and must not block
+        # the worker. Never wrap this script in an outer flock — it locks
+        # itself on LOCK_PATH above, and a second lock on the same path
+        # makes every run exit immediately.
+        r = run(["git", "status", "--porcelain", "--untracked-files=no"], cwd=root)
         if r.stdout.strip():
             print("working tree is dirty, refusing to run"); return 1
         r = run(["git", "pull", "--rebase", "origin", "main"], cwd=root, check=False)
