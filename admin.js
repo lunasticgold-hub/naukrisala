@@ -22,13 +22,20 @@ async function init() {
   }
   const { data: { session } } = await sb.auth.getSession();
   const hash = window.location.hash || "";
+  // Invite landing takes precedence: the invite session is temporary, so the
+  // user must set a password now or they cannot log back in later.
+  if (hash.includes("type=invite") || hash.includes("access_token")) {
+    $("#setPassBox").hidden = false;
+    if (session) {
+      // Keep the invite session (updateUser needs it) but stay on the
+      // login view so the set-password form is what the user sees.
+      return;
+    }
+    return;
+  }
   if (session) {
     history.replaceState(null, "", window.location.pathname);
     showApp(session.user);
-  } else {
-    if (hash.includes("type=invite") || hash.includes("access_token")) {
-      $("#setPassBox").hidden = false;
-    }
   }
 }
 
