@@ -149,6 +149,16 @@ main{background:var(--bg2);padding-bottom:70px}
 .batch-card h4{font-size:16px;margin-bottom:4px}
 .batch-card .fine{margin-bottom:10px}
 .batch-card .btn-row{margin-bottom:0}
+.q-list{border:1px solid var(--line);border-radius:14px;background:#fff;overflow:hidden}
+.q-row{display:flex;gap:12px;align-items:center;justify-content:space-between;padding:13px 16px;border-bottom:1px solid var(--line-soft);flex-wrap:wrap}
+.q-row:last-child{border-bottom:none}
+.q-row strong{font-size:14.5px}
+.q-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.q-badge{font:700 11.5px var(--font-b);letter-spacing:.04em;border-radius:999px;padding:5px 10px}
+.q-badge.ready{background:rgba(245,158,11,.13);color:var(--amber-ink)}
+.q-badge.open{background:rgba(37,99,235,.12);color:#1d4ed8}
+.q-badge.done{background:rgba(34,179,88,.14);color:var(--good)}
+.q-badge.skip{background:#f1f1f1;color:var(--muted)}
 </style>
 
 
@@ -296,6 +306,7 @@ main{background:var(--bg2);padding-bottom:70px}
         </div>
       </div>
       <div id="batchBody"></div>
+      <div id="queueBody"></div>
     </section>
 
     <!-- STEP 3 : KEYWORD MATCH -->
@@ -604,7 +615,7 @@ function updateShortlistBar() {
 $('clearShortlistBtn').addEventListener('click', () => {
   shortlisted.clear();
   try { localStorage.removeItem('ns_shortlist'); } catch (e) { /* storage blocked */ }
-  renderJobOptions(); $('batchBody').innerHTML = '';
+  renderJobOptions(); $('batchBody').innerHTML = ''; renderQueue();
 });
 
 function selectJob(id) {
@@ -628,6 +639,7 @@ function renderJobView() {
 fetch('jobs.json?v=202611111225').then(r => r.json()).then(d => {
   JOBS = d.jobs || [];
   renderJobOptions();
+  renderQueue();
   const want = new URLSearchParams(location.search).get('job');
   const pre = want && JOBS.find(j => j.id === want);
   if (pre) { selectJob(pre.id); }
@@ -641,13 +653,14 @@ document.getElementById('navToggle').addEventListener('click', () =>
 /* Board titles carry "Company - Role" (e.g. "InfoBeans - ServiceNow SPM
    Developer - CMDB"). The resume needs the role part on its own; the
    company already has its own field. */
-function roleTitle() {
-  if (!job) return '';
-  const t = job.title || '';
-  const c = (job.company || '').trim();
+function roleTitleFor(j) {
+  if (!j) return '';
+  const t = j.title || '';
+  const c = (j.company || '').trim();
   if (c && t.toLowerCase().startsWith(c.toLowerCase() + ' - ')) return t.slice(c.length + 3).trim();
   return t;
 }
+function roleTitle() { return roleTitleFor(job); }
 function computeAnalysis(j, p) {
   const jdText = j.title + ' \n ' + (j.snippet || '') + ' \n ' + (j.course_label || '');
   const jd = findKeywords(jdText);
@@ -845,8 +858,60 @@ function buildBatch() {
     job = kj; analysis = ka; ticked = kt;
     if (kj) { renderMatch(); renderResume(); renderAnswers(); renderApply(); }
   }));
+  renderQueue();
   body.scrollIntoView({ behavior: 'smooth' });
 }
+/* ---------- apply queue: one job at a time, at your pace ---------- */
+const QUEUE_KEY = 'ns_apply_queue';
+function loadQueue() { try { return JSON.parse(localStorage.getItem(QUEUE_KEY) || '{}'); } catch (e) { return {}; } }
+function saveQueue(q) { try { localStorage.setItem(QUEUE_KEY, JSON.stringify(q)); } catch (e) { /* storage blocked */ } }
+function renderQueue() {
+  const box = $('queueBody');
+  if (!box) return;
+  const q = loadQueue();
+  const ids = [...shortlisted].map(id => JOBS.find(j => j.id === id)).filter(Boolean);
+  if (!ids.length) { box.innerHTML = ''; return; }
+  const done = ids.filter(j => q[j.id] && q[j.id].status === 'applied').length;
+  const badge = st => st === 'applied' ? '<span class="q-badge done">Applied ✓</span>'
+    : st === 'opened' ? '<span class="q-badge open">Opened — submit on the employer site</span>'
+    : st === 'skipped' ? '<span class="q-badge skip">Skipped</span>'
+    : '<span class="q-badge ready">Ready</span>';
+  const rows = ids.map(j => {
+    const st = (q[j.id] || {}).status || 'ready';
+    const url = siteUrl(j.direct_url || j.url);
+    return `<div class="q-row"><div><strong>${esc(roleTitleFor(j))}</strong><span class="fine"> ${esc([j.company, j.location].filter(Boolean).join(' · '))}</span></div><div class="q-actions">${badge(st)}
+      ${url && st !== 'applied' ? `<button type="button" class="btn btn-primary btn-sm" data-q-open="${esc(j.id)}">${st === 'opened' ? 'Open again' : 'Apply now'}</button>` : ''}
+      ${st !== 'applied' ? `<button type="button" class="btn btn-ghost btn-sm" data-q-done="${esc(j.id)}">Mark applied</button>` : ''}
+      ${st !== 'skipped' ? `<button type="button" class="btn btn-ghost btn-sm" data-q-skip="${esc(j.id)}">Skip</button>` : ''}
+    </div></div>`;
+  }).join('');
+  const next = ids.find(j => !q[j.id] || q[j.id].status === 'ready' || q[j.id].status === 'opened');
+  box.innerHTML = `<div class="panel-head" style="margin-top:18px"><span class="step-n">Queue</span><h2 style="font-size:19px">Apply queue — ${done} of ${ids.length} done</h2></div>
+    <p class="sub">Work through the queue one job at a time, at your own pace. "Apply now" opens the employer site with your tailored resume ready to upload — you click Submit there, then "Mark applied". NaukriSala never submits for you, so your Naukri / Indeed account can never be flagged for automation.</p>
+    ${next ? `<div class="btn-row"><button type="button" class="btn btn-primary btn-sm" id="nextJobBtn">Open next job →</button></div>` : ''}
+    <div class="q-list">${rows}</div>`;
+  const setStatus = (id, status) => {
+    const q2 = loadQueue();
+    q2[id] = { status, at: new Date().toISOString() };
+    saveQueue(q2); renderQueue();
+  };
+  box.querySelectorAll('[data-q-open]').forEach(b => b.addEventListener('click', () => {
+    const j = JOBS.find(x => x.id === b.dataset.qOpen);
+    if (!j) return;
+    const url = siteUrl(j.direct_url || j.url);
+    if (url) window.open(url, '_blank', 'noopener');
+    setStatus(j.id, 'opened');
+  }));
+  box.querySelectorAll('[data-q-done]').forEach(b => b.addEventListener('click', () => setStatus(b.dataset.qDone, 'applied')));
+  box.querySelectorAll('[data-q-skip]').forEach(b => b.addEventListener('click', () => setStatus(b.dataset.qSkip, 'skipped')));
+  const nextBtn = $('nextJobBtn');
+  if (nextBtn && next) nextBtn.addEventListener('click', () => {
+    const url = siteUrl(next.direct_url || next.url);
+    if (url) window.open(url, '_blank', 'noopener');
+    setStatus(next.id, 'opened');
+  });
+}
+
 $('batchBtn').addEventListener('click', buildBatch);
 
 /* ---------- apply ---------- */
