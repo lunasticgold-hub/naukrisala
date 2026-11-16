@@ -15,6 +15,17 @@ import datetime
 
 SITE = os.path.dirname(os.path.abspath(__file__))
 JP = os.path.join(SITE, "jobs.json")
+FLAGS_JSON = os.path.join(SITE, "job_flags.json")
+
+
+def load_flagged_ids():
+    """Job ids hidden from the admin panel (ns_job_flags via export_job_flags.py).
+    Missing or unreadable file means no flags — never aborts the refresh."""
+    try:
+        with open(FLAGS_JSON) as f:
+            return set(json.load(f).get("job_ids") or [])
+    except (FileNotFoundError, ValueError, KeyError, AttributeError):
+        return set()
 
 
 def norm_contract(c):
@@ -239,6 +250,11 @@ def main():
         j["salary_text"] = salary_text(j)
     jobs.sort(key=lambda j: (j["fetched"], j.get("created") or ""), reverse=True)
     jobs, dropped = dedup(jobs)
+    flagged = load_flagged_ids()
+    if flagged:
+        before = len(jobs)
+        jobs = [j for j in jobs if j.get("id") not in flagged]
+        print(f"removed {before - len(jobs)} admin-flagged jobs")
     fixed = ensure_unique_ids(jobs)
     d["jobs"] = jobs
     d["total"] = len(jobs)

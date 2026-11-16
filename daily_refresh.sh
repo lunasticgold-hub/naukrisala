@@ -50,6 +50,10 @@ if ! timeout 600 python3 fetch_whatjobs.py > /tmp/whatjobs_run.log 2>&1; then
 fi
 tail -2 /tmp/whatjobs_run.log
 
+# Admin-hidden jobs (flagged in the admin panel; export is best-effort and
+# never aborts the refresh — a failed export just means no flags this run)
+python3 export_job_flags.py 2>&1 | tail -2 || echo "[warn] export_job_flags failed (no flags applied)"
+
 # normalize new jobs (pull-date stamp, contract/city cleanup) and sort newest-first
 python3 normalize_jobs.py 2>&1 | tail -2 || echo "[warn] normalize failed"
 

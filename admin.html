@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>NaukriSala Admin</title>
+<link rel="icon" href="assets/brand/ns-logo-blue.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="admin.css">
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body>
+
+<!-- ============ LOGIN ============ -->
+<div id="view-login" class="login-wrap">
+  <div class="login-card">
+    <img class="login-logo" src="assets/brand/ns-logo-blue.png" alt="NaukriSala">
+    <h1>NaukriSala Admin</h1>
+    <p class="login-sub">Manage jobs, blog, students &amp; leads.</p>
+    <form id="loginForm">
+      <label>Email<input type="email" id="loginEmail" required autocomplete="email" placeholder="you@example.com"></label>
+      <label>Password<input type="password" id="loginPass" required autocomplete="current-password" placeholder="Your password"></label>
+      <p id="loginErr" class="err" hidden></p>
+      <button class="btn btn-primary btn-block" type="submit">Log in</button>
+    </form>
+    <div id="setPassBox" hidden>
+      <p class="note">You arrived from your invite link. Set a password to finish setting up your admin account.</p>
+      <form id="setPassForm">
+        <label>New password<input type="password" id="setPass1" required minlength="8" autocomplete="new-password" placeholder="At least 8 characters"></label>
+        <label>Repeat password<input type="password" id="setPass2" required minlength="8" autocomplete="new-password" placeholder="Repeat password"></label>
+        <p id="setPassErr" class="err" hidden></p>
+        <button class="btn btn-primary btn-block" type="submit">Set password &amp; enter</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- ============ APP ============ -->
+<div id="view-app" hidden>
+  <header class="app-head">
+    <div class="app-head-in">
+      <img class="head-logo" src="assets/brand/ns-logo-blue.png" alt="NaukriSala">
+      <div class="head-titles"><b>NaukriSala Admin</b><span id="headUser"></span></div>
+      <button class="btn btn-ghost" id="changePassBtn" type="button">Password</button>
+      <button class="btn btn-ghost" id="logoutBtn" type="button">Log out</button>
+    </div>
+    <div id="passBox" class="pass-box" hidden>
+      <form id="passForm">
+        <input type="password" id="newPass1" required minlength="8" placeholder="New password" autocomplete="new-password">
+        <input type="password" id="newPass2" required minlength="8" placeholder="Repeat new password" autocomplete="new-password">
+        <button class="btn btn-primary" type="submit">Save</button>
+        <span id="passMsg" class="ok-msg" hidden></span>
+      </form>
+    </div>
+  </header>
+
+  <nav class="tabs" id="tabs">
+    <button data-tab="overview" class="active" type="button">Overview</button>
+    <button data-tab="jobs" type="button">Jobs</button>
+    <button data-tab="blog" type="button">Blog</button>
+    <button data-tab="students" type="button">Students</button>
+    <button data-tab="leads" type="button">Leads</button>
+    <button data-tab="links" type="button">Links</button>
+  </nav>
+
+  <main class="app-main">
+    <!-- OVERVIEW -->
+    <section id="tab-overview" class="tabpane">
+      <div class="cards" id="statCards"></div>
+      <p class="muted" id="refreshNote"></p>
+      <div class="card">
+        <h2>What this panel can and can't do</h2>
+        <ul class="plain">
+          <li><b>Jobs:</b> hiding a job removes it from the board after <b>tonight's refresh</b> — not instantly.</li>
+          <li><b>Blog:</b> new posts are saved as <b>drafts</b>. They are not live until published.</li>
+          <li><b>Students &amp; leads:</b> saved straight away — these live only in this panel.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- JOBS -->
+    <section id="tab-jobs" class="tabpane" hidden>
+      <div class="toolbar">
+        <input type="search" id="jobSearch" placeholder="Search title or company…" autocomplete="off">
+        <select id="jobCourse"><option value="">All courses</option></select>
+      </div>
+      <p class="muted" id="jobCount"></p>
+      <div id="jobList" class="list"></div>
+      <div class="card">
+        <h2>Hidden jobs <span class="muted" id="flagCount"></span></h2>
+        <p class="muted">Hidden jobs disappear from the board after tonight's refresh. Un-hiding brings them back on the next refresh — if the job is still live at its source.</p>
+        <div id="flagList" class="list"></div>
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section id="tab-blog" class="tabpane" hidden>
+      <div class="card">
+        <h2>New blog post (draft)</h2>
+        <form id="draftForm">
+          <label>Title<input type="text" id="dTitle" required placeholder="Post title"></label>
+          <label>Slug<input type="text" id="dSlug" required placeholder="auto-from-title" pattern="[a-z0-9-]+"></label>
+          <label>Excerpt<textarea id="dExcerpt" rows="2" placeholder="One or two lines for the blog index"></textarea></label>
+          <label>Body (plain text — headings as lines, blank line between paragraphs)<textarea id="dBody" rows="8" placeholder="Write the post here…"></textarea></label>
+          <p id="draftMsg" class="ok-msg" hidden></p>
+          <button class="btn btn-primary" type="submit">Save as draft</button>
+        </form>
+        <p class="muted">Drafts are reviewed and published — they are not live until published.</p>
+      </div>
+      <div class="card">
+        <h2>Pending drafts <span class="muted" id="draftCount"></span></h2>
+        <div id="draftList" class="list"></div>
+      </div>
+      <div class="toolbar">
+        <input type="search" id="blogSearch" placeholder="Search live posts…" autocomplete="off">
+      </div>
+      <p class="muted" id="blogCount"></p>
+      <div id="blogList" class="list"></div>
+    </section>
+
+    <!-- STUDENTS -->
+    <section id="tab-students" class="tabpane" hidden>
+      <div class="card">
+        <h2 id="studentFormTitle">Add student</h2>
+        <form id="studentForm">
+          <input type="hidden" id="sId">
+          <div class="grid2">
+            <label>Name<input type="text" id="sName" required placeholder="Full name"></label>
+            <label>Phone<input type="tel" id="sPhone" placeholder="98XXXXXXXX"></label>
+            <label>Email<input type="email" id="sEmail" placeholder="student@example.com"></label>
+            <label>Course
+              <select id="sCourse">
+                <option>AML &amp; KYC Analyst</option><option>ServiceNow Developer</option>
+                <option>Data Science &amp; AI Engineering</option><option>STOM</option>
+                <option>Power BI Developer</option><option>Data Analyst</option>
+                <option>Workday Consultant</option><option>Full Stack Python</option>
+                <option>Full Stack Java</option><option>Software Testing (QA)</option>
+                <option>Investment Banking Operations</option><option>SAP FICO</option>
+                <option>Web Development</option><option>.NET Developer</option>
+                <option>Database &amp; BI</option>
+              </select>
+            </label>
+            <label>Batch<input type="text" id="sBatch" placeholder="e.g. Batch 9"></label>
+            <label>Enrolled on<input type="date" id="sEnrolled"></label>
+            <label>Fee status
+              <select id="sFee"><option>pending</option><option>paid</option><option>partial</option></select>
+            </label>
+            <label>Success fee
+              <select id="sSuccessFee"><option>pending</option><option>paid</option><option>waived</option></select>
+            </label>
+            <label>Placement status
+              <select id="sPlacement">
+                <option>in-training</option><option>interviewing</option>
+                <option>placed</option><option>not-placed</option>
+              </select>
+            </label>
+            <label>Placed at (company)<input type="text" id="sCompany" placeholder="Company name"></label>
+            <label>Package (LPA)<input type="number" id="sPackage" step="0.1" min="0" placeholder="e.g. 10"></label>
+          </div>
+          <label>Notes<textarea id="sNotes" rows="2" placeholder="Anything worth remembering"></textarea></label>
+          <p id="studentMsg" class="ok-msg" hidden></p>
+          <button class="btn btn-primary" type="submit">Save student</button>
+          <button class="btn btn-ghost" type="button" id="studentReset">Clear form</button>
+        </form>
+      </div>
+      <div class="toolbar">
+        <input type="search" id="studentSearch" placeholder="Search students…" autocomplete="off">
+      </div>
+      <p class="muted" id="studentCount"></p>
+      <div id="studentList" class="list"></div>
+    </section>
+
+    <!-- LEADS -->
+    <section id="tab-leads" class="tabpane" hidden>
+      <div class="card">
+        <h2 id="leadFormTitle">Add lead</h2>
+        <form id="leadForm">
+          <input type="hidden" id="lId">
+          <div class="grid2">
+            <label>Name<input type="text" id="lName" required placeholder="Full name"></label>
+            <label>Phone<input type="tel" id="lPhone" placeholder="98XXXXXXXX"></label>
+            <label>Email<input type="email" id="lEmail" placeholder="lead@example.com"></label>
+            <label>Course interested in
+              <select id="lCourse">
+                <option>AML &amp; KYC Analyst</option><option>ServiceNow Developer</option>
+                <option>Data Science &amp; AI Engineering</option><option>STOM</option>
+                <option>Power BI Developer</option><option>Data Analyst</option>
+                <option>Workday Consultant</option><option>Full Stack Python</option>
+                <option>Full Stack Java</option><option>Software Testing (QA)</option>
+                <option>Investment Banking Operations</option><option>SAP FICO</option>
+                <option>Web Development</option><option>.NET Developer</option>
+                <option>Database &amp; BI</option><option>Not sure yet</option>
+              </select>
+            </label>
+            <label>Source
+              <select id="lSource"><option>demo form</option><option>WhatsApp</option><option>Instagram</option><option>referral</option><option>other</option></select>
+            </label>
+            <label>Status
+              <select id="lStatus"><option>new</option><option>contacted</option><option>demo-booked</option><option>enrolled</option><option>lost</option></select>
+            </label>
+          </div>
+          <label>Notes<textarea id="lNotes" rows="2" placeholder="What did they ask?"></textarea></label>
+          <p id="leadMsg" class="ok-msg" hidden></p>
+          <button class="btn btn-primary" type="submit">Save lead</button>
+          <button class="btn btn-ghost" type="button" id="leadReset">Clear form</button>
+        </form>
+      </div>
+      <p class="muted">Demo bookings arrive on WhatsApp from the form on the home page — add them here as leads so nothing slips through.</p>
+      <div class="toolbar">
+        <input type="search" id="leadSearch" placeholder="Search leads…" autocomplete="off">
+        <select id="leadStatusFilter"><option value="">All statuses</option><option>new</option><option>contacted</option><option>demo-booked</option><option>enrolled</option><option>lost</option></select>
+      </div>
+      <p class="muted" id="leadCount"></p>
+      <div id="leadList" class="list"></div>
+    </section>
+
+    <!-- LINKS -->
+    <section id="tab-links" class="tabpane" hidden>
+      <div class="card">
+        <h2>NaukriSala tools</h2>
+        <div class="link-list" id="linkList"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<script src="admin.js"></script>
+</body>
+</html>
