@@ -9,8 +9,8 @@ out = subprocess.run(['node', '-e',
     "const fs=require('fs');let src=fs.readFileSync('posts.js','utf8').replace('const NS_POSTS','NS_POSTS');eval(src);console.log(JSON.stringify(NS_POSTS))"],
     capture_output=True, text=True, check=True)
 POSTS = json.loads(out.stdout)
-assert len(POSTS) == 100, len(POSTS)
-assert len({p['slug'] for p in POSTS}) == 100
+assert len(POSTS) >= 100, len(POSTS)
+assert len({p['slug'] for p in POSTS}) == len(POSTS)
 TRACKS = ["AML & KYC","ServiceNow","STOM","Data Science & AI","Full Stack Python",
           "Cloud & DevOps","Testing","Finance Operations","Career Change",
           "Interviews & Resume","Jobs & Placement"]

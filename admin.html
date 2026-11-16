@@ -61,6 +61,7 @@
     <button data-tab="overview" class="active" type="button">Overview</button>
     <button data-tab="jobs" type="button">Jobs</button>
     <button data-tab="blog" type="button">Blog</button>
+    <button data-tab="editsite" type="button">Edit site</button>
     <button data-tab="students" type="button">Students</button>
     <button data-tab="leads" type="button">Leads</button>
     <button data-tab="links" type="button">Links</button>
@@ -76,6 +77,7 @@
         <ul class="plain">
           <li><b>Jobs:</b> hiding a job removes it from the board after <b>tonight's refresh</b> — not instantly.</li>
           <li><b>Blog:</b> new posts are saved as <b>drafts</b>. They are not live until published.</li>
+          <li><b>Edit site:</b> changes you save go live within <b>a few minutes</b>.</li>
           <li><b>Students &amp; leads:</b> saved straight away — these live only in this panel.</li>
         </ul>
       </div>
@@ -103,6 +105,15 @@
         <form id="draftForm">
           <label>Title<input type="text" id="dTitle" required placeholder="Post title"></label>
           <label>Slug<input type="text" id="dSlug" required placeholder="auto-from-title" pattern="[a-z0-9-]+"></label>
+          <label>Track
+            <select id="dTrack">
+              <option>AML &amp; KYC</option><option>ServiceNow</option><option>STOM</option>
+              <option>Data Science &amp; AI</option><option>Full Stack Python</option>
+              <option>Cloud &amp; DevOps</option><option>Testing</option>
+              <option>Finance Operations</option><option>Career Change</option>
+              <option>Interviews &amp; Resume</option><option>Jobs &amp; Placement</option>
+            </select>
+          </label>
           <label>Excerpt<textarea id="dExcerpt" rows="2" placeholder="One or two lines for the blog index"></textarea></label>
           <label>Body (plain text — headings as lines, blank line between paragraphs)<textarea id="dBody" rows="8" placeholder="Write the post here…"></textarea></label>
           <p id="draftMsg" class="ok-msg" hidden></p>
@@ -119,6 +130,33 @@
       </div>
       <p class="muted" id="blogCount"></p>
       <div id="blogList" class="list"></div>
+    </section>
+
+    <!-- EDIT SITE -->
+    <section id="tab-editsite" class="tabpane" hidden>
+      <div class="card">
+        <h2>Edit the site</h2>
+        <p class="muted">Change the words on any page below. <b>Changes go live within a few minutes of saving.</b> The fee figure (₹15,000) appears in several places — edit each spot where you want it changed.</p>
+        <label>Page
+          <select id="editPage">
+            <option value="index.html">Home (index.html)</option>
+            <option value="fees.html">Fees (fees.html)</option>
+            <option value="course-aml-kyc.html">Course — AML &amp; KYC</option>
+            <option value="course-servicenow.html">Course — ServiceNow</option>
+            <option value="course-data-science-ai.html">Course — Data Science &amp; AI</option>
+            <option value="course-stom.html">Course — STOM</option>
+            <option value="course-full-stack-python.html">Course — Full Stack Python</option>
+            <option value="track-record.html">Track record</option>
+            <option value="faq.html">FAQ</option>
+            <option value="how-it-works.html">How it works</option>
+          </select>
+        </label>
+        <div id="editFields" class="list"></div>
+      </div>
+      <div class="card">
+        <h2>Recent edits <span class="muted" id="editCount"></span></h2>
+        <div id="editList" class="list"></div>
+      </div>
     </section>
 
     <!-- STUDENTS -->

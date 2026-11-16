@@ -83,6 +83,10 @@ ul.plain li{margin-bottom:8px}
 .link-list a:last-child{border-bottom:0}
 .link-list a span{color:var(--muted);font-weight:400;font-size:14px;text-align:right}
 .empty{color:var(--muted);padding:8px 0}
+.cur-val{background:#f4f6fb;border:1px solid var(--line);border-radius:8px;padding:10px 12px;font-size:14px;color:var(--ink);margin:0 0 10px}
+.warn{color:#93370d;background:#fef0c7;border-radius:8px;padding:8px 12px;font-size:14px;margin:0 0 10px}
+.edit-field textarea{margin-bottom:10px}
+.edit-field input{margin-bottom:10px}
 
 @media(min-width:640px){
   .cards{grid-template-columns:repeat(3,1fr)}
