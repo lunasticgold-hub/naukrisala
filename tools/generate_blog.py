@@ -151,7 +151,7 @@ blog_html = head('Blog', 'Practical guides for the careers NaukriSala trains for
     <div class="wrap">
       <div class="sec-head">
         <p class="eyebrow"><span class="dot"></span>Blog</p>
-        <h2>The NaukriSala blog.</h2>
+        <h1 class="page-headline">The NaukriSala blog.</h1>
         <p class="lede-sm">Practical guides for the careers we train for — compliance, ServiceNow, data, cloud, and the job hunt itself. No fluff, no fake promises.</p>
       </div>
       <div class="blog-filters">{filters}</div>
@@ -200,6 +200,12 @@ RELATED = {
 }
 for p in POSTS:
     rel_html = '<div class="related-links"><span>Related:</span> ' + ''.join('<a href="' + u + '">' + t + '</a>' for t, u in RELATED[p['track']]) + '</div>'
+    # Related reading: other posts from the same track first, then other
+    # tracks — so blog posts link to each other, not only to course pages.
+    same_track = [q for q in POSTS if q['track'] == p['track'] and q['slug'] != p['slug']]
+    other_tracks = [q for q in POSTS if q['track'] != p['track'] and q['slug'] != p['slug']]
+    rel_posts = (same_track + other_tracks)[:3]
+    rel_posts_html = '<div class="related-links"><span>Related reading:</span> ' + ''.join('<a href="../blog/' + q['slug'] + '.html">' + html.escape(q['title']) + '</a>' for q in rel_posts) + '</div>' if rel_posts else ''
     page = head(p['title'], p['excerpt'], f"blog/{p['slug']}.html", '../') + nav2 + f"""
 <main>
   <section class="section">
@@ -208,6 +214,7 @@ for p in POSTS:
       <h1>{html.escape(p['title'])}</h1>
       <p class="blog-read">{p['read']} min read</p>
       <div class="post-body">{p['body']}</div>
+      {rel_posts_html}
       {rel_html}
       <div class="post-foot">
         <a class="link-arrow" href="../blog.html">&larr; Back to the blog</a>
