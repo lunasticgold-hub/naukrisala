@@ -256,6 +256,16 @@ def publish_draft(sb, root, draft, dry_run, no_push):
         return fail_draft(sb, draft,
                           f"generate_blog.py failed: {(gen.stderr or gen.stdout)[:300]}",
                           dry_run)
+    # generate_blog.py rebuilds every post page from its template, which
+    # carries no JSON-LD — re-inject it, or all 100 posts lose their schema
+    # and the other 99 files are left dirty, blocking the next worker run.
+    ld = subprocess.run(["python3", "jsonld_gen.py", "https://naukrisala.in"],
+                        cwd=root, capture_output=True, text=True)
+    if ld.returncode != 0:
+        run(["git", "checkout", "--", "posts.js", "blog.html", "blog/"], cwd=root)
+        return fail_draft(sb, draft,
+                          f"jsonld_gen.py failed: {(ld.stderr or ld.stdout)[:300]}",
+                          dry_run)
     sitemap_path = os.path.join(root, "sitemap.xml")
     sm_entry = f"  <url><loc>https://naukrisala.in/blog/{slug}.html</loc></url>"
     with open(sitemap_path, encoding="utf-8") as f:

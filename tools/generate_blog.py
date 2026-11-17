@@ -108,17 +108,17 @@ def head(title, desc, canon, prefix):
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>{html.escape(title)} | NaukriSala</title>
 <meta name="description" content="{html.escape(desc)}">
-<link rel="canonical" href="https://lunasticgold-hub.github.io/naukrisala/{canon}">
+<link rel="canonical" href="https://naukrisala.in/{canon}">
 <meta property="og:title" content="{html.escape(title)} | NaukriSala">
 <meta property="og:description" content="{html.escape(desc)}">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://lunasticgold-hub.github.io/naukrisala/{canon}">
-<meta property="og:image" content="https://lunasticgold-hub.github.io/naukrisala/assets/brand/ns-logo-blue.png">
+<meta property="og:url" content="https://naukrisala.in/{canon}">
+<meta property="og:image" content="https://naukrisala.in/assets/brand/ns-logo-blue.png">
 <meta property="og:site_name" content="NaukriSala">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="{html.escape(title)} | NaukriSala">
 <meta name="twitter:description" content="{html.escape(desc)}">
-<meta name="twitter:image" content="https://lunasticgold-hub.github.io/naukrisala/assets/brand/ns-logo-blue.png">
+<meta name="twitter:image" content="https://naukrisala.in/assets/brand/ns-logo-blue.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">

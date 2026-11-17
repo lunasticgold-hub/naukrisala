@@ -14,9 +14,11 @@ from xml.sax.saxutils import escape
 BASE = "https://naukrisala.in"
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
+EXCLUDE = {"admin.html", "404.html"}  # never listed: admin panel, error page
+
 urls = [BASE + "/"]
 for name in sorted(os.listdir(ROOT)):
-    if name.endswith(".html") and name != "index.html" and os.path.isfile(os.path.join(ROOT, name)):
+    if name.endswith(".html") and name != "index.html" and name not in EXCLUDE and os.path.isfile(os.path.join(ROOT, name)):
         urls.append(f"{BASE}/{name}")
 blog_dir = os.path.join(ROOT, "blog")
 if os.path.isdir(blog_dir):
