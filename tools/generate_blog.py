@@ -83,6 +83,7 @@ def chrome(prefix):
       <a href="{prefix}blog.html">Blog</a>
       <a href="{prefix}terms.html">Terms</a>
       <a href="{prefix}privacy.html">Privacy</a>
+      <a href="{prefix}refund-policy.html">Refund Policy</a>
     </nav>
     <div class="foot-col">
       <h4>Contact</h4>
