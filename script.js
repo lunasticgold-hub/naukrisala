@@ -47,10 +47,10 @@ const COURSE_PAGE = {
   "python-fullstack": "course-full-stack-python.html"
 };
 const COURSE_OPENINGS = {
-  "aml-kyc": 704, "servicenow": 156, "data-science-ai": 336, "stom": 94,
-  "power-bi": 75, "data-analyst": 174, "workday": 135, "python-fullstack": 294,
-  "java-fullstack": 518, "qa-testing": 343, "ib-operations": 103,
-  "sap-fico": 82, "web-dev": 147, "dotnet": 167, "dbi": 318
+  "aml-kyc": 1166, "servicenow": 199, "data-science-ai": 404, "stom": 107,
+  "power-bi": 138, "data-analyst": 230, "workday": 198, "python-fullstack": 362,
+  "java-fullstack": 595, "qa-testing": 413, "ib-operations": 143,
+  "sap-fico": 135, "web-dev": 217, "dotnet": 222, "dbi": 335
 };
 /* Topic chips: taken from the course's own tag line where it lists topics;
    the flagship's chips come from its curriculum topics on this page. */
