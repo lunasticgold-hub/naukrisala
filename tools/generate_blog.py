@@ -96,7 +96,7 @@ def chrome(prefix):
   </div>
 </footer>
 
-<a class="wa-float" id="waFloat" href="https://wa.me/918450049035?text=Hi%20NaukriSala!%20I%20want%20to%20book%20a%20free%20demo%20class." aria-label="Chat on WhatsApp"></a>
+<a class="wa-float" id="waFloat" href="https://wa.me/918120694235?text=Hi%20NaukriSala!%20I%20want%20to%20book%20a%20free%20demo%20class." aria-label="Chat on WhatsApp"></a>
 <script src="{prefix}script.js"></script>
 <script src="{prefix}maya.js?v=20261111d3"></script>"""
     return nav, foot

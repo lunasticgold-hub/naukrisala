@@ -77,7 +77,7 @@
       "<div><span>Amount paid</span><strong>₹" + (data.amount / 100).toLocaleString("en-IN") + "</strong></div>" +
       "<div><span>Course</span><strong>" + esc(data.course || "") + "</strong></div>" +
       "</div>" +
-      "<p class=\"fine\">If anything looks wrong, message us on <a href=\"https://wa.me/918450049035\">WhatsApp</a> with your Payment ID.</p>";
+      "<p class=\"fine\">If anything looks wrong, message us on <a href=\"https://wa.me/918120694235\">WhatsApp</a> with your Payment ID.</p>";
     result.style.display = "block";
     result.scrollIntoView({ behavior: "smooth", block: "center" });
   }

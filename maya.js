@@ -4,7 +4,7 @@
    When she doesn't know, she points to WhatsApp or a free demo. */
 (function () {
   var prefix = window.location.pathname.indexOf('/blog/') !== -1 ? '../' : '';
-  var WA = 'https://wa.me/918450049035';
+  var WA = 'https://wa.me/918120694235';
   function L(path) { return prefix + path; }
   function demoLink() { return '<a href="' + L('index.html#demo') + '">Book a free demo</a>'; }
 
