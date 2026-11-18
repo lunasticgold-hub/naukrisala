@@ -195,7 +195,7 @@ function initCoursesDropdown() {
       return '<div class="cd-course">' +
         '<a class="cd-name" href="' + coursePageFor(name) + '">' + name +
         (meta ? "<span>" + meta + "</span>" : "") + "</a>" +
-        '<a class="btn btn-primary btn-sm cd-pay" href="' + checkoutLink(name) + '" data-course="' + name + '">Pay fees</a>' +
+        '<a class="btn btn-outline btn-sm cd-pay" href="' + checkoutLink(name) + '" data-course="' + name + '">Pay fees</a>' +
         "</div>";
     }).join("");
   }
