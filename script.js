@@ -2,21 +2,21 @@
 const WHATSAPP_NUMBER = "918450049035"; // NaukriSala demo bookings (confirmed by Abhigyan 2026-10-14)
 
 const COURSES = [
-  { name: "AML & KYC Analyst", tag: "Financial crime compliance · any graduate", dur: "45 days", pay: "₹9–28 LPA", flagship: true,  status: "Batch 9 · Live 10 Nov" },
-  { name: "ServiceNow Developer", tag: "Best for freshers & IT support", dur: "3 months", pay: "₹7–18 LPA", flagship: false, status: "Upcoming" },
-  { name: "Data Science & AI Engineering", tag: "Python, ML, GenAI, LLMs, MLOps", dur: "4 months", pay: "₹12–45 LPA", flagship: false, status: "Upcoming" },
-  { name: "STOM — Service Transition & Ops", tag: "Best for non-coders & career switchers", dur: "2 months", pay: "₹8–36 LPA", flagship: false, status: "Upcoming" },
-  { name: "Power BI Developer", tag: "BI & analytics · dashboards + DAX", dur: "2 months", pay: "₹6–18 LPA", flagship: false, status: "Upcoming" },
-  { name: "Data Analyst", tag: "Best for freshers & aspiring analysts", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
-  { name: "Workday Consultant", tag: "Best for HR & operations professionals", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
-  { name: "Full Stack Python", tag: "Best for coding aspirants", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
-  { name: "Full Stack Java Developer", tag: "Best for coding aspirants", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
-  { name: "Software Testing (QA)", tag: "Best for detail-oriented freshers", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
-  { name: "Investment Banking Operations", tag: "Any graduate, no coding needed", dur: "45 days", pay: "₹3.5–7 LPA", flagship: false, status: "Upcoming" },
-  { name: "SAP FICO (S/4HANA Finance)", tag: "Best for B.Com, MBA & finance pros", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
-  { name: "Web Development", tag: "Best for creative coders", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
-  { name: ".NET Developer", tag: "Enterprise stack", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
-  { name: "Database & Business Intelligence", tag: "SQL + BI tools", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
+  { name: "AML & KYC Analyst", tag: "Financial crime compliance · any graduate", dur: "45 days", pay: "₹9–28 LPA", flagship: true,  status: "Batch 9 · Live 10 Nov", img: "assets/courses/aml-kyc.jpg" },
+  { name: "ServiceNow Developer", tag: "Best for freshers & IT support", dur: "3 months", pay: "₹7–18 LPA", flagship: false, status: "Upcoming", img: "assets/courses/servicenow.jpg" },
+  { name: "Data Science & AI Engineering", tag: "Python, ML, GenAI, LLMs, MLOps", dur: "4 months", pay: "₹12–45 LPA", flagship: false, status: "Upcoming", img: "assets/courses/data-science-ai.jpg" },
+  { name: "STOM — Service Transition & Ops", tag: "Best for non-coders & career switchers", dur: "2 months", pay: "₹8–36 LPA", flagship: false, status: "Upcoming", img: "assets/courses/stom.jpg" },
+  { name: "Power BI Developer", tag: "BI & analytics · dashboards + DAX", dur: "2 months", pay: "₹6–18 LPA", flagship: false, status: "Upcoming", img: "assets/courses/power-bi.jpg" },
+  { name: "Data Analyst", tag: "Best for freshers & aspiring analysts", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/data-analyst.jpg" },
+  { name: "Workday Consultant", tag: "Best for HR & operations professionals", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/workday.jpg" },
+  { name: "Full Stack Python", tag: "Best for coding aspirants", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/python-fullstack.jpg" },
+  { name: "Full Stack Java Developer", tag: "Best for coding aspirants", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/java-fullstack.jpg" },
+  { name: "Software Testing (QA)", tag: "Best for detail-oriented freshers", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/qa-testing.jpg" },
+  { name: "Investment Banking Operations", tag: "Any graduate, no coding needed", dur: "45 days", pay: "₹3.5–7 LPA", flagship: false, status: "Upcoming", img: "assets/courses/ib-operations.jpg" },
+  { name: "SAP FICO (S/4HANA Finance)", tag: "Best for B.Com, MBA & finance pros", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/sap-fico.jpg" },
+  { name: "Web Development", tag: "Best for creative coders", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/web-dev.jpg" },
+  { name: ".NET Developer", tag: "Enterprise stack", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/dotnet.jpg" },
+  { name: "Database & Business Intelligence", tag: "SQL + BI tools", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/dbi.jpg" },
 ];
 
 /* Per-track live-openings counts, counted from jobs.json on 2026-11-18.
@@ -77,22 +77,28 @@ function renderCourses() {
     const hasDur = c.dur && c.dur !== "TBA";
     return `
     <div class="course${c.flagship ? " flagship" : ""} reveal">
-      ${c.flagship ? '<span class="course-flag">Flagship</span>' : ''}
-      <p class="course-tag">${c.status}</p>
-      <h3>${c.name}</h3>
-      <p class="tag">${c.tag}</p>
-      ${chips.length ? `<div class="c-chips">${chips.map(t => `<span class="c-chip">${t}</span>`).join("")}</div>` : ''}
-      <div class="c-meta">
-        ${openings ? `<span class="c-open" data-openings="${slug}"><b>${openings.toLocaleString('en-IN')}</b> live openings</span>` : ''}
-        ${hasDur ? `<span class="c-dur">${c.dur} · Live online</span>` : ''}
+      <div class="course-photo">
+        <img src="${c.img}" alt="${c.name} — NaukriSala" loading="lazy">
+        <span class="course-status">${c.status}</span>
+        ${c.flagship ? '<span class="course-flag">Flagship</span>' : ''}
       </div>
-      ${hasPay ? `<p class="pay">${c.pay}<small>placement range</small></p>` : ''}
-      <p class="c-fee">₹15,000 to start — rest after placement, from salary</p>
-      <div class="foot">
-        <span class="dur">${hasDur ? c.dur : c.status}</span>
-        <a class="go" href="${COURSE_PAGE[slug] || "index.html#demo"}">Details →</a>
+      <div class="course-body">
+        <span class="course-badge"><img src="assets/brand/ns-logo-blue.png" alt="NaukriSala"></span>
+        <p class="course-provider">NaukriSala</p>
+        <h3>${c.name}</h3>
+        <p class="tag">${c.tag}</p>
+        ${chips.length ? `<div class="c-chips">${chips.map(t => `<span class="c-chip">${t}</span>`).join("")}</div>` : ''}
+        <div class="c-meta">
+          ${openings ? `<span class="c-open" data-openings="${slug}"><b>${openings.toLocaleString('en-IN')}</b> live openings</span>` : ''}
+          ${hasDur ? `<span class="c-dur">${c.dur} · Live online</span>` : `<span class="c-dur">Live online</span>`}
+        </div>
+        ${hasPay ? `<p class="pay">${c.pay}<small>placement range</small></p>` : ''}
+        <p class="c-fee">₹15,000 to start — rest after placement, from salary</p>
+        <div class="course-actions">
+          <a class="btn btn-outline" href="${COURSE_PAGE[slug] || "index.html#demo"}">View Program</a>
+          <a class="btn btn-primary" href="checkout.html?course=${encodeURIComponent(c.name)}">Pay fees <span class="arr">→</span></a>
+        </div>
       </div>
-      <a class="btn btn-primary btn-block pay-fees" href="checkout.html?course=${encodeURIComponent(c.name)}">Pay fees <span class="arr">→</span></a>
       <span class="course-bar"></span>
     </div>`;
   }).join("");
