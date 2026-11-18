@@ -19,7 +19,7 @@ const COURSES = [
   { name: "Database & Business Intelligence", tag: "SQL + BI tools", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming" },
 ];
 
-/* Per-track live-openings counts, counted from jobs.json on 2026-11-17.
+/* Per-track live-openings counts, counted from jobs.json on 2026-11-18.
    The homepage, courses page and course pages refresh them from jobs.json
    on every load — these values are the static fallback. Keys are jobs.json course slugs. */
 const COURSE_SLUGS = {
@@ -47,9 +47,9 @@ const COURSE_PAGE = {
   "python-fullstack": "course-full-stack-python.html"
 };
 const COURSE_OPENINGS = {
-  "aml-kyc": 1166, "servicenow": 199, "data-science-ai": 404, "stom": 107,
-  "power-bi": 138, "data-analyst": 230, "workday": 198, "python-fullstack": 362,
-  "java-fullstack": 595, "qa-testing": 413, "ib-operations": 143,
+  "aml-kyc": 1167, "servicenow": 199, "data-science-ai": 404, "stom": 107,
+  "power-bi": 138, "data-analyst": 230, "workday": 198, "python-fullstack": 364,
+  "java-fullstack": 595, "qa-testing": 414, "ib-operations": 143,
   "sap-fico": 135, "web-dev": 217, "dotnet": 222, "dbi": 335
 };
 /* Topic chips: taken from the course's own tag line where it lists topics;
