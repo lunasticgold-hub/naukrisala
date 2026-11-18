@@ -168,8 +168,8 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .course{position:relative;background:var(--card);border:1px solid var(--line-soft);border-radius:var(--r);display:flex;flex-direction:column;min-width:0;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
 .course:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
 .course.flagship{border:1.5px solid rgba(0,82,255,.65)}
-.course-photo{position:relative;aspect-ratio:16/9;background:#e8edf5}
-.course-photo>img{display:block;width:100%;height:100%;object-fit:cover}
+.course-photo{position:relative;height:0;padding-top:56.25%;overflow:hidden;background:#e8edf5}
+.course-photo>img{position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover;display:block}
 .course-status{position:absolute;top:14px;left:14px;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ink);background:rgba(255,255,255,.93);padding:5px 11px;border-radius:999px}
 .course-flag{position:absolute;top:14px;right:14px;font-size:.62rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:var(--amber);padding:5px 11px;border-radius:999px}
 .course-body{position:relative;padding:40px 22px 22px;display:flex;flex-direction:column;gap:11px;flex:1}
