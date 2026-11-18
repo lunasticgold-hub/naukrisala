@@ -14,7 +14,7 @@ from xml.sax.saxutils import escape
 BASE = "https://naukrisala.in"
 ROOT = os.path.dirname(os.path.abspath(__file__))
 
-EXCLUDE = {"admin.html", "404.html"}  # never listed: admin panel, error page
+EXCLUDE = {"admin.html", "404.html", "checkout.html"}  # never listed: admin panel, error page, checkout (noindex)
 
 urls = [BASE + "/"]
 for name in sorted(os.listdir(ROOT)):

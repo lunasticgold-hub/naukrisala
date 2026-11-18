@@ -127,3 +127,25 @@ Wait ~2–3 minutes for GitHub Pages, then open
   `supabase/functions/create-razorpay-order/index.ts`
   (`PRICE_CATALOG.onboarding.amount` → `2000000`) and the button label
   in `fees.html` / `pay.js`, then redeploy the function.
+
+## Checkout page + Courses dropdown (18 Nov 2026, after the first deploy)
+
+- `checkout.html` + `checkout.js` — a proper checkout page. Every Pay fees
+  button links here as `checkout.html?course=<name>`; the page shows the
+  course in the order summary and locks it in (unknown/missing course shows
+  the same course picker as fees.html). Same flow as `pay.js`: server-side
+  price (flat ₹15,000 onboarding), Razorpay modal, server-side verify.
+  `checkout.html` is `noindex` and excluded from `sitemap_gen.py`
+  (sitemap stays at 123 URLs).
+- Courses nav dropdown — built by `initCoursesDropdown()` in `script.js`
+  (no per-page HTML edits; every page that loads script.js gets it).
+  Left: 4 domains (Finance & Compliance, Data & AI, Software Development,
+  Enterprise Apps & Ops). Right: the domain's courses with duration +
+  placement range, a Details link, and a Pay fees button each.
+- Pay fees buttons also on all 15 course cards (`renderCourses` in
+  `script.js`), the featured AML card on `courses.html`, and the hero of
+  all 5 course pages. All charge the same flat ₹15,000 onboarding fee;
+  the course name is recorded in `ns_payments.course`.
+- `index.html`: both "Highest package ₹36 LPA" peak banners removed on
+  the owner's order (18 Nov). The figure still appears in the home stats
+  block, the partners fine print, the FAQ, and on track-record.html.

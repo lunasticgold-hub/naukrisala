@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-6780L68WJM"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-6780L68WJM');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Checkout | NaukriSala — Pay ₹15,000 to start</title>
+<meta name="description" content="Pay your NaukriSala onboarding fee of ₹15,000 securely through Razorpay — UPI, cards and net banking. The rest is paid only after you're placed.">
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://naukrisala.in/checkout.html">
+<meta property="og:title" content="Checkout | NaukriSala — Pay ₹15,000 to start">
+<meta property="og:description" content="Pay your NaukriSala onboarding fee of ₹15,000 securely through Razorpay — UPI, cards and net banking. The rest is paid only after you're placed.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://naukrisala.in/checkout.html">
+<meta property="og:image" content="https://naukrisala.in/assets/brand/ns-logo-blue.png">
+<meta property="og:site_name" content="NaukriSala">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Checkout | NaukriSala — Pay ₹15,000 to start">
+<meta name="twitter:description" content="Pay your NaukriSala onboarding fee of ₹15,000 securely through Razorpay — UPI, cards and net banking. The rest is paid only after you're placed.">
+<meta name="twitter:image" content="https://naukrisala.in/assets/brand/ns-logo-blue.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=20261028n14">
+<link rel="stylesheet" href="maya.css?v=20261111d2">
+<link rel="stylesheet" href="home.css?v=20261028n10">
+<link rel="icon" type="image/png" href="assets/brand/ns-logo-blue.png">
+</head>
+<body>
+
+<div class="topbar"><b>Batch 9 starts 10 Nov 2026</b> &nbsp;·&nbsp; Free demos from 3 Nov</div>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="index.html">
+      <img class="brand-mark-img" src="assets/brand/ns-logo-blue.png" alt="NaukriSala logo">
+      <span class="brand-word">naukrisala<span class="brand-dot">.</span></span>
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="courses.html">Courses</a>
+      <a href="how-it-works.html">How it works</a>
+      <a href="fees.html">Fees</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="ai-tools.html">AI Tools</a>
+      <a href="faq.html">FAQ</a>
+      <a href="blog.html">Blog</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-primary btn-sm" href="index.html#demo">Book free demo <span class="arr">→</span></a>
+      <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<section class="section section-soft" id="checkout">
+    <div class="wrap">
+      <p class="eyebrow"><span class="dot"></span>Checkout</p>
+      <h1 class="page-headline">Pay your onboarding fee.</h1>
+      <p class="lede-sm">₹15,000 to start. The rest only after you're placed, in installments from your salary.</p>
+      <style>
+        .pay-box{margin-top:44px;border:1px solid var(--line);border-radius:16px;padding:28px;background:#fff}
+        .pay-box h2{font-size:24px;margin-bottom:8px}
+        .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+        .pay-grid .field{margin:0}
+        .pay-msg{font-size:14px;margin:14px 0 0}
+        .pay-result{border-top:1px solid var(--line);margin-top:22px;padding-top:22px}
+        .pay-result h3{font-size:20px;margin-bottom:8px}
+        .pay-details{display:grid;gap:10px;margin:16px 0}
+        .pay-details div{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed var(--line);padding-bottom:10px}
+        .pay-details span{color:var(--muted);font-size:14px}
+        .pay-details strong{font-size:14px;word-break:break-all;text-align:right}
+        @media(max-width:680px){.pay-grid{grid-template-columns:1fr}.pay-box{padding:22px 18px}}
+      </style>
+      <div class="pay-box reveal" id="pay">
+        <h2>Your order</h2>
+        <div class="pay-details" id="orderSummary">
+          <div><span>Course</span><strong id="coCourseName">—</strong></div>
+          <div><span>Onboarding fee (one-time)</span><strong>₹15,000</strong></div>
+          <div><span>During training</span><strong>₹0</strong></div>
+          <div><span>After placement</span><strong>Installments from your salary</strong></div>
+        </div>
+        <form id="coForm" novalidate>
+          <div class="pay-grid">
+            <div class="field"><label for="coName">Full name</label><input id="coName" type="text" autocomplete="name" placeholder="e.g. Priya Sharma" required></div>
+            <div class="field"><label for="coEmail">Email</label><input id="coEmail" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+            <div class="field"><label for="coPhone">Phone</label><input id="coPhone" type="tel" autocomplete="tel" placeholder="10-digit mobile number" required></div>
+            <div class="field" id="coCourseField" style="display:none"><label for="coCourseSel">Course</label><select id="coCourseSel" required>
+              <option value="" selected>Choose your course</option>
+              <option>AML &amp; KYC Analyst</option>
+              <option>ServiceNow Developer</option>
+              <option>Data Science &amp; AI Engineering</option>
+              <option>STOM</option>
+              <option>Power BI Developer</option>
+              <option>Investment Banking Operations</option>
+              <option>Full Stack Python</option>
+              <option>Not sure yet</option>
+            </select></div>
+          </div>
+          <input type="hidden" id="coCourseFixed" value="">
+          <button class="btn btn-primary btn-block" type="submit" id="coPayBtn"><span id="coPayLabel">Pay ₹15,000 securely</span> <span class="arr">→</span></button>
+          <p class="pay-msg" id="coMsg" style="display:none"></p>
+          <p class="fine">Only pay after your free demo, when you are sure you want in. You pay securely through Razorpay — UPI, cards and net banking. By paying you agree to the <a href="refund-policy.html">refund policy</a> — the ₹15,000 onboarding fee is non-refundable once paid. The rest is paid only after placement.</p>
+        </form>
+        <div class="pay-result" id="coResult" style="display:none"></div>
+      </div>
+    </div>
+  </section>
+
+      <div class="related-links"><span>Related:</span> <a href="fees.html">Fees</a><a href="courses.html">Courses</a><a href="faq.html">FAQ</a><a href="refund-policy.html">Refund policy</a></div>
+</main>
+
+<footer class="footer">
+  <div class="wrap footer-grid">
+    <div class="foot-brand">
+      <a class="brand" href="index.html">
+        <img class="brand-mark-img" src="assets/brand/ns-logo-blue.png" alt="NaukriSala logo">
+        <span class="brand-word">naukrisala<span class="brand-dot">.</span></span>
+      </a>
+      <div class="foot-social">
+        <a href="https://x.com/Naukrisala" target="_blank" rel="noopener" aria-label="NaukriSala on X" title="NaukriSala on X"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+        <a href="https://lnkd.in/p/dfRHec_J" target="_blank" rel="noopener" aria-label="NaukriSala on LinkedIn" title="NaukriSala on LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.225 0z"/></svg></a>
+        <a href="https://www.instagram.com/Naukrisala_Academy/" target="_blank" rel="noopener" aria-label="NaukriSala on Instagram" title="NaukriSala on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+      </div>
+      <p class="fine">Get placed first. Pay from your salary.</p>
+      <a class="foot-cta" href="index.html#demo">Book a free demo <span class="arr">→</span></a>
+      <p class="foot-cta-sub">Batch 9 starts 10 Nov 2026 · Free demos from 3 Nov</p>
+    </div>
+    <nav class="foot-col">
+      <h4>Top courses</h4>
+      <a href="course-aml-kyc.html">AML &amp; KYC</a>
+      <a href="course-servicenow.html">ServiceNow</a>
+      <a href="course-stom.html">STOM</a>
+      <a href="course-data-science-ai.html">Data Science &amp; AI</a>
+      <a href="course-full-stack-python.html">Full Stack Python</a>
+      <a href="courses.html">All courses</a>
+    </nav>
+    <nav class="foot-col">
+      <h4>AI tools</h4>
+      <a href="socrates.html">AI Interview Coach</a>
+      <a href="resume-evaluator.html">Resume Evaluator</a>
+      <a href="skill-gap.html">Skill Gap</a>
+      <a href="apply.html">Apply Assistant</a>
+    </nav>
+    <nav class="foot-col">
+      <h4>Company</h4>
+      <a href="how-it-works.html">How it works</a>
+      <a href="fees.html">Fees</a>
+      <a href="jobs.html">Jobs</a>
+      <a href="faq.html">FAQ</a>
+      <a href="track-record.html">Track record</a>
+      <a href="blog.html">Blog</a>
+      <a href="terms.html">Terms</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="refund-policy.html">Refund Policy</a>
+    </nav>
+    <div class="foot-col">
+      <h4>Contact</h4>
+      <a href="tel:+918450049035">+91 84500 49035</a>
+      <a href="https://wa.me/918450049035">Chat on WhatsApp</a>
+    </div>
+  </div>
+  <div class="wrap foot-bar">
+    <p>© 2026 NaukriSala. All rights reserved.</p>
+  </div>
+</footer>
+
+<a class="wa-float" id="waFloat" href="#" aria-label="Chat on WhatsApp">
+  <svg viewBox="0 0 24 24" width="26" height="26" fill="currentColor"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm5.2 14.2c-.2.6-1.3 1.2-1.8 1.2-.5.1-1 .2-3.4-.7-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.1-1.5-1.1-2.9s.7-2 1-2.3c.2-.3.5-.3.7-.3h.5c.2 0 .4 0 .6.5s.8 1.9.8 2c.1.1.1.3 0 .5-.3.6-.6.8-.4 1.1.7 1.2 1.6 2 2.8 2.6.3.2.5.1.7-.1l.8-.9c.2-.3.4-.2.7-.1l2 1c.3.1.5.2.6.4 0 .1 0 .7-.2 1.3z"/></svg>
+</a>
+
+<script src="script.js"></script>
+<script src="maya.js?v=20261111d3"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="checkout.js?v=20261118a"></script>
+
+</body>
+</html>

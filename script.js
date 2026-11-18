@@ -92,6 +92,7 @@ function renderCourses() {
         <span class="dur">${hasDur ? c.dur : c.status}</span>
         <a class="go" href="${COURSE_PAGE[slug] || "index.html#demo"}">Details →</a>
       </div>
+      <a class="btn btn-primary btn-block pay-fees" href="checkout.html?course=${encodeURIComponent(c.name)}">Pay fees <span class="arr">→</span></a>
       <span class="course-bar"></span>
     </div>`;
   }).join("");
@@ -103,6 +104,96 @@ function renderCourses() {
       card.style.setProperty("--my", (e.clientY - r.top) + "px");
     });
   });
+}
+
+/* Courses mega-dropdown: domains on the left, courses on the right.
+   Built from COURSES so it stays in sync with the course grid.
+   The panel is injected next to the nav "Courses" link, so every page
+   that loads script.js gets it with no per-page HTML edits. */
+const COURSE_DOMAINS = [
+  { name: "Finance & Compliance", courses: ["AML & KYC Analyst", "Investment Banking Operations", "SAP FICO (S/4HANA Finance)"] },
+  { name: "Data & AI", courses: ["Data Science & AI Engineering", "Data Analyst", "Power BI Developer", "Database & Business Intelligence"] },
+  { name: "Software Development", courses: ["Full Stack Python", "Full Stack Java Developer", "Web Development", ".NET Developer", "Software Testing (QA)"] },
+  { name: "Enterprise Apps & Ops", courses: ["ServiceNow Developer", "STOM — Service Transition & Ops", "Workday Consultant"] },
+];
+
+function courseMeta(name) {
+  const c = COURSES.find(x => x.name === name);
+  if (!c) return "";
+  const bits = [];
+  if (c.dur && c.dur !== "TBA") bits.push(c.dur);
+  if (c.pay && c.pay !== "TBA") bits.push(c.pay + " placement range");
+  return bits.join(" · ");
+}
+function coursePageFor(name) {
+  const slug = COURSE_SLUGS[name] || "";
+  return COURSE_PAGE[slug] || "courses.html";
+}
+function checkoutLink(name) {
+  return "checkout.html?course=" + encodeURIComponent(name);
+}
+
+function initCoursesDropdown() {
+  const links = document.getElementById("navLinks");
+  if (!links) return;
+  const coursesLink = links.querySelector('a[href="courses.html"]');
+  if (!coursesLink || document.querySelector(".courses-drop")) return;
+
+  const drop = document.createElement("div");
+  drop.className = "courses-drop";
+  const toggle = document.createElement("button");
+  toggle.type = "button";
+  toggle.className = "courses-toggle";
+  toggle.setAttribute("aria-expanded", "false");
+  toggle.setAttribute("aria-haspopup", "true");
+  toggle.innerHTML = 'Courses <span class="chev">▾</span>';
+  const panel = document.createElement("div");
+  panel.className = "courses-panel";
+  panel.innerHTML =
+    '<div class="cd-domains">' +
+      COURSE_DOMAINS.map((d, i) =>
+        '<button type="button" class="cd-domain' + (i === 0 ? " active" : "") + '" data-i="' + i + '">' + d.name + "</button>"
+      ).join("") +
+    "</div>" +
+    '<div class="cd-main"><h4 class="cd-title"></h4><div class="cd-list"></div>' +
+    '<div class="cd-foot"><a href="courses.html">View all 15 courses →</a><a href="index.html#demo">Book a free demo →</a></div></div>';
+  drop.appendChild(toggle);
+  drop.appendChild(panel);
+  coursesLink.replaceWith(drop);
+
+  const title = panel.querySelector(".cd-title");
+  const list = panel.querySelector(".cd-list");
+  function renderDomain(i) {
+    const d = COURSE_DOMAINS[i];
+    panel.querySelectorAll(".cd-domain").forEach(b =>
+      b.classList.toggle("active", Number(b.dataset.i) === i));
+    title.textContent = d.name;
+    list.innerHTML = d.courses.map(name => {
+      const meta = courseMeta(name);
+      return '<div class="cd-course">' +
+        '<a class="cd-name" href="' + coursePageFor(name) + '">' + name +
+        (meta ? "<span>" + meta + "</span>" : "") + "</a>" +
+        '<a class="btn btn-primary btn-sm cd-pay" href="' + checkoutLink(name) + '">Pay fees</a>' +
+        "</div>";
+    }).join("");
+  }
+  renderDomain(0);
+  panel.querySelectorAll(".cd-domain").forEach(b =>
+    b.addEventListener("click", () => renderDomain(Number(b.dataset.i))));
+
+  function close() {
+    drop.classList.remove("open");
+    toggle.setAttribute("aria-expanded", "false");
+  }
+  toggle.addEventListener("click", e => {
+    e.stopPropagation();
+    const willOpen = !drop.classList.contains("open");
+    drop.classList.toggle("open", willOpen);
+    toggle.setAttribute("aria-expanded", willOpen ? "true" : "false");
+  });
+  document.addEventListener("click", e => { if (!drop.contains(e.target)) close(); });
+  document.addEventListener("keydown", e => { if (e.key === "Escape") close(); });
+  panel.querySelectorAll("a").forEach(a => a.addEventListener("click", close));
 }
 
 // FAQ accordion
@@ -153,6 +244,7 @@ function initDemoForm() {
 
 document.addEventListener("DOMContentLoaded", () => {
   renderCourses();
+  initCoursesDropdown();
   initFaq();
   initNav();
   initReveal();
