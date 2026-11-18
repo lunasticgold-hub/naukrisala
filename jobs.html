@@ -487,6 +487,10 @@ function logoColor(name) {
 function logoHTML(j) {
   const name = (j.company || '').trim(), domain = logoDomain(name);
   const init = logoInitials(name), color = logoColor(name);
+  const key = logoKey(name);
+  if (key && LOGO_LOCAL[key]) {
+    return `<span class="job-logo"><img src="assets/logos/${esc(LOGO_LOCAL[key])}" alt="" loading="lazy" data-company="${esc(name)}" data-domain="${esc(domain)}"></span>`;
+  }
   if (!domain) return `<span class="job-logo"><span class="logo-fb" style="background:${color}">${esc(init)}</span></span>`;
   return `<span class="job-logo"><img src="https://www.google.com/s2/favicons?domain=${esc(domain)}&sz=128" alt="" loading="lazy" data-company="${esc(name)}" data-domain="${esc(domain)}"></span>`;
 }
@@ -551,9 +555,13 @@ function chipRow(el, options, get, set, parse) {
   });
 }
 
+let LOGO_LOCAL = {};
+const logoManifestPromise = fetch('assets/logos/manifest.json').then(r => r.ok ? r.json() : {}).catch(() => ({}));
 const jobsPromise = fetch('jobs.json?v=202611180324').then(r => { if (!r.ok) throw new Error('jobs fetch failed'); return r.json(); });
+/* First render waits for the logo manifest too, so cards use local logos from the start. */
+const boardReady = Promise.all([jobsPromise, logoManifestPromise]).then(([d, man]) => { LOGO_LOCAL = man || {}; return d; });
 
-jobsPromise.then(d => {
+boardReady.then(d => {
   JOBS = d.jobs;
   updated.textContent = 'Updated ' + d.fetched_at;
   const labels = [['all', 'All tracks']];
