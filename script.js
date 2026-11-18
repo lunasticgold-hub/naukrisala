@@ -46,6 +46,11 @@ const COURSE_PAGE = {
   "data-science-ai": "course-data-science-ai.html",
   "python-fullstack": "course-full-stack-python.html"
 };
+// Only these two course pages have a syllabus (module/topic list) to link to.
+const COURSE_SYLLABUS = {
+  "aml-kyc": "course-aml-kyc.html#syllabus",
+  "data-science-ai": "course-data-science-ai.html#syllabus"
+};
 const COURSE_OPENINGS = {
   "aml-kyc": 1167, "servicenow": 199, "data-science-ai": 404, "stom": 107,
   "power-bi": 138, "data-analyst": 230, "workday": 198, "python-fullstack": 364,
@@ -98,6 +103,7 @@ function renderCourses() {
           <a class="btn btn-outline" href="${COURSE_PAGE[slug] || "index.html#demo"}">View Program</a>
           <a class="btn btn-primary" href="checkout.html?course=${encodeURIComponent(c.name)}">Pay fees <span class="arr">→</span></a>
         </div>
+        ${COURSE_SYLLABUS[slug] ? `<a class="btn btn-outline course-syllabus" href="${COURSE_SYLLABUS[slug]}">Syllabus <span class="arr">→</span></a>` : ''}
       </div>
       <span class="course-bar"></span>
     </div>`;

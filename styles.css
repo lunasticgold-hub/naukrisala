@@ -182,8 +182,9 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .course .pay small{font-size:.62rem;font-weight:600;letter-spacing:.12em;color:var(--muted);display:block;margin-top:2px;text-transform:uppercase}
 .course-actions{display:flex;gap:10px;margin-top:auto;padding-top:6px}
 .course-actions .btn{flex:1;justify-content:center;padding:13px 10px;font-size:14px}
-.course-actions .btn-outline{border-color:var(--navy);color:var(--navy)}
-.course-actions .btn-outline:hover{border-color:var(--navy);background:#eef2ff}
+.course-actions .btn-outline,.course-syllabus{border-color:var(--navy);color:var(--navy)}
+.course-actions .btn-outline:hover,.course-syllabus:hover{border-color:var(--navy);background:#eef2ff}
+.course-syllabus{width:100%;justify-content:center;margin-top:10px}
 .course-bar{position:absolute;left:0;bottom:0;height:4px;width:100%;background:var(--amber);transform:scaleX(0);transform-origin:left;transition:transform .5s ease}
 .course.flagship .course-bar{transform:scaleX(1)}
 .course:hover .course-bar{transform:scaleX(1)}
