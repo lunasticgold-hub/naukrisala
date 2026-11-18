@@ -1,8 +1,10 @@
-// NaukriSala — Razorpay Standard Checkout (checkout.html).
+// NaukriSala — Razorpay Standard Checkout (checkout/).
 // Same flow as pay.js (fees.html): form -> create-razorpay-order
 // (server sets the price) -> Razorpay modal -> verify-razorpay-payment.
-// The course arrives as ?course=<name> from a Pay fees button; if it is
-// missing or not a real course, the visitor picks one from the dropdown.
+// The course arrives invisibly in sessionStorage from a Pay fees button
+// (so the address bar stays a clean /checkout/), with ?course=<name> as
+// a fallback for old shared links; if it is missing or not a real course,
+// the visitor picks one from the dropdown.
 // The amount is never sent from this file; the backend looks it up.
 // The Razorpay secret never appears here — only the public key ID,
 // which the create-order function returns.
@@ -35,10 +37,14 @@
   var courseNameEl = document.getElementById("coCourseName");
   var busy = false;
 
-  // Course from the Pay fees button (?course=...). Show it in the order
-  // summary and lock it in; otherwise show the course picker.
+  // Course from the Pay fees button: stored invisibly in sessionStorage
+  // (so the address bar stays a clean /checkout/), with ?course= as a
+  // fallback for old shared links. Show it in the order summary and lock
+  // it in; otherwise show the course picker.
+  var storedCourse = "";
+  try { storedCourse = sessionStorage.getItem("ns_course") || ""; } catch (e) { /* private mode */ }
   var params = new URLSearchParams(window.location.search);
-  var courseParam = (params.get("course") || "").trim();
+  var courseParam = (storedCourse || params.get("course") || "").trim();
   if (KNOWN_COURSES.indexOf(courseParam) !== -1) {
     courseFixed.value = courseParam;
     courseNameEl.textContent = courseParam;

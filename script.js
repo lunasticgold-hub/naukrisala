@@ -51,6 +51,15 @@ const COURSE_SYLLABUS = {
   "aml-kyc": "course-aml-kyc.html#syllabus",
   "data-science-ai": "course-data-science-ai.html#syllabus"
 };
+
+// Pay fees buttons pass the course invisibly via sessionStorage, so the
+// checkout URL stays a clean /checkout/ (no ?course= in the address bar).
+// The checkout page reads it and falls back to ?course= for old links.
+document.addEventListener("click", function (e) {
+  var a = e.target.closest("a[data-course]");
+  if (!a) return;
+  try { sessionStorage.setItem("ns_course", a.getAttribute("data-course")); } catch (err) { /* private mode */ }
+});
 const COURSE_OPENINGS = {
   "aml-kyc": 1167, "servicenow": 199, "data-science-ai": 404, "stom": 107,
   "power-bi": 138, "data-analyst": 230, "workday": 198, "python-fullstack": 364,
@@ -101,7 +110,7 @@ function renderCourses() {
         <p class="c-fee">₹15,000 to start — rest after placement, from salary</p>
         <div class="course-actions">
           <a class="btn btn-outline" href="${COURSE_PAGE[slug] || "index.html#demo"}">View Program</a>
-          <a class="btn btn-primary" href="checkout.html?course=${encodeURIComponent(c.name)}">Pay fees <span class="arr">→</span></a>
+          <a class="btn btn-primary" href="checkout/" data-course="${c.name}">Pay fees <span class="arr">→</span></a>
         </div>
         ${COURSE_SYLLABUS[slug] ? `<a class="btn btn-outline course-syllabus" href="${COURSE_SYLLABUS[slug]}">Syllabus <span class="arr">→</span></a>` : ''}
       </div>
@@ -143,7 +152,7 @@ function coursePageFor(name) {
   return COURSE_PAGE[slug] || "courses.html";
 }
 function checkoutLink(name) {
-  return "checkout.html?course=" + encodeURIComponent(name);
+  return "checkout/";
 }
 
 function initCoursesDropdown() {
@@ -186,7 +195,7 @@ function initCoursesDropdown() {
       return '<div class="cd-course">' +
         '<a class="cd-name" href="' + coursePageFor(name) + '">' + name +
         (meta ? "<span>" + meta + "</span>" : "") + "</a>" +
-        '<a class="btn btn-primary btn-sm cd-pay" href="' + checkoutLink(name) + '">Pay fees</a>' +
+        '<a class="btn btn-primary btn-sm cd-pay" href="' + checkoutLink(name) + '" data-course="' + name + '">Pay fees</a>' +
         "</div>";
     }).join("");
   }
