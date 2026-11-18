@@ -133,6 +133,46 @@
       </div>
       <p class="fine">Eligibility: graduation in any stream + basic English communication. Full fee terms shared in writing before you enroll.</p>
       <p class="fine">Refund policy: the ₹15,000 onboarding fee is non-refundable once paid — <a href="refund-policy.html">read the full policy</a>.</p>
+      <style>
+        .pay-box{margin-top:44px;border:1px solid var(--line);border-radius:16px;padding:28px;background:#fff}
+        .pay-box h2{font-size:24px;margin-bottom:8px}
+        .pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:22px 0}
+        .pay-grid .field{margin:0}
+        .pay-msg{font-size:14px;margin:14px 0 0}
+        .pay-result{border-top:1px solid var(--line);margin-top:22px;padding-top:22px}
+        .pay-result h3{font-size:20px;margin-bottom:8px}
+        .pay-details{display:grid;gap:10px;margin:16px 0}
+        .pay-details div{display:flex;justify-content:space-between;gap:16px;border-bottom:1px dashed var(--line);padding-bottom:10px}
+        .pay-details span{color:var(--muted);font-size:14px}
+        .pay-details strong{font-size:14px;word-break:break-all;text-align:right}
+        @media(max-width:680px){.pay-grid{grid-template-columns:1fr}.pay-box{padding:22px 18px}}
+      </style>
+      <div class="pay-box reveal" id="pay">
+        <h2>Pay your onboarding fee</h2>
+        <p class="lede-sm" style="margin-bottom:0">Only pay after your free demo, when you are sure you want in. You pay securely through Razorpay — UPI, cards and net banking.</p>
+        <form id="payForm" novalidate>
+          <div class="pay-grid">
+            <div class="field"><label for="payName">Full name</label><input id="payName" type="text" autocomplete="name" placeholder="e.g. Priya Sharma" required></div>
+            <div class="field"><label for="payEmail">Email</label><input id="payEmail" type="email" autocomplete="email" placeholder="you@example.com" required></div>
+            <div class="field"><label for="payPhone">Phone</label><input id="payPhone" type="tel" autocomplete="tel" placeholder="10-digit mobile number" required></div>
+            <div class="field"><label for="payCourse">Course</label><select id="payCourse" required>
+              <option value="" selected>Choose your course</option>
+              <option>AML &amp; KYC Analyst</option>
+              <option>ServiceNow Developer</option>
+              <option>Data Science &amp; AI Engineering</option>
+              <option>STOM</option>
+              <option>Power BI Developer</option>
+              <option>Investment Banking Operations</option>
+              <option>Full Stack Python</option>
+              <option>Not sure yet</option>
+            </select></div>
+          </div>
+          <button class="btn btn-primary btn-block" type="submit" id="payNowBtn"><span id="payNowLabel">Pay ₹15,000 securely</span> <span class="arr">→</span></button>
+          <p class="pay-msg" id="payMsg" style="display:none"></p>
+          <p class="fine">By paying you agree to the <a href="refund-policy.html">refund policy</a> — the ₹15,000 onboarding fee is non-refundable once paid. The rest is paid only after placement.</p>
+        </form>
+        <div class="pay-result" id="payResult" style="display:none"></div>
+      </div>
     </div>
   </section>
 
@@ -200,6 +240,8 @@
 
 <script src="script.js"></script>
 <script src="maya.js?v=20261111d3"></script>
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script src="pay.js?v=20261118a"></script>
 
 </body>
 </html>
