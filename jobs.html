@@ -56,6 +56,11 @@
 @media(max-width:900px){.jobs-hero-grid{grid-template-columns:1fr}.jobs-hero-media{display:none}}
 .controls{position:sticky;top:72px;z-index:50;background:#fff;border-bottom:1px solid var(--line-soft);box-shadow:0 10px 26px rgba(11,21,41,.07);padding:14px 0}
 .controls-row{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.filter-toggle-row{display:flex;justify-content:flex-end}
+.controls:not(.collapsed) .filter-toggle-row{margin-bottom:10px}
+.filter-toggle{font:700 12.5px var(--font-b);color:var(--ink2);background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 14px;cursor:pointer}
+.filter-toggle:hover{border-color:var(--navy);color:var(--navy)}
+.controls.collapsed #filterBody{display:none}
 .search{flex:1;min-width:220px;display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:12px 16px}
 .search:focus-within{border-color:var(--amber);box-shadow:0 0 0 3px rgba(0,82,255,.2);background:#fff}
 .search input{flex:1;background:none;border:none;outline:none;color:var(--ink);font:500 16px var(--font-b)}
@@ -284,6 +289,8 @@
 
   <div class="controls">
     <div class="wrap">
+      <div class="filter-toggle-row"><button id="filterToggle" class="filter-toggle" type="button" aria-expanded="true" aria-controls="filterBody">Hide filters &#10005;</button></div>
+      <div id="filterBody">
       <div class="controls-row">
         <label class="search"><span aria-hidden="true">⌕</span><input id="q" type="search" placeholder="Search role, company, or city…" autocomplete="off"></label>
         <label class="ctl"><span>Sort</span><select id="sort" aria-label="Sort jobs">
@@ -298,6 +305,7 @@
       <div class="frow">
         <div class="fgroup"><span class="flabel">Type</span><div class="chips" id="typeChips"></div></div>
         <div class="fgroup"><span class="flabel">Added</span><div class="chips" id="ageChips"></div></div>
+      </div>
       </div>
     </div>
   </div>
@@ -530,6 +538,13 @@ jobsPromise.then(d => {
 }).catch(() => { count.textContent = 'Could not load jobs right now.'; });
 }
 
+const filterToggle = document.getElementById('filterToggle'),
+      controlsBar = document.querySelector('.controls');
+if (filterToggle && controlsBar) filterToggle.addEventListener('click', () => {
+  const collapsed = controlsBar.classList.toggle('collapsed');
+  filterToggle.setAttribute('aria-expanded', String(!collapsed));
+  filterToggle.innerHTML = collapsed ? 'Show filters \u25BE' : 'Hide filters \u2715';
+});
 document.getElementById('navToggle').addEventListener('click', () =>
   document.getElementById('navLinks').classList.toggle('open'));
 </script>
