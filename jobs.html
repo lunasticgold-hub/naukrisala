@@ -90,7 +90,11 @@
 .job-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-md)}
 .job-tag{align-self:flex-start;font:700 10.5px var(--font-b);letter-spacing:.08em;text-transform:uppercase;color:var(--amber-ink);background:rgba(0,82,255,.14);border:1px solid rgba(0,82,255,.35);border-radius:999px;padding:5px 11px}
 .job-card h3{font:700 19.5px/1.28 var(--font-d);letter-spacing:-.015em;overflow-wrap:break-word}
-.job-co{font:500 13.5px var(--font-b);color:var(--ink2);overflow-wrap:break-word}
+.job-co{flex:1;min-width:0;font:500 13.5px var(--font-b);color:var(--ink2);overflow-wrap:break-word}
+.job-co-row{display:flex;align-items:center;gap:12px;min-width:0}
+.job-logo{flex:0 0 auto;width:44px;height:44px;border-radius:10px;background:#fff;border:1px solid var(--line-soft);display:flex;align-items:center;justify-content:center;overflow:hidden}
+.job-logo img{width:34px;height:34px;object-fit:contain;display:block}
+.job-logo .logo-fb{width:100%;height:100%;display:flex;align-items:center;justify-content:center;font:800 15px var(--font-d);color:#fff}
 .job-snip{font:400 13.5px/1.6 var(--font-b);color:var(--muted);flex:1;overflow-wrap:break-word;min-width:0}
 .job-foot{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px 12px;margin-top:6px;padding-top:14px;border-top:1px solid var(--line-soft)}
 .job-date{font:500 12px var(--font-b);color:var(--muted)}
@@ -455,6 +459,44 @@ function currentList() {
   return list;
 }
 
+/* Company logos, derived from the company name. Clearbit serves the logo
+   by domain; overrides cover names whose naive domain guess is wrong.
+   When Clearbit has no logo, the card falls back to an initials avatar. */
+const LOGO_OVERRIDES = {
+  exl: 'exlservice.com', kpmgindia: 'kpmg.com', wnsglobalservices: 'wns.com',
+  mufg: 'mufg.jp', drreddyslaboratories: 'drreddys.com', kotakmahindrabank: 'kotak.com',
+  ernstyoung: 'ey.com', sarvam: 'sarvam.ai', cred: 'cred.club', groww: 'groww.in',
+  tcs: 'tcs.com', tataconsultancyservices: 'tcs.com', hcltechnologies: 'hcltech.com',
+  hcltech: 'hcltech.com', ltimindtree: 'ltimindtree.com', pricewaterhousecoopers: 'pwc.com',
+  pwc: 'pwc.com', byjus: 'byjus.com', ola: 'olacabs.com', zeta: 'zeta.tech',
+  meta: 'meta.com', facebook: 'facebook.com'
+};
+function logoKey(name) { return String(name || '').replace(/\([^)]*\)/g, '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
+function logoDomain(name) { const k = logoKey(name); if (!k) return ''; return LOGO_OVERRIDES[k] || (k + '.com'); }
+function logoInitials(name) {
+  const w = String(name || '').replace(/[^A-Za-z ]/g, ' ').split(/\s+/).filter(Boolean);
+  if (!w.length) return '?';
+  return (w.length === 1 ? w[0].slice(0, 2) : w[0][0] + w[1][0]).toUpperCase();
+}
+function logoColor(name) {
+  const pal = ['#0052ff', '#011845', '#0E7C5B', '#7C3AED', '#B3261E', '#8A5A00', '#0B5FFF', '#5B21B6'];
+  let h = 0; const s = String(name || '');
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+  return pal[h % pal.length];
+}
+function logoHTML(j) {
+  const name = (j.company || '').trim(), domain = logoDomain(name);
+  const init = logoInitials(name), color = logoColor(name);
+  if (!domain) return `<span class="job-logo"><span class="logo-fb" style="background:${color}">${esc(init)}</span></span>`;
+  return `<span class="job-logo"><img src="https://logo.clearbit.com/${esc(domain)}?size=128" alt="" loading="lazy" data-company="${esc(name)}" onerror="logoImgErr(this)"></span>`;
+}
+function logoImgErr(img) {
+  const name = img.dataset.company || '';
+  const span = document.createElement('span');
+  span.className = 'logo-fb'; span.style.background = logoColor(name); span.textContent = logoInitials(name);
+  img.replaceWith(span);
+}
+
 function render() {
   const list = currentList();
   const total = list.length;
@@ -467,7 +509,7 @@ function render() {
     <article class="job-card">
       <span class="job-tag">${esc(j.course_label)}</span>
       <h3>${esc(j.title)}</h3>
-      <p class="job-co">${esc([j.company, j.location].filter(Boolean).join(' · '))}</p>
+      <div class="job-co-row">${logoHTML(j)}<p class="job-co">${esc([j.company, j.location].filter(Boolean).join(' · '))}</p></div>
       ${j.salary_text ? `<p class="job-sal">${esc(j.salary_text)}</p>` : ''}
       ${j.snippet ? `<p class="job-snip">${esc(j.snippet)}</p>` : ''}
       <a class="job-tailor" href="apply?job=${encodeURIComponent(j.id)}">✦ Tailor resume for this job</a>
