@@ -18,25 +18,26 @@ assert sorted({p['track'] for p in POSTS}) == sorted(TRACKS)
 
 def chrome(prefix):
     """Site chrome (topbar/nav/footer) with path prefix '' (root) or '../' (blog/)."""
+    home = '../' if prefix == '../' else './'
     nav = f"""<div class="topbar"><b>Batch 9 starts 10 Nov 2026</b> &nbsp;·&nbsp; Free demos from 3 Nov</div>
 
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
-    <a class="brand" href="{prefix}index.html">
+    <a class="brand" href="{home}">
       <img class="brand-mark-img" src="{prefix}assets/brand/ns-logo-blue.png" alt="NaukriSala logo">
       <span class="brand-word">naukrisala<span class="brand-dot">.</span></span>
     </a>
     <nav class="nav-links" id="navLinks">
-      <a href="{prefix}courses.html">Courses</a>
-      <a href="{prefix}how-it-works.html">How it works</a>
-      <a href="{prefix}fees.html">Fees</a>
-      <a href="{prefix}jobs.html">Jobs</a>
-      <a href="{prefix}ai-tools.html">AI Tools</a>
-      <a href="{prefix}faq.html">FAQ</a>
-      <a href="{prefix}blog.html">Blog</a>
+      <a href="{prefix}courses">Courses</a>
+      <a href="{prefix}how-it-works">How it works</a>
+      <a href="{prefix}fees">Fees</a>
+      <a href="{prefix}jobs">Jobs</a>
+      <a href="{prefix}ai-tools">AI Tools</a>
+      <a href="{prefix}faq">FAQ</a>
+      <a href="{prefix}blog">Blog</a>
     </nav>
     <div class="nav-cta">
-      <a class="btn btn-primary btn-sm" href="{prefix}index.html#demo">Book free demo <span class="arr">→</span></a>
+      <a class="btn btn-primary btn-sm" href="{home}#demo">Book free demo <span class="arr">→</span></a>
       <button type="button" class="nav-toggle" id="navToggle" aria-label="Menu">☰</button>
     </div>
   </div>
@@ -44,7 +45,7 @@ def chrome(prefix):
     foot = f"""<footer class="footer">
   <div class="wrap footer-grid">
     <div class="foot-brand">
-      <a class="brand" href="{prefix}index.html">
+      <a class="brand" href="{home}">
         <img class="brand-mark-img" src="{prefix}assets/brand/ns-logo-blue.png" alt="NaukriSala logo">
         <span class="brand-word">naukrisala<span class="brand-dot">.</span></span>
       </a>
@@ -54,36 +55,36 @@ def chrome(prefix):
         <a href="https://www.instagram.com/naukrisala/" target="_blank" rel="noopener" aria-label="NaukriSala on Instagram" title="NaukriSala on Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
       </div>
       <p class="fine">Get placed first. Pay from your salary.</p>
-      <a class="foot-cta" href="{prefix}index.html#demo">Book a free demo <span class="arr">→</span></a>
+      <a class="foot-cta" href="{home}#demo">Book a free demo <span class="arr">→</span></a>
       <p class="foot-cta-sub">Batch 9 starts 10 Nov 2026 · Free demos from 3 Nov</p>
     </div>
     <nav class="foot-col">
       <h4>Top courses</h4>
-      <a href="{prefix}course-aml-kyc.html">AML &amp; KYC</a>
-      <a href="{prefix}course-servicenow.html">ServiceNow</a>
-      <a href="{prefix}course-stom.html">STOM</a>
-      <a href="{prefix}course-data-science-ai.html">Data Science &amp; AI</a>
-      <a href="{prefix}course-full-stack-python.html">Full Stack Python</a>
-      <a href="{prefix}courses.html">All courses</a>
+      <a href="{prefix}course-aml-kyc">AML &amp; KYC</a>
+      <a href="{prefix}course-servicenow">ServiceNow</a>
+      <a href="{prefix}course-stom">STOM</a>
+      <a href="{prefix}course-data-science-ai">Data Science &amp; AI</a>
+      <a href="{prefix}course-full-stack-python">Full Stack Python</a>
+      <a href="{prefix}courses">All courses</a>
     </nav>
     <nav class="foot-col">
       <h4>AI tools</h4>
-      <a href="{prefix}socrates.html">AI Interview Coach</a>
-      <a href="{prefix}resume-evaluator.html">Resume Evaluator</a>
-      <a href="{prefix}skill-gap.html">Skill Gap</a>
-      <a href="{prefix}apply.html">Apply Assistant</a>
+      <a href="{prefix}socrates">AI Interview Coach</a>
+      <a href="{prefix}resume-evaluator">Resume Evaluator</a>
+      <a href="{prefix}skill-gap">Skill Gap</a>
+      <a href="{prefix}apply">Apply Assistant</a>
     </nav>
     <nav class="foot-col">
       <h4>Company</h4>
-      <a href="{prefix}how-it-works.html">How it works</a>
-      <a href="{prefix}fees.html">Fees</a>
-      <a href="{prefix}jobs.html">Jobs</a>
-      <a href="{prefix}faq.html">FAQ</a>
-      <a href="{prefix}track-record.html">Track record</a>
-      <a href="{prefix}blog.html">Blog</a>
-      <a href="{prefix}terms.html">Terms</a>
-      <a href="{prefix}privacy.html">Privacy</a>
-      <a href="{prefix}refund-policy.html">Refund Policy</a>
+      <a href="{prefix}how-it-works">How it works</a>
+      <a href="{prefix}fees">Fees</a>
+      <a href="{prefix}jobs">Jobs</a>
+      <a href="{prefix}faq">FAQ</a>
+      <a href="{prefix}track-record">Track record</a>
+      <a href="{prefix}blog">Blog</a>
+      <a href="{prefix}terms">Terms</a>
+      <a href="{prefix}privacy">Privacy</a>
+      <a href="{prefix}refund-policy">Refund Policy</a>
     </nav>
     <div class="foot-col">
       <h4>Contact</h4>
@@ -144,9 +145,9 @@ nav, foot = chrome('')
 filters = '<button type="button" class="blog-filter active" data-track="all">All topics</button>' + ''.join(
     f'<button type="button" class="blog-filter" data-track="{html.escape(t)}">{html.escape(t)}</button>' for t in TRACKS)
 cards = '\n'.join(
-    f'      <article class="blog-card" data-track="{html.escape(p["track"])}"><span class="blog-tag">{html.escape(p["track"])}</span><h3><a href="blog/{p["slug"]}.html">{html.escape(p["title"])}</a></h3><p>{html.escape(p["excerpt"])}</p><span class="blog-read">{p["read"]} min read</span></article>'
+    f'      <article class="blog-card" data-track="{html.escape(p["track"])}"><span class="blog-tag">{html.escape(p["track"])}</span><h3><a href="blog/{p["slug"]}">{html.escape(p["title"])}</a></h3><p>{html.escape(p["excerpt"])}</p><span class="blog-read">{p["read"]} min read</span></article>'
     for p in POSTS)
-blog_html = head('Blog', 'Practical guides for the careers NaukriSala trains for — compliance, ServiceNow, data, cloud, and the job hunt itself.', 'blog.html', '') + nav + f"""
+blog_html = head('Blog', 'Practical guides for the careers NaukriSala trains for — compliance, ServiceNow, data, cloud, and the job hunt itself.', 'blog', '') + nav + f"""
 <main>
   <section class="section">
     <div class="wrap">
@@ -187,17 +188,17 @@ open('blog.html', 'w', encoding='utf-8').write(blog_html)
 nav2, foot2 = chrome('../')
 os.makedirs('blog', exist_ok=True)
 RELATED = {
-  "AML & KYC": [("AML & KYC course", "../course-aml-kyc.html"), ("Jobs board", "../jobs.html")],
-  "ServiceNow": [("ServiceNow course", "../course-servicenow.html"), ("Jobs board", "../jobs.html")],
-  "STOM": [("STOM course", "../course-stom.html"), ("Jobs board", "../jobs.html")],
-  "Data Science & AI": [("Data Science & AI course", "../course-data-science-ai.html"), ("Jobs board", "../jobs.html")],
-  "Full Stack Python": [("Full Stack Python course", "../course-full-stack-python.html"), ("Jobs board", "../jobs.html")],
-  "Cloud & DevOps": [("All courses", "../courses.html"), ("Jobs board", "../jobs.html")],
-  "Testing": [("All courses", "../courses.html"), ("Jobs board", "../jobs.html")],
-  "Finance Operations": [("All courses", "../courses.html"), ("Jobs board", "../jobs.html")],
-  "Career Change": [("All courses", "../courses.html"), ("Placement stories", "../track-record.html")],
-  "Interviews & Resume": [("Jobs board", "../jobs.html"), ("Apply Assistant", "../apply.html")],
-  "Jobs & Placement": [("Jobs board", "../jobs.html"), ("All courses", "../courses.html")],
+  "AML & KYC": [("AML & KYC course", "../course-aml-kyc"), ("Jobs board", "../jobs")],
+  "ServiceNow": [("ServiceNow course", "../course-servicenow"), ("Jobs board", "../jobs")],
+  "STOM": [("STOM course", "../course-stom"), ("Jobs board", "../jobs")],
+  "Data Science & AI": [("Data Science & AI course", "../course-data-science-ai"), ("Jobs board", "../jobs")],
+  "Full Stack Python": [("Full Stack Python course", "../course-full-stack-python"), ("Jobs board", "../jobs")],
+  "Cloud & DevOps": [("All courses", "../courses"), ("Jobs board", "../jobs")],
+  "Testing": [("All courses", "../courses"), ("Jobs board", "../jobs")],
+  "Finance Operations": [("All courses", "../courses"), ("Jobs board", "../jobs")],
+  "Career Change": [("All courses", "../courses"), ("Placement stories", "../track-record")],
+  "Interviews & Resume": [("Jobs board", "../jobs"), ("Apply Assistant", "../apply")],
+  "Jobs & Placement": [("Jobs board", "../jobs"), ("All courses", "../courses")],
 }
 for p in POSTS:
     rel_html = '<div class="related-links"><span>Related:</span> ' + ''.join('<a href="' + u + '">' + t + '</a>' for t, u in RELATED[p['track']]) + '</div>'
@@ -206,8 +207,8 @@ for p in POSTS:
     same_track = [q for q in POSTS if q['track'] == p['track'] and q['slug'] != p['slug']]
     other_tracks = [q for q in POSTS if q['track'] != p['track'] and q['slug'] != p['slug']]
     rel_posts = (same_track + other_tracks)[:3]
-    rel_posts_html = '<div class="related-links"><span>Related reading:</span> ' + ''.join('<a href="../blog/' + q['slug'] + '.html">' + html.escape(q['title']) + '</a>' for q in rel_posts) + '</div>' if rel_posts else ''
-    page = head(p['title'], p['excerpt'], f"blog/{p['slug']}.html", '../') + nav2 + f"""
+    rel_posts_html = '<div class="related-links"><span>Related reading:</span> ' + ''.join('<a href="../blog/' + q['slug'] + '">' + html.escape(q['title']) + '</a>' for q in rel_posts) + '</div>' if rel_posts else ''
+    page = head(p['title'], p['excerpt'], f"blog/{p['slug']}", '../') + nav2 + f"""
 <main>
   <section class="section">
     <div class="wrap post-wrap">
@@ -218,8 +219,8 @@ for p in POSTS:
       {rel_posts_html}
       {rel_html}
       <div class="post-foot">
-        <a class="link-arrow" href="../blog.html">&larr; Back to the blog</a>
-        <a class="btn btn-primary" href="../index.html#demo">Book a free demo <span class="arr">→</span></a>
+        <a class="link-arrow" href="../blog">&larr; Back to the blog</a>
+        <a class="btn btn-primary" href="../#demo">Book a free demo <span class="arr">→</span></a>
       </div>
     </div>
   </section>
@@ -229,5 +230,5 @@ for p in POSTS:
 </body>
 </html>
 """
-    open(f"blog/{p['slug']}.html", 'w', encoding='utf-8').write(page)
+    open(f"blog/{p['slug']}", 'w', encoding='utf-8').write(page)
 print('generated blog.html +', len(POSTS), 'post pages')

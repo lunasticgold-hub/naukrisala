@@ -40,16 +40,16 @@ const COURSE_SLUGS = {
   "Database & Business Intelligence": "dbi"
 };
 const COURSE_PAGE = {
-  "aml-kyc": "course-aml-kyc.html",
-  "servicenow": "course-servicenow.html",
-  "stom": "course-stom.html",
-  "data-science-ai": "course-data-science-ai.html",
-  "python-fullstack": "course-full-stack-python.html"
+  "aml-kyc": "course-aml-kyc",
+  "servicenow": "course-servicenow",
+  "stom": "course-stom",
+  "data-science-ai": "course-data-science-ai",
+  "python-fullstack": "course-full-stack-python"
 };
 // Only these two course pages have a syllabus (module/topic list) to link to.
 const COURSE_SYLLABUS = {
-  "aml-kyc": "course-aml-kyc.html#syllabus",
-  "data-science-ai": "course-data-science-ai.html#syllabus"
+  "aml-kyc": "course-aml-kyc#syllabus",
+  "data-science-ai": "course-data-science-ai#syllabus"
 };
 
 // Pay fees buttons pass the course invisibly via sessionStorage, so the
@@ -109,7 +109,7 @@ function renderCourses() {
         ${hasPay ? `<p class="pay">${c.pay}<small>placement range</small></p>` : ''}
         <p class="c-fee">₹15,000 to start — rest after placement, from salary</p>
         <div class="course-actions">
-          <a class="btn btn-outline" href="${COURSE_PAGE[slug] || "index.html#demo"}">View Program</a>
+          <a class="btn btn-outline" href="${COURSE_PAGE[slug] || "/#demo"}">View Program</a>
           <a class="btn btn-primary" href="checkout/" data-course="${c.name}">Pay fees <span class="arr">→</span></a>
         </div>
         ${COURSE_SYLLABUS[slug] ? `<a class="btn btn-outline course-syllabus" href="${COURSE_SYLLABUS[slug]}">Syllabus <span class="arr">→</span></a>` : ''}
@@ -149,7 +149,7 @@ function courseMeta(name) {
 }
 function coursePageFor(name) {
   const slug = COURSE_SLUGS[name] || "";
-  return COURSE_PAGE[slug] || "courses.html";
+  return COURSE_PAGE[slug] || "courses";
 }
 function checkoutLink(name) {
   return "checkout/";
@@ -158,7 +158,7 @@ function checkoutLink(name) {
 function initCoursesDropdown() {
   const links = document.getElementById("navLinks");
   if (!links) return;
-  const coursesLink = links.querySelector('a[href="courses.html"]');
+  const coursesLink = links.querySelector('a[href="courses"]');
   if (!coursesLink || document.querySelector(".courses-drop")) return;
 
   const drop = document.createElement("div");
@@ -178,7 +178,7 @@ function initCoursesDropdown() {
       ).join("") +
     "</div>" +
     '<div class="cd-main"><h4 class="cd-title"></h4><div class="cd-list"></div>' +
-    '<div class="cd-foot"><a href="courses.html">View all 15 courses →</a><a href="index.html#demo">Book a free demo →</a></div></div>';
+    '<div class="cd-foot"><a href="courses">View all 15 courses →</a><a href="/#demo">Book a free demo →</a></div></div>';
   drop.appendChild(toggle);
   drop.appendChild(panel);
   coursesLink.replaceWith(drop);

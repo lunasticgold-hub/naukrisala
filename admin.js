@@ -337,7 +337,7 @@ function renderBlog() {
   $("#blogList").innerHTML = rows.slice(0, 50).map((p) =>
     `<div class="row"><h3>${esc(p.title)}</h3>
       <p>${esc(p.excerpt || "")}</p>
-      <div class="meta"><span class="pill">${esc(p.track || "")}</span> /blog/${esc(p.slug)}.html</div></div>`
+      <div class="meta"><span class="pill">${esc(p.track || "")}</span> /blog/${esc(p.slug)}</div></div>`
   ).join("") || '<p class="empty">No posts match.</p>';
 }
 
@@ -381,7 +381,7 @@ async function loadDrafts() {
   $("#draftList").innerHTML = state.drafts.map((d) =>
     `<div class="row"><h3>${esc(d.title)}</h3>
       <p>${esc(d.excerpt || "")}</p>
-      <div class="meta"><span class="pill ${PILL[d.status] || ""}">${esc(d.status)}</span> ${esc(d.track || "")} · /blog/${esc(d.slug)}.html</div>
+      <div class="meta"><span class="pill ${PILL[d.status] || ""}">${esc(d.status)}</span> ${esc(d.track || "")} · /blog/${esc(d.slug)}</div>
       ${d.status === "failed" && d.error ? `<p class="err">${esc(d.error)}</p>` : ""}
       <div class="actions">
         ${d.status === "pending" ? `<button class="btn btn-primary btn-sm" data-publish-draft="${esc(d.id)}" type="button">Publish</button>` : ""}
@@ -752,7 +752,7 @@ const LINKS = [
   ["Demo form (home page)", "Bookings arrive on WhatsApp", "https://naukrisala.in/#demo"],
   ["Canva brand kit", "Logo, colours, fonts", "https://www.canva.com/brand/kAHZarNI84M"],
   ["Live site", "naukrisala.in", "https://naukrisala.in"],
-  ["Jobs board", "naukrisala.in/jobs.html", "https://naukrisala.in/jobs.html"],
+  ["Jobs board", "naukrisala.in/jobs", "https://naukrisala.in/jobs"],
 ];
 $("#linkList").innerHTML = LINKS.map(([t, s, u]) =>
   `<a href="${esc(u)}" target="_blank" rel="noopener">${esc(t)}<span>${esc(s)} ↗</span></a>`).join("");

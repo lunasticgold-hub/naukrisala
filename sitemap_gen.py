@@ -19,12 +19,12 @@ EXCLUDE = {"admin.html", "404.html", "checkout.html"}  # never listed: admin pan
 urls = [BASE + "/"]
 for name in sorted(os.listdir(ROOT)):
     if name.endswith(".html") and name != "index.html" and name not in EXCLUDE and os.path.isfile(os.path.join(ROOT, name)):
-        urls.append(f"{BASE}/{name}")
+        urls.append(f"{BASE}/{name[:-5]}")
 blog_dir = os.path.join(ROOT, "blog")
 if os.path.isdir(blog_dir):
     for name in sorted(os.listdir(blog_dir)):
         if name.endswith(".html") and os.path.isfile(os.path.join(blog_dir, name)):
-            urls.append(f"{BASE}/blog/{name}")
+            urls.append(f"{BASE}/blog/{name[:-5]}")
 
 lines = ['<?xml version="1.0" encoding="UTF-8"?>',
          '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']

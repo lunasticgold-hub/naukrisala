@@ -267,7 +267,7 @@ def publish_draft(sb, root, draft, dry_run, no_push):
                           f"jsonld_gen.py failed: {(ld.stderr or ld.stdout)[:300]}",
                           dry_run)
     sitemap_path = os.path.join(root, "sitemap.xml")
-    sm_entry = f"  <url><loc>https://naukrisala.in/blog/{slug}.html</loc></url>"
+    sm_entry = f"  <url><loc>https://naukrisala.in/blog/{slug}</loc></url>"
     with open(sitemap_path, encoding="utf-8") as f:
         sm = f.read()
     if sm_entry not in sm:

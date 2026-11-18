@@ -6,7 +6,7 @@
   var prefix = window.location.pathname.indexOf('/blog/') !== -1 ? '../' : '';
   var WA = 'https://wa.me/918120694235';
   function L(path) { return prefix + path; }
-  function demoLink() { return '<a href="' + L('index.html#demo') + '">Book a free demo</a>'; }
+  function demoLink() { return '<a href="' + (prefix ? '../#demo' : '/#demo') + '">Book a free demo</a>'; }
 
   var KB = [
     { test: function (t) { return /\b(hi|hello|hey|namaste)\b/.test(t); },
@@ -16,25 +16,25 @@
     { test: function (t) { return /placement|placed|offer letter|pay after|pay from salary/.test(t); },
       reply: function () { return "Placement support continues until you hold an offer letter: resume and LinkedIn overhaul, mock interviews, referrals, and interview scheduling. Joining starts at ₹15,000; the rest is paid only after placement, in installments from your salary. Results depend on your participation, attendance, and interview performance — we don't promise a specific employer, role, or salary. " + demoLink() + " to talk it through."; } },
     { test: function (t) { return /fee|price|cost|15000|15,000|payment|instalment|installment|how much/.test(t); },
-      reply: function () { return "Joining starts with a ₹15,000 onboarding fee. Nothing more is due during training — the rest is paid only after placement, in installments from your salary. The exact arrangement for your track is confirmed with you on your demo call, before you pay. Details: <a href=\"" + L('fees.html') + "\">Fees</a>."; } },
+      reply: function () { return "Joining starts with a ₹15,000 onboarding fee. Nothing more is due during training — the rest is paid only after placement, in installments from your salary. The exact arrangement for your track is confirmed with you on your demo call, before you pay. Details: <a href=\"" + L('fees') + "\">Fees</a>."; } },
     { test: function (t) { return /aml|kyc/.test(t); },
-      reply: function () { return "AML &amp; KYC Analyst is the flagship track — 45 days, live online classes. It covers KYC/CDD, transaction monitoring, sanctions screening, and reporting. See the track: <a href=\"" + L('course-aml-kyc.html') + "\">AML &amp; KYC</a>, or " + demoLink() + " to sit in a real class."; } },
+      reply: function () { return "AML &amp; KYC Analyst is the flagship track — 45 days, live online classes. It covers KYC/CDD, transaction monitoring, sanctions screening, and reporting. See the track: <a href=\"" + L('course-aml-kyc') + "\">AML &amp; KYC</a>, or " + demoLink() + " to sit in a real class."; } },
     { test: function (t) { return /servicenow/.test(t); },
-      reply: function () { return "ServiceNow Developer runs 3 months, live online. It covers ITSM, workflows, and building on the ServiceNow platform. See the track: <a href=\"" + L('course-servicenow.html') + "\">ServiceNow</a>."; } },
+      reply: function () { return "ServiceNow Developer runs 3 months, live online. It covers ITSM, workflows, and building on the ServiceNow platform. See the track: <a href=\"" + L('course-servicenow') + "\">ServiceNow</a>."; } },
     { test: function (t) { return /\bstom\b/.test(t); },
-      reply: function () { return "STOM runs 2 months, live online — service transition and operations roles for people who want an IT career without heavy coding. See the track: <a href=\"" + L('course-stom.html') + "\">STOM</a>."; } },
+      reply: function () { return "STOM runs 2 months, live online — service transition and operations roles for people who want an IT career without heavy coding. See the track: <a href=\"" + L('course-stom') + "\">STOM</a>."; } },
     { test: function (t) { return /data science|machine learning|\bml\b|genai|artificial intelligence/.test(t); },
-      reply: function () { return "Data Science &amp; AI Engineering runs 4 months — Python, ML, GenAI/LLMs, and MLOps, live online. See the track: <a href=\"" + L('course-data-science-ai.html') + "\">Data Science &amp; AI</a>."; } },
+      reply: function () { return "Data Science &amp; AI Engineering runs 4 months — Python, ML, GenAI/LLMs, and MLOps, live online. See the track: <a href=\"" + L('course-data-science-ai') + "\">Data Science &amp; AI</a>."; } },
     { test: function (t) { return /python|full stack/.test(t); },
-      reply: function () { return "Full Stack Python covers Python plus frontend and backend development, live online. The full curriculum is covered in the free demo class. See the track: <a href=\"" + L('course-full-stack-python.html') + "\">Full Stack Python</a>."; } },
+      reply: function () { return "Full Stack Python covers Python plus frontend and backend development, live online. The full curriculum is covered in the free demo class. See the track: <a href=\"" + L('course-full-stack-python') + "\">Full Stack Python</a>."; } },
     { test: function (t) { return /course|track|which course|what should i (learn|study|do)/.test(t); },
-      reply: function () { return "Five tracks, all 100% online and live: AML &amp; KYC Analyst (45 days), ServiceNow Developer (3 months), STOM (2 months), Data Science &amp; AI Engineering (4 months), and Full Stack Python. See them all: <a href=\"" + L('courses.html') + "\">Courses</a> — or " + demoLink() + " and we'll help you pick."; } },
+      reply: function () { return "Five tracks, all 100% online and live: AML &amp; KYC Analyst (45 days), ServiceNow Developer (3 months), STOM (2 months), Data Science &amp; AI Engineering (4 months), and Full Stack Python. See them all: <a href=\"" + L('courses') + "\">Courses</a> — or " + demoLink() + " and we'll help you pick."; } },
     { test: function (t) { return /batch|demo|start|join|enroll|november|nov\b/.test(t); },
       reply: function () { return "Batch 9 starts 10 Nov 2026, and free demo classes run from 3 Nov 2026. " + demoLink() + " — you'll see a real class before you pay anything."; } },
     { test: function (t) { return /apply assistant|resume evaluator|skill gap|interview coach|mock interview|\bai tool/.test(t); },
-      reply: function () { return "Four free tools, no sign-up: AI Interview Coach (mock interviews), Resume Evaluator, Skill Gap planner, and Apply Assistant — which drafts tailored resume points and screening answers that you review and submit. Nothing is auto-submitted. Try them: <a href=\"" + L('ai-tools.html') + "\">AI tools</a>."; } },
+      reply: function () { return "Four free tools, no sign-up: AI Interview Coach (mock interviews), Resume Evaluator, Skill Gap planner, and Apply Assistant — which drafts tailored resume points and screening answers that you review and submit. Nothing is auto-submitted. Try them: <a href=\"" + L('ai-tools') + "\">AI tools</a>."; } },
     { test: function (t) { return /job|board|opening|vacancy|hiring|apply/.test(t); },
-      reply: function () { return "The jobs board lists live openings from employer career pages and job boards, refreshed every morning. Apply links go to the employer's own site. See it: <a href=\"" + L('jobs.html') + "\">Jobs board</a>."; } },
+      reply: function () { return "The jobs board lists live openings from employer career pages and job boards, refreshed every morning. Apply links go to the employer's own site. See it: <a href=\"" + L('jobs') + "\">Jobs board</a>."; } },
     { test: function (t) { return /certificate/.test(t); },
       reply: function () { return "We don't sell certificates. Most academies sell certificates — we sell outcomes: the goal is an offer letter, and placement support continues until you hold one."; } },
     { test: function (t) { return /eligib|degree|qualification|fresher|experience|am i eligible|can i join/.test(t); },
@@ -42,7 +42,7 @@
     { test: function (t) { return /human|call|contact|whatsapp|phone|talk to|callback/.test(t); },
       reply: function () { return "Want a human? Message us on <a href=\"" + WA + "\">WhatsApp</a> or " + demoLink() + " and we'll call you back."; } },
     { test: function (t) { return /how (does|do) (it|this|naukrisala) work|how it works|process|steps/.test(t); },
-      reply: function () { return "1. Book a free demo. 2. Join with ₹15,000. 3. Train in live, 100% online classes. 4. Get placement support until you hold an offer. 5. Pay the rest from your salary after you're placed. Full walkthrough: <a href=\"" + L('how-it-works.html') + "\">How it works</a>."; } }
+      reply: function () { return "1. Book a free demo. 2. Join with ₹15,000. 3. Train in live, 100% online classes. 4. Get placement support until you hold an offer. 5. Pay the rest from your salary after you're placed. Full walkthrough: <a href=\"" + L('how-it-works') + "\">How it works</a>."; } }
   ];
   var FALLBACK = "I don't have that answer yet. Message us on <a href=\"" + WA + "\">WhatsApp</a> or " + demoLink() + " — a human will help you there.";
 

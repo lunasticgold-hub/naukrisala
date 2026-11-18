@@ -47,8 +47,8 @@ CANON_RE = re.compile(r'<link rel="canonical" href="(.*?)">', re.S)
 def page_url(rel):
     if rel == "index.html":
         return BASE + "/"
-    if rel.startswith("blog/"):
-        return BASE + "/" + rel
+    if rel.endswith(".html"):
+        rel = rel[:-5]
     return BASE + "/" + rel
 
 
@@ -146,6 +146,7 @@ def main():
     files += sorted(f for f in os.listdir(ROOT)
                     if f.endswith(".html") and f != "index.html"
                     and f != "admin.html"  # app shell, not a content page
+                    and f != "checkout.html"  # redirect stub, not a content page
                     and os.path.isfile(os.path.join(ROOT, f)))
     files += sorted("blog/" + f for f in os.listdir(os.path.join(ROOT, "blog"))
                     if f.endswith(".html"))
