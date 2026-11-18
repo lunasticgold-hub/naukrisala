@@ -459,9 +459,9 @@ function currentList() {
   return list;
 }
 
-/* Company logos, derived from the company name. Clearbit serves the logo
-   by domain; overrides cover names whose naive domain guess is wrong.
-   When Clearbit has no logo, the card falls back to an initials avatar. */
+/* Company logos, derived from the company name. Google serves the logo
+   (favicon) by domain; overrides cover names whose naive domain guess
+   is wrong. When no logo loads, the card falls back to an initials avatar. */
 const LOGO_OVERRIDES = {
   exl: 'exlservice.com', kpmgindia: 'kpmg.com', wnsglobalservices: 'wns.com',
   mufg: 'mufg.jp', drreddyslaboratories: 'drreddys.com', kotakmahindrabank: 'kotak.com',
@@ -488,14 +488,26 @@ function logoHTML(j) {
   const name = (j.company || '').trim(), domain = logoDomain(name);
   const init = logoInitials(name), color = logoColor(name);
   if (!domain) return `<span class="job-logo"><span class="logo-fb" style="background:${color}">${esc(init)}</span></span>`;
-  return `<span class="job-logo"><img src="https://logo.clearbit.com/${esc(domain)}?size=128" alt="" loading="lazy" data-company="${esc(name)}" onerror="logoImgErr(this)"></span>`;
+  return `<span class="job-logo"><img src="https://www.google.com/s2/favicons?domain=${esc(domain)}&sz=128" alt="" loading="lazy" data-company="${esc(name)}" data-domain="${esc(domain)}"></span>`;
 }
-function logoImgErr(img) {
-  const name = img.dataset.company || '';
+/* Logo fallback: a delegated error listener on the grid (capture phase),
+   since image errors do not bubble. First failure retries via DuckDuckGo's
+   icon service; second failure swaps in the initials avatar. The inline
+   onerror approach does not work here — these helpers live inside
+   loadJobs, so they are not global. */
+grid.addEventListener('error', function (e) {
+  const img = e.target;
+  if (!img || img.tagName !== 'IMG' || !img.dataset || !img.dataset.company) return;
+  const domain = img.dataset.domain, name = img.dataset.company;
+  if (!img.dataset.triedBackup) {
+    img.dataset.triedBackup = '1';
+    img.src = 'https://icons.duckduckgo.com/ip3/' + encodeURIComponent(domain) + '.ico';
+    return;
+  }
   const span = document.createElement('span');
   span.className = 'logo-fb'; span.style.background = logoColor(name); span.textContent = logoInitials(name);
   img.replaceWith(span);
-}
+}, true);
 
 function render() {
   const list = currentList();
