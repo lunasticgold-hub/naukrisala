@@ -123,7 +123,8 @@ function courseMeta(name) {
   const bits = [];
   if (c.dur && c.dur !== "TBA") bits.push(c.dur);
   if (c.pay && c.pay !== "TBA") bits.push(c.pay + " placement range");
-  return bits.join(" · ");
+  if (bits.length) return bits.join(" · ");
+  return c.status || ""; // e.g. "Upcoming batch" for tracks with no published duration/pay yet
 }
 function coursePageFor(name) {
   const slug = COURSE_SLUGS[name] || "";
