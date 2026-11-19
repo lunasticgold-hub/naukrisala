@@ -7,7 +7,7 @@ and canonical — nothing invented):
   handles exist; no address/phone: none verified — the demo form's WhatsApp
   number is a placeholder and must never be published as contact info).
 - WebPage on main pages, Article on blog posts (no datePublished: posts
-  carry no publish date in their files, and the "10 Nov 2026" string in them
+  carry no publish date in their files, and the "10 Jan 2027" string in them
   is the Batch 9 date, not a publish date — inventing one would be wrong).
 - Course on the 5 course pages (name/duration/fees parsed from the page
   itself; no duration when the page states none) and FAQPage on faq.html

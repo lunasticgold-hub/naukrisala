@@ -2,7 +2,7 @@
 const WHATSAPP_NUMBER = "918120694235"; // NaukriSala demo bookings (confirmed by Abhigyan 2026-10-14)
 
 const COURSES = [
-  { name: "AML & KYC Analyst", tag: "Financial crime compliance · any graduate", dur: "45 days", pay: "₹9–28 LPA", flagship: true,  status: "Batch 9 · Live 10 Nov", img: "assets/courses/aml-kyc.jpg" },
+  { name: "AML & KYC Analyst", tag: "Financial crime compliance · any graduate", dur: "45 days", pay: "₹9–28 LPA", flagship: true,  status: "Batch 9 · Begins 10 Jan", img: "assets/courses/aml-kyc.jpg" },
   { name: "ServiceNow Developer", tag: "Best for freshers & IT support", dur: "3 months", pay: "₹7–18 LPA", flagship: false, status: "Upcoming", img: "assets/courses/servicenow.jpg" },
   { name: "Data Science & AI Engineering", tag: "Python, ML, GenAI, LLMs, MLOps", dur: "4 months", pay: "₹12–45 LPA", flagship: false, status: "Upcoming", img: "assets/courses/data-science-ai.jpg" },
   { name: "STOM — Service Transition & Ops", tag: "Best for non-coders & career switchers", dur: "2 months", pay: "₹8–36 LPA", flagship: false, status: "Upcoming", img: "assets/courses/stom.jpg" },
@@ -259,7 +259,7 @@ function initDemoForm() {
     const name = document.getElementById("fName").value.trim();
     const phone = document.getElementById("fPhone").value.trim();
     const course = document.getElementById("fCourse").value;
-    const msg = `Hi NaukriSala! I'm ${name} (${phone}). I want to book a free demo class for: ${course}. Demo classes on 29 Dec 2026 & 6 Jan 2027.`;
+    const msg = `Hi NaukriSala! I'm ${name} (${phone}). I want to book a free demo class for: ${course}. Demo classes 2–7 Jan 2027.`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
   });
 }

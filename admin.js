@@ -93,7 +93,7 @@ const EDIT_REGISTRY = {
     { label: "FAQ 15 — What do I need to join?", selector: ".faq-item:nth-child(15) .faq-a p", mode: "html" }
   ],
   "how-it-works.html": [
-    { label: "Step 1 — Free demo", selector: ".steps .step:nth-child(1) p", mode: "html", strongs: ["29 Dec", "6 Jan"] },
+    { label: "Step 1 — Free demo", selector: ".steps .step:nth-child(1) p", mode: "html", strongs: ["2–7 Jan"] },
     { label: "Step 2 — Enroll", selector: ".steps .step:nth-child(2) p", mode: "html" },
     { label: "Step 3 — Learn live", selector: ".steps .step:nth-child(3) p", mode: "html" },
     { label: "Step 4 — Build", selector: ".steps .step:nth-child(4) p", mode: "html" },
