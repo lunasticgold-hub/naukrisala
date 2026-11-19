@@ -463,13 +463,36 @@ function currentList() {
    (favicon) by domain; overrides cover names whose naive domain guess
    is wrong. When no logo loads, the card falls back to an initials avatar. */
 const LOGO_OVERRIDES = {
-  exl: 'exlservice.com', kpmgindia: 'kpmg.com', wnsglobalservices: 'wns.com',
-  mufg: 'mufg.jp', drreddyslaboratories: 'drreddys.com', kotakmahindrabank: 'kotak.com',
-  ernstyoung: 'ey.com', sarvam: 'sarvam.ai', cred: 'cred.club', groww: 'groww.in',
-  tcs: 'tcs.com', tataconsultancyservices: 'tcs.com', hcltechnologies: 'hcltech.com',
-  hcltech: 'hcltech.com', ltimindtree: 'ltimindtree.com', pricewaterhousecoopers: 'pwc.com',
-  pwc: 'pwc.com', byjus: 'byjus.com', ola: 'olacabs.com', zeta: 'zeta.tech',
-  meta: 'meta.com', facebook: 'facebook.com'
+  '2comsconsulting': '2coms.com', accentureindiaprivate: 'accenture.com', agilenttechnologies: 'agilent.com',
+  ameriprisefinancialservices: 'ameriprise.com', ameripriseindia: 'ameriprise.com', amlrightsourceindiaprivate: 'amlrightsource.com',
+  aspiretalentinnovations: 'aspire.com', bankofamericacorporation: 'bankofamerica.com', barclayscapital: 'barclays.com',
+  baxterinternational: 'baxter.com', bnpparibasbank: 'bnpparibas.com', byjus: 'byjus.com',
+  capcotechnologies: 'capco.com', cargillbusinessservicesindia: 'cargill.com', cargillindia: 'cargill.com',
+  corpaycrossborder: 'corpay.com', cred: 'cred.club', cscglobalfinancialmarkets: 'csc.com',
+  dexcomindiaoperations: 'dexcom.com', drreddyslaboratories: 'drreddys.com', empowerglobalbusinessservices: 'empower.com',
+  equifaxindia: 'equifax.com', ernstyoung: 'ey.com', exl: 'exlservice.com',
+  facebook: 'facebook.com', fiscapitalmarkets: 'fis.com', fisglobal: 'fis.com',
+  fisindiabangalore: 'fis.com', fissolutionsprivatelimitedpune: 'fis.com', globalfoundriesengineering: 'globalfoundries.com',
+  goldmansachsservices: 'goldmansachs.com', googleindia: 'google.com', groww: 'groww.in',
+  hcltech: 'hcltech.com', hcltechbee: 'hcltech.com', hcltechnologies: 'hcltech.com',
+  hewlettpackardenterpriseindia: 'hewlettpackardenterprise.com', hiltitechnologysolutionsindia: 'hilti.com', hitachiglobal: 'hitachi.com',
+  hsbcglobalservices: 'hsbc.com', hsbcholdings: 'hsbc.com', ingersollrandcareers: 'ingersollrand.com',
+  irissoftwaretechnologies: 'irissoftware.com', jpmorganservicesindia: 'jpmorgan.com', kotakmahindrabank: 'kotak.com',
+  kpmgindia: 'kpmg.com', kpmgindiaservicesllp: 'kpmg.com', ltimindtree: 'ltimindtree.com',
+  mastercardindiaservices: 'mastercard.com', meta: 'meta.com', mizuhoglobalservices: 'mizuho.com',
+  mouserelectronics: 'mouser.com', msdanimalhealthtechnologylabs: 'msd.com', mufg: 'mufg.jp',
+  mufgbankltdnewdelhibranch: 'mufg.jp', northerntrustcorp: 'northerntrust.com', nrconsultingindia: 'nrconsulting.com',
+  oaktreecapitalmanagement: 'oaktree.com', ola: 'olacabs.com', orangebusiness: 'orange.com',
+  pepsicoglobalbusinessservicesindiallp: 'pepsico.com', photongroup: 'photon.com', pricewaterhousecoopers: 'pwc.com',
+  pricewaterhousecoopersprivatelimited: 'pwc.com', pricewaterhousecoopersprofessionalservicesllp: 'pwc.com', pricewaterhousecoopersservicedeliverycenter: 'pwc.com',
+  pricewaterhousecoopersservices: 'pwc.com', pwc: 'pwc.com', razorpaysoftware: 'razorpay.com',
+  reckittbenckiserindia: 'reckitt.com', salesforcecomindia: 'salesforce.com', sarvam: 'sarvam.ai',
+  socitgnrale: 'societegenerale.com', spglobalmarketintelligence: 'spglobal.com', srmtechnologies: 'srmtech.com',
+  standardcharteredindia: 'standardchartered.com', statestreetcorporation: 'statestreet.com', synechrontechnologies: 'synechron.com',
+  synechrontechnologiespvtltdindiacompany: 'synechron.com', taskusindia: 'taskus.com', tataconsultancyservices: 'tcs.com',
+  tcs: 'tcs.com', tiaaglobalbusinessservices: 'tiaa.com', ustechnologyinternational: 'ust.com',
+  virtusaconsultingservices: 'virtusa.com', visaconsolidatedsupportservicesprivatelimited: 'visa.com', wellsfargoindiasolutions: 'wellsfargo.com',
+  wnsglobalservices: 'wns.com', wspinindia: 'wsp.com', zeta: 'zeta.tech'
 };
 function logoKey(name) { return String(name || '').replace(/\([^)]*\)/g, '').toLowerCase().replace(/[^a-z0-9]/g, ''); }
 function logoDomain(name) { const k = logoKey(name); if (!k) return ''; return LOGO_OVERRIDES[k] || (k + '.com'); }
