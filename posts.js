@@ -37,7 +37,7 @@ const NS_POSTS = [
     title: "SAR and STR reports: what goes into a useful filing",
     track: "AML & KYC",
     read: 1,
-    excerpt: "A useful report gives the reader the who, what, when, and why in order, without opinion or filler.",
+    excerpt: "SAR and STR reports: what goes into a useful filing — full identifiers, a dated transaction timeline, red flags stated as facts, and the checks you ran.",
     body: "<p>Suspicious activity reports and suspicious transaction reports pass your findings to the authorities. The reader has never seen the case, so the report must stand alone. Write it as a timeline: who did what, when, through which accounts, and why it looked suspicious. Leave out adjectives and conclusions the evidence does not support.</p><h3>What a strong filing contains</h3><ul><li>Full identifiers for each person and account involved, exactly as they appear in the records.</li><li>A dated sequence of the relevant transactions, with amounts and channels, in chronological order.</li><li>The red flags observed, stated as facts, such as structuring or activity inconsistent with the profile.</li><li>What checks were done and what they showed, including checks that came back clean.</li></ul><p>End with the current status: whether the account remains open, what monitoring continues, and whether law enforcement has already been in contact. A filing that answers the next reader's questions is a filing done well.</p>"
   },
   {
@@ -93,7 +93,7 @@ const NS_POSTS = [
     title: "Incident, problem, and change: how ITSM tickets connect",
     track: "ServiceNow",
     read: 1,
-    excerpt: "Incidents restore service, problems find causes, and changes fix things safely, and confusing them causes real delays.",
+    excerpt: "Incident, problem, change in ITSM: an incident restores service, a problem finds the cause, a change fixes it safely. One worked example links all three.",
     body: "<p>Newcomers to ITSM often mix up three ticket types. An incident is an unplanned interruption: something is broken and users are affected. A problem is the underlying cause behind one or more incidents. A change is a planned alteration, such as a patch or upgrade, that carries risk and needs approval. Knowing which one you face changes what you do next.</p><h3>How they link in practice</h3><ul><li>Five users report the same email outage: five incidents that may point to one problem.</li><li>The problem record investigates the cause, for example a failed mail relay, and tracks it until resolved.</li><li>Fixing the cause usually needs a change request, with a plan, a backout option, and an approval.</li><li>Closing the change does not close the incidents. Each still needs its own confirmation with the user.</li></ul><p>In interviews, explain this chain with one example from start to finish. It shows you understand ITSM as a system, not as three separate ticket queues.</p>"
   },
   {
@@ -189,7 +189,7 @@ const NS_POSTS = [
     title: "Incident bridges: running a call when systems are down",
     track: "STOM",
     read: 1,
-    excerpt: "A good incident bridge has one leader, one timeline, and one channel for updates, and everything else is noise.",
+    excerpt: "What is an incident bridge call? When a major system is down, it is the call where responders coordinate — one leader, one timeline, one update channel.",
     body: "<p>When a major system goes down, the incident bridge is the call where responders coordinate. Without discipline, the call becomes twenty people talking at once and nobody fixing anything. The bridge needs a leader who does not fix things personally but keeps everyone else coordinated, a timeline of what happened when, and a single channel for updates to users.</p><h3>Roles that keep a bridge working</h3><ul><li>Incident lead: runs the call, assigns tasks, and decides when to escalate, without touching the systems directly.</li><li>Technical lead: owns the diagnosis and the fix, and reports progress in plain language at set intervals.</li><li>Communications: sends user updates from the timeline, so engineers are not pulled away to answer messages.</li><li>Note-taker: records every decision and timestamp, which becomes the review material afterwards.</li></ul><p>The review after the incident matters as much as the fix. It should produce actions with owners and dates, not blame.</p>"
   },
   {
@@ -277,7 +277,7 @@ const NS_POSTS = [
     title: "Evaluating a language model output instead of trusting it",
     track: "Data Science & AI",
     read: 1,
-    excerpt: "Model output needs checking against sources, logic, and consistency, because fluent text can still be wrong.",
+    excerpt: "Evaluating a language model output: check numbers and dates against a trusted source, test the logic, and ask twice — inconsistent answers mean guessing.",
     body: "<p>Language models write fluently, which makes their output feel reliable even when it is wrong. Dates, numbers, quotes, and citations are the parts most likely to be invented, because fluency does not require truth. Evaluation means checking the output the way you would check a colleague's draft: against sources, against logic, and against itself.</p><h3>Checks that catch most errors</h3><ul><li>Verify every factual claim that matters against a source you trust, especially numbers and dates.</li><li>Test the logic: does the conclusion follow from the premises, or does it merely sound like it does.</li><li>Ask the same question twice in different words and compare answers. Inconsistent answers signal guessing.</li><li>Watch for confident vagueness, such as named studies with no verifiable details.</li></ul><p>Never paste model output into work without reading it fully. The time saved by generating is lost twice over if an error reaches a reader.</p>"
   },
   {
@@ -677,7 +677,7 @@ const NS_POSTS = [
     title: "Follow-up emails that keep you visible after an interview",
     track: "Interviews & Resume",
     read: 1,
-    excerpt: "A short thank-you note that references one real discussion point beats a long generic message every time.",
+    excerpt: "Follow-up email after an interview: send it the same day, thank them, reference one real discussion point and restate your fit in one line — then stop.",
     body: "<p>A follow-up email after an interview keeps you visible without being pushy. The best ones are short: thanks, one reference to a real discussion point, and a brief restatement of fit. Long generic messages read as templates and get ignored. One thoughtful paragraph beats three forgettable ones.</p><h3>Writing it well</h3><ul><li>Send it the same day, while the conversation is still fresh for everyone involved.</li><li>Reference something specific that was discussed, which proves you were listening, not just present.</li><li>Restate fit in one line, tied to a need the interviewer mentioned, not to your general qualities.</li><li>Ask about next steps politely, with no deadline pressure, and then stop writing.</li></ul><p>If there is no reply, wait a week before a single polite nudge. Repeated follow-ups turn visibility into annoyance.</p>"
   },
   {
