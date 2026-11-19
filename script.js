@@ -66,29 +66,17 @@ const COURSE_OPENINGS = {
   "java-fullstack": 598, "qa-testing": 417, "ib-operations": 145,
   "sap-fico": 135, "web-dev": 217, "dotnet": 223, "dbi": 337
 };
-/* Topic chips: taken from the course's own tag line where it lists topics;
-   the flagship's chips come from its curriculum topics on this page. */
-const COURSE_CHIPS = {
-  "aml-kyc": ["KYC & Customer Onboarding", "CDD — Customer Due Diligence", "EDD — Enhanced Due Diligence", "Transaction Monitoring", "Sanctions & Name Screening", "SAR / STR Reporting"]
-};
-function courseChips(c, slug) {
-  if (COURSE_CHIPS[slug]) return COURSE_CHIPS[slug];
-  const tag = c.tag || "";
-  if (/^(best for|any graduate)/i.test(tag)) return [];
-  const parts = tag.split(/[,+·]/).map(s => s.trim()).filter(Boolean);
-  if (parts.length < 2) return [];
-  return parts.slice(0, 6).map(s => s.charAt(0).toUpperCase() + s.slice(1));
-}
 
 function renderCourses() {
   const grid = document.getElementById("courseGrid");
   if (!grid) return;
+  const domainOf = {};
+  COURSE_DOMAINS.forEach(d => d.courses.forEach(n => { domainOf[n] = d.name; }));
   grid.innerHTML = COURSES.map(c => {
     const slug = COURSE_SLUGS[c.name] || "";
     const openings = COURSE_OPENINGS[slug];
-    const chips = courseChips(c, slug);
-    const hasPay = c.pay && c.pay !== "TBA";
     const hasDur = c.dur && c.dur !== "TBA";
+    const batch = c.flagship ? "Batch Starts on 10 Jan 2027" : "Enrolments open";
     return `
     <div class="course${c.flagship ? " flagship" : ""} reveal">
       <div class="course-photo">
@@ -98,16 +86,14 @@ function renderCourses() {
       </div>
       <div class="course-body">
         <span class="course-badge"><img src="assets/brand/ns-logo-blue.png" alt="NaukriSala"></span>
-        <p class="course-provider">NaukriSala</p>
+        <p class="course-provider">${domainOf[c.name] || "NaukriSala"}</p>
         <h3>${c.name}</h3>
-        <p class="tag">${c.tag}</p>
-        ${chips.length ? `<div class="c-chips">${chips.map(t => `<span class="c-chip">${t}</span>`).join("")}</div>` : ''}
         <div class="c-meta">
-          ${openings ? `<span class="c-open" data-openings="${slug}"><b>${openings.toLocaleString('en-IN')}</b> live openings</span>` : ''}
-          ${hasDur ? `<span class="c-dur">${c.dur} · Live online</span>` : `<span class="c-dur">Live online</span>`}
+          ${hasDur ? `<span class="c-dur"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>${c.dur}</span>` : ''}
+          <span class="c-mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="2" y="4" width="20" height="13" rx="2"/><path d="M8 21h8M12 17v4"/></svg>Online</span>
         </div>
-        ${hasPay ? `<p class="pay">${c.pay}<small>placement range</small></p>` : ''}
-        <p class="c-fee">₹15,000 to start — rest after placement, from salary</p>
+        <p class="c-batch">${batch}</p>
+        ${openings ? `<p class="c-open-line"><span class="c-open" data-openings="${slug}"><b>${openings.toLocaleString('en-IN')}</b> live openings</span></p>` : ''}
         <div class="course-actions">
           <a class="btn btn-outline" href="${COURSE_PAGE[slug] || "/#demo"}">View Program</a>
           <a class="btn btn-primary" href="checkout/" data-course="${c.name}">Pay fees <span class="arr">→</span></a>
