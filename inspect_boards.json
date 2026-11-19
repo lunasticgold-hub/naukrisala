@@ -1,0 +1,50 @@
+[
+ {
+  "company": "Nasdaq",
+  "careers_url": "https://www.nasdaq.com/about/careers/bangalore",
+  "engine": "workday",
+  "params": {
+   "host": "nasdaq.wd1.myworkdayjobs.com",
+   "tenant": "nasdaq",
+   "site": "Global_External_Site"
+  }
+ },
+ {
+  "company": "Citigroup (Citi)",
+  "careers_url": "https://jobs.citi.com/search-jobs?acm=ALL&alrpm=290557&ascf=[%7B%22key%22:%22ALL%22,%22value%22:%22%22%7D]&icid=AECGF10&ecid=AECACCCMENRP01&lid=AETLLMMECCPCANCS2&eOfferCode=AEIGPDTWAL",
+  "engine": "workday",
+  "params": {
+   "host": "citi.wd5.myworkdayjobs.com",
+   "tenant": "citi",
+   "site": "2"
+  }
+ },
+ {
+  "company": "DTCC",
+  "careers_url": "https://www.dtcc.com",
+  "engine": "oracle",
+  "params": {
+   "host": "ebxr.fa.us2.oraclecloud.com",
+   "site": "CX_1"
+  }
+ },
+ {
+  "company": "Citco",
+  "careers_url": "https://www.citco.com",
+  "engine": "oracle",
+  "params": {
+   "host": "fa-euxc-saasfaprod1.fa.ocs.oraclecloud.com",
+   "site": "CX_1"
+  }
+ },
+ {
+  "company": "PGIM India Mutual Fund (PGIM India Asset Management Private Limited)",
+  "careers_url": "https://jobs.pgim.com/ar-en/",
+  "engine": "workday",
+  "params": {
+   "host": "pru.wd5.myworkdayjobs.com",
+   "tenant": "pru",
+   "site": "Careers"
+  }
+ }
+]

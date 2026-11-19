@@ -1,0 +1,1476 @@
+{
+ "generated_at": "2026-10-25 06:19",
+ "scanned": 357,
+ "adopted_wired_ready": [],
+ "derived": [
+  "Bank of America",
+  "Broadridge",
+  "Universal Sompo General Insurance Company Limited",
+  "Hitachi Payment Services"
+ ],
+ "derived_detail": [
+  {
+   "company": "Bank of America",
+   "careers_url": "https://careers.bankofamerica.com/en-us/job-search/india/a-information-technology-c-chennai",
+   "engine": "workday",
+   "params": {
+    "host": "ghr.wd1.myworkdayjobs.com",
+    "tenant": "ghr",
+    "site": "en"
+   }
+  },
+  {
+   "company": "Broadridge",
+   "careers_url": "https://www.broadridge.com",
+   "engine": "workday",
+   "params": {
+    "host": "broadridge.wd5.myworkdayjobs.com",
+    "tenant": "broadridge",
+    "site": "Careers"
+   }
+  },
+  {
+   "company": "Universal Sompo General Insurance Company Limited",
+   "careers_url": "https://www.universalsompo.com",
+   "engine": "oracle",
+   "params": {
+    "host": "usgi-iacoiz.fa.ocs.oraclecloud.com",
+    "site": "CX_1"
+   }
+  },
+  {
+   "company": "Hitachi Payment Services",
+   "careers_url": "https://hrnextcareers.peoplestrong.com/job/joblist",
+   "engine": "peoplestrong",
+   "params": {
+    "host": "hrnextcareers.peoplestrong.com",
+    "entry_url": "https://hrnextcareers.peoplestrong.com/job/joblist",
+    "max_pages": 100
+   }
+  }
+ ],
+ "applied": [
+  "Bank of America",
+  "Broadridge",
+  "Universal Sompo General Insurance Company Limited",
+  "Hitachi Payment Services"
+ ],
+ "walled_skip": [
+  [
+   "SMC Global Securities",
+   "Darwinbox tenant mysmcdbx.darwinbox.in — SSO-walled in 4/4 live checks, no probe spent"
+  ],
+  [
+   "KreditBee",
+   "Darwinbox tenant kreditbee.darwinbox.in — SSO-walled in 4/4 live checks, no probe spent"
+  ],
+  [
+   "Shivalik Small Finance Bank",
+   "Darwinbox tenant shivalik.darwinbox.in — SSO-walled in 4/4 live checks, no probe spent"
+  ],
+  [
+   "Invesco Mutual Fund (Invesco Asset Management (India) Private Limited)",
+   "Darwinbox tenant iiamihrms.darwinbox.in — SSO-walled in 4/4 live checks, no probe spent"
+  ]
+ ],
+ "needs_browser": [
+  [
+   "State Bank of India",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Deloitte",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "ICICI Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bajaj Finserv",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Punjab National Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Life Insurance Corporation of India",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Canara Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Shriram Finance",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bandhan Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Union Bank of India",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bank of Baroda",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Cholamandalam Investment and Finance",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "AU Small Finance Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "IndusInd Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "L&T Finance",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Indian Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "HDFC Life Insurance Company",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "SBI Life Insurance Company",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Jana Small Finance Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "PNB MetLife India Insurance Company",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Axis Max Life Insurance (Max Life)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Ujjivan Small Finance Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Manappuram Finance",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Mahindra Finance",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Policybazaar (PB Fintech)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Standard Chartered",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "UCO Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Indian Overseas Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Utkarsh Small Finance Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "TVS Credit",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Firstsource Solutions",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Piramal Capital & Housing Finance (Piramal Finance)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Tata AIA Life Insurance Company",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Federal Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Morgan Stanley",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Star Health and Allied Insurance Company",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bank of Maharashtra",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "State Street",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Grant Thornton Bharat",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "BDO India",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "DCB Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "IndusInd Nippon Life Insurance Company Limited (formerly Reliance Nippon Life Insurance Company Limited)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "The New India Assurance Company Limited",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Punjab & Sind Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Wells Fargo",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "SBI General Insurance Company",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Karur Vysya Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "HDFC ERGO General Insurance Company",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Kotak Securities",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bajaj General Insurance (formerly Bajaj Allianz General Insurance)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Tata AIG General Insurance Company",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Niva Bupa Health Insurance Company",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Canara HSBC Life Insurance Company",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Aditya Birla Capital",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "CSB Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Goldman Sachs",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Karnataka Grameena Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Aavas Financiers",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "City Union Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Société Générale",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "SS&C Technologies (SS&C GlobeOp)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "ANZ",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Andhra Pradesh Grameena Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Fiserv",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Fidelity Investments",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "LSEG",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "PayPal",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Poonawalla Fincorp",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Shriram Life Insurance Company Limited",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "CRISIL",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "ICICI Securities",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "IIFL Home Finance",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Sundaram Finance",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "MUFG",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "IndiaFirst Life Insurance Company Limited",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "India Shelter Finance Corporation",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Sammaan Capital",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Morningstar",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "BharatPe",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Shriram General Insurance Company Limited",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Apex Group",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Kerala Grameena Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Tata Capital Housing Finance",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Aptus Value Housing Finance India",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Ageas Federal Life Insurance Company Limited",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Hero FinCorp",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "ICICI Prudential Asset Management Company",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Visa",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Nuvama Wealth Management",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Nomura",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Zurich Kotak General Insurance Company (India) Limited (formerly Kotak Mahindra General Insurance Company Limited)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Motilal Oswal Home Finance",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Angel One",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Franklin Templeton",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "ManipalCigna Health Insurance Company",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Fino Payments Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "MobiKwik",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Evalueserve",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Geojit Financial Services",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Slice Small Finance Bank (formerly North East Small Finance Bank)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "InsuranceDekho",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "BlackRock",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "LIC Housing Finance",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Turtlemint",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Razorpay",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "mPokket",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Upstox",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Zeta",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "SBI Funds Management",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bajaj Housing Finance",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "RSM India (RSM Astute Consulting Group)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Moneyview",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Home First Finance Company India",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "360 One WAM",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Godrej Capital",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "IIFL Securities",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Boston Consulting Group",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Lendingkart",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bharat Co-operative Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Aditya Birla Sun Life AMC",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "EQ India (Equiniti India)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "UTI Asset Management Company (UTI Mutual Fund)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Can Fin Homes",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Juspay",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "PayU",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Repco Home Finance",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Liberty General Insurance Limited",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Yubi (formerly Vivriti / CredAvenue)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Kinara Capital",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Acko",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "ASA & Associates LLP (Baker Tilly ASA India)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Nainital Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Anand Rathi Wealth",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Zerodha",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Nippon Life India Asset Management",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "ICRA",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Small Industries Development Bank of India (SIDBI)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Fibe (formerly EarlySalary)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Moody's",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Moore Singhi Advisors LLP (Singhi & Co.)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Kroll",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Axis Mutual Fund (Axis Asset Management Company)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "TransUnion CIBIL",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "BSE Ltd",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Nexdigm (formerly SKP)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Indifi Technologies",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Infibeam Avenues (CCAvenue)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "BillDesk (IndiaIdeas.com)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bandhan Mutual Fund (Bandhan AMC)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "NeoGrowth",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Alvarez & Marsal",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "SBM Bank India",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Oxyzo Financial Services",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Housing and Urban Development Corporation Ltd (HUDCO)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "CARE Ratings",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "ECGC Ltd",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "REC Ltd",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Forvis Mazars in India",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "5paisa Capital",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Tata Mutual Fund (Tata Asset Management Private Limited)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Export-Import Bank of India (India Exim Bank)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "General Insurance Corporation of India (GIC Re)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Central Depository Services (India) Ltd (CDSL)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "HSBC Mutual Fund (HSBC Asset Management (India) Private Limited)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Mizuho",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Sumitomo Mitsui Banking Corporation",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "FYERS",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Dun & Bradstreet India",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "smallcase",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Sundaram Mutual Fund (Sundaram Asset Management Company Limited)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Dhan (Raise Financial Services)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Aranca",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "CASHe",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "IQ-EQ",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "India Ratings and Research",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Equifax India",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Infomerics Valuation and Rating",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Paytm Money",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "CRIF High Mark",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "ET Money",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bloomberg",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Experian India",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Indian Renewable Energy Development Agency Ltd (IREDA)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Raheja QBE General Insurance Company Limited",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "North Eastern Development Finance Corporation Ltd (NEDFi)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Sanctum Wealth",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Kuvera",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "FTI Consulting",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "LoanTap",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Quant Mutual Fund (Quant Money Managers Limited)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "National Bank for Financing Infrastructure and Development (NaBFID)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Crédit Agricole CIB",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "DBS Bank India",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bank of China",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Industrial and Commercial Bank of China (ICBC)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Blackstone",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "MSCI",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "FactSet",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bain & Company",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Protiviti",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Ankura Consulting",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "HDFC Securities",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Avendus",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "CRED",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Airtel Payments Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "NSDL Payments Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Emirates NBD",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "First Abu Dhabi Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Qatar National Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Woori Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bank of Ceylon",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "AB Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bank of Bahrain and Kuwait",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bank of Nova Scotia",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "CTBC Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "FirstRand Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Industrial Bank of Korea",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Kookmin Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "NatWest Markets",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "NongHyup Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Sberbank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Shinhan Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Sonali Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "United Overseas Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "WNS",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Mirae Asset Mutual Fund (Mirae Asset Investment Managers India)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "DSP Mutual Fund (DSP Asset Managers)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "LIC Mutual Fund (LIC Mutual Fund Asset Management)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Canara Robeco Asset Management Company",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Dhruva Advisors LLP",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Nangia & Co LLP (Nangia Andersen)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "CohnReznick India (CohnReznick Professional Services Pvt. Ltd.)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Control Risks (India)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Assam Gramin Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Bihar Gramin Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Chhattisgarh Gramin Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Gujarat Gramin Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Himachal Pradesh Gramin Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Jammu and Kashmir Grameen Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Jharkhand Gramin Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Madhya Pradesh Gramin Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Manipur Rural Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Meghalaya Rural Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Mizoram Rural Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Puducherry Grama Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Punjab Gramin Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Rajasthan Gramin Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Tamil Nadu Grama Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Telangana Grameena Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Tripura Gramin Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Uttarakhand Gramin Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "West Bengal Gramin Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Saraswat Co-operative Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Cosmos Co-operative Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "SVC Co-operative Bank (Shamrao Vithal Co-operative Bank)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "NKGSB Co-operative Bank",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Janata Sahakari Bank (Pune)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Julius Baer India",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Waterfield Advisors",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Acuité Ratings & Research",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Brickwork Ratings",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "ACER Credit Rating",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Ditto Insurance",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Generali Central Life Insurance Company Limited (formerly Future Generali India Life Insurance Company Limited)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Aditya Birla Sun Life Insurance Company Limited (ABSLI)",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "The Oriental Insurance Company Limited",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Acuity Knowledge Partners",
+   "no proven platform pattern in page URL/links"
+  ],
+  [
+   "Coforge",
+   "no proven platform pattern in page URL/links"
+  ]
+ ],
+ "unreachable": [
+  [
+   "HDB Financial Services",
+   "fetch failed/timeout"
+  ],
+  [
+   "Equitas Small Finance Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "ICICI Lombard General Insurance Company",
+   "fetch failed/timeout"
+  ],
+  [
+   "Care Health Insurance Limited",
+   "fetch failed/timeout"
+  ],
+  [
+   "ESAF Small Finance Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "Motilal Oswal Financial Services",
+   "no careers URL in sheet"
+  ],
+  [
+   "Jammu & Kashmir Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "American Express",
+   "fetch failed/timeout"
+  ],
+  [
+   "BNP Paribas",
+   "fetch failed/timeout"
+  ],
+  [
+   "South Indian Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "Mastercard",
+   "fetch failed/timeout"
+  ],
+  [
+   "Karnataka Bank",
+   "no careers URL in sheet"
+  ],
+  [
+   "Suryoday Small Finance Bank",
+   "no careers URL in sheet"
+  ],
+  [
+   "IndusInd General Insurance (formerly Reliance General Insurance)",
+   "no careers URL in sheet"
+  ],
+  [
+   "Edelweiss Financial Services",
+   "fetch failed/timeout"
+  ],
+  [
+   "RSM US India",
+   "no careers URL in sheet"
+  ],
+  [
+   "Aadhar Housing Finance",
+   "fetch failed/timeout"
+  ],
+  [
+   "JM Financial",
+   "no careers URL in sheet"
+  ],
+  [
+   "Unity Small Finance Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "McKinsey & Company",
+   "fetch failed/timeout"
+  ],
+  [
+   "Go Digit General Insurance",
+   "fetch failed/timeout"
+  ],
+  [
+   "Tamilnad Mercantile Bank",
+   "no careers URL in sheet"
+  ],
+  [
+   "PhonePe",
+   "no careers URL in sheet"
+  ],
+  [
+   "United India Insurance Company Limited",
+   "fetch failed/timeout"
+  ],
+  [
+   "Future Generali India Insurance Company Limited (FGII)",
+   "fetch failed/timeout"
+  ],
+  [
+   "Pine Labs",
+   "no careers URL in sheet"
+  ],
+  [
+   "National Bank for Agriculture and Rural Development (NABARD)",
+   "fetch failed/timeout"
+  ],
+  [
+   "National Payments Corporation of India (NPCI)",
+   "fetch failed/timeout"
+  ],
+  [
+   "PNB Housing Finance",
+   "fetch failed/timeout"
+  ],
+  [
+   "Capital Small Finance Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "Intercontinental Exchange",
+   "no careers URL in sheet"
+  ],
+  [
+   "National Stock Exchange of India (NSE)",
+   "fetch failed/timeout"
+  ],
+  [
+   "Dhanlaxmi Bank",
+   "no careers URL in sheet"
+  ],
+  [
+   "HDFC Asset Management Company",
+   "fetch failed/timeout"
+  ],
+  [
+   "Cholamandalam MS General Insurance Company Limited (Chola MS)",
+   "fetch failed/timeout"
+  ],
+  [
+   "Anand Rathi Share and Stock Brokers",
+   "no careers URL in sheet"
+  ],
+  [
+   "Groww",
+   "no careers URL in sheet"
+  ],
+  [
+   "India Post Payments Bank",
+   "no careers URL in sheet"
+  ],
+  [
+   "TresVista",
+   "fetch failed/timeout"
+  ],
+  [
+   "Cashfree Payments",
+   "no careers URL in sheet"
+  ],
+  [
+   "Kotak Mutual Fund (Kotak Mahindra Asset Management Company)",
+   "fetch failed/timeout"
+  ],
+  [
+   "CME Group",
+   "no careers URL in sheet"
+  ],
+  [
+   "National Small Industries Corporation Ltd (NSIC)",
+   "no careers URL in sheet"
+  ],
+  [
+   "National Securities Depository Ltd (NSDL)",
+   "fetch failed/timeout"
+  ],
+  [
+   "Power Finance Corporation Ltd (PFC)",
+   "fetch failed/timeout"
+  ],
+  [
+   "National Housing Bank (NHB)",
+   "fetch failed/timeout"
+  ],
+  [
+   "360 ONE Mutual Fund (360 ONE Asset Management Limited)",
+   "no careers URL in sheet"
+  ],
+  [
+   "Freo (formerly MoneyTap)",
+   "fetch failed/timeout"
+  ],
+  [
+   "Jio Payments Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "India Infrastructure Finance Company Ltd (IIFCL)",
+   "fetch failed/timeout"
+  ],
+  [
+   "IFCI Ltd",
+   "fetch failed/timeout"
+  ],
+  [
+   "Indian Railway Finance Corporation Ltd (IRFC)",
+   "no careers URL in sheet"
+  ],
+  [
+   "Axis Securities",
+   "no careers URL in sheet"
+  ],
+  [
+   "Mashreq",
+   "fetch failed/timeout"
+  ],
+  [
+   "Rabobank",
+   "fetch failed/timeout"
+  ],
+  [
+   "Doha Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "JSC VTB Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "KEB Hana Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "PT Bank Maybank Indonesia",
+   "fetch failed/timeout"
+  ],
+  [
+   "Stripe India",
+   "no careers URL in sheet"
+  ],
+  [
+   "Guidehouse India",
+   "no careers URL in sheet"
+  ],
+  [
+   "Arunachal Pradesh Rural Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "Haryana Gramin Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "Maharashtra Gramin Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "Nagaland Rural Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "Odisha Grameen Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "Uttar Pradesh Gramin Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "Abhyudaya Co-operative Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "TJSB Sahakari Bank (Thane Janata Sahakari Bank)",
+   "no careers URL in sheet"
+  ],
+  [
+   "Kalyan Janata Sahakari Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "National Cooperative Development Corporation (NCDC)",
+   "no careers URL in sheet"
+  ],
+  [
+   "Krung Thai Bank",
+   "fetch failed/timeout"
+  ],
+  [
+   "Bank of Taiwan",
+   "no careers URL in sheet"
+  ],
+  [
+   "Mega International Commercial Bank",
+   "no careers URL in sheet"
+  ],
+  [
+   "RenewBuy",
+   "fetch failed/timeout"
+  ],
+  [
+   "Royal Sundaram General Insurance Company Limited",
+   "fetch failed/timeout"
+  ],
+  [
+   "Aviva Life Insurance Company India Limited",
+   "no careers URL in sheet"
+  ],
+  [
+   "Aditya Birla Health Insurance Company Limited",
+   "fetch failed/timeout"
+  ],
+  [
+   "National Insurance Company Limited",
+   "no careers URL in sheet"
+  ],
+  [
+   "Mahindra Manulife Mutual Fund (Mahindra Manulife Investment Management Private Limited)",
+   "no careers URL in sheet"
+  ],
+  [
+   "WhiteOak Capital Mutual Fund (WhiteOak Capital Asset Management Limited)",
+   "no careers URL in sheet"
+  ]
+ ]
+}
