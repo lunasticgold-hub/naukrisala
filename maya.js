@@ -30,7 +30,7 @@
     { test: function (t) { return /course|track|which course|what should i (learn|study|do)/.test(t); },
       reply: function () { return "Five tracks, all 100% online and live: AML &amp; KYC Analyst (45 days), ServiceNow Developer (3 months), STOM (2 months), Data Science &amp; AI Engineering (4 months), and Full Stack Python. See them all: <a href=\"" + L('courses') + "\">Courses</a> — or " + demoLink() + " and we'll help you pick."; } },
     { test: function (t) { return /batch|demo|start|join|enroll|november|nov\b/.test(t); },
-      reply: function () { return "Batch 9 starts 10 Nov 2026, and free demo classes run from 3 Nov 2026. " + demoLink() + " — you'll see a real class before you pay anything."; } },
+      reply: function () { return "Batch 9 starts 10 Nov 2026, and free demo classes are on 29 Dec 2026 & 6 Jan 2027. " + demoLink() + " — you'll see a real class before you pay anything."; } },
     { test: function (t) { return /apply assistant|resume evaluator|skill gap|interview coach|mock interview|\bai tool/.test(t); },
       reply: function () { return "Four free tools, no sign-up: AI Interview Coach (mock interviews), Resume Evaluator, Skill Gap planner, and Apply Assistant — which drafts tailored resume points and screening answers that you review and submit. Nothing is auto-submitted. Try them: <a href=\"" + L('ai-tools') + "\">AI tools</a>."; } },
     { test: function (t) { return /job|board|opening|vacancy|hiring|apply/.test(t); },

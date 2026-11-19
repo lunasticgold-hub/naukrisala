@@ -259,7 +259,7 @@ function initDemoForm() {
     const name = document.getElementById("fName").value.trim();
     const phone = document.getElementById("fPhone").value.trim();
     const course = document.getElementById("fCourse").value;
-    const msg = `Hi NaukriSala! I'm ${name} (${phone}). I want to book a free demo class for: ${course}. Demo classes start 3 Nov.`;
+    const msg = `Hi NaukriSala! I'm ${name} (${phone}). I want to book a free demo class for: ${course}. Demo classes on 29 Dec 2026 & 6 Jan 2027.`;
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
   });
 }

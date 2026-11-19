@@ -19,7 +19,7 @@ assert sorted({p['track'] for p in POSTS}) == sorted(TRACKS)
 def chrome(prefix):
     """Site chrome (topbar/nav/footer) with path prefix '' (root) or '../' (blog/)."""
     home = '../' if prefix == '../' else './'
-    nav = f"""<div class="topbar"><b>Batch 9 starts 10 Nov 2026</b> &nbsp;·&nbsp; Free demos from 3 Nov</div>
+    nav = f"""<div class="topbar"><b>Batch 9 starts 10 Nov 2026</b> &nbsp;·&nbsp; Free demos 29 Dec & 6 Jan</div>
 
 <header class="nav" id="nav">
   <div class="wrap nav-inner">
@@ -56,7 +56,7 @@ def chrome(prefix):
       </div>
       <p class="fine">Get placed first. Pay from your salary.</p>
       <a class="foot-cta" href="{home}#demo">Book a free demo <span class="arr">→</span></a>
-      <p class="foot-cta-sub">Batch 9 starts 10 Nov 2026 · Free demos from 3 Nov</p>
+      <p class="foot-cta-sub">Batch 9 starts 10 Nov 2026 · Free demos 29 Dec & 6 Jan</p>
     </div>
     <nav class="foot-col">
       <h4>Top courses</h4>
