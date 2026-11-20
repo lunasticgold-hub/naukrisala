@@ -507,6 +507,14 @@ function logoColor(name) {
   for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
   return pal[h % pal.length];
 }
+function cleanSnip(s){
+  s = String(s || '').replace(/\s+/g, ' ').trim();
+  if(!s) return s;
+  if(/[.!?\u2026:][)\"']?$/.test(s)) return s;
+  var i = s.lastIndexOf(' ');
+  if(i > 0) s = s.slice(0, i);
+  return s + '\u2026';
+}
 function logoHTML(j) {
   const name = (j.company || '').trim(), domain = logoDomain(name);
   const init = logoInitials(name), color = logoColor(name);
@@ -550,7 +558,7 @@ function render() {
       <h3>${esc(j.title)}</h3>
       <div class="job-co-row">${logoHTML(j)}<p class="job-co">${esc([j.company, j.location].filter(Boolean).join(' · '))}</p></div>
       ${j.salary_text ? `<p class="job-sal">${esc(j.salary_text)}</p>` : ''}
-      ${j.snippet ? `<p class="job-snip">${esc(j.snippet)}</p>` : ''}
+      ${j.snippet ? `<p class="job-snip">${esc(cleanSnip(j.snippet))}</p>` : ''}
       <a class="job-tailor" href="apply?job=${encodeURIComponent(j.id)}">✦ Tailor resume for this job</a>
       <div class="job-foot">
         <span class="job-date">${rel(j.created) || rel(j.fetched + 'T00:00:00Z')}${j.contract ? ' · ' + esc(j.contract) : ''}${j.stale ? ' · <span class="stale">old listing</span>' : ''}</span>

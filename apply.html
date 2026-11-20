@@ -413,6 +413,14 @@ main{background:var(--bg2);padding-bottom:70px}
 
 <script>
 const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function cleanSnip(s){
+  s = String(s || '').replace(/\s+/g, ' ').trim();
+  if(!s) return s;
+  if(/[.!?\u2026:][)"']?$/.test(s)) return s;
+  var i = s.lastIndexOf(' ');
+  if(i > 0) s = s.slice(0, i);
+  return s + '…';
+}
 const siteUrl = u => /^https?:\/\//i.test(u || '') ? u : '';
 const $ = id => document.getElementById(id);
 
@@ -642,7 +650,7 @@ function renderJobView() {
     <h3>${esc(job.title)}</h3>
     <p class="co">${esc([job.company, job.location].filter(Boolean).join(' · '))}</p>
     ${job.salary_text ? `<p class="sal">${esc(job.salary_text)}</p>` : ''}
-    <p class="snip">${esc(job.snippet)}</p>
+    <p class="snip">${esc(cleanSnip(job.snippet))}</p>
     ${url ? `<p style="margin-top:12px"><a href="${esc(url)}" target="_blank" rel="noopener" style="color:var(--amber);font-weight:600;text-decoration:none">View original listing ↗</a></p>` : ''}`;
 }
 
