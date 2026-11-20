@@ -580,7 +580,7 @@ function chipRow(el, options, get, set, parse) {
 
 let LOGO_LOCAL = {};
 const logoManifestPromise = fetch('assets/logos/manifest.json?v=20261119a').then(r => r.ok ? r.json() : {}).catch(() => ({}));
-const jobsPromise = fetch('jobs.json?v=202611190257').then(r => { if (!r.ok) throw new Error('jobs fetch failed'); return r.json(); });
+const jobsPromise = fetch('jobs.json?v=202611200319').then(r => { if (!r.ok) throw new Error('jobs fetch failed'); return r.json(); });
 /* First render waits for the logo manifest too, so cards use local logos from the start. */
 const boardReady = Promise.all([jobsPromise, logoManifestPromise]).then(([d, man]) => { LOGO_LOCAL = man || {}; return d; });
 
