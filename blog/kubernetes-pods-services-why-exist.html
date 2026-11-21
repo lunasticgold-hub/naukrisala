@@ -105,7 +105,7 @@
       <h1>Kubernetes concepts: pods, services, and why they exist</h1>
       <p class="blog-read">1 min read</p>
       <div class="post-body"><p>Running a handful of containers by hand is manageable. Running hundreds across many machines is not: containers crash, machines fill up, and traffic needs routing to whichever copy is healthy. Kubernetes automates that work. It watches the desired state you declare and keeps reality matching it, restarting failed containers and spreading load.</p><h3>The core objects, simply</h3><ul><li>Pods are the smallest unit: one or more containers that share storage and network and run together.</li><li>Deployments declare how many copies of a pod should run, and replace them when they fail or update.</li><li>Services give a stable address to a changing set of pods, so callers never track individual containers.</li><li>ConfigMaps and secrets hold settings outside the container image, so the same image runs anywhere.</li></ul><p>Learn these four objects before touching anything advanced. Most real clusters use them for the majority of workloads.</p></div>
-            <section class="related" aria-label="Related pages">
+      <section class="related" aria-label="Related pages">
             <h2 class="related-label">Keep exploring</h2>
             <div class="related-group">
             <h3 class="related-group-label">More Cloud &amp; DevOps guides</h3>
