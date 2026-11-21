@@ -17,6 +17,12 @@ Design rules (enforced by render_related, not by convention):
 - Blog posts get two groups: same-track guides first, then the track's
   course/jobs pages. Hand-written pages get the groups in PAGE_RELATED.
 - Output is static HTML (good for SEO/internal linking — never JS-injected).
+- Placement: on hand-written pages the section sits inside a
+  <div class="wrap"> (added 2026-11-22 after the visual check caught the
+  course pages rendering full-bleed, edge to edge). apply_related.py
+  replaces only the <section>, so the wrap survives re-runs; blog posts
+  sit inside .post-wrap instead. Never render the section as a direct
+  child of <main> — it spans the full viewport width.
 
 Hrefs are stored root-relative (e.g. "jobs", "blog#aml-kyc"); render adds
 the "../" prefix on blog post pages. Labels are plain text, escaped on render.
