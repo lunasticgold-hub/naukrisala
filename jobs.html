@@ -40,7 +40,7 @@
 .snap-card{background:#fff;color:var(--ink);border:1px solid var(--line-soft);border-radius:12px;box-shadow:var(--shadow-md);padding:24px 24px 18px;overflow:hidden;position:relative}
 .snap-card::before{content:"";position:absolute;top:0;left:0;right:0;height:5px;background:var(--amber)}
 .snap-head{display:flex;justify-content:space-between;align-items:baseline;gap:10px;padding-bottom:14px;border-bottom:1px solid var(--line-soft)}
-.snap-head h3{font:800 15.5px var(--font-d);letter-spacing:-.01em;color:var(--navy)}
+.snap-head h2{font:800 15.5px var(--font-d);letter-spacing:-.01em;color:var(--navy)}
 .snap-head span{font-size:11px;font-weight:800;letter-spacing:.12em;text-transform:uppercase;color:var(--good)}
 .snap-bars{display:flex;flex-direction:column;gap:12px;padding:16px 0 6px}
 .snap-row{display:grid;grid-template-columns:150px 1fr 46px;align-items:center;gap:12px}
@@ -224,7 +224,7 @@
       </div>
       <div class="jobs-hero-media">
         <div class="snap-card" role="img" aria-label="Snapshot of today's board: openings by course track">
-          <div class="snap-head"><h3>Board snapshot</h3><span>Live · today</span></div>
+          <div class="snap-head"><h2>Board snapshot</h2><span>Live · today</span></div>
           <div class="snap-bars">
             <div class="snap-row" data-snap="aml-kyc"><span class="sn">AML &amp; KYC Analyst</span><span class="st"><span class="sf amber" style="width:100%"></span></span><span class="sv">697</span></div>
             <div class="snap-row" data-snap="data-science-ai"><span class="sn">Data Science &amp; AI</span><span class="st"><span class="sf" style="width:47%"></span></span><span class="sv">329</span></div>
@@ -257,7 +257,7 @@
 .bc-jobs{grid-area:jobs;display:grid;grid-template-columns:1fr 1fr;gap:0 28px;align-content:start}
 .bc-job{display:block;text-decoration:none;padding:13px 2px;border-top:1px solid var(--line-soft);transition:background .15s ease;min-width:0}
 .bc-job:hover{background:var(--paper-2)}
-.bc-job h4{font-family:var(--font-d);font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--ink);line-height:1.3;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
+.bc-job h3{font-family:var(--font-d);font-size:15px;font-weight:700;letter-spacing:-.01em;color:var(--ink);line-height:1.3;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical;overflow:hidden}
 .bc-job p{font-size:13px;color:var(--muted);font-weight:500;margin-top:2px}
 .bc-job p b{color:var(--ink2);font-weight:600}
 .bc-new{float:right;font-size:10.5px;font-weight:800;letter-spacing:.1em;color:var(--green);background:var(--green-bg);border-radius:6px;padding:3px 8px;margin-left:10px}
@@ -278,10 +278,10 @@
         <div class="bc-count"><strong data-live-total>7,293</strong><span>live openings<br>right now</span></div>
         <p class="bc-sub"><strong data-live-aml>697</strong> of them are AML &amp; KYC roles — our flagship track.</p>
         <div class="bc-jobs" id="bcJobs">
-          <a class="bc-job" href="https://in.jooble.org/jdp/-612859102274543270" target="_blank" rel="noopener"><h4>Lead - Partner Onboarding &amp; Due Diligence</h4><p><b>nium</b> · Mumbai</p></a>
-          <a class="bc-job" href="https://portal.careers.hsbc.com/careers/job/563774612541598" target="_blank" rel="noopener"><h4>Global Sanctions and SWIFT Utility Delivery Lead</h4><p><b>HSBC</b> · Bengaluru</p></a>
-          <a class="bc-job" href="https://lseg.wd3.myworkdayjobs.com/Careers/job/IND-Bangalore-A-RMZ-Infinity/Team-Leader--KYC-Operations_R0123222-1" target="_blank" rel="noopener"><h4>Team Leader, KYC Operations</h4><p><b>LSEG</b> · Bengaluru</p></a>
-          <a class="bc-job" href="https://ntrs.wd1.myworkdayjobs.com/northerntrust/job/Bangalore-India/KYC-Analyst_R162946" target="_blank" rel="noopener"><h4>KYC Analyst</h4><p><b>Northern Trust</b> · Bengaluru</p></a>
+          <a class="bc-job" href="https://in.jooble.org/jdp/-612859102274543270" target="_blank" rel="noopener"><h3>Lead - Partner Onboarding &amp; Due Diligence</h3><p><b>nium</b> · Mumbai</p></a>
+          <a class="bc-job" href="https://portal.careers.hsbc.com/careers/job/563774612541598" target="_blank" rel="noopener"><h3>Global Sanctions and SWIFT Utility Delivery Lead</h3><p><b>HSBC</b> · Bengaluru</p></a>
+          <a class="bc-job" href="https://lseg.wd3.myworkdayjobs.com/Careers/job/IND-Bangalore-A-RMZ-Infinity/Team-Leader--KYC-Operations_R0123222-1" target="_blank" rel="noopener"><h3>Team Leader, KYC Operations</h3><p><b>LSEG</b> · Bengaluru</p></a>
+          <a class="bc-job" href="https://ntrs.wd1.myworkdayjobs.com/northerntrust/job/Bangalore-India/KYC-Analyst_R162946" target="_blank" rel="noopener"><h3>KYC Analyst</h3><p><b>Northern Trust</b> · Bengaluru</p></a>
         </div>
         <div class="bc-foot">
           <a href="#listings">See all openings →</a>
@@ -365,7 +365,7 @@
       <p class="foot-cta-sub">AML &amp; KYC Batch 9 begins 10 Jan 2027 · Free Demo Classes from 2–7 Jan · Enrolments Open</p>
     </div>
     <nav class="foot-col">
-      <h4>Top courses</h4>
+      <h2>Top courses</h2>
       <a href="course-aml-kyc">AML &amp; KYC</a>
       <a href="course-servicenow">ServiceNow</a>
       <a href="course-stom">STOM</a>
@@ -374,14 +374,14 @@
       <a href="courses">All courses</a>
     </nav>
     <nav class="foot-col">
-      <h4>AI tools</h4>
+      <h2>AI tools</h2>
       <a href="socrates">AI Interview Coach</a>
       <a href="resume-evaluator">Resume Evaluator</a>
       <a href="skill-gap">Skill Gap</a>
       <a href="apply">Apply Assistant</a>
     </nav>
     <nav class="foot-col">
-      <h4>Company</h4>
+      <h2>Company</h2>
       <a href="how-it-works">How it works</a>
       <a href="fees">Fees</a>
       <a href="jobs">Jobs</a>
@@ -393,7 +393,7 @@
       <a href="refund-policy">Refund Policy</a>
     </nav>
     <div class="foot-col">
-      <h4>Contact</h4>
+      <h2>Contact</h2>
       <a href="tel:+918120694235">+91 81206 94235</a>
       <a href="https://wa.me/918120694235">Chat on WhatsApp</a>
     </div>
@@ -701,7 +701,6 @@ document.getElementById('navToggle').addEventListener('click', () =>
 })();
 </script>
 <script src="contact-float.js?v=20261120a"></script>
-
 
 </body>
 </html>

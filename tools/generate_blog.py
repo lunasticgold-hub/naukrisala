@@ -66,7 +66,7 @@ def chrome(prefix):
       <p class="foot-cta-sub">AML &amp; KYC Batch 9 begins 10 Jan 2027 · Free Demo Classes from 2–7 Jan · Enrolments Open</p>
     </div>
     <nav class="foot-col">
-      <h4>Top courses</h4>
+      <h2>Top courses</h2>
       <a href="{prefix}course-aml-kyc">AML &amp; KYC</a>
       <a href="{prefix}course-servicenow">ServiceNow</a>
       <a href="{prefix}course-stom">STOM</a>
@@ -75,14 +75,14 @@ def chrome(prefix):
       <a href="{prefix}courses">All courses</a>
     </nav>
     <nav class="foot-col">
-      <h4>AI tools</h4>
+      <h2>AI tools</h2>
       <a href="{prefix}socrates">AI Interview Coach</a>
       <a href="{prefix}resume-evaluator">Resume Evaluator</a>
       <a href="{prefix}skill-gap">Skill Gap</a>
       <a href="{prefix}apply">Apply Assistant</a>
     </nav>
     <nav class="foot-col">
-      <h4>Company</h4>
+      <h2>Company</h2>
       <a href="{prefix}how-it-works">How it works</a>
       <a href="{prefix}fees">Fees</a>
       <a href="{prefix}jobs">Jobs</a>
@@ -94,7 +94,7 @@ def chrome(prefix):
       <a href="{prefix}refund-policy">Refund Policy</a>
     </nav>
     <div class="foot-col">
-      <h4>Contact</h4>
+      <h2>Contact</h2>
       <a href="tel:+918120694235">+91 81206 94235</a>
       <a href="https://wa.me/918120694235">Chat on WhatsApp</a>
     </div>
@@ -152,7 +152,7 @@ nav, foot = chrome('')
 filters = '<button type="button" class="blog-filter active" data-track="all">All topics</button>' + ''.join(
     f'<button type="button" class="blog-filter" data-track="{html.escape(t)}">{html.escape(t)}</button>' for t in TRACKS)
 cards = '\n'.join(
-    f'      <article class="blog-card" data-track="{html.escape(p["track"])}"><span class="blog-tag">{html.escape(p["track"])}</span><h3><a href="blog/{p["slug"]}">{html.escape(p["title"])}</a></h3><p>{html.escape(p["excerpt"])}</p><span class="blog-read">{p["read"]} min read</span></article>'
+    f'      <article class="blog-card" data-track="{html.escape(p["track"])}"><span class="blog-tag">{html.escape(p["track"])}</span><h2><a href="blog/{p["slug"]}">{html.escape(p["title"])}</a></h2><p>{html.escape(p["excerpt"])}</p><span class="blog-read">{p["read"]} min read</span></article>'
     for p in POSTS)
 blog_html = head('Blog', 'Practical guides for the careers NaukriSala trains for — compliance, ServiceNow, data, cloud, and the job hunt itself.', 'blog', '') + nav + f"""
 <main>

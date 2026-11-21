@@ -11,17 +11,17 @@
 </script>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Train-test split: the habit that prevents false confidence | NaukriSala</title>
+<title>Train-test split: avoiding false confidence | NaukriSala</title>
 <meta name="description" content="Testing on the same data you trained on flatters every model, so hold out data before you believe any score.">
 <link rel="canonical" href="https://naukrisala.in/blog/train-test-split-false-confidence">
-<meta property="og:title" content="Train-test split: the habit that prevents false confidence | NaukriSala">
+<meta property="og:title" content="Train-test split: avoiding false confidence | NaukriSala">
 <meta property="og:description" content="Testing on the same data you trained on flatters every model, so hold out data before you believe any score.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://naukrisala.in/blog/train-test-split-false-confidence">
 <meta property="og:image" content="https://naukrisala.in/assets/brand/ns-logo-blue.png">
 <meta property="og:site_name" content="NaukriSala">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Train-test split: the habit that prevents false confidence | NaukriSala">
+<meta name="twitter:title" content="Train-test split: avoiding false confidence | NaukriSala">
 <meta name="twitter:description" content="Testing on the same data you trained on flatters every model, so hold out data before you believe any score.">
 <meta name="twitter:image" content="https://naukrisala.in/assets/brand/ns-logo-blue.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -56,7 +56,7 @@
     },
     {
       "@type": "Article",
-      "headline": "Train-test split: the habit that prevents false confidence",
+      "headline": "Train-test split: avoiding false confidence",
       "description": "Testing on the same data you trained on flatters every model, so hold out data before you believe any score.",
       "mainEntityOfPage": {
         "@type": "WebPage",
@@ -102,9 +102,9 @@
   <section class="section">
     <div class="wrap post-wrap">
       <p class="eyebrow"><span class="dot"></span>Data Science &amp; AI</p>
-      <h1>Train-test split: the habit that prevents false confidence</h1>
+      <h1>Train-test split: avoiding false confidence</h1>
       <p class="blog-read">1 min read</p>
-      <div class="post-body"><p>A model that has seen the answers during training will score well on those answers. That score says nothing about new data. The train-test split fixes this by holding out part of the data before training, then testing only on the held-out part. It is a simple habit, and skipping it is the most common beginner mistake in machine learning.</p><h3>Doing the split properly</h3><ul><li>Split before any preprocessing that learns from data, such as scaling or imputation, or information leaks into the test set.</li><li>Keep the test set untouched during model selection. Repeated peeking turns it into training data.</li><li>Stratify the split for classification, so each class appears in both parts in roughly its original proportion.</li><li>Report the test score alongside the training score. A large gap between them signals overfitting.</li></ul><p>When a model scores far better in training than in testing, it has memorised, not learned. Trust the test score, and fix the model, not the split.</p></div>
+      <div class="post-body"><p>A model that has seen the answers during training will score well on those answers. That score says nothing about new data. The train-test split fixes this by holding out part of the data before training, then testing only on the held-out part. It is a simple habit, and skipping it is the most common beginner mistake in machine learning.</p><h2>Doing the split properly</h2><ul><li>Split before any preprocessing that learns from data, such as scaling or imputation, or information leaks into the test set.</li><li>Keep the test set untouched during model selection. Repeated peeking turns it into training data.</li><li>Stratify the split for classification, so each class appears in both parts in roughly its original proportion.</li><li>Report the test score alongside the training score. A large gap between them signals overfitting.</li></ul><p>When a model scores far better in training than in testing, it has memorised, not learned. Trust the test score, and fix the model, not the split.</p></div>
       <section class="related" aria-label="Related pages">
             <h2 class="related-label">Keep exploring</h2>
             <div class="related-group">
@@ -148,7 +148,7 @@
       <p class="foot-cta-sub">AML &amp; KYC Batch 9 begins 10 Jan 2027 · Free Demo Classes from 2–7 Jan · Enrolments Open</p>
     </div>
     <nav class="foot-col">
-      <h4>Top courses</h4>
+      <h2>Top courses</h2>
       <a href="../course-aml-kyc">AML &amp; KYC</a>
       <a href="../course-servicenow">ServiceNow</a>
       <a href="../course-stom">STOM</a>
@@ -157,14 +157,14 @@
       <a href="../courses">All courses</a>
     </nav>
     <nav class="foot-col">
-      <h4>AI tools</h4>
+      <h2>AI tools</h2>
       <a href="../socrates">AI Interview Coach</a>
       <a href="../resume-evaluator">Resume Evaluator</a>
       <a href="../skill-gap">Skill Gap</a>
       <a href="../apply">Apply Assistant</a>
     </nav>
     <nav class="foot-col">
-      <h4>Company</h4>
+      <h2>Company</h2>
       <a href="../how-it-works">How it works</a>
       <a href="../fees">Fees</a>
       <a href="../jobs">Jobs</a>
@@ -175,7 +175,7 @@
       <a href="../privacy">Privacy</a>
     </nav>
     <div class="foot-col">
-      <h4>Contact</h4>
+      <h2>Contact</h2>
       <a href="tel:+918120694235">+91 81206 94235</a>
       <a href="https://wa.me/918120694235">Chat on WhatsApp</a>
     </div>

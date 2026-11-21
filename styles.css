@@ -246,7 +246,7 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .footer .brand-mark-img{width:56px;height:56px}
 .foot-brand .fine{margin-top:14px;color:var(--muted)}
 .foot-brand .foot-cta{margin-top:18px}
-.foot-col h4{font:700 15px var(--font-b);color:var(--amber);margin-bottom:14px}
+.foot-col h2{font:700 15px var(--font-b);color:var(--amber);margin-bottom:14px}
 .foot-col a{display:block;color:var(--ink2);text-decoration:none;font:500 14px var(--font-b);padding:8px 0}
 .foot-col a:hover{color:var(--amber)}
 .foot-col .fine{margin:0 0 4px;color:var(--muted)}
@@ -322,7 +322,7 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .blog-filter.active{background:var(--amber);border-color:var(--amber);color:#fff}
 .blog-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 .blog-card{background:#fff;border:1px solid var(--line-soft);border-radius:16px;padding:24px}
-.blog-card h3{font-size:19px;line-height:1.35;margin:12px 0 8px}
+.blog-card h2{font-size:19px;line-height:1.35;margin:12px 0 8px}
 .blog-card h3 a{color:var(--ink);text-decoration:none}
 .blog-card h3 a:hover{color:var(--amber)}
 .blog-card p{color:var(--muted);font-size:15px;line-height:1.6;margin:0 0 14px}
@@ -332,7 +332,8 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .post-wrap h1{font-size:42px;line-height:1.15;margin:0 0 12px}
 .post-wrap .blog-read{display:block;margin-bottom:28px}
 .post-body p{font-size:17px;line-height:1.8;color:var(--ink);margin:0 0 18px}
-.post-body h3{font-size:21px;margin:30px 0 12px}
+.post-body h2{font-size:21px;margin:30px 0 12px}
+.legal h2{font-size:21px;margin:28px 0 8px}
 .post-body ul{margin:0 0 18px;padding-left:22px}
 .post-body li{font-size:17px;line-height:1.7;margin-bottom:8px}
 .post-foot{display:flex;flex-wrap:wrap;gap:18px;align-items:center;justify-content:space-between;border-top:1px solid var(--line-soft);padding-top:26px;margin-top:34px}
