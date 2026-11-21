@@ -340,11 +340,20 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 @media(max-width:600px){.blog-grid{grid-template-columns:1fr}}
 
 /* ============ related links ============ */
-.related-links{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-top:34px;padding-top:22px;border-top:1px solid var(--line-soft);font-size:15px;color:var(--muted)}
-.related-links span{font-weight:700;color:var(--ink);margin-right:2px}
-.related-links a{display:inline-flex;align-items:center;padding:8px 16px;border:1.5px solid #0052ff;border-radius:999px;color:var(--navy);font-weight:700;text-decoration:none;background:#fff;transition:all .18s}
-.related-links a:hover{background:#0052ff;color:#fff;text-decoration:none}
-@media(max-width:680px){.related-links{gap:6px}.related-links span{display:none}.related-links a{font-size:11px;padding:5px 10px;border-width:1px}}
+/* ============ related pages ("Keep exploring") ============ */
+.related{margin-top:44px;padding-top:28px;border-top:1px solid var(--line-soft)}
+.related-label{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:0 0 18px}
+.related-group + .related-group{margin-top:26px}
+.related-group-label{font-size:13.5px;font-weight:700;color:var(--ink);margin:0 0 4px}
+.related-list{list-style:none;margin:0;padding:0}
+.related-list li{border-bottom:1px solid var(--line-soft)}
+.related-list li:first-child{border-top:1px solid var(--line-soft)}
+.related-list a{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:13px 10px;text-decoration:none;color:var(--navy);font-size:15px;font-weight:600;line-height:1.45;transition:background .15s ease}
+.related-list a:hover{background:rgba(0,82,255,.05)}
+.related-list a:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.related-arrow{flex:none;color:var(--muted);transition:transform .15s ease,color .15s ease}
+.related-list a:hover .related-arrow{transform:translateX(3px);color:var(--amber)}
+@media(max-width:680px){.related{margin-top:34px;padding-top:22px}.related-list a{font-size:14.5px;padding:12px 6px}}
 
 /* ============ footer social buttons (placeholders: links arrive later) ============ */
 .foot-social{display:flex;gap:10px;margin:16px 0 4px}

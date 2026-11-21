@@ -105,8 +105,24 @@
       <h1>Reading cloud bills and logs when something costs too much</h1>
       <p class="blog-read">1 min read</p>
       <div class="post-body"><p>Cloud bills surprise beginners because costs grow from many small usages, not one big purchase. The bill itself is the diagnostic tool: it breaks costs down by service, region, and resource. The usual culprits are few: a large instance left running, storage that grows without cleanup, or data transfer between regions that nobody planned.</p><h3>Finding the cost step by step</h3><ul><li>Sort the bill by service and look for the largest line first, since one service usually dominates.</li><li>Check the region breakdown, because the same resource costs different amounts in different regions.</li><li>Look for resources with no owner: untagged instances and orphaned disks are the classic waste.</li><li>Read the logs for the suspect service around the time costs rose, to connect cost with activity.</li></ul><p>Set a billing alert before you need one. An alert at a modest threshold turns a surprise into a routine check.</p></div>
-      <div class="related-links"><span>Related reading:</span> <a href="../blog/aws-building-blocks-ec2-s3-iam">AWS building blocks: EC2, S3, and IAM in one picture</a><a href="../blog/cloud-support-roles-day-to-day">Cloud support roles: what the day-to-day work looks like</a><a href="../blog/ci-cd-pipeline-commit-to-deploy">CI/CD pipelines: what happens between commit and deploy</a></div>
-      <div class="related-links"><span>Related:</span> <a href="../courses">All courses</a><a href="../jobs">Jobs board</a></div>
+            <section class="related" aria-label="Related pages">
+            <h2 class="related-label">Keep exploring</h2>
+            <div class="related-group">
+            <h3 class="related-group-label">More Cloud &amp; DevOps guides</h3>
+            <ul class="related-list">
+            <li><a href="../blog/aws-building-blocks-ec2-s3-iam"><span>AWS building blocks: EC2, S3, and IAM in one picture</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../blog/cloud-support-roles-day-to-day"><span>Cloud support roles: what the day-to-day work looks like</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../blog/ci-cd-pipeline-commit-to-deploy"><span>CI/CD pipelines: what happens between commit and deploy</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            </ul>
+            </div>
+            <div class="related-group">
+            <h3 class="related-group-label">Courses &amp; jobs</h3>
+            <ul class="related-list">
+            <li><a href="../courses"><span>All courses</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../jobs"><span>Jobs board</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            </ul>
+            </div>
+            </section>
       <div class="post-foot">
         <a class="link-arrow" href="../blog">&larr; Back to the blog</a>
         <a class="btn btn-primary" href="../#demo">Book a free demo <span class="arr">→</span></a>
@@ -168,7 +184,6 @@
     <p>© 2026 NaukriSala. All rights reserved.</p>
   </div>
 </footer>
-
 
 <script src="../script.js?v=20261120a"></script>
 <script src="../contact-float.js?v=20261120a"></script>

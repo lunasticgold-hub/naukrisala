@@ -129,7 +129,7 @@ main{background:var(--bg2);padding-bottom:70px}
   .score-num{font-size:44px}
 }
 @media print{
-  .grain,.glow,.nav,.topbar,.footer,.aa-hero,.aa-sec:not(#resumeSec),.no-print,.related-links,.cf-cluster{display:none!important}
+  .grain,.glow,.nav,.topbar,.footer,.aa-hero,.aa-sec:not(#resumeSec),.no-print,.related,.cf-cluster{display:none!important}
   body{background:#fff;overflow:visible}
   .wrap{max-width:100%;padding:0}
   #resumeSec{padding:0;margin:0}
@@ -353,7 +353,24 @@ main{background:var(--bg2);padding-bottom:70px}
     </section>
 
   </div>
-      <div class="related-links"><span>Related:</span> <a href="jobs">Jobs board</a><a href="blog#interviews-resume">Interview & resume guides</a><a href="resume-evaluator">Resume Evaluator</a></div>
+                                                <section class="related" aria-label="Related pages">
+                        <h2 class="related-label">Keep exploring</h2>
+                        <div class="related-group">
+                        <h3 class="related-group-label">Jobs &amp; guides</h3>
+                        <ul class="related-list">
+                        <li><a href="jobs"><span>Jobs board</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+                        <li><a href="blog#interviews-resume"><span>Interview &amp; resume guides</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+                        </ul>
+                        </div>
+                        <div class="related-group">
+                        <h3 class="related-group-label">More tools</h3>
+                        <ul class="related-list">
+                        <li><a href="resume-evaluator"><span>Resume Evaluator</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+                        <li><a href="skill-gap"><span>Skill Gap</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+                        <li><a href="socrates"><span>AI Interview Coach</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+                        </ul>
+                        </div>
+                        </section>
 </main>
 
 <footer class="footer">
@@ -1097,7 +1114,6 @@ $('docxBtn').addEventListener('click', downloadDocx);
 $('copyResumeBtn').addEventListener('click', e => { if (analysis) copyText(resumeText(analysis.p), e.currentTarget); });
 </script>
 <script src="contact-float.js?v=20261120a"></script>
-
 
 </body>
 </html>

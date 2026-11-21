@@ -105,8 +105,24 @@
       <h1>Debugging a Python app: reading tracebacks instead of guessing</h1>
       <p class="blog-read">1 min read</p>
       <div class="post-body"><p>When a Python app crashes, it prints a traceback: a stack of calls ending in the error. Beginners often panic at its length and start changing code at random. The traceback is actually a map. The last line names the error, and the frames above it show the path the code took to reach it. Reading it calmly solves most bugs faster than any other method.</p><h3>Reading a traceback in order</h3><ul><li>Read the last line first: it names the error type and the value that caused it.</li><li>Find your own files in the stack and ignore library frames, since the bug is usually in your code.</li><li>Reproduce the error with the smallest possible input before changing anything.</li><li>Change one thing, rerun, and compare the new traceback with the old one.</li></ul><p>Add temporary prints that show actual values at the failing line. Most bugs become obvious once you see what the code really received.</p></div>
-      <div class="related-links"><span>Related reading:</span> <a href="../blog/python-basics-carry-into-frameworks">Python basics that carry into every framework you learn</a><a href="../blog/django-vs-flask-first-project">Django vs Flask: picking one for your first project</a><a href="../blog/building-rest-api-frontend-use">Building a REST API that a frontend can actually use</a></div>
-      <div class="related-links"><span>Related:</span> <a href="../course-full-stack-python">Full Stack Python course</a><a href="../jobs">Jobs board</a></div>
+            <section class="related" aria-label="Related pages">
+            <h2 class="related-label">Keep exploring</h2>
+            <div class="related-group">
+            <h3 class="related-group-label">More Full Stack Python guides</h3>
+            <ul class="related-list">
+            <li><a href="../blog/python-basics-carry-into-frameworks"><span>Python basics that carry into every framework you learn</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../blog/django-vs-flask-first-project"><span>Django vs Flask: picking one for your first project</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../blog/building-rest-api-frontend-use"><span>Building a REST API that a frontend can actually use</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            </ul>
+            </div>
+            <div class="related-group">
+            <h3 class="related-group-label">Courses &amp; jobs</h3>
+            <ul class="related-list">
+            <li><a href="../course-full-stack-python"><span>Full Stack Python course</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../jobs"><span>Jobs board</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            </ul>
+            </div>
+            </section>
       <div class="post-foot">
         <a class="link-arrow" href="../blog">&larr; Back to the blog</a>
         <a class="btn btn-primary" href="../#demo">Book a free demo <span class="arr">→</span></a>
@@ -168,7 +184,6 @@
     <p>© 2026 NaukriSala. All rights reserved.</p>
   </div>
 </footer>
-
 
 <script src="../script.js?v=20261120a"></script>
 <script src="../contact-float.js?v=20261120a"></script>

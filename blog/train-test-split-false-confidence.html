@@ -105,8 +105,24 @@
       <h1>Train-test split: the habit that prevents false confidence</h1>
       <p class="blog-read">1 min read</p>
       <div class="post-body"><p>A model that has seen the answers during training will score well on those answers. That score says nothing about new data. The train-test split fixes this by holding out part of the data before training, then testing only on the held-out part. It is a simple habit, and skipping it is the most common beginner mistake in machine learning.</p><h3>Doing the split properly</h3><ul><li>Split before any preprocessing that learns from data, such as scaling or imputation, or information leaks into the test set.</li><li>Keep the test set untouched during model selection. Repeated peeking turns it into training data.</li><li>Stratify the split for classification, so each class appears in both parts in roughly its original proportion.</li><li>Report the test score alongside the training score. A large gap between them signals overfitting.</li></ul><p>When a model scores far better in training than in testing, it has memorised, not learned. Trust the test score, and fix the model, not the split.</p></div>
-      <div class="related-links"><span>Related reading:</span> <a href="../blog/cleaning-messy-data-pandas">Cleaning messy data with pandas before any model</a><a href="../blog/regression-vs-classification-model-type">Regression vs classification: choosing the right model type</a><a href="../blog/overfitting-ace-training-fail-live">Overfitting: why a model can ace training and fail live</a></div>
-      <div class="related-links"><span>Related:</span> <a href="../course-data-science-ai">Data Science & AI course</a><a href="../jobs">Jobs board</a></div>
+            <section class="related" aria-label="Related pages">
+            <h2 class="related-label">Keep exploring</h2>
+            <div class="related-group">
+            <h3 class="related-group-label">More Data Science &amp; AI guides</h3>
+            <ul class="related-list">
+            <li><a href="../blog/cleaning-messy-data-pandas"><span>Cleaning messy data with pandas before any model</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../blog/regression-vs-classification-model-type"><span>Regression vs classification: choosing the right model type</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../blog/overfitting-ace-training-fail-live"><span>Overfitting: why a model can ace training and fail live</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            </ul>
+            </div>
+            <div class="related-group">
+            <h3 class="related-group-label">Courses &amp; jobs</h3>
+            <ul class="related-list">
+            <li><a href="../course-data-science-ai"><span>Data Science &amp; AI course</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../jobs"><span>Jobs board</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            </ul>
+            </div>
+            </section>
       <div class="post-foot">
         <a class="link-arrow" href="../blog">&larr; Back to the blog</a>
         <a class="btn btn-primary" href="../#demo">Book a free demo <span class="arr">→</span></a>
@@ -168,7 +184,6 @@
     <p>© 2026 NaukriSala. All rights reserved.</p>
   </div>
 </footer>
-
 
 <script src="../script.js?v=20261120a"></script>
 <script src="../contact-float.js?v=20261120a"></script>

@@ -124,7 +124,7 @@
 #board{display:none}
 #board.open{display:block}
 #board section{background:var(--bg2)}
-@media(max-width:680px){.jobs-hero{padding:44px 0 38px}.controls{position:static;top:64px}.job-apply{flex:1;text-align:center}.related-links{gap:6px}.related-links span{display:none}.related-links a{font-size:11px;padding:5px 10px;border-width:1px}#grid,#listings{scroll-margin-top:80px}#chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}#chips::-webkit-scrollbar{display:none}#chips .chip{flex:none}}
+@media(max-width:680px){.jobs-hero{padding:44px 0 38px}.controls{position:static;top:64px}.job-apply{flex:1;text-align:center}#grid,#listings{scroll-margin-top:80px}#chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none}#chips::-webkit-scrollbar{display:none}#chips .chip{flex:none}}
 </style>
 
 <!-- NS-JSONLD-START -->
@@ -328,7 +328,24 @@
     </div>
   </section>
   </div>
-      <div class="wrap"><div class="related-links"><span>Related:</span> <a href="courses">Courses</a><a href="blog#jobs-placement">Job-hunt guides</a><a href="track-record">Placement stories</a></div></div>
+      <div class="wrap">      <section class="related" aria-label="Related pages">
+      <h2 class="related-label">Keep exploring</h2>
+      <div class="related-group">
+      <h3 class="related-group-label">Guides &amp; courses</h3>
+      <ul class="related-list">
+      <li><a href="blog#jobs-placement"><span>Job-hunt guides</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="courses"><span>Courses</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="track-record"><span>Placement stories</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+      </ul>
+      </div>
+      <div class="related-group">
+      <h3 class="related-group-label">Application tools</h3>
+      <ul class="related-list">
+      <li><a href="apply"><span>Apply Assistant</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+      <li><a href="resume-evaluator"><span>Resume Evaluator</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+      </ul>
+      </div>
+      </section></div>
 </main>
 
 <footer class="footer">

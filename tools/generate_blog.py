@@ -1,7 +1,14 @@
 """Generate NaukriSala blog: blog.html index + blog/<slug>.html x100 from posts.js.
 Source of truth: posts.js (NS_POSTS). Re-run after any template change.
-Usage: python3 tools/generate_blog.py  (run from the repo root)"""
+Usage: python3 tools/generate_blog.py  (run from the repo root)
+
+The "Keep exploring" section at the end of each post comes from
+tools/related.py (related_for_post + render_related) — the single source of
+truth for related links across the whole site."""
 import json, subprocess, html, os, re, sys
+
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
+from related import related_for_post, render_related
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 os.chdir(ROOT)
@@ -187,27 +194,11 @@ open('blog.html', 'w', encoding='utf-8').write(blog_html)
 # ---------- post pages ----------
 nav2, foot2 = chrome('../')
 os.makedirs('blog', exist_ok=True)
-RELATED = {
-  "AML & KYC": [("AML & KYC course", "../course-aml-kyc"), ("Jobs board", "../jobs")],
-  "ServiceNow": [("ServiceNow course", "../course-servicenow"), ("Jobs board", "../jobs")],
-  "STOM": [("STOM course", "../course-stom"), ("Jobs board", "../jobs")],
-  "Data Science & AI": [("Data Science & AI course", "../course-data-science-ai"), ("Jobs board", "../jobs")],
-  "Full Stack Python": [("Full Stack Python course", "../course-full-stack-python"), ("Jobs board", "../jobs")],
-  "Cloud & DevOps": [("All courses", "../courses"), ("Jobs board", "../jobs")],
-  "Testing": [("All courses", "../courses"), ("Jobs board", "../jobs")],
-  "Finance Operations": [("All courses", "../courses"), ("Jobs board", "../jobs")],
-  "Career Change": [("All courses", "../courses"), ("Placement stories", "../track-record")],
-  "Interviews & Resume": [("Jobs board", "../jobs"), ("Apply Assistant", "../apply")],
-  "Jobs & Placement": [("Jobs board", "../jobs"), ("All courses", "../courses")],
-}
+# "Keep exploring": same-track guides first, then the track's
+# course/jobs pages — see tools/related.py.
 for p in POSTS:
-    rel_html = '<div class="related-links"><span>Related:</span> ' + ''.join('<a href="' + u + '">' + t + '</a>' for t, u in RELATED[p['track']]) + '</div>'
-    # Related reading: other posts from the same track first, then other
-    # tracks — so blog posts link to each other, not only to course pages.
-    same_track = [q for q in POSTS if q['track'] == p['track'] and q['slug'] != p['slug']]
-    other_tracks = [q for q in POSTS if q['track'] != p['track'] and q['slug'] != p['slug']]
-    rel_posts = (same_track + other_tracks)[:3]
-    rel_posts_html = '<div class="related-links"><span>Related reading:</span> ' + ''.join('<a href="../blog/' + q['slug'] + '">' + html.escape(q['title']) + '</a>' for q in rel_posts) + '</div>' if rel_posts else ''
+    related_html = render_related(related_for_post(p, POSTS), prefix='../',
+                                  current='blog/' + p['slug'], indent='      ')
     page = head(p['title'], p['excerpt'], f"blog/{p['slug']}", '../') + nav2 + f"""
 <main>
   <section class="section">
@@ -216,8 +207,7 @@ for p in POSTS:
       <h1>{html.escape(p['title'])}</h1>
       <p class="blog-read">{p['read']} min read</p>
       <div class="post-body">{p['body']}</div>
-      {rel_posts_html}
-      {rel_html}
+{related_html}
       <div class="post-foot">
         <a class="link-arrow" href="../blog">&larr; Back to the blog</a>
         <a class="btn btn-primary" href="../#demo">Book a free demo <span class="arr">→</span></a>

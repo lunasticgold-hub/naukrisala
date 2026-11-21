@@ -105,8 +105,24 @@
       <h1>Kubernetes concepts: pods, services, and why they exist</h1>
       <p class="blog-read">1 min read</p>
       <div class="post-body"><p>Running a handful of containers by hand is manageable. Running hundreds across many machines is not: containers crash, machines fill up, and traffic needs routing to whichever copy is healthy. Kubernetes automates that work. It watches the desired state you declare and keeps reality matching it, restarting failed containers and spreading load.</p><h3>The core objects, simply</h3><ul><li>Pods are the smallest unit: one or more containers that share storage and network and run together.</li><li>Deployments declare how many copies of a pod should run, and replace them when they fail or update.</li><li>Services give a stable address to a changing set of pods, so callers never track individual containers.</li><li>ConfigMaps and secrets hold settings outside the container image, so the same image runs anywhere.</li></ul><p>Learn these four objects before touching anything advanced. Most real clusters use them for the majority of workloads.</p></div>
-      <div class="related-links"><span>Related reading:</span> <a href="../blog/aws-building-blocks-ec2-s3-iam">AWS building blocks: EC2, S3, and IAM in one picture</a><a href="../blog/cloud-support-roles-day-to-day">Cloud support roles: what the day-to-day work looks like</a><a href="../blog/ci-cd-pipeline-commit-to-deploy">CI/CD pipelines: what happens between commit and deploy</a></div>
-      <div class="related-links"><span>Related:</span> <a href="../courses">All courses</a><a href="../jobs">Jobs board</a></div>
+            <section class="related" aria-label="Related pages">
+            <h2 class="related-label">Keep exploring</h2>
+            <div class="related-group">
+            <h3 class="related-group-label">More Cloud &amp; DevOps guides</h3>
+            <ul class="related-list">
+            <li><a href="../blog/aws-building-blocks-ec2-s3-iam"><span>AWS building blocks: EC2, S3, and IAM in one picture</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../blog/cloud-support-roles-day-to-day"><span>Cloud support roles: what the day-to-day work looks like</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../blog/ci-cd-pipeline-commit-to-deploy"><span>CI/CD pipelines: what happens between commit and deploy</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            </ul>
+            </div>
+            <div class="related-group">
+            <h3 class="related-group-label">Courses &amp; jobs</h3>
+            <ul class="related-list">
+            <li><a href="../courses"><span>All courses</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../jobs"><span>Jobs board</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            </ul>
+            </div>
+            </section>
       <div class="post-foot">
         <a class="link-arrow" href="../blog">&larr; Back to the blog</a>
         <a class="btn btn-primary" href="../#demo">Book a free demo <span class="arr">→</span></a>
@@ -168,7 +184,6 @@
     <p>© 2026 NaukriSala. All rights reserved.</p>
   </div>
 </footer>
-
 
 <script src="../script.js?v=20261120a"></script>
 <script src="../contact-float.js?v=20261120a"></script>

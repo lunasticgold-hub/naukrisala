@@ -105,8 +105,24 @@
       <h1>RAG in plain terms: grounding answers in your own documents</h1>
       <p class="blog-read">1 min read</p>
       <div class="post-body"><p>A language model on its own answers from what it learned in training, which may be outdated or invented. Retrieval-augmented generation, or RAG, changes this: the system first searches your documents for relevant passages, then gives those passages to the model along with the question. The answer is grounded in text you control, which makes it easier to check.</p><h3>How a basic RAG system works</h3><ul><li>Documents are split into short chunks, each small enough to fit into a prompt alongside others.</li><li>Each chunk is converted into a numerical representation that captures its meaning, so similar text can be found.</li><li>A question is converted the same way, and the closest chunks are retrieved for that question.</li><li>The model receives the question plus the retrieved chunks, and is instructed to answer from them.</li></ul><p>RAG does not remove the need to verify answers. It makes verification possible, because every answer can be traced to a source passage.</p></div>
-      <div class="related-links"><span>Related reading:</span> <a href="../blog/cleaning-messy-data-pandas">Cleaning messy data with pandas before any model</a><a href="../blog/train-test-split-false-confidence">Train-test split: the habit that prevents false confidence</a><a href="../blog/regression-vs-classification-model-type">Regression vs classification: choosing the right model type</a></div>
-      <div class="related-links"><span>Related:</span> <a href="../course-data-science-ai">Data Science & AI course</a><a href="../jobs">Jobs board</a></div>
+            <section class="related" aria-label="Related pages">
+            <h2 class="related-label">Keep exploring</h2>
+            <div class="related-group">
+            <h3 class="related-group-label">More Data Science &amp; AI guides</h3>
+            <ul class="related-list">
+            <li><a href="../blog/cleaning-messy-data-pandas"><span>Cleaning messy data with pandas before any model</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../blog/train-test-split-false-confidence"><span>Train-test split: the habit that prevents false confidence</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../blog/regression-vs-classification-model-type"><span>Regression vs classification: choosing the right model type</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            </ul>
+            </div>
+            <div class="related-group">
+            <h3 class="related-group-label">Courses &amp; jobs</h3>
+            <ul class="related-list">
+            <li><a href="../course-data-science-ai"><span>Data Science &amp; AI course</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../jobs"><span>Jobs board</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            </ul>
+            </div>
+            </section>
       <div class="post-foot">
         <a class="link-arrow" href="../blog">&larr; Back to the blog</a>
         <a class="btn btn-primary" href="../#demo">Book a free demo <span class="arr">→</span></a>
@@ -168,7 +184,6 @@
     <p>© 2026 NaukriSala. All rights reserved.</p>
   </div>
 </footer>
-
 
 <script src="../script.js?v=20261120a"></script>
 <script src="../contact-float.js?v=20261120a"></script>

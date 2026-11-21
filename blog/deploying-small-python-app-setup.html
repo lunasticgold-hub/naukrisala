@@ -105,8 +105,24 @@
       <h1>Deploying a small Python app without drowning in setup</h1>
       <p class="blog-read">1 min read</p>
       <div class="post-body"><p>Beginners often finish an app and then stall on deployment, because it involves servers, settings, and services they have never touched. The trick is to deploy early, while the app is small, using the simplest platform that runs it. A live app with rough edges teaches deployment. A perfect app on your laptop teaches nothing.</p><h3>A deployment sequence that works</h3><ul><li>List every setting that differs between your machine and the server, especially secrets and database addresses.</li><li>Move secrets into environment variables instead of leaving them in code, before the first deploy.</li><li>Deploy a minimal version first, confirm it responds, then add the database and other services one at a time.</li><li>Write down each step as you do it, so the second deploy takes minutes instead of hours.</li></ul><p>NaukriSala runs a track covering this area. Expect the first deployment to take a day. The second one should take under an hour.</p></div>
-      <div class="related-links"><span>Related reading:</span> <a href="../blog/python-basics-carry-into-frameworks">Python basics that carry into every framework you learn</a><a href="../blog/django-vs-flask-first-project">Django vs Flask: picking one for your first project</a><a href="../blog/building-rest-api-frontend-use">Building a REST API that a frontend can actually use</a></div>
-      <div class="related-links"><span>Related:</span> <a href="../course-full-stack-python">Full Stack Python course</a><a href="../jobs">Jobs board</a></div>
+            <section class="related" aria-label="Related pages">
+            <h2 class="related-label">Keep exploring</h2>
+            <div class="related-group">
+            <h3 class="related-group-label">More Full Stack Python guides</h3>
+            <ul class="related-list">
+            <li><a href="../blog/python-basics-carry-into-frameworks"><span>Python basics that carry into every framework you learn</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../blog/django-vs-flask-first-project"><span>Django vs Flask: picking one for your first project</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../blog/building-rest-api-frontend-use"><span>Building a REST API that a frontend can actually use</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            </ul>
+            </div>
+            <div class="related-group">
+            <h3 class="related-group-label">Courses &amp; jobs</h3>
+            <ul class="related-list">
+            <li><a href="../course-full-stack-python"><span>Full Stack Python course</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            <li><a href="../jobs"><span>Jobs board</span><span class="related-arrow" aria-hidden="true">→</span></a></li>
+            </ul>
+            </div>
+            </section>
       <div class="post-foot">
         <a class="link-arrow" href="../blog">&larr; Back to the blog</a>
         <a class="btn btn-primary" href="../#demo">Book a free demo <span class="arr">→</span></a>
@@ -168,7 +184,6 @@
     <p>© 2026 NaukriSala. All rights reserved.</p>
   </div>
 </footer>
-
 
 <script src="../script.js?v=20261120a"></script>
 <script src="../contact-float.js?v=20261120a"></script>
