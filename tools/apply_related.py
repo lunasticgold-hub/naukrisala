@@ -30,22 +30,34 @@ NEW_RE = re.compile(r'<section class="related" aria-label="Related pages">.*?</s
 OLD_RE = re.compile(r'<div class="related-links">.*?</div>', re.DOTALL)
 
 
+INDENT = "      "  # 6 spaces, the file style. Fixed, never derived from
+# the current line: deriving it re-added the existing indent on every run
+# and the first line doubled each time (96 spaces by the third run).
+
+
 def replace_section(text, new_html):
-    """Swap the existing related block (new or old markup) for new_html,
-    keeping the original line's indentation. Returns (text, replaced?)."""
+    """Swap the existing related block (new or old markup) for new_html.
+    Returns (text, replaced?). The block is re-indented to INDENT; the
+    first line keeps any markup already on its line (jobs.html keeps its
+    <div class="wrap"> on the same line as the section)."""
     for rx in (NEW_RE, OLD_RE):
         m = rx.search(text)
         if not m:
             continue
         line_start = text.rfind("\n", 0, m.start()) + 1
-        # Indent is the line's leading whitespace ONLY. (jobs.html kept its
-        # <div class="wrap"> on the same line as the old strip; taking the
-        # whole prefix repeated the wrap div on every new line.)
-        _line = text[line_start:m.start()]
-        indent = _line[:len(_line) - len(_line.lstrip(" \t"))]
-        indented = "\n".join((indent + ln) if ln else ln
-                             for ln in new_html.split("\n"))
-        return text[:m.start()] + indented + text[m.end():], True
+        prefix = text[line_start:m.start()]
+        lines = new_html.split("\n")
+        if prefix.strip() == "":
+            # Block starts its own line: normalize the indent to INDENT.
+            body = "\n".join([INDENT + lines[0]]
+                             + [(INDENT + ln) if ln else ln
+                                for ln in lines[1:]])
+            return text[:line_start] + body + text[m.end():], True
+        # Mid-line (e.g. jobs.html's wrap div): keep the prefix, first
+        # line unindented, the rest at INDENT.
+        body = "\n".join([lines[0]]
+                         + [(INDENT + ln) if ln else ln for ln in lines[1:]])
+        return text[:m.start()] + body + text[m.end():], True
     return text, False
 
 
@@ -134,11 +146,20 @@ def main():
             blog_fail += 1
             continue
         line_start = t.rfind("\n", 0, m.start()) + 1
-        indent = t[line_start:m.start()]
-        indented = "\n".join((indent + ln) if ln else ln
-                              for ln in section.group(0).split("\n"))
-        open(twin, "w", encoding="utf-8").write(
-            t[:m.start()] + indented + t[m.end():])
+        prefix = t[line_start:m.start()]
+        sec_lines = section.group(0).split("\n")
+        if prefix.strip() == "":
+            body = "\n".join([INDENT + sec_lines[0]]
+                             + [(INDENT + ln) if ln else ln
+                                for ln in sec_lines[1:]])
+            open(twin, "w", encoding="utf-8").write(
+                t[:line_start] + body + t[m.end():])
+        else:
+            body = "\n".join([sec_lines[0]]
+                             + [(INDENT + ln) if ln else ln
+                                for ln in sec_lines[1:]])
+            open(twin, "w", encoding="utf-8").write(
+                t[:m.start()] + body + t[m.end():])
     print(f"blog twins: {len(posts) - blog_fail}/{len(posts)} updated"
           + (f", {blog_fail} failed" if blog_fail else ""))
     failures.extend(["blog"] * blog_fail)
