@@ -412,7 +412,7 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .pl-arrows{display:flex;gap:8px;flex:0 0 auto;padding-bottom:6px}
 .pl-arrow{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);font-size:18px;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center}
 .pl-arrow:hover{border-color:var(--amber);color:var(--amber)}
-.pl-track{display:flex;gap:16px;overflow-x:auto;padding:6px 2px 14px;scrollbar-width:none;cursor:grab;scroll-snap-type:x proximity}
+.pl-track{display:flex;gap:16px;overflow-x:auto;padding:6px 2px 14px;scrollbar-width:none;cursor:grab;scroll-snap-type:x proximity;user-select:none;-webkit-user-select:none;touch-action:pan-x}
 .pl-track::-webkit-scrollbar{display:none}
 .pl-track:active{cursor:grabbing}
 .pl-track:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
