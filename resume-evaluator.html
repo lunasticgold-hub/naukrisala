@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261123c">
+<link rel="stylesheet" href="styles.css?v=20261123d">
 <link rel="stylesheet" href="contact-float.css?v=20261123c">
 <link rel="icon" type="image/png" href="assets/brand/ns-logo-blue.png">
 <link rel="stylesheet" href="tools.css?v=20261025n4">
@@ -267,13 +267,13 @@ function scoreResume(text, slug) {
 
   /* structure — 15 */
   const hasSummary = hasHeading(text, /summary|objective|profile/i);
-  const hasExp = hasHeading(text, /experience|employment|internship|work history/i) || /\bexperience\b/i.test(text);
+  const hasExp = hasHeading(text, /experience|employment|work history/i) || /\bexperience\b/i.test(text);
   const hasEdu = hasHeading(text, /education|qualification/i) || /\b(b\.?com|b\.?tech|b\.?sc|b\.?a\.?|mba|bachelor|master|graduat)/i.test(text);
   const hasSkills = hasHeading(text, /skills/i);
   let structure = (hasSummary ? 4 : 0) + (hasExp ? 4 : 0) + (hasEdu ? 4 : 0) + (hasSkills ? 3 : 0);
   if (!hasSummary) fixes.push({ lost: 4, text: '<b>Add a 2–3 line Professional Summary</b> under your name: your target role, your strongest skills, and one proof point. It is the first thing a human reads.' });
   if (!hasSkills) fixes.push({ lost: 3, text: '<b>Add a clearly headed Skills section</b> — screening software scans section headings, and buried skills often go uncounted.' });
-  if (!hasExp) fixes.push({ lost: 4, text: '<b>Add an Experience section</b> — jobs, internships, freelance or serious project work, with what you actually did under each.' });
+  if (!hasExp) fixes.push({ lost: 4, text: '<b>Add an Experience section</b> — jobs, freelance or serious project work, with what you actually did under each.' });
   if (!hasEdu) fixes.push({ lost: 4, text: '<b>Add your Education</b> — degree, institution and year. Most entry-level screens check for it explicitly.' });
   total += addDim('Structure & sections', structure, 15, [hasSummary ? 'summary ✓' : 'no summary', hasExp ? 'experience ✓' : 'no experience', hasEdu ? 'education ✓' : 'no education', hasSkills ? 'skills ✓' : 'no skills section'].join(' · '));
 
@@ -318,7 +318,7 @@ const SAMPLE = [
   'priya.sharma@example.com · 9812345670',
   '',
   'Experience',
-  'KYC Analyst Intern — FinServe Solutions, Mumbai (2025)',
+  'KYC Analyst — FinServe Solutions, Mumbai (2025)',
   'I checked KYC documents for new customers and I updated records in the system.',
   'I did name screening and sanctions screening for customer files.',
   'I helped the team with customer onboarding and document verification.',

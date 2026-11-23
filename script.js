@@ -61,10 +61,10 @@ document.addEventListener("click", function (e) {
   try { sessionStorage.setItem("ns_course", a.getAttribute("data-course")); } catch (err) { /* private mode */ }
 });
 const COURSE_OPENINGS = {
-  "aml-kyc": 1136, "servicenow": 194, "data-science-ai": 409, "stom": 109,
-  "power-bi": 133, "data-analyst": 234, "workday": 196, "python-fullstack": 370,
-  "java-fullstack": 620, "qa-testing": 428, "ib-operations": 143,
-  "sap-fico": 132, "web-dev": 218, "dotnet": 216, "dbi": 346
+  "aml-kyc": 1129, "servicenow": 194, "data-science-ai": 408, "stom": 109,
+  "power-bi": 133, "data-analyst": 228, "workday": 196, "python-fullstack": 366,
+  "java-fullstack": 619, "qa-testing": 427, "ib-operations": 142,
+  "sap-fico": 132, "web-dev": 213, "dotnet": 216, "dbi": 346
 };
 
 function renderCourses() {

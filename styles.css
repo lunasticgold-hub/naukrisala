@@ -182,7 +182,7 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .course-body{position:relative;padding:40px 22px 22px;display:flex;flex-direction:column;gap:11px;flex:1;text-align:center}
 .course-badge{position:absolute;top:-26px;right:18px;width:52px;height:52px;border-radius:50%;background:#fff;border:1px solid var(--line-soft);box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:center;z-index:2}
 .course-badge img{width:34px;height:34px;object-fit:contain}
-.course-provider{font-size:.85rem;font-weight:700;letter-spacing:.02em;color:#C62828}
+.course-provider{font-size:.85rem;font-weight:700;letter-spacing:.02em;color:#3252A4}
 .course h3{font-family:var(--font-d);font-size:23px;font-weight:700;letter-spacing:-.015em;line-height:1.16;overflow-wrap:break-word}
 .course .tag{font-size:14px;color:var(--ink2);overflow-wrap:break-word}
 .course .pay{font-family:var(--font-d);font-size:27px;font-weight:800;color:var(--ink);letter-spacing:-.02em;padding-top:8px}

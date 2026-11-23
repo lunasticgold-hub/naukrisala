@@ -6,6 +6,9 @@
 - contract: normalized to Full-time / Part-time / Contract / Internship / ''.
 - city: canonical city extracted from location ('' when not listed).
 - jobs sorted newest-first by (fetched, created) so fresh pulls sit on top.
+- internships dropped: the site mentions placements only, never internships
+  (founder's order 23 Nov 2026) — a job whose contract is Internship, or
+  whose title carries an intern/internship word, never reaches the board.
 """
 import html as htmlmod
 import json
@@ -189,6 +192,17 @@ def dedup(jobs):
     return out, dropped
 
 
+INTERN_RE = re.compile(r"\bintern(ship|ships|s)?\b", re.I)
+
+
+def is_internship(j):
+    """Internship listing: contract Internship, or an intern/internship
+    word in the title. Dropped by main() — placements only, per the
+    founder's 23 Nov 2026 order."""
+    return j.get("contract") == "Internship" or bool(
+        INTERN_RE.search(j.get("title") or ""))
+
+
 def clean_snippet(s):
     s = htmlmod.unescape(s or "")
     s = re.sub(r"<[^>]+>", " ", s)
@@ -248,6 +262,10 @@ def main():
         j["city"] = city_of(j.get("location"))
         j["snippet"] = clean_snippet(j.get("snippet"))
         j["salary_text"] = salary_text(j)
+    before = len(jobs)
+    jobs = [j for j in jobs if not is_internship(j)]
+    if before != len(jobs):
+        print(f"removed {before - len(jobs)} internship listings (placements only)")
     jobs.sort(key=lambda j: (j["fetched"], j.get("created") or ""), reverse=True)
     jobs, dropped = dedup(jobs)
     flagged = load_flagged_ids()
