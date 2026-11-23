@@ -31,9 +31,10 @@ ROOT = os.path.dirname(os.path.abspath(__file__))
 BASE = sys.argv[1].rstrip("/") if len(sys.argv) > 1 else \
     "https://naukrisala.in"
 
-ORG_DESC = ("NaukriSala is a placement-first training academy — 100% online. "
-            "Start with ₹15,000. The rest is paid only after you're placed, "
-            "in easy installments from your salary.")
+ORG_DESC = ("NaukriSala is a placement-first training academy — 100% online.")
+# NOTE: no fee figure here. The ₹15,000 onboarding is confirmed for AML & KYC
+# only; the org description is injected on every page, so stating a fee here
+# would assert it site-wide. Per-programme fees live on the programme pages.
 LOGO = BASE + "/assets/brand/ns-logo-blue.png"
 
 START = "<!-- NS-JSONLD-START -->"
@@ -76,6 +77,11 @@ def _iso_duration(text):
 
 def build_course(rel, canonical, desc, html):
     """Course node from the page's own H1, meta line and fees line."""
+    # Strip any previous JSON-LD block first: its own Offer text contains
+    # "₹15,000 to start", so without this a stale Offer re-creates itself
+    # on every re-run even after the visible fee line is removed.
+    html = re.sub(re.escape(START) + r".*?" + re.escape(END), "", html,
+                  flags=re.S)
     h1 = re.search(r"<h1[^>]*>(.*?)</h1>", html, re.S)
     if not h1:
         return None
