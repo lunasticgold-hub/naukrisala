@@ -1,4 +1,4 @@
-/* Placements & internships strip — renders window.NS_PLACEMENTS (built by
+/* Placements strip — renders window.NS_PLACEMENTS (built by
    tools/build_placements.py from track-record.html) into every
    .pl-strip section on course pages.
    Behaviour: auto-scrolls left on its own AND stays manually scrollable
@@ -57,7 +57,7 @@
       if (!last) last = ts;
       var dt = ts - last; last = ts;
       if (dt > 250) dt = 250; // tab was hidden/throttled — no big jump
-      track.scrollLeft += (dt / 1000) * 36; // ~36px/s
+      track.scrollLeft += (dt / 1000) * 20; // ~20px/s — slow drift, right to left
       if (track.scrollLeft >= setWidth) track.scrollLeft -= setWidth;
       raf = requestAnimationFrame(loop);
     }

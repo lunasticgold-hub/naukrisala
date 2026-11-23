@@ -183,9 +183,34 @@ PAGE_RELATED = {
 # Course pages follow one rule each: their track's guides, then jobs, the
 # course listing and the fees page (enrolment). Built from COURSES so a new
 # dedicated course page is covered by adding one COURSES entry.
+# The Guides group lists real posts from the track (first 3 in posts.js
+# order) instead of a single hub link — added 2026-11-23, on the founder's
+# order to suggest blogs related to each course. If posts.js cannot be
+# read, it falls back to the single hub link.
+def _load_posts():
+    try:
+        import json as _json
+        import subprocess as _sp
+        _out = _sp.run(["node", "-e",
+                        "const fs=require('fs');let src=fs.readFileSync('posts.js','utf8')"
+                        ".replace('const NS_POSTS','NS_POSTS');eval(src);"
+                        "console.log(JSON.stringify(NS_POSTS))"],
+                       capture_output=True, text=True, check=True, cwd=ROOT)
+        return _json.loads(_out.stdout)
+    except Exception:
+        return []
+
+
+_POSTS = _load_posts()
+
 for _slug, _c in COURSES.items():
+    _track_posts = [p for p in _POSTS if p["track"] == _c["track"]][:3]
+    if _track_posts:
+        _guides = [(p["title"], "blog/" + p["slug"]) for p in _track_posts]
+    else:
+        _guides = [(f"{_c['track']} guides", "blog#" + _c["track_hash"])]
     PAGE_RELATED[_c["page"] + ".html"] = [
-        ("Guides", [(f"{_c['track']} guides", "blog#" + _c["track_hash"])]),
+        ("Guides", _guides),
         ("Courses & enrolment", [("Jobs board", "jobs"),
                                  ("All courses", "courses"),
                                  ("Fees & enrolment", "fees")]),
