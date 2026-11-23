@@ -170,6 +170,9 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 /* courses */
 .course-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(320px,100%),1fr));gap:22px}
 .course{position:relative;background:var(--card);border:1px solid var(--line-soft);border-radius:var(--r);display:flex;flex-direction:column;min-width:0;overflow:hidden;transition:transform .25s ease,box-shadow .25s ease}
+.course-link{position:absolute;inset:0;z-index:1}
+.course-actions,.course-syllabus{position:relative;z-index:2}
+.course:has(.course-link:focus-visible){outline:2px solid var(--amber);outline-offset:3px}
 .course:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
 .course.flagship{border:1.5px solid rgba(0,82,255,.65)}
 .course-photo{position:relative;height:0;padding-top:56.25%;overflow:hidden;background:#e8edf5}

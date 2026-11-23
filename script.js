@@ -79,6 +79,7 @@ function renderCourses() {
     const batch = c.flagship ? "Batch Starts on 10 Jan 2027" : "Enrolments open";
     return `
     <div class="course${c.flagship ? " flagship" : ""} reveal">
+      <a class="course-link" href="${COURSE_PAGE[slug] || "/#demo"}" aria-label="View ${c.name} programme"></a>
       <div class="course-photo">
         <img src="${c.img}" alt="${c.name} — NaukriSala" loading="lazy">
         <span class="course-status">${c.status}</span>
