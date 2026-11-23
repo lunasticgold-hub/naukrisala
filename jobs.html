@@ -27,7 +27,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=20261122b">
+<link rel="stylesheet" href="styles.css?v=20261123a">
 <link rel="stylesheet" href="contact-float.css?v=20261120a">
 <link rel="icon" type="image/png" href="assets/brand/ns-logo-blue.png">
 <style>
@@ -194,21 +194,6 @@
 </header>
 
 <main>
-  <section class="lock" id="lock">
-    <div class="wrap" style="display:flex;justify-content:center">
-      <div class="lock-card" id="lockCard">
-        <p class="kicker">Enrolled students only</p>
-        <h2>This board is for<br><em>paid students.</em></h2>
-        <p>The live job board unlocks after enrollment. Your access code was shared with you when you joined — enter it below.</p>
-        <div class="code-row">
-          <input id="codeInput" type="text" placeholder="NS-XXXX-XXXX" autocomplete="off" spellcheck="false">
-          <button type="button" class="btn btn-primary" id="unlockBtn">Unlock</button>
-        </div>
-        <p class="code-err" id="codeErr"></p>
-      </div>
-    </div>
-  </section>
-
   <div id="board">
   <section class="jobs-hero">
     <div class="wrap jobs-hero-grid">
@@ -404,44 +389,12 @@
 </footer>
 
 <script>
-const GATE_ENABLED = false; // flip to true at launch to require the paid-student access code
-const CODE_HASH = '92831ee3e800b54327a4ac73cb28191e27d0468d1dd9c2300a602d709768e45c';
-const lock = document.getElementById('lock'),
-      board = document.getElementById('board'),
-      codeInput = document.getElementById('codeInput'),
-      codeErr = document.getElementById('codeErr'),
-      lockCard = document.getElementById('lockCard');
-
-const sha256 = async s =>
-  [...new Uint8Array(await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)))]
-    .map(b => b.toString(16).padStart(2, '0')).join('');
-
-async function tryUnlock() {
-  const v = codeInput.value.trim().toUpperCase();
-  if (!v) return;
-  if (await sha256(v) === CODE_HASH) {
-    localStorage.setItem('ns_gate', CODE_HASH);
-    openBoard();
-  } else {
-    codeErr.textContent = 'That code didn\u2019t work — check it and try again.';
-    lockCard.classList.remove('shake'); void lockCard.offsetWidth;
-    lockCard.classList.add('shake');
-  }
-}
+const board = document.getElementById('board');
 function openBoard() {
-  lock.style.display = 'none';
   board.classList.add('open');
   loadJobs();
 }
-document.getElementById('unlockBtn').addEventListener('click', tryUnlock);
-codeInput.addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
-
-if (!GATE_ENABLED) {
-  lock.style.display = 'none';
-  openBoard();
-} else if (localStorage.getItem('ns_gate') === CODE_HASH) {
-  openBoard();
-}
+openBoard();
 
 function loadJobs() {
 const grid = document.getElementById('grid'),
