@@ -74,7 +74,7 @@ body{background:var(--paper);color:var(--ink);font-family:var(--font-b);line-hei
 .nav-links a:hover{color:var(--navy)}
 .nav-links a:first-child::after{content:"▾";font-size:11px;margin-left:5px;color:#6b7280}
 .nav-cta{display:flex;align-items:center;gap:12px}
-.nav-cta .btn{border-radius:999px;background:#e53935;box-shadow:0 10px 24px rgba(229,57,53,.35);font-weight:700;text-transform:uppercase;letter-spacing:.02em}
+.nav-cta .btn{border-radius:999px;background:#C62828;box-shadow:0 10px 24px rgba(229,57,53,.35);font-weight:700;text-transform:uppercase;letter-spacing:.02em}
 .nav-cta .btn:hover{background:#c62828}
 .nav-toggle{display:none;background:none;border:1px solid var(--line);color:var(--navy);border-radius:8px;font-size:19px;padding:6px 12px;cursor:pointer}
 
@@ -137,6 +137,7 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;padding:34px 0}
 .proof-grid.five{grid-template-columns:repeat(5,1fr)}
 .proof-grid.three{grid-template-columns:repeat(3,1fr)}
+.proof-grid.two{grid-template-columns:repeat(2,1fr)}
 .proof .pstat strong{display:block;font-family:var(--font-d);font-size:clamp(1.7rem,3vw,2.4rem);font-weight:800;letter-spacing:-.02em;line-height:1.05}
 .proof .pstat span{font-size:13px;font-weight:600;color:rgba(255,255,255,.82)}
 .proof-note{border-top:1px solid rgba(255,255,255,.25);padding:13px 0 16px;font-size:13px;font-weight:500;color:rgba(255,255,255,.8)}
@@ -178,7 +179,7 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .course-body{position:relative;padding:40px 22px 22px;display:flex;flex-direction:column;gap:11px;flex:1;text-align:center}
 .course-badge{position:absolute;top:-26px;right:18px;width:52px;height:52px;border-radius:50%;background:#fff;border:1px solid var(--line-soft);box-shadow:var(--shadow-sm);display:flex;align-items:center;justify-content:center;z-index:2}
 .course-badge img{width:34px;height:34px;object-fit:contain}
-.course-provider{font-size:.85rem;font-weight:700;letter-spacing:.02em;color:#e53935}
+.course-provider{font-size:.85rem;font-weight:700;letter-spacing:.02em;color:#C62828}
 .course h3{font-family:var(--font-d);font-size:23px;font-weight:700;letter-spacing:-.015em;line-height:1.16;overflow-wrap:break-word}
 .course .tag{font-size:14px;color:var(--ink2);overflow-wrap:break-word}
 .course .pay{font-family:var(--font-d);font-size:27px;font-weight:800;color:var(--ink);letter-spacing:-.02em;padding-top:8px}
@@ -250,7 +251,7 @@ h2{font-size:clamp(1.95rem,4vw,3.1rem);margin-bottom:14px}
 .foot-col a{display:block;color:var(--ink2);text-decoration:none;font:500 14px var(--font-b);padding:8px 0}
 .foot-col a:hover{color:var(--amber)}
 .foot-col .fine{margin:0 0 4px;color:var(--muted)}
-.foot-cta{display:inline-flex;align-items:center;gap:8px;background:#e53935;color:#fff !important;font:700 14px var(--font-b);padding:12px 20px;border-radius:999px;margin-bottom:10px;box-shadow:0 10px 24px rgba(229,57,53,.35);text-decoration:none}
+.foot-cta{display:inline-flex;align-items:center;gap:8px;background:#C62828;color:#fff !important;font:700 14px var(--font-b);padding:12px 20px;border-radius:999px;margin-bottom:10px;box-shadow:0 10px 24px rgba(229,57,53,.35);text-decoration:none}
 .foot-cta:hover{background:var(--amber-strong);color:#fff}
 .foot-cta-sub{font-size:12.5px;color:var(--muted);margin:0;line-height:1.55}
 .foot-seo{border-top:1px solid var(--line-soft);padding:22px 0}
