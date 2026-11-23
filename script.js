@@ -2,17 +2,17 @@
 const WHATSAPP_NUMBER = "918120694235"; // NaukriSala demo bookings (confirmed by Abhigyan 2026-10-14)
 
 const COURSES = [
-  { name: "AML & KYC Analyst", tag: "Financial crime compliance · any graduate", dur: "45 days", pay: "₹9–28 LPA", flagship: true,  status: "Batch 9 · Begins 10 Jan", img: "assets/courses/aml-kyc.jpg" },
-  { name: "ServiceNow Developer", tag: "Best for freshers & IT support", dur: "3 months", pay: "₹7–18 LPA", flagship: false, status: "Upcoming", img: "assets/courses/servicenow.jpg" },
-  { name: "Data Science & AI Engineering", tag: "Python, ML, GenAI, LLMs, MLOps", dur: "4 months", pay: "₹12–45 LPA", flagship: false, status: "Upcoming", img: "assets/courses/data-science-ai.jpg" },
-  { name: "STOM — Service Transition & Ops", tag: "Best for non-coders & career switchers", dur: "2 months", pay: "₹8–36 LPA", flagship: false, status: "Upcoming", img: "assets/courses/stom.jpg" },
-  { name: "Power BI Developer", tag: "BI & analytics · dashboards + DAX", dur: "2 months", pay: "₹6–18 LPA", flagship: false, status: "Upcoming", img: "assets/courses/power-bi.jpg" },
+  { name: "AML & KYC Analyst", tag: "Financial crime compliance · any graduate", dur: "45 days", pay: "TBA", flagship: true,  status: "Batch 9 · Begins 10 Jan", img: "assets/courses/aml-kyc.jpg" },
+  { name: "ServiceNow Developer", tag: "Best for freshers & IT support", dur: "3 months", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/servicenow.jpg" },
+  { name: "Data Science & AI Engineering", tag: "Python, ML, GenAI, LLMs, MLOps", dur: "4 months", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/data-science-ai.jpg" },
+  { name: "STOM — Service Transition & Ops", tag: "Best for non-coders & career switchers", dur: "2 months", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/stom.jpg" },
+  { name: "Power BI Developer", tag: "BI & analytics · dashboards + DAX", dur: "2 months", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/power-bi.jpg" },
   { name: "Data Analyst", tag: "Best for freshers & aspiring analysts", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/data-analyst.jpg" },
   { name: "Workday Consultant", tag: "Best for HR & operations professionals", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/workday.jpg" },
   { name: "Full Stack Python", tag: "Best for coding aspirants", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/python-fullstack.jpg" },
   { name: "Full Stack Java Developer", tag: "Best for coding aspirants", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/java-fullstack.jpg" },
   { name: "Software Testing (QA)", tag: "Best for detail-oriented freshers", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/qa-testing.jpg" },
-  { name: "Investment Banking Operations", tag: "Any graduate, no coding needed", dur: "45 days", pay: "₹3.5–7 LPA", flagship: false, status: "Upcoming", img: "assets/courses/ib-operations.jpg" },
+  { name: "Investment Banking Operations", tag: "Any graduate, no coding needed", dur: "45 days", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/ib-operations.jpg" },
   { name: "SAP FICO (S/4HANA Finance)", tag: "Best for B.Com, MBA & finance pros", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/sap-fico.jpg" },
   { name: "Web Development", tag: "Best for creative coders", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/web-dev.jpg" },
   { name: ".NET Developer", tag: "Enterprise stack", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/dotnet.jpg" },
@@ -96,7 +96,7 @@ function renderCourses() {
         ${openings ? `<p class="c-open-line"><span class="c-open" data-openings="${slug}"><b>${openings.toLocaleString('en-IN')}</b> live openings</span></p>` : ''}
         <div class="course-actions">
           <a class="btn btn-outline" href="${COURSE_PAGE[slug] || "/#demo"}">View Program</a>
-          <a class="btn btn-primary" href="checkout/" data-course="${c.name}">Pay fees <span class="arr">→</span></a>
+          ${c.flagship ? '<a class="btn btn-primary" href="checkout/" data-course="' + c.name + '">Pay fees <span class="arr">→</span></a>' : ''}
         </div>
         ${COURSE_SYLLABUS[slug] ? `<a class="btn btn-outline course-syllabus" href="${COURSE_SYLLABUS[slug]}">Syllabus <span class="arr">→</span></a>` : ''}
       </div>
@@ -181,7 +181,7 @@ function initCoursesDropdown() {
       return '<div class="cd-course">' +
         '<a class="cd-name" href="' + coursePageFor(name) + '">' + name +
         (meta ? "<span>" + meta + "</span>" : "") + "</a>" +
-        '<a class="btn btn-outline btn-sm cd-pay" href="' + checkoutLink(name) + '" data-course="' + name + '">Pay fees</a>' +
+        (name === "AML & KYC Analyst" ? '<a class="btn btn-outline btn-sm cd-pay" href="' + checkoutLink(name) + '" data-course="' + name + '">Pay fees</a>' : '') +
         "</div>";
     }).join("");
   }

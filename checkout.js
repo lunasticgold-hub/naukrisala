@@ -17,14 +17,7 @@
 
   // Every real course name (script.js COURSES + the fees-page labels).
   // Anything else in ?course= is ignored and the visitor picks instead.
-  var KNOWN_COURSES = [
-    "AML & KYC Analyst", "ServiceNow Developer", "Data Science & AI Engineering",
-    "STOM", "STOM — Service Transition & Ops", "Power BI Developer",
-    "Investment Banking Operations", "Full Stack Python", "Data Analyst",
-    "Workday Consultant", "Full Stack Java Developer", "Software Testing (QA)",
-    "SAP FICO (S/4HANA Finance)", "Web Development", ".NET Developer",
-    "Database & Business Intelligence", "Not sure yet"
-  ];
+  var KNOWN_COURSES = [ "AML & KYC Analyst" ];
 
   var form = document.getElementById("coForm");
   if (!form) return;
