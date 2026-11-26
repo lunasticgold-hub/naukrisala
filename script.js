@@ -19,7 +19,7 @@ const COURSES = [
   { name: "Database & Business Intelligence", tag: "SQL + BI tools", dur: "TBA", pay: "TBA", flagship: false, status: "Upcoming", img: "assets/courses/dbi.jpg" },
 ];
 
-/* Per-track live-openings counts, counted from jobs.json on 2026-11-25.
+/* Per-track live-openings counts, counted from jobs.json on 2026-11-26.
    The homepage, courses page and course pages refresh them from jobs.json
    on every load — these values are the static fallback. Keys are jobs.json course slugs. */
 const COURSE_SLUGS = {
@@ -61,10 +61,10 @@ document.addEventListener("click", function (e) {
   try { sessionStorage.setItem("ns_course", a.getAttribute("data-course")); } catch (err) { /* private mode */ }
 });
 const COURSE_OPENINGS = {
-  "aml-kyc": 1136, "servicenow": 194, "data-science-ai": 419, "stom": 111,
-  "power-bi": 144, "data-analyst": 231, "workday": 197, "python-fullstack": 379,
-  "java-fullstack": 636, "qa-testing": 433, "ib-operations": 143,
-  "sap-fico": 132, "web-dev": 218, "dotnet": 218, "dbi": 354
+  "aml-kyc": 1136, "servicenow": 196, "data-science-ai": 422, "stom": 111,
+  "power-bi": 144, "data-analyst": 232, "workday": 198, "python-fullstack": 383,
+  "java-fullstack": 641, "qa-testing": 436, "ib-operations": 143,
+  "sap-fico": 133, "web-dev": 218, "dotnet": 221, "dbi": 355
 };
 
 function renderCourses() {
