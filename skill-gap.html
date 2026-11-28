@@ -221,9 +221,9 @@
 const esc = s => String(s || '').replace(/[&<>"]/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const $ = id => document.getElementById(id);
 
-/* Static fallback, counted from jobs.json on 2026-11-27 (same job.course basis
+/* Static fallback, counted from jobs.json on 2026-11-28 (same job.course basis
    as the live refresh below); refreshed live below. */
-const OPENINGS = { 'aml-kyc': 1236, 'servicenow': 214, 'data-science-ai': 446, 'stom': 115, 'power-bi': 156, 'data-analyst': 242, 'workday': 209, 'python-fullstack': 404, 'java-fullstack': 670, 'qa-testing': 443, 'ib-operations': 163, 'sap-fico': 146, 'web-dev': 232, 'dotnet': 236, 'dbi': 361 };
+const OPENINGS = { 'aml-kyc': 1240, 'servicenow': 217, 'data-science-ai': 452, 'stom': 116, 'power-bi': 156, 'data-analyst': 246, 'workday': 211, 'python-fullstack': 414, 'java-fullstack': 680, 'qa-testing': 446, 'ib-operations': 165, 'sap-fico': 146, 'web-dev': 232, 'dotnet': 239, 'dbi': 370 };
 let liveOpenings = null;
 
 $('sgTrack').innerHTML = TRACKS.map(t => `<option value="${t.slug}">${esc(t.label)}</option>`).join('');
